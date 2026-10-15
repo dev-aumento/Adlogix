@@ -6,7 +6,7 @@ import { SectionHeading } from '../ui/SectionHeading';
 import { useCMS } from '../../hooks/useCMS';
 import { projectCategories } from '../../data/projectsData';
 
-export const FeaturedProjects = () => {
+export const FeaturedProjects = ({ content }) => {
   const { projects, openVideoModal } = useCMS();
   const [activeCategory, setActiveCategory] = useState("All");
 
@@ -21,11 +21,11 @@ export const FeaturedProjects = () => {
         {/* Section Heading & Category Filters */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
           <SectionHeading
-            badge="Selected Case Studies"
+            badge={content.heading.badge}
             badgeIcon={FolderKanban}
-            title="Creative Work. Strategic Thinking. Measurable Impact."
-            highlightWord="Measurable Impact"
-            subtitle="Explore how we combine direct-response creative, performance media, and cutting-edge web development to unlock sustainable growth."
+            title={content.heading.title}
+            highlightWord={content.heading.highlight}
+            subtitle={content.heading.subtitle}
             align="left"
             className="max-w-2xl"
           />
@@ -179,7 +179,7 @@ export const FeaturedProjects = () => {
             to="/work"
             className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-navy hover:bg-brand-navy-dark text-white font-bold text-sm transition-all shadow-lg shadow-brand-navy/20"
           >
-            View Complete Portfolio & Results →
+            {content.ctaLabel}
           </Link>
         </div>
 

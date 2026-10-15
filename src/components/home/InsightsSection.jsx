@@ -5,7 +5,7 @@ import { ArrowRight, BookOpen, Clock, Calendar, ArrowUpRight } from 'lucide-reac
 import { SectionHeading } from '../ui/SectionHeading';
 import { useCMS } from '../../hooks/useCMS';
 
-export const InsightsSection = () => {
+export const InsightsSection = ({ content }) => {
   const { blogs } = useCMS();
 
   return (
@@ -15,11 +15,11 @@ export const InsightsSection = () => {
         {/* Section Heading & View All Button */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
           <SectionHeading
-            badge="Growth Knowledge"
+            badge={content.heading.badge}
             badgeIcon={BookOpen}
-            title="Ideas That Move Businesses Forward."
-            highlightWord="Move Businesses Forward"
-            subtitle="Deep-dive frameworks, technical SEO teardowns, short-form video strategies, and modern headless engineering guides."
+            title={content.heading.title}
+            highlightWord={content.heading.highlight}
+            subtitle={content.heading.subtitle}
             align="left"
             className="max-w-2xl"
           />
@@ -28,7 +28,7 @@ export const InsightsSection = () => {
             to="/blog"
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-blue hover:text-brand-blue-hover transition-colors group"
           >
-            <span>Explore All Insights</span>
+            <span>{content.ctaLabel}</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>

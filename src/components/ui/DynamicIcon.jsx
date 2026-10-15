@@ -25,7 +25,11 @@ import {
   Zap,
   CheckCircle2,
   Play,
-  ArrowRight
+  ArrowRight,
+  Video,
+  Users,
+  Compass,
+  LineChart
 } from 'lucide-react';
 
 const iconMap = {
@@ -54,7 +58,11 @@ const iconMap = {
   Zap,
   CheckCircle2,
   Play,
-  ArrowRight
+  ArrowRight,
+  Video,
+  Users,
+  Compass,
+  LineChart
 };
 
 export const DynamicIcon = ({ name, className = "w-5 h-5", ...props }) => {

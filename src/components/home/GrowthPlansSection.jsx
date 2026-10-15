@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, Sparkles, Star, Zap, ShieldCheck } from 'lucide-react';
-import { SectionHeading } from '../ui/SectionHeading';
-import { Button } from '../ui/Button';
+import { motion } from 'framer-motion';
+import { Check, ArrowRight, Sparkles, Star } from 'lucide-react';
+import { HighlightedTitle } from '../ui/HighlightedTitle';
 import { useCMS } from '../../hooks/useCMS';
-import { growthPlansData } from '../../data/pricingData';
+import { usePageContent } from '../../hooks/usePageContent';
 import { useNavigate } from 'react-router-dom';
 
-export const GrowthPlansSection = ({ className = "" }) => {
+// Owned by the Home page in WordPress; other pages (Services, Reels, ...) render it without passing content.
+export const GrowthPlansSection = ({ content, className = "" }) => {
+  const { content: home } = usePageContent('home');
+  const growthPlansData = content || home.plans;
   const { openDiscoveryModal } = useCMS();
   const navigate = useNavigate();
   const [billingCycle, setBillingCycle] = useState('monthly'); // 'monthly' | 'quarterly' | 'annual'
@@ -45,10 +47,11 @@ export const GrowthPlansSection = ({ className = "" }) => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="editorial-heading text-3xl sm:text-5xl lg:text-6xl font-black text-brand-navy tracking-tight uppercase"
           >
-            Choose Your{' '}
-            <span className="text-brand-blue font-black drop-shadow-[0_4px_24px_rgba(35,61,255,0.25)]">
-              Growth Plan
-            </span>
+            <HighlightedTitle
+              text={growthPlansData.title}
+              highlight={growthPlansData.highlight}
+              highlightClassName="text-brand-blue font-black drop-shadow-[0_4px_24px_rgba(35,61,255,0.25)]"
+            />
           </motion.h2>
 
           <motion.p
@@ -115,7 +118,7 @@ export const GrowthPlansSection = ({ className = "" }) => {
         {/* 3 Pricing Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch pt-4">
           {growthPlansData.plans.map((plan, idx) => {
-            const pricingInfo = plan.pricing[billingCycle];
+            const pricingInfo = plan.pricing[billingCycle]?.price ? plan.pricing[billingCycle] : plan.pricing.monthly;
             const isFeatured = plan.isPopular;
 
             return (
@@ -262,12 +265,12 @@ export const GrowthPlansSection = ({ className = "" }) => {
 
           {/* Custom Scope Help Callout */}
           <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3 p-3 px-6 rounded-full bg-brand-surface-soft border border-brand-border text-xs text-brand-navy">
-            <span className="font-semibold">Need a custom enterprise scope, web application, or nationwide video crew?</span>
+            <span className="font-semibold">{growthPlansData.helpText}</span>
             <button
               onClick={openDiscoveryModal}
               className="font-extrabold text-brand-blue hover:text-brand-blue-hover underline cursor-pointer"
             >
-              Book a Strategy Call →
+              {growthPlansData.helpButtonLabel}
             </button>
           </div>
         </div>

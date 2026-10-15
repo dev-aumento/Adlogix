@@ -34,10 +34,26 @@ export function toHtml(value) {
 
 /** Split a one-item-per-line textarea (ACF Free has no repeater) into a clean list. */
 export function toLines(value) {
-  return toPlainText(value)
+  if (typeof value !== 'string') return [];
+  return value
     .split(/\r?\n/)
-    .map((line) => line.trim())
+    .map((line) => toPlainText(line))
     .filter(Boolean);
+}
+
+/**
+ * Parse one-row-per-line textareas whose columns are separated by `|`,
+ * e.g. "500+ | Clients Served" with keys ['value', 'label'].
+ */
+export function toPipeRows(value, keys) {
+  return toLines(value).map((line) => {
+    const cells = line.split('|').map((cell) => cell.trim());
+    return Object.fromEntries(keys.map((key, i) => [key, cells[i] || '']));
+  });
+}
+
+export function toBoolean(value) {
+  return value === true || value === 1 || value === '1';
 }
 
 /** Accept only internal paths (`/contact`) or http(s) URLs. */
@@ -74,8 +90,13 @@ export function normalizeMedia(media) {
   };
 }
 
-/** ACF returns `acf: []` when a post has no field values; always hand back an object. */
-const normalizeFields = (acf) => (isPlainObject(acf) ? acf : {});
+/** Section order from the plugin's `adlogix_sections` REST field. */
+function normalizeSectionOrder(sections) {
+  if (!Array.isArray(sections)) return null;
+  return sections
+    .filter((section) => isPlainObject(section) && typeof section.key === 'string')
+    .map((section) => ({ key: section.key, enabled: section.enabled !== false }));
+}
 
 export function normalizePage(raw) {
   if (!isPlainObject(raw)) return null;
@@ -88,108 +109,29 @@ export function normalizePage(raw) {
     content: toHtml(raw.content),
     modified: raw.modified || null,
     image: normalizeMedia(embeddedMedia) || normalizeMedia(raw.featured_media_url),
-    fields: normalizeFields(raw.acf),
+    // ACF returns `acf: []` when a page has no field values.
+    fields: isPlainObject(raw.acf) ? raw.acf : {},
+    sections: normalizeSectionOrder(raw.adlogix_sections),
   };
 }
 
-const HERO_METRIC_SLOTS = 4;
-
 /**
- * Map the `home` page's ACF fields to the hero shape. Missing fields come back
- * empty; `mergeHomeHero` decides what to fall back to.
+ * Fill empty values from `defaults`, following the shape of `defaults`:
+ * empty strings, null and empty arrays fall back; non-empty arrays replace the
+ * default list as a whole.
  */
-export function normalizeHomeHero(page) {
-  const f = page?.fields || {};
-  const metrics = [];
-  for (let i = 1; i <= HERO_METRIC_SLOTS; i += 1) {
-    const metric = isPlainObject(f[`hero_metric_${i}`]) ? f[`hero_metric_${i}`] : {};
-    metrics.push({ value: toPlainText(metric.value), label: toPlainText(metric.label) });
+export function withDefaults(value, defaults) {
+  if (Array.isArray(defaults)) {
+    return Array.isArray(value) && value.length > 0 ? value : defaults;
   }
-
-  return {
-    badge: {
-      text: toPlainText(f.hero_badge_text),
-      highlight: toPlainText(f.hero_badge_highlight),
-    },
-    headline: {
-      line1: toPlainText(f.hero_headline_line_1),
-      highlight1: toPlainText(f.hero_headline_highlight_1),
-      line2: toPlainText(f.hero_headline_line_2),
-      highlight2: toPlainText(f.hero_headline_highlight_2),
-    },
-    specializationsIntro: toPlainText(f.hero_specializations_intro),
-    specializations: toLines(f.hero_specializations),
-    lead: toPlainText(f.hero_lead),
-    description: toPlainText(f.hero_description),
-    partner: {
-      label: toPlainText(f.hero_partner_label),
-      name: toPlainText(f.hero_partner_name),
-      url: toSafeLink(f.hero_partner_url),
-    },
-    primaryCta: {
-      label: toPlainText(f.hero_primary_cta_label),
-      href: toSafeLink(f.hero_primary_cta_link),
-    },
-    secondaryCta: {
-      label: toPlainText(f.hero_secondary_cta_label),
-    },
-    metrics,
-  };
-}
-
-/**
- * Fill every empty WordPress value from the static fallback so the hero layout
- * never renders with holes. Returns the merged content plus the list of fields
- * that fell back, so callers can warn about incomplete content.
- */
-export function mergeHomeHero(wpHero, fallback) {
-  if (!wpHero) return { content: fallback, missing: ['(entire hero)'] };
-
-  const missing = [];
-  const pick = (value, fallbackValue, name) => {
-    const empty = Array.isArray(value) ? value.length === 0 : !value;
-    if (empty) missing.push(name);
-    return empty ? fallbackValue : value;
-  };
-
-  const metrics = fallback.metrics.map((fallbackMetric, i) => {
-    const metric = wpHero.metrics?.[i] || {};
-    if (metric.value && metric.label) return metric;
-    missing.push(`hero_metric_${i + 1}`);
-    return fallbackMetric;
-  });
-
-  return {
-    missing,
-    content: {
-      badge: {
-        text: pick(wpHero.badge.text, fallback.badge.text, 'hero_badge_text'),
-        // An intentionally empty highlight hides the "• highlight" part of the badge.
-        highlight: wpHero.badge.text ? wpHero.badge.highlight : fallback.badge.highlight,
-      },
-      headline: {
-        line1: pick(wpHero.headline.line1, fallback.headline.line1, 'hero_headline_line_1'),
-        highlight1: pick(wpHero.headline.highlight1, fallback.headline.highlight1, 'hero_headline_highlight_1'),
-        line2: pick(wpHero.headline.line2, fallback.headline.line2, 'hero_headline_line_2'),
-        highlight2: pick(wpHero.headline.highlight2, fallback.headline.highlight2, 'hero_headline_highlight_2'),
-      },
-      specializationsIntro: pick(wpHero.specializationsIntro, fallback.specializationsIntro, 'hero_specializations_intro'),
-      specializations: pick(wpHero.specializations, fallback.specializations, 'hero_specializations'),
-      lead: pick(wpHero.lead, fallback.lead, 'hero_lead'),
-      description: pick(wpHero.description, fallback.description, 'hero_description'),
-      partner: {
-        label: pick(wpHero.partner.label, fallback.partner.label, 'hero_partner_label'),
-        name: pick(wpHero.partner.name, fallback.partner.name, 'hero_partner_name'),
-        url: pick(wpHero.partner.url, fallback.partner.url, 'hero_partner_url'),
-      },
-      primaryCta: {
-        label: pick(wpHero.primaryCta.label, fallback.primaryCta.label, 'hero_primary_cta_label'),
-        href: pick(wpHero.primaryCta.href, fallback.primaryCta.href, 'hero_primary_cta_link'),
-      },
-      secondaryCta: {
-        label: pick(wpHero.secondaryCta.label, fallback.secondaryCta.label, 'hero_secondary_cta_label'),
-      },
-      metrics,
-    },
-  };
+  if (isPlainObject(defaults)) {
+    const source = isPlainObject(value) ? value : {};
+    return Object.fromEntries(
+      Object.keys(defaults).map((key) => [key, withDefaults(source[key], defaults[key])])
+    );
+  }
+  if (typeof defaults === 'boolean') {
+    return typeof value === 'boolean' ? value : defaults;
+  }
+  return value === undefined || value === null || value === '' ? defaults : value;
 }

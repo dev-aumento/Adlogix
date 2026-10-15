@@ -1,5 +1,7 @@
 import React from 'react';
 import { SEOHead } from '../components/ui/SEOHead';
+import { PageSections } from '../components/sections/PageSections';
+import { usePageContent } from '../hooks/usePageContent';
 import { HeroSection } from '../components/home/HeroSection';
 import { ReelShowcase } from '../components/home/ReelShowcase';
 import { StudioSection } from '../components/home/StudioSection';
@@ -15,7 +17,27 @@ import { AumentoCredibility } from '../components/home/AumentoCredibility';
 import { InsightsSection } from '../components/home/InsightsSection';
 import { ClosingCTA } from '../components/home/ClosingCTA';
 
+// Default order. Keys must match the "home" entry in the plugin's section registry.
+const homeSections = {
+  hero: HeroSection,
+  reels: ReelShowcase,
+  studio: StudioSection,
+  brands: BrandMarquee,
+  services: ServicesOverview,
+  projects: FeaturedProjects,
+  industries: IndustriesSection,
+  why: WhyAdlogix,
+  process: ProcessTimeline,
+  plans: GrowthPlansSection,
+  testimonials: VideoTestimonials,
+  aumento: AumentoCredibility,
+  insights: InsightsSection,
+  cta: ClosingCTA
+};
+
 export const HomePage = () => {
+  const { content, order } = usePageContent('home');
+
   return (
     <>
       <SEOHead
@@ -25,47 +47,7 @@ export const HomePage = () => {
       />
 
       <div className="flex flex-col">
-        {/* Section 2: Hero */}
-        <HeroSection />
-
-        {/* Section 3: Client Reels & Creative Showcase */}
-        <ReelShowcase />
-
-        {/* Section 3.5: Studio Adlogix & Infinite Fashion/Product Loop */}
-        <StudioSection />
-
-        {/* Section 4: Brand Marquee */}
-        <BrandMarquee />
-
-        {/* Section 5: Services Overview */}
-        <ServicesOverview />
-
-        {/* Section 6: Featured Projects & Case Studies */}
-        <FeaturedProjects />
-
-        {/* Section 7: Industries We Work With */}
-        <IndustriesSection />
-
-        {/* Section 8: Why Adlogix */}
-        <WhyAdlogix />
-
-        {/* Section 9: Our Process */}
-        <ProcessTimeline />
-
-        {/* Section 10: Growth Plans & Regular Package Options */}
-        <GrowthPlansSection />
-
-        {/* Section 11: Client Video Testimonials */}
-        <VideoTestimonials />
-
-        {/* Section 12: Powered by Aumento Infoway Credibility */}
-        <AumentoCredibility />
-
-        {/* Section 13: Insights & Resources */}
-        <InsightsSection />
-
-        {/* Section 14: Conversion-Focused Closing CTA */}
-        <ClosingCTA />
+        <PageSections sections={homeSections} order={order} content={content} />
       </div>
     </>
   );

@@ -5,13 +5,12 @@ import { clientReelsData } from '../data/reelsData';
 import { testimonialsData } from '../data/testimonialsData';
 import { industriesData } from '../data/industriesData';
 import { blogsData } from '../data/blogsData';
-import { clientsData } from '../data/clientsData';
 import { teamData } from '../data/teamData';
 import { wpGet, wpPost, WordPressApiError } from './client';
-import { normalizePage, normalizeHomeHero } from './normalizers';
+import { normalizePage } from './normalizers';
 
-// Legacy switch for the bulk collections loaded by CMSContext. Sections migrated
-// individually (getHomeHero, ...) are not gated by it.
+// Legacy switch for the bulk collections loaded by CMSContext. Page content
+// (getPage) is not gated by it.
 const ENABLE_WP_SYNC = import.meta.env.VITE_ENABLE_WP_SYNC === 'true';
 
 // Helper to fetch from WP REST API with timeout & fallback
@@ -29,19 +28,20 @@ async function fetchWP(endpoint, fallbackData) {
   }
 }
 
-async function getPageBySlug(slug, fields = 'id,slug,title,modified,acf') {
-  const pages = await wpGet('/wp/v2/pages', { params: { slug, _fields: fields } });
-  if (!Array.isArray(pages)) {
-    throw new WordPressApiError(`Unexpected response for page "${slug}"`, { code: 'invalid_response' });
-  }
-  return pages.length > 0 ? normalizePage(pages[0]) : null;
-}
-
 export const api = {
-  // Homepage hero: fields on the WordPress page with slug "home". Resolves to null when the page doesn't exist.
-  async getHomeHero() {
-    const page = await getPageBySlug('home');
-    return page ? normalizeHomeHero(page) : null;
+  // A WordPress page with its ACF fields and section order. Resolves to null when the page doesn't exist.
+  async getPage(slug) {
+    const pages = await wpGet('/wp/v2/pages', {
+      params: {
+        slug,
+        _fields: 'id,slug,title,modified,acf,adlogix_sections',
+        acf_format: 'standard'
+      }
+    });
+    if (!Array.isArray(pages)) {
+      throw new WordPressApiError(`Unexpected response for page "${slug}"`, { code: 'invalid_response' });
+    }
+    return pages.length > 0 ? normalizePage(pages[0]) : null;
   },
 
   // Global Settings
@@ -181,11 +181,6 @@ export const api = {
       tags: item.acf?.tags || [],
       content: item.content?.rendered
     }));
-  },
-
-  // Brand Marquee Clients
-  async getClients() {
-    return fetchWP('/adlogix/v1/clients', clientsData);
   },
 
   // Team

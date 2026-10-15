@@ -1,84 +1,17 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Sparkles, Camera, ArrowRight, Play, Eye } from 'lucide-react';
+import { Camera, ArrowRight, Eye } from 'lucide-react';
 import { Button } from '../ui/Button';
+import { usePageContent } from '../../hooks/usePageContent';
 
-export const studioShootsData = [
-  {
-    id: "studio-1",
-    title: "Festive Silk & Lehenga Couture",
-    category: "Ethnic Fashion",
-    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
-    location: "Studio Bay 1 - Crimson Drape Set"
-  },
-  {
-    id: "studio-2",
-    title: "Pastel Kurti & Palazzo Co-ord",
-    category: "Apparel Shoot",
-    image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
-    location: "Studio Bay 2 - Earthy Minimal Set"
-  },
-  {
-    id: "studio-3",
-    title: "Royal Banarasi Silk Drape",
-    category: "Bridal Wear",
-    image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop",
-    location: "Studio Bay 3 - Heritage Modular Set"
-  },
-  {
-    id: "studio-4",
-    title: "Festive Casuals & Lifestyle",
-    category: "Lookbook Shoot",
-    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=800&auto=format&fit=crop",
-    location: "Studio Bay 1 - Warm Ambient Light"
-  },
-  {
-    id: "studio-5",
-    title: "Embroidered Anarkali Ensemble",
-    category: "Designer Wear",
-    image: "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?q=80&w=800&auto=format&fit=crop",
-    location: "Studio Bay 4 - Dynamic Shadow Grid"
-  },
-  {
-    id: "studio-6",
-    title: "Contemporary Indo-Western Duo",
-    category: "Fashion Campaign",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
-    location: "Outdoor Courtyard & Sunlight Set"
-  },
-  {
-    id: "studio-7",
-    title: "Heritage Temple Jewellery & Bridal",
-    category: "Jewellery Shoot",
-    image: "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=800&auto=format&fit=crop",
-    location: "Macro Studio - High CRI Lighting"
-  },
-  {
-    id: "studio-8",
-    title: "Luxury Skincare & Cosmetics Macro",
-    category: "Product Shoot",
-    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop",
-    location: "Macro Splash & Texture Studio"
-  }
-];
-
-const categoriesTicker = [
-  "Fashion",
-  "Real Estate",
-  "Jewellery",
-  "Product",
-  "Campaign Shoots",
-  "Brand Lookbooks",
-  "E-commerce Catalogs",
-  "Food & Beverage"
-];
-
-export const StudioSection = () => {
+// Owned by the Home page in WordPress; other pages (e.g. Reels) render it without passing content.
+export const StudioSection = ({ content }) => {
+  const { content: home } = usePageContent('home');
+  const studio = content || home.studio;
   const [selectedShoot, setSelectedShoot] = useState(null);
 
   // Duplicate items for seamless continuous infinite loop
-  const infiniteShoots = [...studioShootsData, ...studioShootsData];
-  const infiniteTicker = [...categoriesTicker, ...categoriesTicker, ...categoriesTicker, ...categoriesTicker];
+  const infiniteShoots = [...studio.shoots, ...studio.shoots];
+  const infiniteTicker = [...studio.ticker, ...studio.ticker, ...studio.ticker, ...studio.ticker];
 
   return (
     <section className="py-20 bg-white border-t border-brand-border/60 overflow-hidden relative">
@@ -90,18 +23,18 @@ export const StudioSection = () => {
             <div className="flex items-center gap-2 mb-2">
               <span className="inline-block w-2 h-2 rounded-full bg-brand-blue" />
               <span className="text-xs font-bold tracking-wider uppercase text-brand-blue font-display">
-                Studio Adlogix
+                {studio.badge}
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display text-brand-navy tracking-tight">
-              Where Stories Are Shot<span className="text-brand-blue">.</span>
+              {studio.title}<span className="text-brand-blue">.</span>
             </h2>
           </div>
 
           {/* Right Subtitle */}
           <div className="max-w-md">
             <p className="text-sm sm:text-base text-brand-muted leading-relaxed">
-              Fashion and product shoot studio Ahmedabad with professional lighting, 4K cinema rigs, and modular sets engineered for high-converting social creative.
+              {studio.subtitle}
             </p>
           </div>
         </div>
@@ -117,7 +50,7 @@ export const StudioSection = () => {
         <div className="flex w-max animate-studio-loop hover:[animation-play-state:paused] gap-5 sm:gap-7 items-center pl-4">
           {infiniteShoots.map((item, index) => (
             <div
-              key={`${item.id}-${index}`}
+              key={index}
               onClick={() => setSelectedShoot(item)}
               className="relative w-[230px] sm:w-[280px] h-[330px] sm:h-[400px] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 shrink-0 cursor-pointer group/card border border-brand-border/80 bg-slate-900"
             >
@@ -169,7 +102,7 @@ export const StudioSection = () => {
           <div className="shrink-0 z-20 pr-4 sm:pr-8 bg-[#0A1633] border-r border-slate-700/80 flex items-center gap-2 shadow-[10px_0_15px_#0A1633]">
             <span className="w-2 h-2 rounded-full bg-[#00E5FF] animate-pulse" />
             <span className="text-xs sm:text-sm font-black tracking-wider uppercase font-display text-white whitespace-nowrap">
-              Perfect For:
+              {studio.tickerLabel}
             </span>
           </div>
 
@@ -231,7 +164,7 @@ export const StudioSection = () => {
                 icon={ArrowRight}
                 onClick={() => setSelectedShoot(null)}
               >
-                Book Studio Shoot
+                {studio.ctaLabel}
               </Button>
             </div>
           </div>

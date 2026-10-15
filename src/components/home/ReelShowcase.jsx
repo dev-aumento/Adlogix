@@ -6,7 +6,7 @@ import { useCMS } from '../../hooks/useCMS';
 import { reelCategories } from '../../data/reelsData';
 import { Link } from 'react-router-dom';
 
-export const ReelShowcase = () => {
+export const ReelShowcase = ({ content }) => {
   const { reels, openVideoModal } = useCMS();
   const [activeCategory, setActiveCategory] = useState("All");
 
@@ -28,12 +28,12 @@ export const ReelShowcase = () => {
         {/* Section Heading & Category Filters */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <SectionHeading
-            badge="Client Creative Showcase"
+            badge={content.heading.badge}
             badgeIcon={Flame}
             badgeVariant="blue"
-            title="Made to Stop the Scroll."
-            highlightWord="Stop the Scroll"
-            subtitle="Real brands. Real campaigns. Creative built to capture attention, cultivate desire, and scale conversions across 9:16 vertical feeds."
+            title={content.heading.title}
+            highlightWord={content.heading.highlight}
+            subtitle={content.heading.subtitle}
             align="left"
             className="max-w-2xl"
           />
@@ -128,14 +128,14 @@ export const ReelShowcase = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
         <div className="flex items-center gap-2 text-xs font-semibold text-brand-muted">
           <Sparkles className="w-4 h-4 text-brand-blue" />
-          <span>Infinite Creative Stream • Hover to pause • Click any reel to watch in HD modal</span>
+          <span>{content.helperText}</span>
         </div>
 
         <Link
           to="/reels"
           className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-blue hover:text-brand-blue-hover transition-colors group"
         >
-          <span>Explore All Client Creative Productions</span>
+          <span>{content.ctaLabel}</span>
           <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </Link>
       </div>

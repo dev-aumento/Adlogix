@@ -25,9 +25,19 @@ This guide explains how to install, configure, and maintain the Headless WordPre
 - **Application Passwords / JWT Authentication** (Optional) - For authenticated editorial previews.
 
 ### Step 3: Import ACF Field Groups
+Page content uses one field group per page, in `wordpress/acf/page-<slug>.json`:
+
+| File | Page | Docs |
+|---|---|---|
+| `acf/page-home.json` | Home (static front page, slug `home`) | `docs/wordpress-migration/02-home-page.md` |
+
 1. Go to **Custom Fields > Tools > Import Field Groups**.
-2. Upload the `wordpress/acf-export.json` file.
-3. Field groups for **Client Reels (9:16 vertical videos)**, **Projects/Case Studies**, and **Global Settings** will automatically register.
+2. Upload the page file and check that **Show in REST API** is on for the group.
+
+`wordpress/acf-export.json` (Client Reels, Projects, Global Settings) is not imported yet; it will be rewritten when those collections are migrated.
+
+### Step 4: Page Sections (order and visibility)
+Plugin version 1.1.0 adds a **Page Sections** box to the page editor sidebar. Drag rows to reorder sections and untick them to hide sections, for the Home, About, Services, Work, Reels, Industries, Testimonials, Blog and Contact pages. Each page needs a published WordPress page with the matching slug. See `docs/wordpress-migration/03-page-sections.md`.
 
 ---
 
@@ -76,6 +86,4 @@ VITE_ENABLE_WP_SYNC=false
 
 `VITE_WP_API_URL` is still read as a fallback name for `VITE_WORDPRESS_API_URL`.
 
-Sections migrated individually (currently the homepage hero, see `docs/wordpress-migration/02-home-hero.md`) always read from WordPress and fall back to static content when it is empty or unreachable. `VITE_ENABLE_WP_SYNC` only controls the older bulk collections (services, projects, reels, testimonials, industries, blog, clients, team, settings), and should stay `false` until each one is migrated.
-
-The homepage hero field group is in `wordpress/acf-home-hero.json` (import it separately from `acf-export.json`).
+Page content and section order (`api.getPage(slug)`, used by every main page) always read from WordPress and fall back to the static defaults in `src/content/` when WordPress is empty or unreachable. `VITE_ENABLE_WP_SYNC` only controls the older bulk collections (services, projects, reels, testimonials, industries, blog, team, settings), and should stay `false` until each one is migrated.

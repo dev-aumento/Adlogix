@@ -7,7 +7,7 @@ import { useCMS } from '../../hooks/useCMS';
 import { servicesCategories } from '../../data/servicesData';
 import { Link } from 'react-router-dom';
 
-export const ServicesOverview = () => {
+export const ServicesOverview = ({ content }) => {
   const { services } = useCMS();
   const [activeTab, setActiveTab] = useState('marketing-creative');
 
@@ -24,11 +24,11 @@ export const ServicesOverview = () => {
         
         {/* Section Heading */}
         <SectionHeading
-          badge="Integrated Capabilities"
+          badge={content.heading.badge}
           badgeIcon={Layers}
-          title="Everything Your Brand Needs to Move Forward."
-          highlightWord="Move Forward"
-          subtitle="From the first creative spark to scalable enterprise technology, we bring marketing, creative strategy, and engineering under one roof."
+          title={content.heading.title}
+          highlightWord={content.heading.highlight}
+          subtitle={content.heading.subtitle}
           align="center"
           className="mb-12"
         />
@@ -154,10 +154,10 @@ export const ServicesOverview = () => {
             </div>
             <div>
               <h4 className="text-base font-bold font-display text-brand-navy">
-                Looking for a combined Marketing + Web Infrastructure retainer?
+                {content.callout.title}
               </h4>
               <p className="text-xs sm:text-sm text-brand-muted mt-0.5">
-                We design tailored monthly growth partnerships that align creative production with headless development.
+                {content.callout.text}
               </p>
             </div>
           </div>
@@ -165,7 +165,7 @@ export const ServicesOverview = () => {
             to="/contact"
             className="shrink-0 px-6 py-3 rounded-full bg-brand-navy hover:bg-brand-navy-dark text-white text-xs font-bold transition-all shadow-md"
           >
-            Custom Scope Proposal
+            {content.callout.buttonLabel}
           </Link>
         </div>
 

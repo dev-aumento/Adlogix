@@ -1,17 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, ExternalLink, ShieldCheck, Zap, ArrowRight } from 'lucide-react';
-import { useCMS } from '../../hooks/useCMS';
+import { Cpu, ExternalLink } from 'lucide-react';
 
-export const AumentoCredibility = () => {
-  const { settings } = useCMS();
-  const partner = settings.poweredBy || {
-    text: "Powered by Aumento Infoway",
-    partnerName: "Aumento Infoway",
-    url: "https://aumentoinfoway.com/",
-    description: "Adlogix brings together digital marketing and creative execution, powered by technology capabilities through Aumento Infoway."
-  };
-
+export const AumentoCredibility = ({ content }) => {
   return (
     <section className="py-16 bg-white relative overflow-hidden border-t border-brand-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,15 +22,15 @@ export const AumentoCredibility = () => {
             <div className="lg:col-span-8 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-cyan-300 text-xs font-bold border border-white/15 backdrop-blur-md">
                 <Cpu className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Enterprise Technology Backbone</span>
+                <span>{content.badge}</span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-display tracking-tight text-white">
-                Creative Growth. Backed by Technology.
+                {content.title}
               </h2>
 
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
-                {partner.description} By combining high-velocity creative advertising with deep software engineering, headless architecture, and complex integrations, our clients enjoy unmatched digital performance.
+                {content.text}
               </p>
             </div>
 
@@ -47,22 +38,22 @@ export const AumentoCredibility = () => {
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-center gap-4">
               <div className="p-5 rounded-2xl bg-white/10 border border-white/15 backdrop-blur-md w-full sm:max-w-xs text-left">
                 <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
-                  Technology Partner
+                  {content.cardLabel}
                 </div>
                 <div className="text-lg font-black font-display text-white">
-                  {partner.partnerName}
+                  {content.partnerName}
                 </div>
                 <p className="text-xs text-slate-300 mt-1 mb-4 leading-normal">
-                  Enterprise Web Engineering, Headless CMS & Cloud Solutions
+                  {content.cardText}
                 </p>
 
                 <a
-                  href={partner.url}
+                  href={content.linkUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-300 hover:text-white transition-colors group"
                 >
-                  <span>Visit Aumento Infoway</span>
+                  <span>{content.linkLabel}</span>
                   <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               </div>

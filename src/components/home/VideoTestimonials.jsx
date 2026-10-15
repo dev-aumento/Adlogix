@@ -5,7 +5,7 @@ import { SectionHeading } from '../ui/SectionHeading';
 import { useCMS } from '../../hooks/useCMS';
 import { Link } from 'react-router-dom';
 
-export const VideoTestimonials = () => {
+export const VideoTestimonials = ({ content }) => {
   const { testimonials, openVideoModal } = useCMS();
 
   return (
@@ -14,11 +14,11 @@ export const VideoTestimonials = () => {
         
         {/* Section Heading */}
         <SectionHeading
-          badge="Verified Client Voices"
+          badge={content.heading.badge}
           badgeIcon={MessageSquare}
-          title="Don't Just Take Our Word for It."
-          highlightWord="Take Our Word"
-          subtitle="Hear directly from founders, CMOs, and growth leaders who have scaled their customer acquisition and web platforms with Adlogix."
+          title={content.heading.title}
+          highlightWord={content.heading.highlight}
+          subtitle={content.heading.subtitle}
           align="center"
           className="mb-16"
         />

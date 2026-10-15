@@ -1,0 +1,4768 @@
+[
+    {
+        "key": "group_adlogix_page_home",
+        "title": "Homepage Content",
+        "fields": [
+            {
+                "key": "field_home_tab_hero",
+                "label": "Hero",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_hero_badge_text",
+                "label": "Badge text",
+                "name": "hero_badge_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "GUJARAT & INDIA'S PREMIER DIGITAL AGENCY",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_badge_highlight",
+                "label": "Badge highlight",
+                "name": "hero_badge_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "POWERED BY AUMENTO",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_headline_line_1",
+                "label": "Headline line 1",
+                "name": "hero_headline_line_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "WE DON'T JUST GET",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_headline_highlight_1",
+                "label": "Headline highlight 1",
+                "name": "hero_headline_highlight_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "ATTENTION.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_headline_line_2",
+                "label": "Headline line 2",
+                "name": "hero_headline_line_2",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "WE GROW YOUR",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_headline_highlight_2",
+                "label": "Headline highlight 2",
+                "name": "hero_headline_highlight_2",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "BUSINESS.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_specializations_intro",
+                "label": "Specializations intro",
+                "name": "hero_specializations_intro",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "We specialize in",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_specializations",
+                "label": "Rotating specializations",
+                "name": "hero_specializations",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "One item per line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Performance Marketing\n9:16 Viral Reels & Shoots\nMeta & Google Ads Scale\nHeadless React & Next.js\nShopify D2C Growth\nSearch Engine Optimization (SEO)",
+                "rows": 6,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_lead",
+                "label": "Lead",
+                "name": "hero_lead",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "We Scale Brands with Viral Content, Performance Marketing & Modern Web Solutions.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_description",
+                "label": "Description",
+                "name": "hero_description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Most agencies only post content. Adlogix combines 9:16 Viral Reels, Meta Ads, Google Ads & Headless Web Engineering to help brands generate real leads, sales, and sustainable revenue.",
+                "rows": 3,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_partner_label",
+                "label": "Partner label",
+                "name": "hero_partner_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Powered by Technology Partner",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_partner_name",
+                "label": "Partner name",
+                "name": "hero_partner_name",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Aumento Infoway",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_partner_url",
+                "label": "Partner URL",
+                "name": "hero_partner_url",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "https://aumentoinfoway.com/",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_primary_cta_label",
+                "label": "Primary button label",
+                "name": "hero_primary_cta_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Grow My Business",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_primary_cta_link",
+                "label": "Primary button link",
+                "name": "hero_primary_cta_link",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Site path such as /contact, or a full https:// URL.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "/contact",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_secondary_cta_label",
+                "label": "Secondary button label",
+                "name": "hero_secondary_cta_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the discovery-call popup.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book Strategy Call",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_hero_metric_1",
+                "label": "Metric 1",
+                "name": "hero_metric_1",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_hero_metric_1_value",
+                        "label": "Value",
+                        "name": "value",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "500+",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_hero_metric_1_label",
+                        "label": "Label",
+                        "name": "label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Clients Served",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_hero_metric_2",
+                "label": "Metric 2",
+                "name": "hero_metric_2",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_hero_metric_2_value",
+                        "label": "Value",
+                        "name": "value",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "200+",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_hero_metric_2_label",
+                        "label": "Label",
+                        "name": "label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Verified Influencers",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_hero_metric_3",
+                "label": "Metric 3",
+                "name": "hero_metric_3",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_hero_metric_3_value",
+                        "label": "Value",
+                        "name": "value",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "6+",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_hero_metric_3_label",
+                        "label": "Label",
+                        "name": "label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Years Experience",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_hero_metric_4",
+                "label": "Metric 4",
+                "name": "hero_metric_4",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_hero_metric_4_value",
+                        "label": "Value",
+                        "name": "value",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "99%",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_hero_metric_4_label",
+                        "label": "Label",
+                        "name": "label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Satisfaction Rate",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_tab_reels",
+                "label": "Client Reels",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_reels_badge",
+                "label": "Badge",
+                "name": "reels_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Client Creative Showcase",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_reels_title",
+                "label": "Title",
+                "name": "reels_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Made to Stop the Scroll.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_reels_highlight",
+                "label": "Highlighted words",
+                "name": "reels_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Words from the title shown in the accent colour. Must match the title text exactly.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Stop the Scroll",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_reels_subtitle",
+                "label": "Subtitle",
+                "name": "reels_subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Real brands. Real campaigns. Creative built to capture attention, cultivate desire, and scale conversions across 9:16 vertical feeds.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_reels_helper_text",
+                "label": "Helper text",
+                "name": "reels_helper_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Infinite Creative Stream • Hover to pause • Click any reel to watch in HD modal",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_reels_cta_label",
+                "label": "Button label",
+                "name": "reels_cta_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Explore All Client Creative Productions",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_tab_studio",
+                "label": "Studio Showcase",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_studio_badge",
+                "label": "Badge",
+                "name": "studio_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Studio Adlogix",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_studio_title",
+                "label": "Title",
+                "name": "studio_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Where Stories Are Shot",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_studio_subtitle",
+                "label": "Subtitle",
+                "name": "studio_subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Fashion and product shoot studio Ahmedabad with professional lighting, 4K cinema rigs, and modular sets engineered for high-converting social creative.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_studio_shoot_1",
+                "label": "Shoot 1",
+                "name": "studio_shoot_1",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_studio_shoot_1_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Festive Silk & Lehenga Couture",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_1_category",
+                        "label": "Category",
+                        "name": "category",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Ethnic Fashion",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_1_location",
+                        "label": "Location",
+                        "name": "location",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Studio Bay 1 - Crimson Drape Set",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_1_image",
+                        "label": "Image",
+                        "name": "image",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "medium",
+                        "library": "all"
+                    }
+                ]
+            },
+            {
+                "key": "field_home_studio_shoot_2",
+                "label": "Shoot 2",
+                "name": "studio_shoot_2",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_studio_shoot_2_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Pastel Kurti & Palazzo Co-ord",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_2_category",
+                        "label": "Category",
+                        "name": "category",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Apparel Shoot",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_2_location",
+                        "label": "Location",
+                        "name": "location",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Studio Bay 2 - Earthy Minimal Set",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_2_image",
+                        "label": "Image",
+                        "name": "image",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "medium",
+                        "library": "all"
+                    }
+                ]
+            },
+            {
+                "key": "field_home_studio_shoot_3",
+                "label": "Shoot 3",
+                "name": "studio_shoot_3",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_studio_shoot_3_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Royal Banarasi Silk Drape",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_3_category",
+                        "label": "Category",
+                        "name": "category",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Bridal Wear",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_3_location",
+                        "label": "Location",
+                        "name": "location",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Studio Bay 3 - Heritage Modular Set",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_3_image",
+                        "label": "Image",
+                        "name": "image",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "medium",
+                        "library": "all"
+                    }
+                ]
+            },
+            {
+                "key": "field_home_studio_shoot_4",
+                "label": "Shoot 4",
+                "name": "studio_shoot_4",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_studio_shoot_4_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Festive Casuals & Lifestyle",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_4_category",
+                        "label": "Category",
+                        "name": "category",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Lookbook Shoot",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_4_location",
+                        "label": "Location",
+                        "name": "location",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Studio Bay 1 - Warm Ambient Light",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_4_image",
+                        "label": "Image",
+                        "name": "image",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "medium",
+                        "library": "all"
+                    }
+                ]
+            },
+            {
+                "key": "field_home_studio_shoot_5",
+                "label": "Shoot 5",
+                "name": "studio_shoot_5",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_studio_shoot_5_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Embroidered Anarkali Ensemble",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_5_category",
+                        "label": "Category",
+                        "name": "category",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Designer Wear",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_5_location",
+                        "label": "Location",
+                        "name": "location",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Studio Bay 4 - Dynamic Shadow Grid",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_5_image",
+                        "label": "Image",
+                        "name": "image",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "medium",
+                        "library": "all"
+                    }
+                ]
+            },
+            {
+                "key": "field_home_studio_shoot_6",
+                "label": "Shoot 6",
+                "name": "studio_shoot_6",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_studio_shoot_6_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Contemporary Indo-Western Duo",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_6_category",
+                        "label": "Category",
+                        "name": "category",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Fashion Campaign",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_6_location",
+                        "label": "Location",
+                        "name": "location",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Outdoor Courtyard & Sunlight Set",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_6_image",
+                        "label": "Image",
+                        "name": "image",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "medium",
+                        "library": "all"
+                    }
+                ]
+            },
+            {
+                "key": "field_home_studio_shoot_7",
+                "label": "Shoot 7",
+                "name": "studio_shoot_7",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_studio_shoot_7_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Heritage Temple Jewellery & Bridal",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_7_category",
+                        "label": "Category",
+                        "name": "category",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Jewellery Shoot",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_7_location",
+                        "label": "Location",
+                        "name": "location",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Macro Studio - High CRI Lighting",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_7_image",
+                        "label": "Image",
+                        "name": "image",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "medium",
+                        "library": "all"
+                    }
+                ]
+            },
+            {
+                "key": "field_home_studio_shoot_8",
+                "label": "Shoot 8",
+                "name": "studio_shoot_8",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_studio_shoot_8_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Luxury Skincare & Cosmetics Macro",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_8_category",
+                        "label": "Category",
+                        "name": "category",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Product Shoot",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_8_location",
+                        "label": "Location",
+                        "name": "location",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Macro Splash & Texture Studio",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_studio_shoot_8_image",
+                        "label": "Image",
+                        "name": "image",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "medium",
+                        "library": "all"
+                    }
+                ]
+            },
+            {
+                "key": "field_home_studio_ticker_label",
+                "label": "Ticker label",
+                "name": "studio_ticker_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Perfect For:",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_studio_ticker",
+                "label": "Ticker items",
+                "name": "studio_ticker",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "One item per line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Fashion\nReal Estate\nJewellery\nProduct\nCampaign Shoots\nBrand Lookbooks\nE-commerce Catalogs\nFood & Beverage",
+                "rows": 8,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_studio_cta_label",
+                "label": "Button label",
+                "name": "studio_cta_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book Studio Shoot",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_tab_brands",
+                "label": "Brand Marquee",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_brands_label",
+                "label": "Label",
+                "name": "brands_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Brands We've Had the Pleasure of Working With",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_brands_list",
+                "label": "Brands",
+                "name": "brands_list",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "One brand per line: Name | Sector",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "LUMINA LUXE | Beauty & D2C\nAPEX REALTY | Real Estate\nNOVA NUTRITION | Nutrition & Health\nVELOCITY.AI | Technology & SaaS\nZEST BEVERAGES | Food & Beverage\nVERVE ATHLETICS | Fashion & Lifestyle\nKIRO JEWELS | Luxury Jewelry\nZENITH SYSTEMS | Smart Technology\nPULSE ROASTERS | Artisanal Coffee\nAURA BOTANICALS | Organic Skincare",
+                "rows": 10,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_tab_services",
+                "label": "Services Overview",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_services_badge",
+                "label": "Badge",
+                "name": "services_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Integrated Capabilities",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_services_title",
+                "label": "Title",
+                "name": "services_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Everything Your Brand Needs to Move Forward.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_services_highlight",
+                "label": "Highlighted words",
+                "name": "services_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Words from the title shown in the accent colour. Must match the title text exactly.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Move Forward",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_services_subtitle",
+                "label": "Subtitle",
+                "name": "services_subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "From the first creative spark to scalable enterprise technology, we bring marketing, creative strategy, and engineering under one roof.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_services_callout_title",
+                "label": "Callout title",
+                "name": "services_callout_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Looking for a combined Marketing + Web Infrastructure retainer?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_services_callout_text",
+                "label": "Callout text",
+                "name": "services_callout_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "We design tailored monthly growth partnerships that align creative production with headless development.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_services_callout_button",
+                "label": "Callout button label",
+                "name": "services_callout_button",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Custom Scope Proposal",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_tab_projects",
+                "label": "Featured Projects",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_projects_badge",
+                "label": "Badge",
+                "name": "projects_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Selected Case Studies",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_projects_title",
+                "label": "Title",
+                "name": "projects_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Creative Work. Strategic Thinking. Measurable Impact.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_projects_highlight",
+                "label": "Highlighted words",
+                "name": "projects_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Words from the title shown in the accent colour. Must match the title text exactly.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Measurable Impact",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_projects_subtitle",
+                "label": "Subtitle",
+                "name": "projects_subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Explore how we combine direct-response creative, performance media, and cutting-edge web development to unlock sustainable growth.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_projects_cta_label",
+                "label": "Button label",
+                "name": "projects_cta_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "View Complete Portfolio & Results →",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_tab_industries",
+                "label": "Industries",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_industries_badge",
+                "label": "Badge",
+                "name": "industries_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Specialized Sectors",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_industries_title",
+                "label": "Title",
+                "name": "industries_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Engineered for Your Industry's Nuances.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_industries_highlight",
+                "label": "Highlighted words",
+                "name": "industries_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Words from the title shown in the accent colour. Must match the title text exactly.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Industry's Nuances",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_industries_subtitle",
+                "label": "Subtitle",
+                "name": "industries_subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "We tailor our creative frameworks, acquisition funnels, and web architectures to match the distinct buyer journeys of specialized markets.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_industries_cta_label",
+                "label": "Button label",
+                "name": "industries_cta_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Explore All Industry Landing Pages & Solutions →",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_tab_why",
+                "label": "Why Adlogix",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_why_badge",
+                "label": "Badge",
+                "name": "why_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "The Adlogix Advantage",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_why_title",
+                "label": "Title",
+                "name": "why_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "More Than an Agency. Your Digital Growth Partner.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_why_highlight",
+                "label": "Highlighted words",
+                "name": "why_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Words from the title shown in the accent colour. Must match the title text exactly.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Growth Partner",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_why_subtitle",
+                "label": "Subtitle",
+                "name": "why_subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "We combine the artistic agility of a creative studio with the analytical rigor of a performance agency and the engineering depth of an IT partner.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_why_item_1",
+                "label": "Reason 1",
+                "name": "why_item_1",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_why_item_1_icon",
+                        "label": "Icon",
+                        "name": "icon",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "TrendingUp": "TrendingUp",
+                            "Target": "Target",
+                            "Search": "Search",
+                            "Share2": "Share2",
+                            "Film": "Film",
+                            "Sparkles": "Sparkles",
+                            "Layers": "Layers",
+                            "BarChart3": "BarChart3",
+                            "Palette": "Palette",
+                            "Code2": "Code2",
+                            "Globe": "Globe",
+                            "ShoppingBag": "ShoppingBag",
+                            "Cpu": "Cpu",
+                            "ShieldCheck": "ShieldCheck",
+                            "Building2": "Building2",
+                            "Building": "Building",
+                            "Utensils": "Utensils",
+                            "Shirt": "Shirt",
+                            "HeartPulse": "HeartPulse",
+                            "Briefcase": "Briefcase",
+                            "Rocket": "Rocket",
+                            "Flame": "Flame",
+                            "Zap": "Zap",
+                            "CheckCircle2": "CheckCircle2",
+                            "Play": "Play",
+                            "ArrowRight": "ArrowRight",
+                            "Video": "Video",
+                            "Users": "Users",
+                            "Compass": "Compass",
+                            "LineChart": "LineChart"
+                        },
+                        "default_value": "Sparkles",
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0
+                    },
+                    {
+                        "key": "field_home_why_item_1_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "75",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Creative Thinking Backed by Strategy",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_why_item_1_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "We don't create vanity art. Every hook, visual angle, and script is anchored in consumer psychology and direct-response conversion principles.",
+                        "rows": 2,
+                        "new_lines": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_why_item_2",
+                "label": "Reason 2",
+                "name": "why_item_2",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_why_item_2_icon",
+                        "label": "Icon",
+                        "name": "icon",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "TrendingUp": "TrendingUp",
+                            "Target": "Target",
+                            "Search": "Search",
+                            "Share2": "Share2",
+                            "Film": "Film",
+                            "Sparkles": "Sparkles",
+                            "Layers": "Layers",
+                            "BarChart3": "BarChart3",
+                            "Palette": "Palette",
+                            "Code2": "Code2",
+                            "Globe": "Globe",
+                            "ShoppingBag": "ShoppingBag",
+                            "Cpu": "Cpu",
+                            "ShieldCheck": "ShieldCheck",
+                            "Building2": "Building2",
+                            "Building": "Building",
+                            "Utensils": "Utensils",
+                            "Shirt": "Shirt",
+                            "HeartPulse": "HeartPulse",
+                            "Briefcase": "Briefcase",
+                            "Rocket": "Rocket",
+                            "Flame": "Flame",
+                            "Zap": "Zap",
+                            "CheckCircle2": "CheckCircle2",
+                            "Play": "Play",
+                            "ArrowRight": "ArrowRight",
+                            "Video": "Video",
+                            "Users": "Users",
+                            "Compass": "Compass",
+                            "LineChart": "LineChart"
+                        },
+                        "default_value": "Target",
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0
+                    },
+                    {
+                        "key": "field_home_why_item_2_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "75",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Performance-Focused Marketing",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_why_item_2_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Our media buying is disciplined, testing multi-channel variables systematically to scale customer acquisition while maintaining profitability.",
+                        "rows": 2,
+                        "new_lines": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_why_item_3",
+                "label": "Reason 3",
+                "name": "why_item_3",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_why_item_3_icon",
+                        "label": "Icon",
+                        "name": "icon",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "TrendingUp": "TrendingUp",
+                            "Target": "Target",
+                            "Search": "Search",
+                            "Share2": "Share2",
+                            "Film": "Film",
+                            "Sparkles": "Sparkles",
+                            "Layers": "Layers",
+                            "BarChart3": "BarChart3",
+                            "Palette": "Palette",
+                            "Code2": "Code2",
+                            "Globe": "Globe",
+                            "ShoppingBag": "ShoppingBag",
+                            "Cpu": "Cpu",
+                            "ShieldCheck": "ShieldCheck",
+                            "Building2": "Building2",
+                            "Building": "Building",
+                            "Utensils": "Utensils",
+                            "Shirt": "Shirt",
+                            "HeartPulse": "HeartPulse",
+                            "Briefcase": "Briefcase",
+                            "Rocket": "Rocket",
+                            "Flame": "Flame",
+                            "Zap": "Zap",
+                            "CheckCircle2": "CheckCircle2",
+                            "Play": "Play",
+                            "ArrowRight": "ArrowRight",
+                            "Video": "Video",
+                            "Users": "Users",
+                            "Compass": "Compass",
+                            "LineChart": "LineChart"
+                        },
+                        "default_value": "Zap",
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0
+                    },
+                    {
+                        "key": "field_home_why_item_3_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "75",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Integrated Marketing & Tech Muscle",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_why_item_3_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "With technical capabilities powered by Aumento Infoway, we eliminate silos between creative media buyers and software engineers.",
+                        "rows": 2,
+                        "new_lines": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_why_item_4",
+                "label": "Reason 4",
+                "name": "why_item_4",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_why_item_4_icon",
+                        "label": "Icon",
+                        "name": "icon",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "TrendingUp": "TrendingUp",
+                            "Target": "Target",
+                            "Search": "Search",
+                            "Share2": "Share2",
+                            "Film": "Film",
+                            "Sparkles": "Sparkles",
+                            "Layers": "Layers",
+                            "BarChart3": "BarChart3",
+                            "Palette": "Palette",
+                            "Code2": "Code2",
+                            "Globe": "Globe",
+                            "ShoppingBag": "ShoppingBag",
+                            "Cpu": "Cpu",
+                            "ShieldCheck": "ShieldCheck",
+                            "Building2": "Building2",
+                            "Building": "Building",
+                            "Utensils": "Utensils",
+                            "Shirt": "Shirt",
+                            "HeartPulse": "HeartPulse",
+                            "Briefcase": "Briefcase",
+                            "Rocket": "Rocket",
+                            "Flame": "Flame",
+                            "Zap": "Zap",
+                            "CheckCircle2": "CheckCircle2",
+                            "Play": "Play",
+                            "ArrowRight": "ArrowRight",
+                            "Video": "Video",
+                            "Users": "Users",
+                            "Compass": "Compass",
+                            "LineChart": "LineChart"
+                        },
+                        "default_value": "Video",
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0
+                    },
+                    {
+                        "key": "field_home_why_item_4_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "75",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "In-House Content & Studio Production",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_why_item_4_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "From 9:16 viral reels to 4K studio macro shoots, our production team creates high-velocity assets without outsourcing bottlenecks.",
+                        "rows": 2,
+                        "new_lines": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_why_item_5",
+                "label": "Reason 5",
+                "name": "why_item_5",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_why_item_5_icon",
+                        "label": "Icon",
+                        "name": "icon",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "TrendingUp": "TrendingUp",
+                            "Target": "Target",
+                            "Search": "Search",
+                            "Share2": "Share2",
+                            "Film": "Film",
+                            "Sparkles": "Sparkles",
+                            "Layers": "Layers",
+                            "BarChart3": "BarChart3",
+                            "Palette": "Palette",
+                            "Code2": "Code2",
+                            "Globe": "Globe",
+                            "ShoppingBag": "ShoppingBag",
+                            "Cpu": "Cpu",
+                            "ShieldCheck": "ShieldCheck",
+                            "Building2": "Building2",
+                            "Building": "Building",
+                            "Utensils": "Utensils",
+                            "Shirt": "Shirt",
+                            "HeartPulse": "HeartPulse",
+                            "Briefcase": "Briefcase",
+                            "Rocket": "Rocket",
+                            "Flame": "Flame",
+                            "Zap": "Zap",
+                            "CheckCircle2": "CheckCircle2",
+                            "Play": "Play",
+                            "ArrowRight": "ArrowRight",
+                            "Video": "Video",
+                            "Users": "Users",
+                            "Compass": "Compass",
+                            "LineChart": "LineChart"
+                        },
+                        "default_value": "BarChart3",
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0
+                    },
+                    {
+                        "key": "field_home_why_item_5_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "75",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Transparent Reporting & First-Party Data",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_why_item_5_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "No vanity metrics or fuzzy numbers. You get live Looker Studio dashboards, clear blended ROAS attribution, and bi-weekly executive strategy syncs.",
+                        "rows": 2,
+                        "new_lines": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_why_item_6",
+                "label": "Reason 6",
+                "name": "why_item_6",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_why_item_6_icon",
+                        "label": "Icon",
+                        "name": "icon",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "TrendingUp": "TrendingUp",
+                            "Target": "Target",
+                            "Search": "Search",
+                            "Share2": "Share2",
+                            "Film": "Film",
+                            "Sparkles": "Sparkles",
+                            "Layers": "Layers",
+                            "BarChart3": "BarChart3",
+                            "Palette": "Palette",
+                            "Code2": "Code2",
+                            "Globe": "Globe",
+                            "ShoppingBag": "ShoppingBag",
+                            "Cpu": "Cpu",
+                            "ShieldCheck": "ShieldCheck",
+                            "Building2": "Building2",
+                            "Building": "Building",
+                            "Utensils": "Utensils",
+                            "Shirt": "Shirt",
+                            "HeartPulse": "HeartPulse",
+                            "Briefcase": "Briefcase",
+                            "Rocket": "Rocket",
+                            "Flame": "Flame",
+                            "Zap": "Zap",
+                            "CheckCircle2": "CheckCircle2",
+                            "Play": "Play",
+                            "ArrowRight": "ArrowRight",
+                            "Video": "Video",
+                            "Users": "Users",
+                            "Compass": "Compass",
+                            "LineChart": "LineChart"
+                        },
+                        "default_value": "Users",
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0
+                    },
+                    {
+                        "key": "field_home_why_item_6_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "75",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Tailored to Your Business Goals",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_why_item_6_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "We adapt our growth roadmap to your cash-flow cycle, inventory cadence, and enterprise milestones rather than forcing cookie-cutter packages.",
+                        "rows": 2,
+                        "new_lines": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_tab_process",
+                "label": "Our Process",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_process_badge",
+                "label": "Badge",
+                "name": "process_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Proven Methodology",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_process_title",
+                "label": "Title",
+                "name": "process_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "From First Conversation to Real-World Execution.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_process_highlight",
+                "label": "Highlighted words",
+                "name": "process_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Words from the title shown in the accent colour. Must match the title text exactly.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Real-World Execution",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_process_subtitle",
+                "label": "Subtitle",
+                "name": "process_subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Our five-phase framework guarantees transparency, high-speed delivery, and continuous quantitative refinement.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_process_step_1",
+                "label": "Step 1",
+                "name": "process_step_1",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_process_step_1_icon",
+                        "label": "Icon",
+                        "name": "icon",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "TrendingUp": "TrendingUp",
+                            "Target": "Target",
+                            "Search": "Search",
+                            "Share2": "Share2",
+                            "Film": "Film",
+                            "Sparkles": "Sparkles",
+                            "Layers": "Layers",
+                            "BarChart3": "BarChart3",
+                            "Palette": "Palette",
+                            "Code2": "Code2",
+                            "Globe": "Globe",
+                            "ShoppingBag": "ShoppingBag",
+                            "Cpu": "Cpu",
+                            "ShieldCheck": "ShieldCheck",
+                            "Building2": "Building2",
+                            "Building": "Building",
+                            "Utensils": "Utensils",
+                            "Shirt": "Shirt",
+                            "HeartPulse": "HeartPulse",
+                            "Briefcase": "Briefcase",
+                            "Rocket": "Rocket",
+                            "Flame": "Flame",
+                            "Zap": "Zap",
+                            "CheckCircle2": "CheckCircle2",
+                            "Play": "Play",
+                            "ArrowRight": "ArrowRight",
+                            "Video": "Video",
+                            "Users": "Users",
+                            "Compass": "Compass",
+                            "LineChart": "LineChart"
+                        },
+                        "default_value": "Search",
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0
+                    },
+                    {
+                        "key": "field_home_process_step_1_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "75",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Discover",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_process_step_1_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Deep-dive into your unit economics, audience psychology, competitor blind spots, and existing digital baseline.",
+                        "rows": 2,
+                        "new_lines": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_process_step_2",
+                "label": "Step 2",
+                "name": "process_step_2",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_process_step_2_icon",
+                        "label": "Icon",
+                        "name": "icon",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "TrendingUp": "TrendingUp",
+                            "Target": "Target",
+                            "Search": "Search",
+                            "Share2": "Share2",
+                            "Film": "Film",
+                            "Sparkles": "Sparkles",
+                            "Layers": "Layers",
+                            "BarChart3": "BarChart3",
+                            "Palette": "Palette",
+                            "Code2": "Code2",
+                            "Globe": "Globe",
+                            "ShoppingBag": "ShoppingBag",
+                            "Cpu": "Cpu",
+                            "ShieldCheck": "ShieldCheck",
+                            "Building2": "Building2",
+                            "Building": "Building",
+                            "Utensils": "Utensils",
+                            "Shirt": "Shirt",
+                            "HeartPulse": "HeartPulse",
+                            "Briefcase": "Briefcase",
+                            "Rocket": "Rocket",
+                            "Flame": "Flame",
+                            "Zap": "Zap",
+                            "CheckCircle2": "CheckCircle2",
+                            "Play": "Play",
+                            "ArrowRight": "ArrowRight",
+                            "Video": "Video",
+                            "Users": "Users",
+                            "Compass": "Compass",
+                            "LineChart": "LineChart"
+                        },
+                        "default_value": "Compass",
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0
+                    },
+                    {
+                        "key": "field_home_process_step_2_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "75",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Strategize",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_process_step_2_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Engineer a high-velocity marketing roadmap, creative angle testing matrix, and web architecture specification.",
+                        "rows": 2,
+                        "new_lines": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_process_step_3",
+                "label": "Step 3",
+                "name": "process_step_3",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_process_step_3_icon",
+                        "label": "Icon",
+                        "name": "icon",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "TrendingUp": "TrendingUp",
+                            "Target": "Target",
+                            "Search": "Search",
+                            "Share2": "Share2",
+                            "Film": "Film",
+                            "Sparkles": "Sparkles",
+                            "Layers": "Layers",
+                            "BarChart3": "BarChart3",
+                            "Palette": "Palette",
+                            "Code2": "Code2",
+                            "Globe": "Globe",
+                            "ShoppingBag": "ShoppingBag",
+                            "Cpu": "Cpu",
+                            "ShieldCheck": "ShieldCheck",
+                            "Building2": "Building2",
+                            "Building": "Building",
+                            "Utensils": "Utensils",
+                            "Shirt": "Shirt",
+                            "HeartPulse": "HeartPulse",
+                            "Briefcase": "Briefcase",
+                            "Rocket": "Rocket",
+                            "Flame": "Flame",
+                            "Zap": "Zap",
+                            "CheckCircle2": "CheckCircle2",
+                            "Play": "Play",
+                            "ArrowRight": "ArrowRight",
+                            "Video": "Video",
+                            "Users": "Users",
+                            "Compass": "Compass",
+                            "LineChart": "LineChart"
+                        },
+                        "default_value": "Palette",
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0
+                    },
+                    {
+                        "key": "field_home_process_step_3_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "75",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Create",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_process_step_3_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Script and shoot 9:16 reels, design conversion assets, and develop headless web applications in sprints.",
+                        "rows": 2,
+                        "new_lines": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_process_step_4",
+                "label": "Step 4",
+                "name": "process_step_4",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_process_step_4_icon",
+                        "label": "Icon",
+                        "name": "icon",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "TrendingUp": "TrendingUp",
+                            "Target": "Target",
+                            "Search": "Search",
+                            "Share2": "Share2",
+                            "Film": "Film",
+                            "Sparkles": "Sparkles",
+                            "Layers": "Layers",
+                            "BarChart3": "BarChart3",
+                            "Palette": "Palette",
+                            "Code2": "Code2",
+                            "Globe": "Globe",
+                            "ShoppingBag": "ShoppingBag",
+                            "Cpu": "Cpu",
+                            "ShieldCheck": "ShieldCheck",
+                            "Building2": "Building2",
+                            "Building": "Building",
+                            "Utensils": "Utensils",
+                            "Shirt": "Shirt",
+                            "HeartPulse": "HeartPulse",
+                            "Briefcase": "Briefcase",
+                            "Rocket": "Rocket",
+                            "Flame": "Flame",
+                            "Zap": "Zap",
+                            "CheckCircle2": "CheckCircle2",
+                            "Play": "Play",
+                            "ArrowRight": "ArrowRight",
+                            "Video": "Video",
+                            "Users": "Users",
+                            "Compass": "Compass",
+                            "LineChart": "LineChart"
+                        },
+                        "default_value": "Rocket",
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0
+                    },
+                    {
+                        "key": "field_home_process_step_4_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "75",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Launch",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_process_step_4_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Deploy multi-channel ad campaigns, activate server-side tracking, and launch high-speed web solutions.",
+                        "rows": 2,
+                        "new_lines": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_process_step_5",
+                "label": "Step 5",
+                "name": "process_step_5",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_process_step_5_icon",
+                        "label": "Icon",
+                        "name": "icon",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "TrendingUp": "TrendingUp",
+                            "Target": "Target",
+                            "Search": "Search",
+                            "Share2": "Share2",
+                            "Film": "Film",
+                            "Sparkles": "Sparkles",
+                            "Layers": "Layers",
+                            "BarChart3": "BarChart3",
+                            "Palette": "Palette",
+                            "Code2": "Code2",
+                            "Globe": "Globe",
+                            "ShoppingBag": "ShoppingBag",
+                            "Cpu": "Cpu",
+                            "ShieldCheck": "ShieldCheck",
+                            "Building2": "Building2",
+                            "Building": "Building",
+                            "Utensils": "Utensils",
+                            "Shirt": "Shirt",
+                            "HeartPulse": "HeartPulse",
+                            "Briefcase": "Briefcase",
+                            "Rocket": "Rocket",
+                            "Flame": "Flame",
+                            "Zap": "Zap",
+                            "CheckCircle2": "CheckCircle2",
+                            "Play": "Play",
+                            "ArrowRight": "ArrowRight",
+                            "Video": "Video",
+                            "Users": "Users",
+                            "Compass": "Compass",
+                            "LineChart": "LineChart"
+                        },
+                        "default_value": "LineChart",
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0
+                    },
+                    {
+                        "key": "field_home_process_step_5_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "75",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Optimize",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_process_step_5_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Analyze attribution metrics, double down on winning creative angles, and iterate continuously to scale ROI.",
+                        "rows": 2,
+                        "new_lines": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_tab_plans",
+                "label": "Growth Plans",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_plans_badge",
+                "label": "Badge",
+                "name": "plans_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Regular Package Options",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_plans_title",
+                "label": "Title",
+                "name": "plans_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Choose Your Growth Plan",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_plans_highlight",
+                "label": "Highlighted words",
+                "name": "plans_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Words from the title shown in the accent colour. Must match the title text exactly.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Growth Plan",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_plans_subtitle",
+                "label": "Subtitle",
+                "name": "plans_subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "All packages include a minimum term of 3 months. Meta Ads budget (₹500/day) paid directly by client. 18% GST charged additionally on all packages.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_plans_plan_1",
+                "label": "Plan 1",
+                "name": "plans_plan_1",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_plans_plan_1_name",
+                        "label": "Name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "Leave name or monthly price empty to hide this plan.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Basic Boost",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_tagline",
+                        "label": "Tagline",
+                        "name": "tagline",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Ideal for emerging brands building consistent social reach & lead flow.",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_is_popular",
+                        "label": "Highlight as popular",
+                        "name": "is_popular",
+                        "aria-label": "",
+                        "type": "true_false",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": 0,
+                        "ui": 1,
+                        "message": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_popular_badge",
+                        "label": "Popular badge text",
+                        "name": "popular_badge",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_monthly_price",
+                        "label": "Monthly price",
+                        "name": "monthly_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹30,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_monthly_period",
+                        "label": "Period",
+                        "name": "monthly_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_monthly_total",
+                        "label": "Billing note",
+                        "name": "monthly_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_quarterly_price",
+                        "label": "Quarterly price",
+                        "name": "quarterly_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹27,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_quarterly_period",
+                        "label": "Period",
+                        "name": "quarterly_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_quarterly_total",
+                        "label": "Billing note",
+                        "name": "quarterly_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹81,000 billed quarterly (Save 10%)",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_annual_price",
+                        "label": "Annual price",
+                        "name": "annual_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹24,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_annual_period",
+                        "label": "Period",
+                        "name": "annual_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_annual_total",
+                        "label": "Billing note",
+                        "name": "annual_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹2,88,000 billed annually (Save 20%)",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_metrics",
+                        "label": "Metrics",
+                        "name": "metrics",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "One per line: Value | Label",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "10 | REELS/MO\n1 | SHOOT\n1 | MONTH",
+                        "rows": 3,
+                        "new_lines": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_features",
+                        "label": "Features",
+                        "name": "features",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "One item per line.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "10 Reels per Month\n1 Shoot Visit per Month\nMinimum Term: 3 Months\nMeta Ads Budget: ₹500/day by Client\nInstagram Page Management\nContent Planning & Strategy\nMonthly Performance Report",
+                        "rows": 7,
+                        "new_lines": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_1_cta_label",
+                        "label": "Button label",
+                        "name": "cta_label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Get Started",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_plans_plan_2",
+                "label": "Plan 2",
+                "name": "plans_plan_2",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_plans_plan_2_name",
+                        "label": "Name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "Leave name or monthly price empty to hide this plan.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Advanced Growth",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_tagline",
+                        "label": "Tagline",
+                        "name": "tagline",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Engineered for scaling businesses needing multi-hook viral content & ads.",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_is_popular",
+                        "label": "Highlight as popular",
+                        "name": "is_popular",
+                        "aria-label": "",
+                        "type": "true_false",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": 1,
+                        "ui": 1,
+                        "message": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_popular_badge",
+                        "label": "Popular badge text",
+                        "name": "popular_badge",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "MOST POPULAR",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_monthly_price",
+                        "label": "Monthly price",
+                        "name": "monthly_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹40,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_monthly_period",
+                        "label": "Period",
+                        "name": "monthly_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_monthly_total",
+                        "label": "Billing note",
+                        "name": "monthly_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_quarterly_price",
+                        "label": "Quarterly price",
+                        "name": "quarterly_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹36,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_quarterly_period",
+                        "label": "Period",
+                        "name": "quarterly_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_quarterly_total",
+                        "label": "Billing note",
+                        "name": "quarterly_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹1,08,000 billed quarterly (Save 10%)",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_annual_price",
+                        "label": "Annual price",
+                        "name": "annual_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹32,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_annual_period",
+                        "label": "Period",
+                        "name": "annual_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_annual_total",
+                        "label": "Billing note",
+                        "name": "annual_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹3,84,000 billed annually (Save 20%)",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_metrics",
+                        "label": "Metrics",
+                        "name": "metrics",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "One per line: Value | Label",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "15 | REELS/MO\n2 | SHOOTS\n1 | MONTH",
+                        "rows": 3,
+                        "new_lines": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_features",
+                        "label": "Features",
+                        "name": "features",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "One item per line.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "15 Reels per Month\n2 Shoot Visits per Month\nMinimum Term: 3 Months\nMeta Ads Budget: ₹500/day by Client\nInstagram Page Management\nContent Planning & Strategy\nInfluencer Marketing\nMonthly Performance Report",
+                        "rows": 8,
+                        "new_lines": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_2_cta_label",
+                        "label": "Button label",
+                        "name": "cta_label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Get Started",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_plans_plan_3",
+                "label": "Plan 3",
+                "name": "plans_plan_3",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_home_plans_plan_3_name",
+                        "label": "Name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "Leave name or monthly price empty to hide this plan.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Premium Impact",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_tagline",
+                        "label": "Tagline",
+                        "name": "tagline",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Complete multi-channel creative dominance, rapid content scaling & VIP support.",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_is_popular",
+                        "label": "Highlight as popular",
+                        "name": "is_popular",
+                        "aria-label": "",
+                        "type": "true_false",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": 0,
+                        "ui": 1,
+                        "message": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_popular_badge",
+                        "label": "Popular badge text",
+                        "name": "popular_badge",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_monthly_price",
+                        "label": "Monthly price",
+                        "name": "monthly_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹70,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_monthly_period",
+                        "label": "Period",
+                        "name": "monthly_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_monthly_total",
+                        "label": "Billing note",
+                        "name": "monthly_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_quarterly_price",
+                        "label": "Quarterly price",
+                        "name": "quarterly_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹63,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_quarterly_period",
+                        "label": "Period",
+                        "name": "quarterly_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_quarterly_total",
+                        "label": "Billing note",
+                        "name": "quarterly_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹1,89,000 billed quarterly (Save 10%)",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_annual_price",
+                        "label": "Annual price",
+                        "name": "annual_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹56,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_annual_period",
+                        "label": "Period",
+                        "name": "annual_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_annual_total",
+                        "label": "Billing note",
+                        "name": "annual_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹6,72,000 billed annually (Save 20%)",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_metrics",
+                        "label": "Metrics",
+                        "name": "metrics",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "One per line: Value | Label",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "25 | REELS/MO\n3 | SHOOTS\n1 | MONTH",
+                        "rows": 3,
+                        "new_lines": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_features",
+                        "label": "Features",
+                        "name": "features",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "One item per line.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "25 Reels per Month\n3 Shoot Visits per Month\nMinimum Term: 3 Months\nMeta Ads Budget: ₹500/day by Client\nInstagram Page Management\nContent Planning & Strategy\nInfluencer Marketing\nPriority Support & Performance Report",
+                        "rows": 8,
+                        "new_lines": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_home_plans_plan_3_cta_label",
+                        "label": "Button label",
+                        "name": "cta_label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Get Started",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_home_plans_disclaimer",
+                "label": "Disclaimer",
+                "name": "plans_disclaimer",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "* 18% GST charged additionally on all packages. Ad budgets paid directly by the client to Meta platforms. Pricing applies within Gujarat / Ahmedabad; travel costs extra for outside shoots.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_plans_help_text",
+                "label": "Help text",
+                "name": "plans_help_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Need a custom enterprise scope, web application, or nationwide video crew?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_plans_help_button",
+                "label": "Help button label",
+                "name": "plans_help_button",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the discovery-call popup.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book a Strategy Call →",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_tab_testimonials",
+                "label": "Video Testimonials",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_testimonials_badge",
+                "label": "Badge",
+                "name": "testimonials_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Verified Client Voices",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_testimonials_title",
+                "label": "Title",
+                "name": "testimonials_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Don't Just Take Our Word for It.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_testimonials_highlight",
+                "label": "Highlighted words",
+                "name": "testimonials_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Words from the title shown in the accent colour. Must match the title text exactly.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Take Our Word",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_testimonials_subtitle",
+                "label": "Subtitle",
+                "name": "testimonials_subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Hear directly from founders, CMOs, and growth leaders who have scaled their customer acquisition and web platforms with Adlogix.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_tab_aumento",
+                "label": "Technology Partner",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_aumento_badge",
+                "label": "Badge",
+                "name": "aumento_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Enterprise Technology Backbone",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_aumento_title",
+                "label": "Title",
+                "name": "aumento_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Creative Growth. Backed by Technology.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_aumento_text",
+                "label": "Text",
+                "name": "aumento_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Adlogix brings together digital marketing and creative execution, powered by robust technology capabilities through Aumento Infoway. By combining high-velocity creative advertising with deep software engineering, headless architecture, and complex integrations, our clients enjoy unmatched digital performance.",
+                "rows": 3,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_aumento_card_label",
+                "label": "Card label",
+                "name": "aumento_card_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Technology Partner",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_aumento_partner_name",
+                "label": "Partner name",
+                "name": "aumento_partner_name",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Aumento Infoway",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_aumento_card_text",
+                "label": "Card text",
+                "name": "aumento_card_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Enterprise Web Engineering, Headless CMS & Cloud Solutions",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_aumento_link_label",
+                "label": "Link label",
+                "name": "aumento_link_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Visit Aumento Infoway",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_aumento_link_url",
+                "label": "Link URL",
+                "name": "aumento_link_url",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "https://aumentoinfoway.com/",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_tab_insights",
+                "label": "Insights",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_insights_badge",
+                "label": "Badge",
+                "name": "insights_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Growth Knowledge",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_insights_title",
+                "label": "Title",
+                "name": "insights_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Ideas That Move Businesses Forward.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_insights_highlight",
+                "label": "Highlighted words",
+                "name": "insights_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Words from the title shown in the accent colour. Must match the title text exactly.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Move Businesses Forward",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_insights_subtitle",
+                "label": "Subtitle",
+                "name": "insights_subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Deep-dive frameworks, technical SEO teardowns, short-form video strategies, and modern headless engineering guides.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_insights_cta_label",
+                "label": "Button label",
+                "name": "insights_cta_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Explore All Insights",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_tab_cta",
+                "label": "Closing CTA",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_home_cta_badge",
+                "label": "Badge",
+                "name": "cta_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Your Next Big Move Starts Here",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_cta_title",
+                "label": "Title",
+                "name": "cta_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Have a Brand to Grow or an Idea to Build?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_cta_highlight",
+                "label": "Highlighted words",
+                "name": "cta_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Words from the title shown in the accent colour. Must match the title text exactly.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Idea to Build?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_cta_text",
+                "label": "Text",
+                "name": "cta_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Let's turn your next business challenge into a meaningful digital opportunity. Schedule a strategy session or request a custom proposal today.",
+                "rows": 2,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_cta_options",
+                "label": "Service options",
+                "name": "cta_options",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "One per line: Value sent to the contact form | Label shown in the dropdown",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Performance Marketing & Ads | I need Performance Marketing & Paid Ads\nVideo Reels & Content Production | I need 9:16 Video Reels & Content Shoots\nReact & Next.js Web Development | I need React / Next.js Web Development\nShopify D2C Storefront | I need a High-Converting Shopify Store\nHeadless WordPress CMS | I need Headless WordPress Solutions",
+                "rows": 5,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_cta_button_label",
+                "label": "Button label",
+                "name": "cta_button_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Start Project",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_cta_alt_text",
+                "label": "Alternative text",
+                "name": "cta_alt_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Prefer a direct conversation?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_cta_alt_link_label",
+                "label": "Alternative link label",
+                "name": "cta_alt_link_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the discovery-call popup.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book a 30-Min Discovery Call",
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_cta_trust_badges",
+                "label": "Trust badges",
+                "name": "cta_trust_badges",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "One item per line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "No Long-Term Lock-in Required\nNDA Protected Inquiries\nDirect Access to Senior Strategists",
+                "rows": 3,
+                "new_lines": "",
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page_type",
+                    "operator": "==",
+                    "value": "front_page"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "All homepage section content for the React frontend. Section order and visibility live in the \"Page Sections\" box.",
+        "show_in_rest": 1
+    }
+]

@@ -7,7 +7,6 @@ import { clientReelsData } from '../data/reelsData';
 import { testimonialsData } from '../data/testimonialsData';
 import { industriesData } from '../data/industriesData';
 import { blogsData } from '../data/blogsData';
-import { clientsData } from '../data/clientsData';
 import { teamData } from '../data/teamData';
 
 export const CMSContext = createContext(null);
@@ -20,7 +19,6 @@ export const CMSProvider = ({ children }) => {
   const [testimonials, setTestimonials] = useState(testimonialsData);
   const [industries, setIndustries] = useState(industriesData);
   const [blogs, setBlogs] = useState(blogsData);
-  const [clients, setClients] = useState(clientsData);
   const [team, setTeam] = useState(teamData);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -42,7 +40,6 @@ export const CMSProvider = ({ children }) => {
           fetchedTestimonials,
           fetchedIndustries,
           fetchedBlogs,
-          fetchedClients,
           fetchedTeam
         ] = await Promise.all([
           api.getSettings(),
@@ -52,7 +49,6 @@ export const CMSProvider = ({ children }) => {
           api.getTestimonials(),
           api.getIndustries(),
           api.getBlogs(),
-          api.getClients(),
           api.getTeam()
         ]);
 
@@ -64,7 +60,6 @@ export const CMSProvider = ({ children }) => {
           setTestimonials(fetchedTestimonials);
           setIndustries(fetchedIndustries);
           setBlogs(fetchedBlogs);
-          setClients(fetchedClients);
           setTeam(fetchedTeam);
         }
       } catch (err) {
@@ -108,7 +103,6 @@ export const CMSProvider = ({ children }) => {
     testimonials,
     industries,
     blogs,
-    clients,
     team,
     isLoading,
     activeVideo,

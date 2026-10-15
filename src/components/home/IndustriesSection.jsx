@@ -6,7 +6,7 @@ import { SectionHeading } from '../ui/SectionHeading';
 import { DynamicIcon } from '../ui/DynamicIcon';
 import { useCMS } from '../../hooks/useCMS';
 
-export const IndustriesSection = () => {
+export const IndustriesSection = ({ content }) => {
   const { industries } = useCMS();
 
   return (
@@ -15,11 +15,11 @@ export const IndustriesSection = () => {
         
         {/* Section Heading */}
         <SectionHeading
-          badge="Specialized Sectors"
+          badge={content.heading.badge}
           badgeIcon={Building}
-          title="Engineered for Your Industry's Nuances."
-          highlightWord="Industry's Nuances"
-          subtitle="We tailor our creative frameworks, acquisition funnels, and web architectures to match the distinct buyer journeys of specialized markets."
+          title={content.heading.title}
+          highlightWord={content.heading.highlight}
+          subtitle={content.heading.subtitle}
           align="center"
           className="mb-14"
         />
@@ -81,7 +81,7 @@ export const IndustriesSection = () => {
             to="/industries"
             className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-navy hover:text-brand-blue transition-colors"
           >
-            <span>Explore All Industry Landing Pages & Solutions →</span>
+            <span>{content.ctaLabel}</span>
           </Link>
         </div>
 

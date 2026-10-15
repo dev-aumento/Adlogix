@@ -1,12 +1,8 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Phone, Play, Sparkles, TrendingUp, ShieldCheck, Zap, Star, Trophy, Handshake } from 'lucide-react';
+import { ArrowRight, Sparkles, Star, Trophy, Handshake } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { useCMS } from '../../hooks/useCMS';
-import { useWordPressData } from '../../hooks/useWordPressData';
-import { api } from '../../services/api';
-import { mergeHomeHero } from '../../services/normalizers';
-import { homeHeroFallback } from '../../data/homeHeroData';
 
 // Icons stay in React; WordPress only supplies the metric text, in this order.
 const metricIcons = [
@@ -16,25 +12,8 @@ const metricIcons = [
   { Icon: Star, className: 'fill-brand-blue' }
 ];
 
-export const HeroSection = () => {
-  const { settings, openVideoModal, openDiscoveryModal, reels } = useCMS();
-  const featuredReel = reels && reels.length > 0 ? reels[0] : null;
-
-  // While loading, on empty content, or on API failure the static fallback renders,
-  // so the hero never collapses or shifts layout.
-  const { data: wpHero, status: heroStatus } = useWordPressData('home-hero', api.getHomeHero);
-  const { content: hero, missing: missingHeroFields } = useMemo(
-    () => mergeHomeHero(wpHero, homeHeroFallback),
-    [wpHero]
-  );
-
-  useEffect(() => {
-    if (import.meta.env.DEV && heroStatus === 'success' && missingHeroFields.length > 0) {
-      console.warn(
-        `[WordPress] home-hero: empty fields fell back to static content: ${missingHeroFields.join(', ')}`
-      );
-    }
-  }, [heroStatus, missingHeroFields]);
+export const HeroSection = ({ content: hero }) => {
+  const { openDiscoveryModal } = useCMS();
 
   const specializations = hero.specializations;
   const [currentSpecIndex, setCurrentSpecIndex] = useState(0);
@@ -49,10 +28,7 @@ export const HeroSection = () => {
   const primaryCtaIsInternal = hero.primaryCta.href.startsWith('/');
 
   return (
-    <section
-      aria-busy={heroStatus === 'loading'}
-      className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-white text-brand-navy pt-28 pb-20 lg:pt-32 lg:pb-28"
-    >
+    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-white text-brand-navy pt-28 pb-20 lg:pt-32 lg:pb-28">
       {/* Glossy White Mesh & Ambient Blue Lighting */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Soft Radial Ambient Blue Glows */}

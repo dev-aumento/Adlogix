@@ -2,17 +2,23 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, CheckCircle2, Video } from 'lucide-react';
 import { Button } from '../ui/Button';
+import { HighlightedTitle } from '../ui/HighlightedTitle';
 import { useCMS } from '../../hooks/useCMS';
 import { useNavigate } from 'react-router-dom';
 
-export const ClosingCTA = () => {
+export const ClosingCTA = ({ content }) => {
   const { openDiscoveryModal } = useCMS();
   const navigate = useNavigate();
-  const [quickService, setQuickService] = useState("Performance Marketing & Ads");
+  const [quickService, setQuickService] = useState(null);
+
+  // Keep the selection valid if the options change after WordPress content loads.
+  const selectedService = content.options.some((o) => o.value === quickService)
+    ? quickService
+    : content.options[0]?.value || '';
 
   const handleQuickStart = (e) => {
     e.preventDefault();
-    navigate(`/contact?service=${encodeURIComponent(quickService)}`);
+    navigate(`/contact?service=${encodeURIComponent(selectedService)}`);
   };
 
   return (
@@ -30,7 +36,7 @@ export const ClosingCTA = () => {
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
         >
           <Sparkles className="w-3.5 h-3.5" />
-          <span>Your Next Big Move Starts Here</span>
+          <span>{content.badge}</span>
         </motion.div>
 
         {/* Headline */}
@@ -41,8 +47,7 @@ export const ClosingCTA = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="editorial-heading text-3xl sm:text-5xl lg:text-6xl font-black text-brand-navy leading-tight tracking-tight max-w-3xl mx-auto"
         >
-          Have a Brand to Grow or an{' '}
-          <span className="gradient-text-blue">Idea to Build?</span>
+          <HighlightedTitle text={content.title} highlight={content.highlight} highlightClassName="gradient-text-blue" />
         </motion.h2>
 
         {/* Supporting Copy */}
@@ -53,7 +58,7 @@ export const ClosingCTA = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-5 text-base sm:text-lg text-brand-muted max-w-2xl mx-auto leading-relaxed"
         >
-          Let's turn your next business challenge into a meaningful digital opportunity. Schedule a strategy session or request a custom proposal today.
+          {content.text}
         </motion.p>
 
         {/* Interactive Quick Launch Selector */}
@@ -65,15 +70,13 @@ export const ClosingCTA = () => {
           className="mt-10 max-w-xl mx-auto p-2 bg-brand-surface-soft rounded-full border border-brand-border shadow-sm flex flex-col sm:flex-row items-center gap-2"
         >
           <select
-            value={quickService}
+            value={selectedService}
             onChange={(e) => setQuickService(e.target.value)}
             className="w-full sm:w-auto flex-1 bg-transparent px-4 py-2.5 text-xs sm:text-sm font-semibold text-brand-navy outline-none cursor-pointer"
           >
-            <option value="Performance Marketing & Ads">I need Performance Marketing & Paid Ads</option>
-            <option value="Video Reels & Content Production">I need 9:16 Video Reels & Content Shoots</option>
-            <option value="React & Next.js Web Development">I need React / Next.js Web Development</option>
-            <option value="Shopify D2C Storefront">I need a High-Converting Shopify Store</option>
-            <option value="Headless WordPress CMS">I need Headless WordPress Solutions</option>
+            {content.options.map((option) => (
+              <option key={option.value} value={option.value}>{option.label}</option>
+            ))}
           </select>
 
           <Button
@@ -83,7 +86,7 @@ export const ClosingCTA = () => {
             className="w-full sm:w-auto shrink-0 shadow-md shadow-brand-blue/30"
             icon={ArrowRight}
           >
-            Start Project
+            {content.buttonLabel}
           </Button>
         </motion.div>
 
@@ -95,30 +98,24 @@ export const ClosingCTA = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-6 flex items-center justify-center gap-4 text-xs font-semibold text-brand-muted"
         >
-          <span>Prefer a direct conversation?</span>
+          <span>{content.altText}</span>
           <button
             onClick={openDiscoveryModal}
             className="text-brand-blue hover:text-brand-blue-hover underline font-bold flex items-center gap-1"
           >
             <Video className="w-3.5 h-3.5" />
-            <span>Book a 30-Min Discovery Call</span>
+            <span>{content.altLinkLabel}</span>
           </button>
         </motion.div>
 
         {/* Trust Badges */}
         <div className="mt-12 pt-8 border-t border-slate-100 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs font-medium text-slate-500">
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-            No Long-Term Lock-in Required
-          </span>
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-            NDA Protected Inquiries
-          </span>
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-            Direct Access to Senior Strategists
-          </span>
+          {content.trustBadges.map((badge) => (
+            <span key={badge} className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+              {badge}
+            </span>
+          ))}
         </div>
 
       </div>

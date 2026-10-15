@@ -42,7 +42,7 @@ export function useWordPressData(key, fetcher) {
     return () => {
       isActive = false;
     };
-    // `fetcher` must be a stable module-level function; `key` identifies the request.
+    // `key` identifies the request; `fetcher` is only called again when the key changes.
   }, [key]);
 
   return { ...state, isLoading: state.status === 'loading' };
