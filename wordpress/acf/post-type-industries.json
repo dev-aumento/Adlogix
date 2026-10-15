@@ -1,0 +1,245 @@
+[
+    {
+        "key": "group_adlogix_industry",
+        "title": "Industry Details",
+        "fields": [
+            {
+                "key": "field_industry_icon",
+                "label": "Icon",
+                "name": "icon",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "TrendingUp": "TrendingUp",
+                    "Target": "Target",
+                    "Search": "Search",
+                    "Share2": "Share2",
+                    "Film": "Film",
+                    "Sparkles": "Sparkles",
+                    "Layers": "Layers",
+                    "BarChart3": "BarChart3",
+                    "Palette": "Palette",
+                    "Code2": "Code2",
+                    "Globe": "Globe",
+                    "ShoppingBag": "ShoppingBag",
+                    "Cpu": "Cpu",
+                    "ShieldCheck": "ShieldCheck",
+                    "Building2": "Building2",
+                    "Building": "Building",
+                    "Utensils": "Utensils",
+                    "Shirt": "Shirt",
+                    "HeartPulse": "HeartPulse",
+                    "Briefcase": "Briefcase",
+                    "Rocket": "Rocket",
+                    "Flame": "Flame",
+                    "Zap": "Zap",
+                    "CheckCircle2": "CheckCircle2",
+                    "Play": "Play",
+                    "ArrowRight": "ArrowRight",
+                    "Video": "Video",
+                    "Users": "Users",
+                    "Compass": "Compass",
+                    "LineChart": "LineChart"
+                },
+                "default_value": "Sparkles",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_industry_key_metric",
+                "label": "Key metric",
+                "name": "key_metric",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "3.8x average ROAS"
+            },
+            {
+                "key": "field_industry_hero_image",
+                "label": "Hero image",
+                "name": "hero_image",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all",
+                "mime_types": "jpg,jpeg,png,webp,avif,svg"
+            },
+            {
+                "key": "field_industry_short_description",
+                "label": "Short description",
+                "name": "short_description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "rows": 3,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industry_challenges",
+                "label": "Challenges",
+                "name": "challenges",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "One per line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "rows": 4,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industry_solutions",
+                "label": "Solutions",
+                "name": "solutions",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "One per line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "rows": 4,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industry_relevant_services",
+                "label": "Recommended services",
+                "name": "relevant_services",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "One per line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "rows": 4,
+                "new_lines": "",
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "industries"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "The post title is the industry name. Its detail page is /industries/<slug>.",
+        "show_in_rest": 1
+    },
+    {
+        "key": "group_adlogix_industry_show_on",
+        "title": "Show on",
+        "fields": [
+            {
+                "key": "field_industry_display_on",
+                "label": "Show this entry on",
+                "name": "display_on",
+                "aria-label": "",
+                "type": "checkbox",
+                "instructions": "Tick every section this entry should appear in. Sort entries with the Order number in the Attributes box.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "home": "Homepage – Industries",
+                    "industries": "Industries page – Industries Grid"
+                },
+                "default_value": [
+                    "home",
+                    "industries"
+                ],
+                "return_format": "value",
+                "allow_custom": 0,
+                "save_custom": 0,
+                "layout": "vertical",
+                "toggle": 0,
+                "custom_choice_button_text": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "industries"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "side",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "Where the entry is listed on the React site.",
+        "show_in_rest": 1
+    }
+]

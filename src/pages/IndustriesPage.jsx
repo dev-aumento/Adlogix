@@ -6,7 +6,7 @@ import { SEOHead } from '../components/ui/SEOHead';
 import { Button } from '../components/ui/Button';
 import { DynamicIcon } from '../components/ui/DynamicIcon';
 import { PageSections } from '../components/sections/PageSections';
-import { useCMS } from '../hooks/useCMS';
+import { useCMS, useCollection } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
 
 const IndustriesHero = () => (
@@ -48,7 +48,9 @@ const IndustriesHero = () => (
 );
 
 const IndustriesGrid = () => {
-  const { industries } = useCMS();
+  const industries = useCollection('industries', 'industries');
+
+  if (industries.length === 0) return null;
 
   return (
     <section className="py-20 lg:py-24">
@@ -66,12 +68,14 @@ const IndustriesGrid = () => {
               <div>
                 {/* Visual Banner */}
                 <div className="relative h-48 sm:h-56 overflow-hidden bg-slate-900">
-                  <img
-                    src={ind.heroImage}
-                    alt={ind.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
+                  {ind.heroImage && (
+                    <img
+                      src={ind.heroImage}
+                      alt={ind.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
                   <div className="absolute top-4 left-4 p-2.5 rounded-2xl bg-white/20 text-white backdrop-blur-md">
@@ -82,31 +86,39 @@ const IndustriesGrid = () => {
                     <h3 className="text-2xl font-bold font-display leading-tight">
                       {ind.name}
                     </h3>
-                    <p className="text-xs text-cyan-300 font-semibold mt-1">
-                      {ind.keyMetrics}
-                    </p>
+                    {ind.keyMetrics && (
+                      <p className="text-xs text-cyan-300 font-semibold mt-1">
+                        {ind.keyMetrics}
+                      </p>
+                    )}
                   </div>
                 </div>
 
                 {/* Content Details */}
-                <div className="p-6 sm:p-8 space-y-5">
-                  <p className="text-sm text-brand-muted leading-relaxed">
-                    {ind.shortDesc}
-                  </p>
+                {(ind.shortDesc || ind.solutions?.length > 0) && (
+                  <div className="p-6 sm:p-8 space-y-5">
+                    {ind.shortDesc && (
+                      <p className="text-sm text-brand-muted leading-relaxed">
+                        {ind.shortDesc}
+                      </p>
+                    )}
 
-                  {/* Solutions Snapshot */}
-                  <div className="space-y-2">
-                    <div className="text-xs font-bold text-brand-navy uppercase tracking-wider">
-                      Key Solutions Provided:
-                    </div>
-                    {ind.solutions?.map((sol, sIdx) => (
-                      <div key={sIdx} className="text-xs text-slate-600 flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-brand-blue mt-1.5 shrink-0" />
-                        <span>{sol}</span>
+                    {/* Solutions Snapshot */}
+                    {ind.solutions?.length > 0 && (
+                      <div className="space-y-2">
+                        <div className="text-xs font-bold text-brand-navy uppercase tracking-wider">
+                          Key Solutions Provided:
+                        </div>
+                        {ind.solutions.map((sol, sIdx) => (
+                          <div key={sIdx} className="text-xs text-slate-600 flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-brand-blue mt-1.5 shrink-0" />
+                            <span>{sol}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    )}
                   </div>
-                </div>
+                )}
               </div>
 
               {/* Card Footer Link */}

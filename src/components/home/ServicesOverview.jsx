@@ -3,17 +3,21 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Sparkles, TrendingUp, Code2, CheckCircle2, Layers } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { DynamicIcon } from '../ui/DynamicIcon';
-import { useCMS } from '../../hooks/useCMS';
+import { useCollection } from '../../hooks/useCMS';
 import { servicesCategories } from '../../data/servicesData';
 import { Link } from 'react-router-dom';
 
 export const ServicesOverview = ({ content }) => {
-  const { services } = useCMS();
+  const services = useCollection('services', 'home');
   const { callout } = content;
-  const [activeTab, setActiveTab] = useState('marketing-creative');
+  const [selectedTab, setActiveTab] = useState('marketing-creative');
 
-  const currentCategory = servicesCategories.find((c) => c.id === activeTab);
+  const categories = servicesCategories.filter((c) => services.some((s) => s.category === c.id));
+  const activeTab = categories.some((c) => c.id === selectedTab) ? selectedTab : categories[0]?.id;
+  const currentCategory = categories.find((c) => c.id === activeTab);
   const currentServices = services.filter((s) => s.category === activeTab);
+
+  if (services.length === 0) return null;
 
   return (
     <section className="py-20 lg:py-28 bg-white relative overflow-hidden">
@@ -35,31 +39,33 @@ export const ServicesOverview = ({ content }) => {
         />
 
         {/* 2 Primary Category Switcher Tabs */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex p-1.5 rounded-full bg-brand-surface-soft border border-brand-border shadow-sm max-w-xl w-full">
-            {servicesCategories.map((cat) => {
-              const isActive = activeTab === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveTab(cat.id)}
-                  className={`flex-1 py-3 px-5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
-                    isActive
-                      ? 'bg-brand-blue text-white shadow-md shadow-brand-blue/30'
-                      : 'text-brand-muted hover:text-brand-navy'
-                  }`}
-                >
-                  {cat.id === 'marketing-creative' ? (
-                    <TrendingUp className="w-4 h-4" />
-                  ) : (
-                    <Code2 className="w-4 h-4" />
-                  )}
-                  <span>{cat.title}</span>
-                </button>
-              );
-            })}
+        {categories.length > 1 && (
+          <div className="flex justify-center mb-12">
+            <div className="inline-flex p-1.5 rounded-full bg-brand-surface-soft border border-brand-border shadow-sm max-w-xl w-full">
+              {categories.map((cat) => {
+                const isActive = activeTab === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveTab(cat.id)}
+                    className={`flex-1 py-3 px-5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
+                      isActive
+                        ? 'bg-brand-blue text-white shadow-md shadow-brand-blue/30'
+                        : 'text-brand-muted hover:text-brand-navy'
+                    }`}
+                  >
+                    {cat.id === 'marketing-creative' ? (
+                      <TrendingUp className="w-4 h-4" />
+                    ) : (
+                      <Code2 className="w-4 h-4" />
+                    )}
+                    <span>{cat.title}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Category Description Banner */}
         <div className="mb-10 text-center max-w-2xl mx-auto">
@@ -110,12 +116,14 @@ export const ServicesOverview = ({ content }) => {
                     </h3>
 
                     {/* Short Description */}
-                    <p className="text-sm text-brand-muted leading-relaxed mb-6">
-                      {service.shortDesc}
-                    </p>
+                    {service.shortDesc && (
+                      <p className="text-sm text-brand-muted leading-relaxed mb-6">
+                        {service.shortDesc}
+                      </p>
+                    )}
 
                     {/* Feature Highlights Pills */}
-                    {service.highlights && (
+                    {service.highlights?.length > 0 && (
                       <div className="space-y-2 mb-6">
                         {service.highlights.slice(0, 3).map((item, hIdx) => (
                           <div key={hIdx} className="flex items-center gap-2 text-xs font-semibold text-slate-600">

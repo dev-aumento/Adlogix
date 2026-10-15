@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Sparkles, Eye, ArrowUpRight, Flame, Film } from 'lucide-react';
+import { Play, Sparkles, Eye, ArrowUpRight, Flame } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
-import { useCMS } from '../../hooks/useCMS';
+import { useCMS, useCollection } from '../../hooks/useCMS';
 import { reelCategories } from '../../data/reelsData';
+import { presentCategories } from '../../services/collections';
 import { Link } from 'react-router-dom';
 
 export const ReelShowcase = ({ content }) => {
-  const { reels, openVideoModal } = useCMS();
-  const [activeCategory, setActiveCategory] = useState("All");
+  const { openVideoModal } = useCMS();
+  const reels = useCollection('reels', 'home');
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
+  const categories = presentCategories(reels, reelCategories.slice(1));
+  const activeCategory = categories.includes(selectedCategory) ? selectedCategory : "All";
   const filteredReels = activeCategory === "All"
     ? reels
     : reels.filter(r => r.category === activeCategory);
+
+  if (reels.length === 0) return null;
 
   // Duplicate reels for continuous infinite horizontal stream
   const loopReels = [...filteredReels, ...filteredReels, ...filteredReels, ...filteredReels];
@@ -39,21 +44,23 @@ export const ReelShowcase = ({ content }) => {
           />
 
           {/* Category Filter Pills */}
-          <div className="inline-flex items-center gap-1.5 p-1.5 bg-white rounded-full border border-brand-border shadow-card-subtle flex-nowrap overflow-x-auto no-scrollbar max-w-full shrink-0">
-            {reelCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all select-none ${
-                  activeCategory === cat
-                    ? 'bg-brand-blue text-white shadow-md shadow-brand-blue/30'
-                    : 'text-brand-muted hover:text-brand-navy hover:bg-slate-50'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          {categories.length > 1 && (
+            <div className="inline-flex items-center gap-1.5 p-1.5 bg-white rounded-full border border-brand-border shadow-card-subtle flex-nowrap overflow-x-auto no-scrollbar max-w-full shrink-0">
+              {["All", ...categories].map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all select-none ${
+                    activeCategory === cat
+                      ? 'bg-brand-blue text-white shadow-md shadow-brand-blue/30'
+                      : 'text-brand-muted hover:text-brand-navy hover:bg-slate-50'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
@@ -70,12 +77,12 @@ export const ReelShowcase = ({ content }) => {
               key={`${reel.id}-${idx}`}
               onClick={() => openVideoModal(reel)}
               className="flex-none w-[230px] sm:w-[260px] md:w-[290px] aspect-[9/16] relative rounded-3xl overflow-hidden bg-slate-900 shadow-glossy hover:shadow-glossy-hover transition-all duration-300 cursor-pointer border border-brand-border/90 hover:border-brand-blue/60 group/card select-none transform hover:-translate-y-2 hover:scale-[1.02]"
-              title={`Click to watch ${reel.title}`}
+              title={reel.title ? `Click to watch ${reel.title}` : undefined}
             >
               {/* Poster Thumbnail */}
               <img
                 src={reel.thumbnail}
-                alt={reel.title}
+                alt={reel.thumbnailAlt || reel.title}
                 className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-700"
                 loading="lazy"
               />
@@ -85,12 +92,16 @@ export const ReelShowcase = ({ content }) => {
 
               {/* Top Floating Badge & Duration */}
               <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
-                <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-black/60 text-white backdrop-blur-md border border-white/10">
-                  {reel.category}
-                </span>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono text-white/90 bg-black/70 backdrop-blur-md">
-                  {reel.duration}
-                </span>
+                {reel.category && (
+                  <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-black/60 text-white backdrop-blur-md border border-white/10">
+                    {reel.category}
+                  </span>
+                )}
+                {reel.duration && (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-mono text-white/90 bg-black/70 backdrop-blur-md ml-auto">
+                    {reel.duration}
+                  </span>
+                )}
               </div>
 
               {/* Centered Glowing Play Button */}
@@ -102,22 +113,32 @@ export const ReelShowcase = ({ content }) => {
 
               {/* Bottom Video Metadata */}
               <div className="absolute bottom-4 left-4 right-4 z-10 text-white space-y-1.5">
-                <div className="text-[10px] sm:text-[11px] font-bold text-cyan-300 uppercase tracking-wider">
-                  {reel.client}
-                </div>
-                <h3 className="text-xs sm:text-sm font-bold font-display leading-snug line-clamp-2">
-                  {reel.title}
-                </h3>
+                {reel.client && (
+                  <div className="text-[10px] sm:text-[11px] font-bold text-cyan-300 uppercase tracking-wider">
+                    {reel.client}
+                  </div>
+                )}
+                {reel.title && (
+                  <h3 className="text-xs sm:text-sm font-bold font-display leading-snug line-clamp-2">
+                    {reel.title}
+                  </h3>
+                )}
 
-                <div className="pt-2 border-t border-white/15 flex items-center justify-between text-[11px] sm:text-xs text-slate-300">
-                  <span className="flex items-center gap-1 font-semibold text-white">
-                    <Eye className="w-3.5 h-3.5 text-brand-blue" />
-                    {reel.views}
-                  </span>
-                  <span className="text-emerald-400 font-bold bg-emerald-950/40 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                    {reel.ctr} CTR
-                  </span>
-                </div>
+                {(reel.views || reel.ctr) && (
+                  <div className="pt-2 border-t border-white/15 flex items-center justify-between text-[11px] sm:text-xs text-slate-300">
+                    {reel.views && (
+                      <span className="flex items-center gap-1 font-semibold text-white">
+                        <Eye className="w-3.5 h-3.5 text-brand-blue" />
+                        {reel.views}
+                      </span>
+                    )}
+                    {reel.ctr && (
+                      <span className="text-emerald-400 font-bold bg-emerald-950/40 px-2 py-0.5 rounded-full border border-emerald-500/20 ml-auto">
+                        {reel.ctr} CTR
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           ))}

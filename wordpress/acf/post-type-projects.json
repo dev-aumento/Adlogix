@@ -1,0 +1,448 @@
+[
+    {
+        "key": "group_adlogix_project",
+        "title": "Project / Case Study Details",
+        "fields": [
+            {
+                "key": "field_project_tab_card",
+                "label": "Card",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_project_client_name",
+                "label": "Client name",
+                "name": "client_name",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_project_industry",
+                "label": "Industry",
+                "name": "industry",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_project_category",
+                "label": "Category",
+                "name": "category",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "Used by the filter buttons.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "Marketing": "Marketing",
+                    "Branding": "Branding",
+                    "Video Production": "Video Production",
+                    "E-commerce": "E-commerce",
+                    "Web Development": "Web Development"
+                },
+                "default_value": "Marketing",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_project_category_label",
+                "label": "Category label",
+                "name": "category_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "Performance Marketing & Creative"
+            },
+            {
+                "key": "field_project_year",
+                "label": "Year completed",
+                "name": "year",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "2025"
+            },
+            {
+                "key": "field_project_hero_image",
+                "label": "Hero image",
+                "name": "hero_image",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all",
+                "mime_types": "jpg,jpeg,png,webp,avif,svg"
+            },
+            {
+                "key": "field_project_video_file",
+                "label": "Video file",
+                "name": "video_file",
+                "aria-label": "",
+                "type": "file",
+                "instructions": "Upload an MP4 or WebM to the Media Library.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "all",
+                "mime_types": "mp4,webm,mov"
+            },
+            {
+                "key": "field_project_video_url",
+                "label": "Video URL",
+                "name": "video_url",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "Used only when no file is uploaded (e.g. a CDN link).",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "https://"
+            },
+            {
+                "key": "field_project_overview",
+                "label": "Overview",
+                "name": "overview",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "Card summary and case study intro.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "rows": 3,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_project_results",
+                "label": "Results",
+                "name": "results",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "One per line: Value | Label | Note, e.g. \"+210% | Revenue Growth | Year-Over-Year\". Up to 4 look best.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "rows": 4,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_project_services_delivered",
+                "label": "Services delivered",
+                "name": "services_delivered",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "One per line. The card shows the first two.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "rows": 4,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_project_tab_story",
+                "label": "Case study",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_project_challenge",
+                "label": "The challenge",
+                "name": "challenge",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "rows": 4,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_project_strategy",
+                "label": "Our strategy",
+                "name": "strategy",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "rows": 4,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_project_execution",
+                "label": "Execution & rollout",
+                "name": "execution",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "rows": 4,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_project_tab_quote",
+                "label": "Client quote",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_project_testimonial_quote",
+                "label": "Quote",
+                "name": "testimonial_quote",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "rows": 3,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_project_testimonial_author",
+                "label": "Author",
+                "name": "testimonial_author",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_project_testimonial_role",
+                "label": "Role & company",
+                "name": "testimonial_role",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "projects"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "The post title is the case study headline. Its detail page is /work/<slug>.",
+        "show_in_rest": 1
+    },
+    {
+        "key": "group_adlogix_project_show_on",
+        "title": "Show on",
+        "fields": [
+            {
+                "key": "field_project_display_on",
+                "label": "Show this entry on",
+                "name": "display_on",
+                "aria-label": "",
+                "type": "checkbox",
+                "instructions": "Tick every section this entry should appear in. Sort entries with the Order number in the Attributes box.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "home": "Homepage – Featured Projects",
+                    "work": "Work page – Portfolio"
+                },
+                "default_value": [
+                    "home",
+                    "work"
+                ],
+                "return_format": "value",
+                "allow_custom": 0,
+                "save_custom": 0,
+                "layout": "vertical",
+                "toggle": 0,
+                "custom_choice_button_text": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "projects"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "side",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "Where the entry is listed on the React site.",
+        "show_in_rest": 1
+    }
+]

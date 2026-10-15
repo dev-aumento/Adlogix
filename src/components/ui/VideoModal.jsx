@@ -99,9 +99,11 @@ export const VideoModal = () => {
             {/* Custom Control Overlay on Video */}
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/80 via-transparent to-black/30 flex flex-col justify-between p-4">
               <div className="flex justify-between items-center pointer-events-auto">
-                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-black/50 text-white backdrop-blur-md border border-white/10">
-                  {activeVideo.category || 'Client Work'}
-                </span>
+                {activeVideo.category && (
+                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-black/50 text-white backdrop-blur-md border border-white/10">
+                    {activeVideo.category}
+                  </span>
+                )}
               </div>
 
               {/* Bottom Playback Controls */}
@@ -138,18 +140,22 @@ export const VideoModal = () => {
           {/* Details Column */}
           <div className="flex-1 p-6 sm:p-8 flex flex-col justify-between bg-slate-900 text-white overflow-y-auto max-h-[75vh]">
             <div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-brand-blue uppercase tracking-wider mb-2">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>{activeVideo.client || activeVideo.company || 'Adlogix Production'}</span>
-              </div>
+              {(activeVideo.client || activeVideo.company) && (
+                <div className="flex items-center gap-2 text-xs font-semibold text-brand-blue uppercase tracking-wider mb-2">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>{activeVideo.client || activeVideo.company}</span>
+                </div>
+              )}
 
-              <h3 className="text-xl sm:text-2xl font-bold font-display leading-snug">
-                {activeVideo.title || activeVideo.clientName}
-              </h3>
+              {(activeVideo.title || activeVideo.clientName) && (
+                <h3 className="text-xl sm:text-2xl font-bold font-display leading-snug">
+                  {activeVideo.title || activeVideo.clientName}
+                </h3>
+              )}
 
               {activeVideo.role && (
                 <p className="text-xs text-slate-400 mt-1">
-                  {activeVideo.role}, {activeVideo.company}
+                  {[activeVideo.role, activeVideo.company].filter(Boolean).join(', ')}
                 </p>
               )}
 

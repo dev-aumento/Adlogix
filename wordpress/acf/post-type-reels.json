@@ -1,0 +1,293 @@
+[
+    {
+        "key": "group_adlogix_reel",
+        "title": "Client Reel Details",
+        "fields": [
+            {
+                "key": "field_reel_client",
+                "label": "Client / brand",
+                "name": "client",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_reel_category",
+                "label": "Category",
+                "name": "category",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "Used by the filter buttons.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "25",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "Reels": "Reels",
+                    "Product Shoots": "Product Shoots",
+                    "Brand Films": "Brand Films",
+                    "Ad Creatives": "Ad Creatives"
+                },
+                "default_value": "Reels",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_reel_aspect_ratio",
+                "label": "Aspect ratio",
+                "name": "aspect_ratio",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "25",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "9:16": "9:16 (vertical)",
+                    "16:9": "16:9 (landscape)"
+                },
+                "default_value": "9:16",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_reel_poster",
+                "label": "Poster image",
+                "name": "poster",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "Required. A vertical (9:16) image shown on the reel card.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all",
+                "mime_types": "jpg,jpeg,png,webp,avif,svg"
+            },
+            {
+                "key": "field_reel_video_file",
+                "label": "Video file",
+                "name": "video_file",
+                "aria-label": "",
+                "type": "file",
+                "instructions": "Upload an MP4 or WebM to the Media Library.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "all",
+                "mime_types": "mp4,webm,mov"
+            },
+            {
+                "key": "field_reel_video_url",
+                "label": "Video URL",
+                "name": "video_url",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "Used only when no file is uploaded (e.g. a CDN link).",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "https://"
+            },
+            {
+                "key": "field_reel_duration",
+                "label": "Duration",
+                "name": "duration",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "0:28"
+            },
+            {
+                "key": "field_reel_views",
+                "label": "Views",
+                "name": "views",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "1.4M+"
+            },
+            {
+                "key": "field_reel_ctr",
+                "label": "CTR",
+                "name": "ctr",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "4.8%"
+            },
+            {
+                "key": "field_reel_description",
+                "label": "Description",
+                "name": "description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "rows": 3,
+                "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_reel_tags",
+                "label": "Tags",
+                "name": "tags",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "One per line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "rows": 3,
+                "new_lines": "",
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "reels"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "A reel appears only when it has a poster image and a video (file or URL). The post title is the reel title.",
+        "show_in_rest": 1
+    },
+    {
+        "key": "group_adlogix_reel_show_on",
+        "title": "Show on",
+        "fields": [
+            {
+                "key": "field_reel_display_on",
+                "label": "Show this entry on",
+                "name": "display_on",
+                "aria-label": "",
+                "type": "checkbox",
+                "instructions": "Tick every section this entry should appear in. Sort entries with the Order number in the Attributes box.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "home": "Homepage – Client Reels",
+                    "reels": "Reels page – Reels Gallery"
+                },
+                "default_value": [
+                    "home",
+                    "reels"
+                ],
+                "return_format": "value",
+                "allow_custom": 0,
+                "save_custom": 0,
+                "layout": "vertical",
+                "toggle": 0,
+                "custom_choice_button_text": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "reels"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "side",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "Where the entry is listed on the React site.",
+        "show_in_rest": 1
+    }
+]

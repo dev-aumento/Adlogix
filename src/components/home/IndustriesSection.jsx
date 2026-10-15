@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, Building, Sparkles } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { DynamicIcon } from '../ui/DynamicIcon';
-import { useCMS } from '../../hooks/useCMS';
+import { useCollection } from '../../hooks/useCMS';
 
 export const IndustriesSection = ({ content }) => {
-  const { industries } = useCMS();
+  const industries = useCollection('industries', 'home');
+
+  if (industries.length === 0) return null;
 
   return (
     <section className="py-20 lg:py-28 bg-white relative overflow-hidden">
@@ -40,12 +42,14 @@ export const IndustriesSection = ({ content }) => {
               >
                 {/* Top Image Preview Strip */}
                 <div className="relative h-32 rounded-2xl overflow-hidden mb-4 bg-slate-900">
-                  <img
-                    src={ind.heroImage}
-                    alt={ind.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    loading="lazy"
-                  />
+                  {ind.heroImage && (
+                    <img
+                      src={ind.heroImage}
+                      alt={ind.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   
                   <div className="absolute top-3 left-3 p-2 rounded-xl bg-white/20 text-white backdrop-blur-md">
@@ -58,17 +62,21 @@ export const IndustriesSection = ({ content }) => {
                     {ind.name}
                   </h3>
 
-                  <p className="text-xs text-brand-muted leading-relaxed line-clamp-2 mb-4">
-                    {ind.shortDesc}
-                  </p>
+                  {ind.shortDesc && (
+                    <p className="text-xs text-brand-muted leading-relaxed line-clamp-2 mb-4">
+                      {ind.shortDesc}
+                    </p>
+                  )}
                 </div>
 
                 {/* Key Metric & Link */}
-                <div className="pt-3 border-t border-brand-border/60 flex items-center justify-between text-xs">
-                  <span className="text-[11px] font-semibold text-brand-blue line-clamp-1">
-                    {ind.keyMetrics}
-                  </span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-brand-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 ml-2" />
+                <div className="pt-3 border-t border-brand-border/60 flex items-center justify-between gap-2 text-xs">
+                  {ind.keyMetrics && (
+                    <span className="text-[11px] font-semibold text-brand-blue line-clamp-1">
+                      {ind.keyMetrics}
+                    </span>
+                  )}
+                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-brand-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 ml-auto" />
                 </div>
               </Link>
             </motion.div>

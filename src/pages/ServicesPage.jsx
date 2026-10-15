@@ -7,7 +7,7 @@ import { Button } from '../components/ui/Button';
 import { DynamicIcon } from '../components/ui/DynamicIcon';
 import { PageSections } from '../components/sections/PageSections';
 import { GrowthPlansSection } from '../components/home/GrowthPlansSection';
-import { useCMS } from '../hooks/useCMS';
+import { useCMS, useCollection } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
 
 const ServicesHero = () => (
@@ -50,12 +50,18 @@ const ServicesHero = () => (
 
 // Filter bar and grid share the selected category, so they move as one section.
 const ServicesCatalog = () => {
-  const { services, openDiscoveryModal } = useCMS();
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const { openDiscoveryModal } = useCMS();
+  const services = useCollection('services', 'services');
+  const [chosenCategory, setSelectedCategory] = useState("all");
 
+  const hasCategory = (id) => services.some((s) => s.category === id);
+  const showCategoryFilters = hasCategory('marketing-creative') && hasCategory('web-it');
+  const selectedCategory = showCategoryFilters ? chosenCategory : "all";
   const filteredServices = selectedCategory === "all"
     ? services
     : services.filter(s => s.category === selectedCategory);
+
+  if (services.length === 0) return null;
 
   return (
     <>
@@ -71,24 +77,28 @@ const ServicesCatalog = () => {
             >
               All Capabilities ({services.length})
             </button>
-            <button
-              onClick={() => setSelectedCategory("marketing-creative")}
-              className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all flex items-center gap-1.5 select-none ${
-                selectedCategory === "marketing-creative" ? "bg-brand-blue text-white shadow-md shadow-brand-blue/30" : "text-brand-muted hover:text-brand-navy"
-              }`}
-            >
-              <TrendingUp className="w-3.5 h-3.5" />
-              <span>Marketing & Creative</span>
-            </button>
-            <button
-              onClick={() => setSelectedCategory("web-it")}
-              className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all flex items-center gap-1.5 select-none ${
-                selectedCategory === "web-it" ? "bg-brand-blue text-white shadow-md shadow-brand-blue/30" : "text-brand-muted hover:text-brand-navy"
-              }`}
-            >
-              <Code2 className="w-3.5 h-3.5" />
-              <span>Web, E-commerce & IT</span>
-            </button>
+            {showCategoryFilters && (
+              <>
+                <button
+                  onClick={() => setSelectedCategory("marketing-creative")}
+                  className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all flex items-center gap-1.5 select-none ${
+                    selectedCategory === "marketing-creative" ? "bg-brand-blue text-white shadow-md shadow-brand-blue/30" : "text-brand-muted hover:text-brand-navy"
+                  }`}
+                >
+                  <TrendingUp className="w-3.5 h-3.5" />
+                  <span>Marketing & Creative</span>
+                </button>
+                <button
+                  onClick={() => setSelectedCategory("web-it")}
+                  className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all flex items-center gap-1.5 select-none ${
+                    selectedCategory === "web-it" ? "bg-brand-blue text-white shadow-md shadow-brand-blue/30" : "text-brand-muted hover:text-brand-navy"
+                  }`}
+                >
+                  <Code2 className="w-3.5 h-3.5" />
+                  <span>Web, E-commerce & IT</span>
+                </button>
+              </>
+            )}
           </div>
 
           <Button onClick={openDiscoveryModal} variant="outline" size="sm" className="whitespace-nowrap shrink-0">
@@ -127,19 +137,23 @@ const ServicesCatalog = () => {
                     </h3>
                   </Link>
 
-                  <p className="text-sm text-brand-muted leading-relaxed mb-6">
-                    {service.shortDesc}
-                  </p>
+                  {service.shortDesc && (
+                    <p className="text-sm text-brand-muted leading-relaxed mb-6">
+                      {service.shortDesc}
+                    </p>
+                  )}
 
                   {/* Highlights */}
-                  <div className="space-y-2 mb-6">
-                    {service.highlights?.map((h, hIdx) => (
-                      <div key={hIdx} className="flex items-center gap-2 text-xs font-semibold text-slate-600">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-brand-blue shrink-0" />
-                        <span>{h}</span>
-                      </div>
-                    ))}
-                  </div>
+                  {service.highlights?.length > 0 && (
+                    <div className="space-y-2 mb-6">
+                      {service.highlights.map((h, hIdx) => (
+                        <div key={hIdx} className="flex items-center gap-2 text-xs font-semibold text-slate-600">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-brand-blue shrink-0" />
+                          <span>{h}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {/* Card Action Link */}

@@ -45,16 +45,16 @@ All fields are optional. A blank field hides the text, button or item it feeds. 
 | Tab (section key) | Fields | Notes |
 |---|---|---|
 | Hero (`hero`) | `hero_badge_text`, `hero_badge_highlight`, `hero_headline_line_1/_highlight_1/_line_2/_highlight_2`, `hero_specializations_intro`, `hero_specializations` (lines), `hero_lead`, `hero_description`, `hero_partner_label/_name/_url`, `hero_primary_cta_label/_link`, `hero_secondary_cta_label`, `hero_metric_1..4` {value, label} | Field keys are unchanged from the old "Homepage Hero" group, so saved hero values carry over. A metric needs a value; its label is optional. The primary button needs both a label and a valid link. The partner name links out only when a URL is set. |
-| Client Reels (`reels`) | `reels_badge/_title/_highlight/_subtitle`, `reels_helper_text`, `reels_cta_label` | The reels themselves still come from the reels collection. |
+| Client Reels (`reels`) | `reels_badge/_title/_highlight/_subtitle`, `reels_helper_text`, `reels_cta_label` | Reels are Client Reels entries ticked for this section (`04-collections.md`). |
 | Studio Showcase (`studio`) | `studio_badge`, `studio_title`, `studio_subtitle`, `studio_shoot_1..8` {title, category, location, image}, `studio_ticker_label`, `studio_ticker` (lines), `studio_cta_label` | A shoot shows only when it has an uploaded image; title, category and location are optional. **The gallery is hidden until at least one shoot image is uploaded.** The lightbox button hides when `studio_cta_label` is blank. |
 | Brand Marquee (`brands`) | `brands_label`, `brands_list` (`Name \| Sector` lines) | |
-| Services Overview (`services`) | `services_badge/_title/_highlight/_subtitle`, `services_callout_title/_text/_button` | Service cards come from the services collection. |
+| Services Overview (`services`) | `services_badge/_title/_highlight/_subtitle`, `services_callout_title/_text/_button` | Service cards are Services entries ticked for this section. |
 | Featured Projects (`projects`) | `projects_badge/_title/_highlight/_subtitle`, `projects_cta_label` | |
 | Industries (`industries`) | `industries_badge/_title/_highlight/_subtitle`, `industries_cta_label` | |
 | Why Adlogix (`why`) | `why_badge/_title/_highlight/_subtitle`, `why_item_1..6` {icon, title, description} | Icon is a dropdown of the icons React knows. An item needs a title. |
 | Our Process (`process`) | `process_badge/_title/_highlight/_subtitle`, `process_step_1..5` {icon, title, description} | Step numbers (01, 02, …) are automatic. |
 | Growth Plans (`plans`) | `plans_badge/_title/_highlight/_subtitle`, `plans_plan_1..3` {name, tagline, is_popular, popular_badge, monthly/quarterly/annual _price/_period/_total, metrics (`Value \| Label` lines), features (lines), cta_label}, `plans_disclaimer`, `plans_help_text`, `plans_help_button` | A plan needs a name and a monthly price; clear either to hide that plan. The Quarterly/Annual toggle appears only when at least one plan has that price; a plan without it shows its monthly price. The plan button hides when `cta_label` is blank. |
-| Video Testimonials (`testimonials`) | `testimonials_badge/_title/_highlight/_subtitle` | Testimonials come from the testimonials collection. |
+| Video Testimonials (`testimonials`) | `testimonials_badge/_title/_highlight/_subtitle` | Testimonials are entries ticked for this section. |
 | Technology Partner (`aumento`) | `aumento_badge/_title/_text/_card_label/_partner_name/_card_text/_link_label/_link_url` | |
 | Insights (`insights`) | `insights_badge/_title/_highlight/_subtitle`, `insights_cta_label` | Posts come from the blog collection. |
 | Closing CTA (`cta`) | `cta_badge/_title/_highlight/_text`, `cta_options` (`Value \| Label` lines), `cta_button_label`, `cta_alt_text`, `cta_alt_link_label`, `cta_trust_badges` (lines) | The option value is sent to `/contact?service=`. |
@@ -110,7 +110,7 @@ An outage never blanks the page, because the defaults are used as a whole. Respo
 4. Edit the Home page. Every tab is pre-filled with the current site text; change what you want and click **Update**. Upload real images for the Studio shoots.
 5. Verify `https://adlogix.in/wp-json/wp/v2/pages?slug=home&_fields=id,acf,adlogix_sections`.
 
-Do not import `wordpress/acf-export.json` yet; it will be rewritten when Reels and Projects are migrated.
+The reels, projects, services, testimonials and industries shown in these sections are separate WordPress entries; see `04-collections.md`.
 
 ## How to test
 

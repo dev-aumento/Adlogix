@@ -11,6 +11,12 @@ import { teamData } from '../data/teamData';
 
 export const CMSContext = createContext(null);
 
+// WordPress testimonials reference their case study by post ID ("Related case study").
+const linkTestimonialsToProjects = (testimonials, projects) => {
+  const slugById = new Map(projects.filter((p) => p.wpId).map((p) => [p.wpId, p.slug]));
+  return testimonials.map((t) => (t.projectId ? { ...t, projectSlug: slugById.get(t.projectId) || '' } : t));
+};
+
 export const CMSProvider = ({ children }) => {
   const [settings, setSettings] = useState(defaultSiteSettings);
   const [services, setServices] = useState(servicesData);
@@ -57,7 +63,7 @@ export const CMSProvider = ({ children }) => {
           setServices(fetchedServices);
           setProjects(fetchedProjects);
           setReels(fetchedReels);
-          setTestimonials(fetchedTestimonials);
+          setTestimonials(linkTestimonialsToProjects(fetchedTestimonials, fetchedProjects));
           setIndustries(fetchedIndustries);
           setBlogs(fetchedBlogs);
           setTeam(fetchedTeam);

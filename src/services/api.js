@@ -6,12 +6,43 @@ import { testimonialsData } from '../data/testimonialsData';
 import { industriesData } from '../data/industriesData';
 import { blogsData } from '../data/blogsData';
 import { teamData } from '../data/teamData';
-import { wpGet, wpPost, WordPressApiError } from './client';
+import { wpGet, wpPost, WordPressApiError, reportWordPressIssue } from './client';
 import { normalizePage } from './normalizers';
+import {
+  normalizeReel,
+  normalizeProject,
+  normalizeService,
+  normalizeTestimonial,
+  normalizeIndustry
+} from './collections';
 
-// Legacy switch for the bulk collections loaded by CMSContext. Page content
-// (getPage) is not gated by it.
+// Legacy switch for blog posts, team, settings and the enquiry form. Pages and the
+// migrated collections (services, projects, reels, testimonials, industries) ignore it.
 const ENABLE_WP_SYNC = import.meta.env.VITE_ENABLE_WP_SYNC === 'true';
+
+/**
+ * Published entries of a custom post type, sorted by their Order (menu_order).
+ * The static list is used only when WordPress has no entries or can't be reached;
+ * otherwise WordPress is the only source, and incomplete entries are dropped.
+ */
+async function getCollection(postType, normalize, fallback) {
+  try {
+    const raw = await wpGet(`/wp/v2/${postType}`, {
+      params: { per_page: 100, _fields: 'id,slug,title,menu_order,acf', acf_format: 'standard' }
+    });
+    if (!Array.isArray(raw)) {
+      throw new WordPressApiError(`Unexpected response for ${postType}`, { code: 'invalid_response' });
+    }
+    if (raw.length === 0) return fallback;
+    return [...raw]
+      .sort((a, b) => (a.menu_order || 0) - (b.menu_order || 0))
+      .map(normalize)
+      .filter(Boolean);
+  } catch (error) {
+    reportWordPressIssue(`Loading ${postType}`, error);
+    return fallback;
+  }
+}
 
 // Helper to fetch from WP REST API with timeout & fallback
 async function fetchWP(endpoint, fallbackData) {
@@ -49,115 +80,12 @@ export const api = {
     return fetchWP('/adlogix/v1/settings', defaultSiteSettings);
   },
 
-  // Services
-  async getServices() {
-    const raw = await fetchWP('/wp/v2/services?_embed&per_page=50', null);
-    if (!raw) return servicesData;
-    
-    // Normalization logic if WP REST response is received
-    return raw.map(item => ({
-      id: item.slug || item.id,
-      slug: item.slug,
-      category: item.acf?.category || 'marketing-creative',
-      categoryTitle: item.acf?.category_title || (item.acf?.category === 'web-it' ? 'Web, E-commerce & IT Solutions' : 'Digital Marketing & Creative'),
-      title: item.title?.rendered || item.title,
-      shortDesc: item.acf?.short_description || item.excerpt?.rendered?.replace(/<[^>]*>?/gm, ''),
-      fullDesc: item.content?.rendered || item.acf?.full_description,
-      icon: item.acf?.icon || 'TrendingUp',
-      highlights: item.acf?.highlights || [],
-      deliverables: item.acf?.deliverables || [],
-      technologies: item.acf?.technologies || [],
-      faqs: item.acf?.faqs || []
-    }));
-  },
-
-  // Portfolio / Projects
-  async getProjects() {
-    const raw = await fetchWP('/wp/v2/projects?_embed&per_page=50', null);
-    if (!raw) return projectsData;
-
-    return raw.map(item => ({
-      id: item.slug || item.id,
-      slug: item.slug,
-      title: item.title?.rendered || item.title,
-      client: item.acf?.client_name || 'Adlogix Client',
-      industry: item.acf?.industry || 'Digital Commerce',
-      category: item.acf?.category || 'Marketing',
-      categoryLabel: item.acf?.category_label || 'Performance Marketing',
-      year: item.acf?.year || '2025',
-      heroImage: item.acf?.hero_image || item._embedded?.['wp:featuredmedia']?.[0]?.source_url || 'https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=1200',
-      thumbnail: item.acf?.thumbnail || item._embedded?.['wp:featuredmedia']?.[0]?.source_url,
-      videoReelUrl: item.acf?.video_url,
-      overview: item.acf?.overview,
-      challenge: item.acf?.challenge,
-      strategy: item.acf?.strategy,
-      execution: item.acf?.execution,
-      results: item.acf?.results || [],
-      servicesDelivered: item.acf?.services_delivered || [],
-      gallery: item.acf?.gallery || [],
-      testimonial: item.acf?.testimonial || null
-    }));
-  },
-
-  // Client Reels (9:16 Video Showcase)
-  async getReels() {
-    const raw = await fetchWP('/wp/v2/reels?_embed&per_page=50', null);
-    if (!raw) return clientReelsData;
-
-    return raw.map(item => ({
-      id: item.id?.toString() || item.slug,
-      title: item.title?.rendered || item.title,
-      client: item.acf?.client || 'Adlogix Partner',
-      category: item.acf?.category || 'Reels',
-      aspectRatio: item.acf?.aspect_ratio || '9:16',
-      duration: item.acf?.duration || '0:30',
-      views: item.acf?.views || '1M+',
-      ctr: item.acf?.ctr || '4.5%',
-      thumbnail: item.acf?.thumbnail || item._embedded?.['wp:featuredmedia']?.[0]?.source_url,
-      videoUrl: item.acf?.video_url,
-      description: item.acf?.description || item.excerpt?.rendered?.replace(/<[^>]*>?/gm, ''),
-      tags: item.acf?.tags || []
-    }));
-  },
-
-  // Testimonials
-  async getTestimonials() {
-    const raw = await fetchWP('/wp/v2/testimonials?_embed&per_page=50', null);
-    if (!raw) return testimonialsData;
-
-    return raw.map(item => ({
-      id: item.id?.toString() || item.slug,
-      clientName: item.acf?.client_name || item.title?.rendered,
-      role: item.acf?.role || 'Founder',
-      company: item.acf?.company || '',
-      industry: item.acf?.industry || '',
-      rating: item.acf?.rating || 5,
-      videoThumbnail: item.acf?.video_thumbnail,
-      videoUrl: item.acf?.video_url,
-      quote: item.acf?.quote || item.content?.rendered?.replace(/<[^>]*>?/gm, ''),
-      result: item.acf?.result || '',
-      projectSlug: item.acf?.project_slug || ''
-    }));
-  },
-
-  // Industries
-  async getIndustries() {
-    const raw = await fetchWP('/wp/v2/industries?_embed&per_page=50', null);
-    if (!raw) return industriesData;
-
-    return raw.map(item => ({
-      id: item.slug || item.id,
-      slug: item.slug,
-      name: item.title?.rendered || item.name,
-      icon: item.acf?.icon || 'Sparkles',
-      heroImage: item.acf?.hero_image,
-      shortDesc: item.acf?.short_desc || item.excerpt?.rendered?.replace(/<[^>]*>?/gm, ''),
-      challenges: item.acf?.challenges || [],
-      solutions: item.acf?.solutions || [],
-      relevantServices: item.acf?.relevant_services || [],
-      keyMetrics: item.acf?.key_metrics || ''
-    }));
-  },
+  // Collections managed as WordPress custom post types
+  getServices: () => getCollection('services', normalizeService, servicesData),
+  getProjects: () => getCollection('projects', normalizeProject, projectsData),
+  getReels: () => getCollection('reels', normalizeReel, clientReelsData),
+  getTestimonials: () => getCollection('testimonials', normalizeTestimonial, testimonialsData),
+  getIndustries: () => getCollection('industries', normalizeIndustry, industriesData),
 
   // Blogs / Insights
   async getBlogs() {

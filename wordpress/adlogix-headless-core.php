@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Adlogix Headless Core
- * Plugin URI: https://adlogix.agency
+ * Plugin URI: https://adlogix.in
  * Description: Core Headless CMS configuration, Custom Post Types, ACF bindings, CORS headers, and REST API endpoints for the Adlogix React Frontend (Powered by Aumento Infoway).
- * Version: 1.1.0
+ * Version: 1.3.0
  * Author: Adlogix & Aumento Infoway
  * License: GPL-2.0+
  */
@@ -32,10 +32,22 @@ class Adlogix_Headless_Core {
         add_action('admin_enqueue_scripts', [$this, 'enqueue_page_sections_assets']);
         add_action('save_post_page', [$this, 'save_page_sections'], 10, 2);
         add_action('rest_api_init', [$this, 'expose_page_sections']);
+
+        // Media uploads: JFIF images (stored as .jpg) and sanitized SVG
+        add_filter('upload_mimes', [$this, 'allow_extra_upload_mimes'], 10, 2);
+        add_filter('wp_handle_upload_prefilter', [$this, 'prepare_upload']);
+        add_filter('wp_handle_sideload_prefilter', [$this, 'prepare_upload']);
+        add_filter('wp_check_filetype_and_ext', [$this, 'check_svg_filetype'], 10, 3);
+        add_filter('wp_generate_attachment_metadata', [$this, 'svg_attachment_metadata'], 10, 2);
+        add_filter('wp_prepare_attachment_for_js', [$this, 'svg_attachment_preview'], 10, 3);
     }
 
     const SECTIONS_META_KEY = '_adlogix_page_sections';
     const SECTIONS_NONCE = 'adlogix_page_sections_nonce';
+
+    // SVG is markup, so only Editors and Administrators may upload it (after sanitizing).
+    const SVG_UPLOAD_CAPABILITY = 'edit_others_posts';
+    const JPEG_ALIAS_EXTENSIONS = ['jfif', 'jfi', 'jif'];
 
     /**
      * Sections each React page can render, keyed by page slug.
@@ -271,10 +283,227 @@ class Adlogix_Headless_Core {
         ]);
     }
 
+    private function can_upload_svg($user = null) {
+        $user = $user ?: get_current_user_id();
+        return $user && user_can($user, self::SVG_UPLOAD_CAPABILITY);
+    }
+
     /**
-     * Register Custom Post Types with REST API support
+     * Adds JFIF (a JPEG variant) for everyone who can upload, and SVG for Editors/Administrators.
+     * The browser uploader only offers extensions listed here.
+     */
+    public function allow_extra_upload_mimes($mimes, $user = null) {
+        $mimes[implode('|', self::JPEG_ALIAS_EXTENSIONS)] = 'image/jpeg';
+        if ($this->can_upload_svg($user)) {
+            $mimes['svg'] = 'image/svg+xml';
+        }
+        return $mimes;
+    }
+
+    /**
+     * Runs before WordPress validates the file: JFIF is renamed to .jpg so thumbnails and
+     * browsers treat it as a normal JPEG; SVG is sanitized in place or rejected.
+     */
+    public function prepare_upload($file) {
+        if (!empty($file['error']) || empty($file['name']) || empty($file['tmp_name'])) {
+            return $file;
+        }
+
+        $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+
+        if (in_array($extension, self::JPEG_ALIAS_EXTENSIONS, true)) {
+            $file['name'] = substr($file['name'], 0, -strlen($extension)) . 'jpg';
+            $file['type'] = 'image/jpeg';
+        } elseif ($extension === 'svg') {
+            if (!$this->can_upload_svg()) {
+                $file['error'] = __('Only Editors and Administrators can upload SVG files.', 'adlogix');
+            } elseif (!$this->sanitize_svg_file($file['tmp_name'])) {
+                $file['error'] = __('This SVG could not be read or contains unsafe content (scripts, event handlers or external entities).', 'adlogix');
+            }
+        }
+
+        return $file;
+    }
+
+    /**
+     * Some servers detect SVG as text/xml or text/plain, which WordPress rejects as a type mismatch.
+     * The file has already been sanitized and confirmed to have an <svg> root by prepare_upload().
+     */
+    public function check_svg_filetype($data, $file, $filename) {
+        if (!empty($data['ext']) && !empty($data['type'])) {
+            return $data;
+        }
+
+        $check = wp_check_filetype($filename);
+        if ($check['ext'] === 'svg' && $check['type'] === 'image/svg+xml') {
+            $data['ext'] = 'svg';
+            $data['type'] = 'image/svg+xml';
+        }
+        return $data;
+    }
+
+    /**
+     * Rewrites the uploaded SVG without scripts, event handlers, external entities or
+     * javascript: URLs. Returns false when the file is not a well-formed SVG.
+     */
+    private function sanitize_svg_file($path) {
+        $svg = is_readable($path) ? file_get_contents($path) : false;
+        if (!is_string($svg) || trim($svg) === '' || !class_exists('DOMDocument')) {
+            return false;
+        }
+
+        $svg = preg_replace('/<!DOCTYPE[^>\[]*(\[[^\]]*\])?\s*>/i', '', $svg);
+        if (!is_string($svg) || stripos($svg, '<!ENTITY') !== false) {
+            return false;
+        }
+
+        $dom = new DOMDocument();
+        $previous = libxml_use_internal_errors(true);
+        $loaded = $dom->loadXML($svg, LIBXML_NONET);
+        libxml_clear_errors();
+        libxml_use_internal_errors($previous);
+
+        if (!$loaded || !$dom->documentElement || strtolower($dom->documentElement->localName) !== 'svg') {
+            return false;
+        }
+
+        $this->strip_unsafe_svg_nodes($dom);
+
+        $clean = $dom->saveXML($dom->documentElement);
+        return $clean && file_put_contents($path, '<?xml version="1.0" encoding="UTF-8"?>' . "\n" . $clean) !== false;
+    }
+
+    private function strip_unsafe_svg_nodes(DOMDocument $dom) {
+        $blocked = ['script', 'foreignobject', 'iframe', 'embed', 'object', 'audio', 'video', 'handler', 'listener', 'base', 'link', 'meta'];
+        $animations = ['animate', 'animatecolor', 'animatemotion', 'animatetransform', 'set'];
+        $unsafe_value = '/javascript:|vbscript:|data:(?!image\/(png|jpe?g|gif|webp)|font\/)|expression\(|@import/i';
+        $link_attributes = ['href', 'src', 'action', 'formaction'];
+
+        $xpath = new DOMXPath($dom);
+        $removals = iterator_to_array($xpath->query('//processing-instruction()'), false);
+
+        foreach ($xpath->query('//*') as $element) {
+            $name = strtolower($element->localName);
+
+            if (in_array($name, $blocked, true)) {
+                $removals[] = $element;
+                continue;
+            }
+
+            if (in_array($name, $animations, true)) {
+                $target = strtolower($element->getAttribute('attributeName'));
+                if (str_starts_with($target, 'on') || in_array($target, ['href', 'xlink:href'], true)) {
+                    $removals[] = $element;
+                    continue;
+                }
+            }
+
+            if ($name === 'style' && preg_match($unsafe_value, $element->textContent)) {
+                $removals[] = $element;
+                continue;
+            }
+
+            foreach (iterator_to_array($element->attributes) as $attribute) {
+                $attribute_name = strtolower($attribute->localName);
+                $value = preg_replace('/[\s\x00-\x1f]+/', '', $attribute->value);
+
+                $is_handler = str_starts_with($attribute_name, 'on');
+                $is_unsafe_link = in_array($attribute_name, $link_attributes, true)
+                    && !preg_match('~^(#|https?://|data:image/(png|jpe?g|gif|webp);)~i', $value);
+
+                if ($is_handler || $is_unsafe_link || preg_match($unsafe_value, $value)) {
+                    $element->removeAttributeNode($attribute);
+                }
+            }
+        }
+
+        foreach ($removals as $node) {
+            if ($node->parentNode) {
+                $node->parentNode->removeChild($node);
+            }
+        }
+    }
+
+    /**
+     * Width/height from the root <svg> attributes, falling back to the viewBox. [0, 0] when unknown.
+     */
+    private function svg_dimensions($path) {
+        $svg = is_readable($path) ? file_get_contents($path) : false;
+        if (!is_string($svg) || !preg_match('/<svg\b[^>]*>/i', $svg, $tag)) {
+            return [0, 0];
+        }
+
+        $read = function ($name) use ($tag) {
+            return preg_match('/\s' . $name . '\s*=\s*["\']([^"\']*)["\']/i', $tag[0], $match) ? trim($match[1]) : '';
+        };
+
+        $width = $read('width');
+        $height = $read('height');
+        $width = str_contains($width, '%') ? 0 : (float) $width;
+        $height = str_contains($height, '%') ? 0 : (float) $height;
+
+        if ($width <= 0 || $height <= 0) {
+            $box = preg_split('/[\s,]+/', $read('viewBox'));
+            $width = count($box) === 4 ? (float) $box[2] : 0;
+            $height = count($box) === 4 ? (float) $box[3] : 0;
+        }
+
+        return [max(0, (int) round($width)), max(0, (int) round($height))];
+    }
+
+    public function svg_attachment_metadata($metadata, $attachment_id) {
+        if (get_post_mime_type($attachment_id) !== 'image/svg+xml') {
+            return $metadata;
+        }
+
+        $path = get_attached_file($attachment_id);
+        [$width, $height] = $this->svg_dimensions($path);
+
+        $metadata = is_array($metadata) ? $metadata : [];
+        $metadata['width'] = $width;
+        $metadata['height'] = $height;
+        $metadata['file'] = _wp_relative_upload_path($path);
+        return $metadata;
+    }
+
+    /**
+     * Gives SVG attachments image sizes so the Media Library and ACF image fields show a preview
+     * instead of a generic file icon.
+     */
+    public function svg_attachment_preview($response, $attachment, $meta) {
+        if (($response['mime'] ?? '') !== 'image/svg+xml' || empty($response['url'])) {
+            return $response;
+        }
+
+        $width = (int) ($meta['width'] ?? 0);
+        $height = (int) ($meta['height'] ?? 0);
+        if (!$width || !$height) {
+            [$width, $height] = $this->svg_dimensions(get_attached_file($attachment->ID));
+        }
+        $width = $width ?: 512;
+        $height = $height ?: 512;
+
+        $size = [
+            'url' => $response['url'],
+            'width' => $width,
+            'height' => $height,
+            'orientation' => $height > $width ? 'portrait' : 'landscape',
+        ];
+
+        $response['width'] = $width;
+        $response['height'] = $height;
+        $response['sizes'] = ['thumbnail' => $size, 'medium' => $size, 'large' => $size, 'full' => $size];
+        return $response;
+    }
+
+    /**
+     * Register Custom Post Types with REST API support.
+     * Content lives in the ACF groups from wordpress/acf/post-type-*.json; "page-attributes"
+     * provides the Order box that sorts entries on the site.
      */
     public function register_post_types() {
+        $supports = ['title', 'page-attributes'];
+
         // 1. Services
         register_post_type('services', [
             'labels' => [
@@ -285,7 +514,7 @@ class Adlogix_Headless_Core {
             'public' => true,
             'show_in_rest' => true,
             'rest_base' => 'services',
-            'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
+            'supports' => $supports,
             'menu_icon' => 'dashicons-grid-view',
             'has_archive' => true,
             'rewrite' => ['slug' => 'services'],
@@ -301,7 +530,7 @@ class Adlogix_Headless_Core {
             'public' => true,
             'show_in_rest' => true,
             'rest_base' => 'projects',
-            'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
+            'supports' => $supports,
             'menu_icon' => 'dashicons-portfolio',
             'has_archive' => true,
             'rewrite' => ['slug' => 'work'],
@@ -317,7 +546,7 @@ class Adlogix_Headless_Core {
             'public' => true,
             'show_in_rest' => true,
             'rest_base' => 'reels',
-            'supports' => ['title', 'thumbnail', 'custom-fields', 'excerpt'],
+            'supports' => $supports,
             'menu_icon' => 'dashicons-video-alt3',
             'has_archive' => false,
         ]);
@@ -332,7 +561,7 @@ class Adlogix_Headless_Core {
             'public' => true,
             'show_in_rest' => true,
             'rest_base' => 'testimonials',
-            'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
+            'supports' => $supports,
             'menu_icon' => 'dashicons-testimonial',
             'has_archive' => false,
         ]);
@@ -347,7 +576,7 @@ class Adlogix_Headless_Core {
             'public' => true,
             'show_in_rest' => true,
             'rest_base' => 'industries',
-            'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
+            'supports' => $supports,
             'menu_icon' => 'dashicons-building',
             'has_archive' => true,
             'rewrite' => ['slug' => 'industries'],
@@ -466,7 +695,7 @@ class Adlogix_Headless_Core {
      * Expose featured media source URLs directly in post object REST responses
      */
     public function expose_featured_media_urls() {
-        $post_types = ['post', 'services', 'projects', 'reels', 'testimonials', 'industries'];
+        $post_types = ['post'];
         foreach ($post_types as $pt) {
             register_rest_field($pt, 'featured_media_url', [
                 'get_callback' => function ($post_arr) {

@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Play, FolderKanban, Search } from 'lucide-react';
+import { FolderKanban, Search } from 'lucide-react';
 import { SEOHead } from '../components/ui/SEOHead';
 import { Button } from '../components/ui/Button';
+import { ProjectCard } from '../components/ui/ProjectCard';
 import { PageSections } from '../components/sections/PageSections';
-import { useCMS } from '../hooks/useCMS';
+import { useCollection } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
 import { projectCategories } from '../data/projectsData';
+import { presentCategories } from '../services/collections';
 
 const WorkHero = () => (
   <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
@@ -49,10 +51,12 @@ const WorkHero = () => (
 
 // Filter bar and grid share the active filters, so they move as one section.
 const WorkPortfolio = () => {
-  const { projects, openVideoModal } = useCMS();
-  const [activeCategory, setActiveCategory] = useState("All");
+  const projects = useCollection('projects', 'work');
+  const [selectedCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
+  const categories = presentCategories(projects, projectCategories.slice(1));
+  const activeCategory = categories.includes(selectedCategory) ? selectedCategory : "All";
   const filteredProjects = projects.filter((p) => {
     const matchesCategory =
       activeCategory === "All" ||
@@ -66,6 +70,8 @@ const WorkPortfolio = () => {
     return matchesCategory && matchesSearch;
   });
 
+  if (projects.length === 0) return null;
+
   return (
     <>
       {/* Filter and Search Bar */}
@@ -73,24 +79,26 @@ const WorkPortfolio = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
 
           {/* Category Pills */}
-          <div className="inline-flex items-center gap-1.5 p-1.5 bg-brand-surface-soft rounded-full border border-brand-border flex-nowrap overflow-x-auto no-scrollbar max-w-full">
-            {projectCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap shrink-0 select-none ${
-                  activeCategory === cat
-                    ? "bg-brand-navy text-white shadow-sm"
-                    : "text-brand-muted hover:text-brand-navy"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          {categories.length > 1 && (
+            <div className="inline-flex items-center gap-1.5 p-1.5 bg-brand-surface-soft rounded-full border border-brand-border flex-nowrap overflow-x-auto no-scrollbar max-w-full">
+              {["All", ...categories].map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap shrink-0 select-none ${
+                    activeCategory === cat
+                      ? "bg-brand-navy text-white shadow-sm"
+                      : "text-brand-muted hover:text-brand-navy"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          )}
 
           {/* Search Input */}
-          <div className="relative max-w-xs w-full">
+          <div className="relative max-w-xs w-full md:ml-auto">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
@@ -124,102 +132,7 @@ const WorkPortfolio = () => {
                   transition={{ duration: 0.4, delay: idx * 0.05 }}
                   className="flex flex-col rounded-3xl bg-white border border-brand-border shadow-card-subtle hover:shadow-glossy-hover overflow-hidden transition-all duration-300 group"
                 >
-                  {/* Hero Visual Media */}
-                  <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
-                    <img
-                      src={project.heroImage}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-                      <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur-md border border-white/20">
-                        {project.categoryLabel}
-                      </span>
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-black/50 text-white backdrop-blur-md">
-                        {project.industry}
-                      </span>
-                    </div>
-
-                    {project.videoReelUrl && (
-                      <button
-                        onClick={() =>
-                          openVideoModal({
-                            title: project.title,
-                            client: project.client,
-                            videoUrl: project.videoReelUrl,
-                            thumbnail: project.heroImage,
-                            description: project.overview,
-                            category: project.categoryLabel,
-                            aspectRatio: '9:16',
-                            projectSlug: project.slug
-                          })
-                        }
-                        className="absolute bottom-4 right-4 z-10 p-3 rounded-full bg-brand-blue/90 hover:bg-brand-blue text-white backdrop-blur-md shadow-lg shadow-brand-blue/40 border border-white/20 flex items-center gap-1.5 text-xs font-bold transition-all"
-                      >
-                        <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>Watch Reel</span>
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-7 sm:p-8 flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="text-xs font-bold text-brand-blue uppercase tracking-wider mb-1.5">
-                        {project.client}
-                      </div>
-
-                      <Link to={`/work/${project.slug}`}>
-                        <h3 className="text-xl sm:text-2xl font-bold font-display text-brand-navy group-hover:text-brand-blue transition-colors leading-snug">
-                          {project.title}
-                        </h3>
-                      </Link>
-
-                      <p className="mt-3 text-sm text-brand-muted leading-relaxed line-clamp-2">
-                        {project.overview}
-                      </p>
-
-                      {/* Verified Metrics */}
-                      {project.results && (
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 p-4 rounded-2xl bg-brand-surface-soft border border-brand-border/60">
-                          {project.results.map((res, rIdx) => (
-                            <div key={rIdx}>
-                              <div className="text-lg font-extrabold font-display text-brand-navy">
-                                {res.value}
-                              </div>
-                              <div className="text-[10px] text-brand-muted font-medium mt-0.5">
-                                {res.label}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="mt-6 pt-5 border-t border-slate-100 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
-                      <div className="flex flex-wrap gap-1.5 shrink min-w-0">
-                        {project.servicesDelivered?.slice(0, 2).map((srv, sIdx) => (
-                          <span
-                            key={sIdx}
-                            className="px-2.5 py-1 text-[11px] rounded-lg bg-slate-100 text-slate-600 font-medium whitespace-nowrap"
-                          >
-                            {srv}
-                          </span>
-                        ))}
-                      </div>
-
-                      <Link
-                        to={`/work/${project.slug}`}
-                        className="inline-flex items-center gap-1 text-xs font-bold text-brand-blue hover:text-brand-blue-hover transition-colors whitespace-nowrap shrink-0 ml-auto group/link"
-                      >
-                        <span>Case Study</span>
-                        <ArrowUpRight className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                      </Link>
-                    </div>
-                  </div>
+                  <ProjectCard project={project} videoLabel="Watch Reel" linkLabel="Case Study" metricValueClassName="text-lg" />
                 </motion.div>
               ))}
             </motion.div>
