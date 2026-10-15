@@ -5,6 +5,9 @@ import { SectionHeading } from '../ui/SectionHeading';
 import { DynamicIcon } from '../ui/DynamicIcon';
 
 export const WhyAdlogix = ({ content }) => {
+  const { heading, items } = content;
+  if (!heading.badge && !heading.title && !heading.subtitle && items.length === 0) return null;
+
   return (
     <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-t border-brand-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,9 +43,11 @@ export const WhyAdlogix = ({ content }) => {
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-brand-muted leading-relaxed">
-                  {item.description}
-                </p>
+                {item.description && (
+                  <p className="text-sm text-brand-muted leading-relaxed">
+                    {item.description}
+                  </p>
+                )}
               </div>
 
               <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-semibold text-brand-blue">

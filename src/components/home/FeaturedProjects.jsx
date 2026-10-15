@@ -174,14 +174,16 @@ export const FeaturedProjects = ({ content }) => {
         </AnimatePresence>
 
         {/* View All Projects CTA */}
-        <div className="mt-12 text-center">
-          <Link
-            to="/work"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-navy hover:bg-brand-navy-dark text-white font-bold text-sm transition-all shadow-lg shadow-brand-navy/20"
-          >
-            {content.ctaLabel}
-          </Link>
-        </div>
+        {content.ctaLabel && (
+          <div className="mt-12 text-center">
+            <Link
+              to="/work"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-navy hover:bg-brand-navy-dark text-white font-bold text-sm transition-all shadow-lg shadow-brand-navy/20"
+            >
+              {content.ctaLabel}
+            </Link>
+          </div>
+        )}
 
       </div>
     </section>

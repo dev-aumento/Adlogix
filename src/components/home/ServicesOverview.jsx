@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 export const ServicesOverview = ({ content }) => {
   const { services } = useCMS();
+  const { callout } = content;
   const [activeTab, setActiveTab] = useState('marketing-creative');
 
   const currentCategory = servicesCategories.find((c) => c.id === activeTab);
@@ -147,27 +148,37 @@ export const ServicesOverview = ({ content }) => {
         </AnimatePresence>
 
         {/* Bottom Callout Banner */}
-        <div className="mt-14 p-8 rounded-3xl bg-gradient-to-r from-brand-surface-soft via-white to-brand-blue-light/50 border border-brand-border flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-brand-blue text-white flex items-center justify-center font-bold shrink-0 shadow-md shadow-brand-blue/30">
-              <Sparkles className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="text-base font-bold font-display text-brand-navy">
-                {content.callout.title}
-              </h4>
-              <p className="text-xs sm:text-sm text-brand-muted mt-0.5">
-                {content.callout.text}
-              </p>
-            </div>
+        {(callout.title || callout.text || callout.buttonLabel) && (
+          <div className="mt-14 p-8 rounded-3xl bg-gradient-to-r from-brand-surface-soft via-white to-brand-blue-light/50 border border-brand-border flex flex-col md:flex-row items-center justify-between gap-6">
+            {(callout.title || callout.text) && (
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-brand-blue text-white flex items-center justify-center font-bold shrink-0 shadow-md shadow-brand-blue/30">
+                  <Sparkles className="w-6 h-6" />
+                </div>
+                <div>
+                  {callout.title && (
+                    <h4 className="text-base font-bold font-display text-brand-navy">
+                      {callout.title}
+                    </h4>
+                  )}
+                  {callout.text && (
+                    <p className="text-xs sm:text-sm text-brand-muted mt-0.5">
+                      {callout.text}
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+            {callout.buttonLabel && (
+              <Link
+                to="/contact"
+                className="shrink-0 px-6 py-3 rounded-full bg-brand-navy hover:bg-brand-navy-dark text-white text-xs font-bold transition-all shadow-md"
+              >
+                {callout.buttonLabel}
+              </Link>
+            )}
           </div>
-          <Link
-            to="/contact"
-            className="shrink-0 px-6 py-3 rounded-full bg-brand-navy hover:bg-brand-navy-dark text-white text-xs font-bold transition-all shadow-md"
-          >
-            {content.callout.buttonLabel}
-          </Link>
-        </div>
+        )}
 
       </div>
     </section>

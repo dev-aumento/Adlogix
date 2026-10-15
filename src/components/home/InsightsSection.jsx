@@ -7,31 +7,37 @@ import { useCMS } from '../../hooks/useCMS';
 
 export const InsightsSection = ({ content }) => {
   const { blogs } = useCMS();
+  const { heading } = content;
+  const hasHeading = Boolean(heading.badge || heading.title || heading.subtitle);
 
   return (
     <section className="py-20 lg:py-28 bg-brand-surface-soft/40 relative overflow-hidden border-t border-brand-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading & View All Button */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
-          <SectionHeading
-            badge={content.heading.badge}
-            badgeIcon={BookOpen}
-            title={content.heading.title}
-            highlightWord={content.heading.highlight}
-            subtitle={content.heading.subtitle}
-            align="left"
-            className="max-w-2xl"
-          />
+        {(hasHeading || content.ctaLabel) && (
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
+            <SectionHeading
+              badge={heading.badge}
+              badgeIcon={BookOpen}
+              title={heading.title}
+              highlightWord={heading.highlight}
+              subtitle={heading.subtitle}
+              align="left"
+              className="max-w-2xl"
+            />
 
-          <Link
-            to="/blog"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-blue hover:text-brand-blue-hover transition-colors group"
-          >
-            <span>{content.ctaLabel}</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
+            {content.ctaLabel && (
+              <Link
+                to="/blog"
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-blue hover:text-brand-blue-hover transition-colors group"
+              >
+                <span>{content.ctaLabel}</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            )}
+          </div>
+        )}
 
         {/* Blog Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

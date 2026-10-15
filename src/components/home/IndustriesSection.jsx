@@ -76,14 +76,16 @@ export const IndustriesSection = ({ content }) => {
         </div>
 
         {/* View All Industries Link */}
-        <div className="mt-10 text-center">
-          <Link
-            to="/industries"
-            className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-navy hover:text-brand-blue transition-colors"
-          >
-            <span>{content.ctaLabel}</span>
-          </Link>
-        </div>
+        {content.ctaLabel && (
+          <div className="mt-10 text-center">
+            <Link
+              to="/industries"
+              className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-navy hover:text-brand-blue transition-colors"
+            >
+              <span>{content.ctaLabel}</span>
+            </Link>
+          </div>
+        )}
 
       </div>
     </section>

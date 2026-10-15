@@ -19,6 +19,8 @@ export const SectionHeading = ({
     right: 'text-right items-end ml-auto',
   }[align];
 
+  if (!badge && !title && !subtitle) return null;
+
   // If highlightWord is provided, split title and style highlight
   const renderTitle = () => {
     if (!highlightWord || !title.includes(highlightWord)) {
@@ -50,17 +52,19 @@ export const SectionHeading = ({
         </motion.div>
       )}
 
-      <motion.h2
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className={`editorial-heading text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.15] ${
-          light ? 'text-white' : 'text-brand-navy'
-        }`}
-      >
-        {renderTitle()}
-      </motion.h2>
+      {title && (
+        <motion.h2
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className={`editorial-heading text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.15] ${
+            light ? 'text-white' : 'text-brand-navy'
+          }`}
+        >
+          {renderTitle()}
+        </motion.h2>
+      )}
 
       {subtitle && (
         <motion.p

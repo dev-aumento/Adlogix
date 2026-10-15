@@ -19,13 +19,25 @@ export const HeroSection = ({ content: hero }) => {
   const [currentSpecIndex, setCurrentSpecIndex] = useState(0);
 
   useEffect(() => {
+    if (specializations.length < 2) return undefined;
     const interval = setInterval(() => {
       setCurrentSpecIndex((prev) => (prev + 1) % specializations.length);
     }, 2800);
     return () => clearInterval(interval);
   }, [specializations.length]);
 
-  const primaryCtaIsInternal = hero.primaryCta.href.startsWith('/');
+  const { badge, headline, partner, primaryCta, secondaryCta } = hero;
+  const primaryCtaIsInternal = primaryCta.href.startsWith('/');
+  const hasPrimaryCta = Boolean(primaryCta.label && primaryCta.href);
+  const PartnerTag = partner.url ? 'a' : 'span';
+  const partnerLinkProps = partner.url ? { href: partner.url, target: '_blank', rel: 'noopener noreferrer' } : {};
+
+  const hasContent = [
+    badge.text, badge.highlight, headline.line1, headline.highlight1, headline.line2, headline.highlight2,
+    hero.specializationsIntro, hero.lead, hero.description, partner.label, partner.name, secondaryCta.label
+  ].some(Boolean) || hasPrimaryCta || specializations.length > 0 || hero.metrics.length > 0;
+
+  if (!hasContent) return null;
 
   return (
     <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-white text-brand-navy pt-28 pb-20 lg:pt-32 lg:pb-28">
@@ -139,177 +151,213 @@ export const HeroSection = ({ content: hero }) => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center w-full">
         
         {/* Top Reference-Style Badge with Pulsing Blue Dot - Responsive & Properly Aligned */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center justify-center gap-2 sm:gap-2.5 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/95 border border-brand-blue/25 shadow-sm backdrop-blur-md mb-5 sm:mb-8 select-none max-w-full"
-        >
-          <span className="flex h-2 w-2 sm:h-2.5 sm:w-2.5 relative shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-brand-blue"></span>
-          </span>
-          <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-brand-navy text-center leading-tight">
-            {hero.badge.text}
-            {hero.badge.highlight && (
-              <>
-                {' '}<span className="text-slate-300">•</span> <span className="text-brand-blue font-black">{hero.badge.highlight}</span>
-              </>
-            )}
-          </span>
-        </motion.div>
+        {(badge.text || badge.highlight) && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center justify-center gap-2 sm:gap-2.5 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/95 border border-brand-blue/25 shadow-sm backdrop-blur-md mb-5 sm:mb-8 select-none max-w-full"
+          >
+            <span className="flex h-2 w-2 sm:h-2.5 sm:w-2.5 relative shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-brand-blue"></span>
+            </span>
+            <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-brand-navy text-center leading-tight">
+              {badge.text}
+              {badge.text && badge.highlight && <>{' '}<span className="text-slate-300">•</span>{' '}</>}
+              {badge.highlight && <span className="text-brand-blue font-black">{badge.highlight}</span>}
+            </span>
+          </motion.div>
+        )}
 
         {/* High-Impact Creative & Professional Hero Headline with Balanced Mobile & Desktop Spacing */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex flex-col items-center justify-center text-center my-3 sm:my-6 space-y-2 sm:space-y-4 select-none w-full"
-        >
-          {/* Part 1: Attention */}
-          <div className="flex flex-col items-center w-full">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[64px] font-extrabold uppercase tracking-tight text-brand-navy leading-tight sm:leading-[1.1] font-display">
-              {hero.headline.line1}
-            </h1>
-            <div className="mt-0.5 sm:mt-1.5">
-              <span className="text-3xl sm:text-5xl md:text-6xl lg:text-[76px] font-black uppercase tracking-tight text-brand-blue leading-tight sm:leading-[1.05] font-display relative inline-block drop-shadow-[0_4px_24px_rgba(35,61,255,0.35)]">
-                {hero.headline.highlight1}
-                <span className="absolute -inset-x-3 -inset-y-1 bg-brand-blue/15 blur-xl -z-10 rounded-full pointer-events-none" />
-              </span>
-            </div>
-          </div>
+        {(headline.line1 || headline.highlight1 || headline.line2 || headline.highlight2) && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex flex-col items-center justify-center text-center my-3 sm:my-6 space-y-2 sm:space-y-4 select-none w-full"
+          >
+            {/* Part 1: Attention */}
+            {(headline.line1 || headline.highlight1) && (
+              <div className="flex flex-col items-center w-full">
+                {headline.line1 && (
+                  <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[64px] font-extrabold uppercase tracking-tight text-brand-navy leading-tight sm:leading-[1.1] font-display">
+                    {headline.line1}
+                  </h1>
+                )}
+                {headline.highlight1 && (
+                  <div className="mt-0.5 sm:mt-1.5">
+                    <span className="text-3xl sm:text-5xl md:text-6xl lg:text-[76px] font-black uppercase tracking-tight text-brand-blue leading-tight sm:leading-[1.05] font-display relative inline-block drop-shadow-[0_4px_24px_rgba(35,61,255,0.35)]">
+                      {headline.highlight1}
+                      <span className="absolute -inset-x-3 -inset-y-1 bg-brand-blue/15 blur-xl -z-10 rounded-full pointer-events-none" />
+                    </span>
+                  </div>
+                )}
+              </div>
+            )}
 
-          {/* Part 2: Business */}
-          <div className="flex flex-col items-center w-full pt-1 sm:pt-2">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-[64px] font-extrabold uppercase tracking-tight text-brand-navy leading-tight sm:leading-[1.1] font-display">
-              {hero.headline.line2}
-            </h2>
-            <div className="mt-0.5 sm:mt-1.5">
-              <span className="text-3xl sm:text-5xl md:text-6xl lg:text-[76px] font-black uppercase tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-brand-blue via-indigo-600 to-cyan-500 leading-tight sm:leading-[1.05] font-display relative inline-block drop-shadow-[0_4px_24px_rgba(35,61,255,0.3)]">
-                {hero.headline.highlight2}
-                <span className="absolute -inset-x-3 -inset-y-1 bg-cyan-400/15 blur-xl -z-10 rounded-full pointer-events-none" />
-              </span>
-            </div>
-          </div>
-        </motion.div>
+            {/* Part 2: Business */}
+            {(headline.line2 || headline.highlight2) && (
+              <div className="flex flex-col items-center w-full pt-1 sm:pt-2">
+                {headline.line2 && (
+                  <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-[64px] font-extrabold uppercase tracking-tight text-brand-navy leading-tight sm:leading-[1.1] font-display">
+                    {headline.line2}
+                  </h2>
+                )}
+                {headline.highlight2 && (
+                  <div className="mt-0.5 sm:mt-1.5">
+                    <span className="text-3xl sm:text-5xl md:text-6xl lg:text-[76px] font-black uppercase tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-brand-blue via-indigo-600 to-cyan-500 leading-tight sm:leading-[1.05] font-display relative inline-block drop-shadow-[0_4px_24px_rgba(35,61,255,0.3)]">
+                      {headline.highlight2}
+                      <span className="absolute -inset-x-3 -inset-y-1 bg-cyan-400/15 blur-xl -z-10 rounded-full pointer-events-none" />
+                    </span>
+                  </div>
+                )}
+              </div>
+            )}
+          </motion.div>
+        )}
 
         {/* Dynamic Specialization Rotator - Clean Mobile Alignment (No Awkward Word Break) */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-xs sm:text-base md:text-lg font-medium text-brand-navy mt-4 mb-6 sm:mb-8 text-center"
-        >
-          <span className="text-brand-muted text-xs sm:text-sm font-medium">{hero.specializationsIntro}</span>
-          <div className="h-7 sm:h-8 flex items-center justify-center">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={currentSpecIndex}
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                transition={{ duration: 0.25 }}
-                className="font-extrabold text-brand-blue border-b-2 border-brand-blue pb-0.5 whitespace-nowrap text-xs sm:text-sm md:text-base"
-              >
-                {specializations[currentSpecIndex % specializations.length]}
-              </motion.span>
-            </AnimatePresence>
-          </div>
-        </motion.div>
+        {(hero.specializationsIntro || specializations.length > 0) && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-xs sm:text-base md:text-lg font-medium text-brand-navy mt-4 mb-6 sm:mb-8 text-center"
+          >
+            {hero.specializationsIntro && (
+              <span className="text-brand-muted text-xs sm:text-sm font-medium">{hero.specializationsIntro}</span>
+            )}
+            {specializations.length > 0 && (
+              <div className="h-7 sm:h-8 flex items-center justify-center">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentSpecIndex}
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -5 }}
+                    transition={{ duration: 0.25 }}
+                    className="font-extrabold text-brand-blue border-b-2 border-brand-blue pb-0.5 whitespace-nowrap text-xs sm:text-sm md:text-base"
+                  >
+                    {specializations[currentSpecIndex % specializations.length]}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
+            )}
+          </motion.div>
+        )}
 
         {/* Supporting Copy */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="max-w-2xl text-center space-y-2 mb-6 text-brand-muted text-xs sm:text-base font-normal leading-relaxed px-2"
-        >
-          <p className="font-semibold text-brand-navy text-xs sm:text-base">
-            {hero.lead}
-          </p>
-          <p className="text-slate-600 text-[11px] sm:text-sm leading-relaxed">
-            {hero.description}
-          </p>
-        </motion.div>
+        {(hero.lead || hero.description) && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="max-w-2xl text-center space-y-2 mb-6 text-brand-muted text-xs sm:text-base font-normal leading-relaxed px-2"
+          >
+            {hero.lead && (
+              <p className="font-semibold text-brand-navy text-xs sm:text-base">
+                {hero.lead}
+              </p>
+            )}
+            {hero.description && (
+              <p className="text-slate-600 text-[11px] sm:text-sm leading-relaxed">
+                {hero.description}
+              </p>
+            )}
+          </motion.div>
+        )}
 
         {/* Dedicated "Powered by Aumento" Trust Line in Hero */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.28 }}
-          className="mb-8 flex items-center justify-center select-none"
-        >
-          <a
-            href={hero.partner.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-surface-soft/90 hover:bg-brand-blue-light/50 border border-brand-blue/20 hover:border-brand-blue/40 text-xs text-slate-600 hover:text-brand-blue transition-all shadow-xs backdrop-blur-sm group"
+        {(partner.label || partner.name) && (
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.28 }}
+            className="mb-8 flex items-center justify-center select-none"
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span className="text-[11px] sm:text-xs font-semibold">
-              {hero.partner.label} <strong className="text-brand-navy group-hover:text-brand-blue font-bold transition-colors">{hero.partner.name}</strong>
-            </span>
-            <ArrowRight className="w-3.5 h-3.5 text-brand-blue group-hover:translate-x-0.5 transition-transform shrink-0" />
-          </a>
-        </motion.div>
+            <PartnerTag
+              {...partnerLinkProps}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-surface-soft/90 hover:bg-brand-blue-light/50 border border-brand-blue/20 hover:border-brand-blue/40 text-xs text-slate-600 hover:text-brand-blue transition-all shadow-xs backdrop-blur-sm group"
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+              <span className="text-[11px] sm:text-xs font-semibold">
+                {partner.label}{partner.label && partner.name && ' '}
+                {partner.name && <strong className="text-brand-navy group-hover:text-brand-blue font-bold transition-colors">{partner.name}</strong>}
+              </span>
+              {partner.url && <ArrowRight className="w-3.5 h-3.5 text-brand-blue group-hover:translate-x-0.5 transition-transform shrink-0" />}
+            </PartnerTag>
+          </motion.div>
+        )}
 
         {/* Dual High-Impact Pill CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto px-4 sm:px-0"
-        >
-          {/* Primary CTA in Solid Vibrant Electric Blue */}
-          <Button
-            to={primaryCtaIsInternal ? hero.primaryCta.href : undefined}
-            href={primaryCtaIsInternal ? undefined : hero.primaryCta.href}
-            variant="primary"
-            size="lg"
-            icon={ArrowRight}
-            className="w-full sm:w-auto px-7 sm:px-9 py-3.5 sm:py-4 text-sm sm:text-base font-extrabold rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white shadow-lg shadow-brand-blue/35 hover:shadow-brand-blue/50 hover:scale-105 transition-all duration-300 cursor-pointer justify-center"
+        {(hasPrimaryCta || secondaryCta.label) && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto px-4 sm:px-0"
           >
-            {hero.primaryCta.label}
-          </Button>
+            {/* Primary CTA in Solid Vibrant Electric Blue */}
+            {hasPrimaryCta && (
+              <Button
+                to={primaryCtaIsInternal ? primaryCta.href : undefined}
+                href={primaryCtaIsInternal ? undefined : primaryCta.href}
+                variant="primary"
+                size="lg"
+                icon={ArrowRight}
+                className="w-full sm:w-auto px-7 sm:px-9 py-3.5 sm:py-4 text-sm sm:text-base font-extrabold rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white shadow-lg shadow-brand-blue/35 hover:shadow-brand-blue/50 hover:scale-105 transition-all duration-300 cursor-pointer justify-center"
+              >
+                {primaryCta.label}
+              </Button>
+            )}
 
-          {/* Secondary CTA in Glossy White Pill */}
-          <button
-            onClick={openDiscoveryModal}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-bold rounded-full bg-white hover:bg-brand-surface-soft text-brand-navy border border-brand-border hover:border-brand-blue/40 shadow-card-subtle transition-all duration-300 hover:scale-105 cursor-pointer group"
-          >
-            <span className="text-brand-blue group-hover:scale-110 transition-transform">📞</span>
-            <span>{hero.secondaryCta.label}</span>
-          </button>
-        </motion.div>
+            {/* Secondary CTA in Glossy White Pill */}
+            {secondaryCta.label && (
+              <button
+                onClick={openDiscoveryModal}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-bold rounded-full bg-white hover:bg-brand-surface-soft text-brand-navy border border-brand-border hover:border-brand-blue/40 shadow-card-subtle transition-all duration-300 hover:scale-105 cursor-pointer group"
+              >
+                <span className="text-brand-blue group-hover:scale-110 transition-transform">📞</span>
+                <span>{secondaryCta.label}</span>
+              </button>
+            )}
+          </motion.div>
+        )}
 
         {/* Bottom Verified Trust Metrics Scorecard on Glossy White */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-10 sm:mt-14 w-full max-w-4xl p-4 sm:p-6 sm:py-7 rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-xl border border-brand-blue/20 shadow-glossy hover:shadow-glossy-hover transition-all duration-300 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 md:divide-x divide-slate-100 relative overflow-hidden"
-        >
-          {/* Subtle glossy glass highlight reflection across top */}
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-blue/30 to-transparent pointer-events-none" />
+        {hero.metrics.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-10 sm:mt-14 w-full max-w-4xl p-4 sm:p-6 sm:py-7 rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-xl border border-brand-blue/20 shadow-glossy hover:shadow-glossy-hover transition-all duration-300 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 md:divide-x divide-slate-100 relative overflow-hidden"
+          >
+            {/* Subtle glossy glass highlight reflection across top */}
+            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-blue/30 to-transparent pointer-events-none" />
 
-          {hero.metrics.map((metric, idx) => {
-            const { Icon, className: iconClassName } = metricIcons[idx % metricIcons.length];
-            return (
-              <div key={idx} className="flex flex-col items-center justify-center p-2 sm:p-4 text-center group">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-brand-blue-light/70 text-brand-blue flex items-center justify-center mb-2 sm:mb-2.5 shadow-sm group-hover:scale-110 transition-transform">
-                  <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-blue ${iconClassName} drop-shadow-[0_0_8px_rgba(35,61,255,0.4)]`} />
+            {hero.metrics.map((metric, idx) => {
+              const { Icon, className: iconClassName } = metricIcons[idx % metricIcons.length];
+              return (
+                <div key={idx} className="flex flex-col items-center justify-center p-2 sm:p-4 text-center group">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-brand-blue-light/70 text-brand-blue flex items-center justify-center mb-2 sm:mb-2.5 shadow-sm group-hover:scale-110 transition-transform">
+                    <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-blue ${iconClassName} drop-shadow-[0_0_8px_rgba(35,61,255,0.4)]`} />
+                  </div>
+                  <div className="text-2xl sm:text-4xl font-black font-display text-brand-blue tracking-tight leading-none drop-shadow-[0_2px_10px_rgba(35,61,255,0.2)]">
+                    {metric.value}
+                  </div>
+                  {metric.label && (
+                    <div className="text-[9px] sm:text-[11px] font-extrabold uppercase tracking-widest text-slate-500 mt-1.5 sm:mt-2">
+                      {metric.label}
+                    </div>
+                  )}
+                  <div className="w-10 sm:w-16 h-0.5 bg-gradient-to-r from-brand-blue to-cyan-400 rounded-full mx-auto mt-2 sm:mt-2.5 shadow-[0_0_6px_rgba(35,61,255,0.3)]" />
                 </div>
-                <div className="text-2xl sm:text-4xl font-black font-display text-brand-blue tracking-tight leading-none drop-shadow-[0_2px_10px_rgba(35,61,255,0.2)]">
-                  {metric.value}
-                </div>
-                <div className="text-[9px] sm:text-[11px] font-extrabold uppercase tracking-widest text-slate-500 mt-1.5 sm:mt-2">
-                  {metric.label}
-                </div>
-                <div className="w-10 sm:w-16 h-0.5 bg-gradient-to-r from-brand-blue to-cyan-400 rounded-full mx-auto mt-2 sm:mt-2.5 shadow-[0_0_6px_rgba(35,61,255,0.3)]" />
-              </div>
-            );
-          })}
-        </motion.div>
+              );
+            })}
+          </motion.div>
+        )}
 
       </div>
     </section>

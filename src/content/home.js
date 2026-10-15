@@ -2,9 +2,9 @@ import { toLines, toPipeRows, toSafeLink, toBoolean, normalizeMedia, toPlainText
 import { text, heading, groupList } from './helpers';
 
 /**
- * Homepage content. `homeDefaults` is what renders while WordPress is loading,
- * unreachable, or has an empty field; `mapHomeFields` maps the ACF fields of the
- * WordPress page `home` (see wordpress/acf/page-home.json) into the same shape.
+ * Homepage content. `homeDefaults` renders only while WordPress is loading or when
+ * the `home` page has no ACF fields; `mapHomeFields` maps the ACF fields of that page
+ * (see wordpress/acf/page-home.json) into the same shape, keeping blank values blank.
  */
 export const homeDefaults = {
   hero: {
@@ -334,7 +334,7 @@ const mapPlan = (group) => {
     },
     metrics: toPipeRows(group.metrics, ['value', 'label']).filter((m) => m.value),
     features: toLines(group.features),
-    ctaText: toPlainText(group.cta_label) || 'Get Started'
+    ctaText: toPlainText(group.cta_label)
   };
 };
 
@@ -367,8 +367,7 @@ export function mapHomeFields(f) {
       secondaryCta: { label: text(f, 'hero_secondary_cta_label') },
       metrics: groupList(f, 'hero_metric', 4, (g) => {
         const value = toPlainText(g.value);
-        const label = toPlainText(g.label);
-        return value && label ? { value, label } : null;
+        return value ? { value, label: toPlainText(g.label) } : null;
       })
     },
 
@@ -383,10 +382,16 @@ export function mapHomeFields(f) {
       title: text(f, 'studio_title'),
       subtitle: text(f, 'studio_subtitle'),
       shoots: groupList(f, 'studio_shoot', 8, (g) => {
-        const title = toPlainText(g.title);
         const image = normalizeMedia(g.image);
-        if (!title || !image) return null;
-        return { title, category: toPlainText(g.category), location: toPlainText(g.location), image: image.url };
+        if (!image) return null;
+        const title = toPlainText(g.title);
+        return {
+          title,
+          category: toPlainText(g.category),
+          location: toPlainText(g.location),
+          image: image.url,
+          alt: image.alt || title
+        };
       }),
       tickerLabel: text(f, 'studio_ticker_label'),
       ticker: toLines(f.studio_ticker),

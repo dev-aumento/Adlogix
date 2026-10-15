@@ -86,4 +86,4 @@ VITE_ENABLE_WP_SYNC=false
 
 `VITE_WP_API_URL` is still read as a fallback name for `VITE_WORDPRESS_API_URL`.
 
-Page content and section order (`api.getPage(slug)`, used by every main page) always read from WordPress and fall back to the static defaults in `src/content/` when WordPress is empty or unreachable. `VITE_ENABLE_WP_SYNC` only controls the older bulk collections (services, projects, reels, testimonials, industries, blog, team, settings), and should stay `false` until each one is migrated.
+Page content and section order (`api.getPage(slug)`, used by every main page) always read from WordPress. The static defaults in `src/content/` are used as a whole only when WordPress is unreachable or the page has no fields. Once the page has fields, a field cleared in the admin stays empty, and its text block is hidden on the site. `VITE_ENABLE_WP_SYNC` only controls the older bulk collections (services, projects, reels, testimonials, industries, blog, team, settings), and should stay `false` until each one is migrated.

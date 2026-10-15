@@ -125,20 +125,26 @@ export const ReelShowcase = ({ content }) => {
       </div>
 
       {/* Interactive Helper & Link to Reels Studio */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-        <div className="flex items-center gap-2 text-xs font-semibold text-brand-muted">
-          <Sparkles className="w-4 h-4 text-brand-blue" />
-          <span>{content.helperText}</span>
-        </div>
+      {(content.helperText || content.ctaLabel) && (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          {content.helperText && (
+            <div className="flex items-center gap-2 text-xs font-semibold text-brand-muted">
+              <Sparkles className="w-4 h-4 text-brand-blue" />
+              <span>{content.helperText}</span>
+            </div>
+          )}
 
-        <Link
-          to="/reels"
-          className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-blue hover:text-brand-blue-hover transition-colors group"
-        >
-          <span>{content.ctaLabel}</span>
-          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-        </Link>
-      </div>
+          {content.ctaLabel && (
+            <Link
+              to="/reels"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-blue hover:text-brand-blue-hover transition-colors group sm:ml-auto"
+            >
+              <span>{content.ctaLabel}</span>
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
+          )}
+        </div>
+      )}
     </section>
   );
 };

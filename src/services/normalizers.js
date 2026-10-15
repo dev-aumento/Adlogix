@@ -114,24 +114,3 @@ export function normalizePage(raw) {
     sections: normalizeSectionOrder(raw.adlogix_sections),
   };
 }
-
-/**
- * Fill empty values from `defaults`, following the shape of `defaults`:
- * empty strings, null and empty arrays fall back; non-empty arrays replace the
- * default list as a whole.
- */
-export function withDefaults(value, defaults) {
-  if (Array.isArray(defaults)) {
-    return Array.isArray(value) && value.length > 0 ? value : defaults;
-  }
-  if (isPlainObject(defaults)) {
-    const source = isPlainObject(value) ? value : {};
-    return Object.fromEntries(
-      Object.keys(defaults).map((key) => [key, withDefaults(source[key], defaults[key])])
-    );
-  }
-  if (typeof defaults === 'boolean') {
-    return typeof value === 'boolean' ? value : defaults;
-  }
-  return value === undefined || value === null || value === '' ? defaults : value;
-}

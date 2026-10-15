@@ -5,6 +5,9 @@ import { SectionHeading } from '../ui/SectionHeading';
 import { DynamicIcon } from '../ui/DynamicIcon';
 
 export const ProcessTimeline = ({ content }) => {
+  const { heading, steps } = content;
+  if (!heading.badge && !heading.title && !heading.subtitle && steps.length === 0) return null;
+
   return (
     <section className="py-20 lg:py-28 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,9 +50,11 @@ export const ProcessTimeline = ({ content }) => {
                   {step.title}
                 </h3>
 
-                <p className="text-xs text-brand-muted leading-relaxed">
-                  {step.description}
-                </p>
+                {step.description && (
+                  <p className="text-xs text-brand-muted leading-relaxed">
+                    {step.description}
+                  </p>
+                )}
               </motion.div>
             ))}
           </div>

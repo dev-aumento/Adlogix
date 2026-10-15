@@ -2,7 +2,9 @@
 
 Status: all 14 homepage sections read their text from WordPress. Section order and visibility come from the "Page Sections" box (see `03-page-sections.md`).
 
-The static copy now lives in one place, `homeDefaults` in `src/content/home.js`. It is the safety fallback, not test code, and stays in the codebase.
+The static copy now lives in one place, `homeDefaults` in `src/content/home.js`. It is the safety fallback for when WordPress can't be reached, not test code, and stays in the codebase.
+
+**WordPress is the only source once the page has content.** If the Home page returns its ACF fields, every value comes from WordPress. A cleared field stays cleared, and the element it feeds is not rendered (no empty heading, paragraph, button or wrapper). The static copy is used only as a whole: while the request is loading, when the request fails, or when the page or its fields don't exist.
 
 ## Summary
 
@@ -25,7 +27,7 @@ The static copy now lives in one place, `homeDefaults` in `src/content/home.js`.
 WordPress page "home" ──REST──▶ api.getPage('home') ──▶ normalizePage()
                                                         │  fields (ACF), sections (order)
                                                         ▼
-usePageContent('home') ── mapHomeFields(fields) ── withDefaults(…, homeDefaults)
+usePageContent('home') ── fields present? mapHomeFields(fields) : homeDefaults
         │ content (one object per section key)        order
         ▼                                               ▼
 HomePage ── <PageSections sections={homeSections} order={order} content={content} />
@@ -38,20 +40,20 @@ Adding a dynamic page follows the same pattern: create `src/content/<page>.js` w
 
 ## Fields by tab
 
-All fields are optional. A blank field falls back to its default. Lists use one item per line (or `Value | Label` per line) because ACF Free has no repeater. Fixed numbered groups (Metric 1–4, Shoot 1–8, …) stand in for repeatable items.
+All fields are optional. A blank field hides the text, button or item it feeds. When every field of a section is blank, the whole section is hidden. To hide a section on purpose, untick it in the "Page Sections" box instead of clearing its fields. Lists use one item per line (or `Value | Label` per line) because ACF Free has no repeater. Fixed numbered groups (Metric 1–4, Shoot 1–8, …) stand in for repeatable items.
 
 | Tab (section key) | Fields | Notes |
 |---|---|---|
-| Hero (`hero`) | `hero_badge_text`, `hero_badge_highlight`, `hero_headline_line_1/_highlight_1/_line_2/_highlight_2`, `hero_specializations_intro`, `hero_specializations` (lines), `hero_lead`, `hero_description`, `hero_partner_label/_name/_url`, `hero_primary_cta_label/_link`, `hero_secondary_cta_label`, `hero_metric_1..4` {value, label} | Field keys are unchanged from the old "Homepage Hero" group, so saved hero values carry over. A metric needs both value and label. |
+| Hero (`hero`) | `hero_badge_text`, `hero_badge_highlight`, `hero_headline_line_1/_highlight_1/_line_2/_highlight_2`, `hero_specializations_intro`, `hero_specializations` (lines), `hero_lead`, `hero_description`, `hero_partner_label/_name/_url`, `hero_primary_cta_label/_link`, `hero_secondary_cta_label`, `hero_metric_1..4` {value, label} | Field keys are unchanged from the old "Homepage Hero" group, so saved hero values carry over. A metric needs a value; its label is optional. The primary button needs both a label and a valid link. The partner name links out only when a URL is set. |
 | Client Reels (`reels`) | `reels_badge/_title/_highlight/_subtitle`, `reels_helper_text`, `reels_cta_label` | The reels themselves still come from the reels collection. |
-| Studio Showcase (`studio`) | `studio_badge`, `studio_title`, `studio_subtitle`, `studio_shoot_1..8` {title, category, location, image}, `studio_ticker_label`, `studio_ticker` (lines), `studio_cta_label` | A shoot shows only when it has a title **and** an uploaded image. Until at least one shoot has an image, all 8 default shoots are shown. Once any shoot has an image, only the complete shoots are shown. |
+| Studio Showcase (`studio`) | `studio_badge`, `studio_title`, `studio_subtitle`, `studio_shoot_1..8` {title, category, location, image}, `studio_ticker_label`, `studio_ticker` (lines), `studio_cta_label` | A shoot shows only when it has an uploaded image; title, category and location are optional. **The gallery is hidden until at least one shoot image is uploaded.** The lightbox button hides when `studio_cta_label` is blank. |
 | Brand Marquee (`brands`) | `brands_label`, `brands_list` (`Name \| Sector` lines) | |
 | Services Overview (`services`) | `services_badge/_title/_highlight/_subtitle`, `services_callout_title/_text/_button` | Service cards come from the services collection. |
 | Featured Projects (`projects`) | `projects_badge/_title/_highlight/_subtitle`, `projects_cta_label` | |
 | Industries (`industries`) | `industries_badge/_title/_highlight/_subtitle`, `industries_cta_label` | |
 | Why Adlogix (`why`) | `why_badge/_title/_highlight/_subtitle`, `why_item_1..6` {icon, title, description} | Icon is a dropdown of the icons React knows. An item needs a title. |
 | Our Process (`process`) | `process_badge/_title/_highlight/_subtitle`, `process_step_1..5` {icon, title, description} | Step numbers (01, 02, …) are automatic. |
-| Growth Plans (`plans`) | `plans_badge/_title/_highlight/_subtitle`, `plans_plan_1..3` {name, tagline, is_popular, popular_badge, monthly/quarterly/annual _price/_period/_total, metrics (`Value \| Label` lines), features (lines), cta_label}, `plans_disclaimer`, `plans_help_text`, `plans_help_button` | A plan needs a name and a monthly price; clear either to hide that plan. Empty quarterly/annual prices fall back to the monthly price. |
+| Growth Plans (`plans`) | `plans_badge/_title/_highlight/_subtitle`, `plans_plan_1..3` {name, tagline, is_popular, popular_badge, monthly/quarterly/annual _price/_period/_total, metrics (`Value \| Label` lines), features (lines), cta_label}, `plans_disclaimer`, `plans_help_text`, `plans_help_button` | A plan needs a name and a monthly price; clear either to hide that plan. The Quarterly/Annual toggle appears only when at least one plan has that price; a plan without it shows its monthly price. The plan button hides when `cta_label` is blank. |
 | Video Testimonials (`testimonials`) | `testimonials_badge/_title/_highlight/_subtitle` | Testimonials come from the testimonials collection. |
 | Technology Partner (`aumento`) | `aumento_badge/_title/_text/_card_label/_partner_name/_card_text/_link_label/_link_url` | |
 | Insights (`insights`) | `insights_badge/_title/_highlight/_subtitle`, `insights_cta_label` | Posts come from the blog collection. |
@@ -59,7 +61,9 @@ All fields are optional. A blank field falls back to its default. Lists use one 
 
 "Highlighted words" fields must match part of the title exactly; that part gets the accent colour. If they don't match, the title shows without a highlight.
 
-Links (`*_link`, `*_url`) accept a site path (`/contact`) or an `http(s)://` URL; anything else falls back to the default.
+Links (`*_link`, `*_url`) accept a site path (`/contact`) or an `http(s)://` URL; anything else is treated as blank, so the button or link that needs it is hidden.
+
+Text that is part of the interface rather than the content stays in React: the "Save 10%" / "Save 20%" billing pills, filter labels, and similar UI labels.
 
 ## Example API response (abridged)
 
@@ -91,10 +95,12 @@ Links (`*_link`, `*_url`) accept a site path (`/contact`) or an `http(s)://` URL
 |---|---|---|
 | Request in flight | Defaults (hidden behind the intro loader on first visit) | none |
 | Page `home` not found | All defaults, default section order | Dev: `console.warn` |
-| Page found, some fields blank | WordPress values + defaults for blank fields | none |
+| Page found, field group not assigned / no fields (`acf: []`) | All defaults | none |
+| Page found with fields, some blank | WordPress values only; blank elements are hidden | none |
+| Page found with fields, all of a section blank | That section is hidden | none |
 | Network error, timeout (8 s), HTTP error, non-JSON, missing env var | All defaults, default order | Dev: `console.warn`; **Production: `console.error`** |
 
-The page never renders blank. Responses are cached in memory for 5 minutes, and identical in-flight requests are shared, so the sections that read the homepage content (Studio and Growth Plans on other pages) don't trigger extra requests.
+An outage never blanks the page, because the defaults are used as a whole. Responses are cached in memory for 5 minutes, and identical in-flight requests are shared, so the sections that read the homepage content (Studio and Growth Plans on other pages) don't trigger extra requests.
 
 ## WordPress admin setup
 
@@ -110,7 +116,7 @@ Do not import `wordpress/acf-export.json` yet; it will be rewritten when Reels a
 
 1. `.env.local` (git-ignored): `VITE_WORDPRESS_API_URL=https://adlogix.in/wp-json`, then `npm run dev`.
 2. Change one field per tab in WordPress, reload `http://localhost:3000/`, and confirm each change. The cache only lives in the open tab, so a full reload always fetches fresh content.
-3. Blank a field and confirm the default text returns.
+3. Clear a field (for example the Client Reels badge), update, reload, and confirm that element disappears with no empty gap or placeholder.
 4. Error path: point `VITE_WORDPRESS_API_URL` at a wrong path, restart, and confirm the page still renders fully.
 5. Check desktop and mobile widths, as longer WordPress text can wrap differently.
 6. `npm run build` must succeed.
