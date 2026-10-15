@@ -1,5 +1,5 @@
 import { toLines, toPipeRows, toSafeLink, toBoolean, normalizeMedia, toPlainText } from '../services/normalizers';
-import { text, heading, groupList } from './helpers';
+import { text, heading, groupList, link } from './helpers';
 
 /**
  * Homepage content. `homeDefaults` renders only while WordPress is loading or when
@@ -52,7 +52,8 @@ export const homeDefaults = {
       subtitle: "Real brands. Real campaigns. Creative built to capture attention, cultivate desire, and scale conversions across 9:16 vertical feeds."
     },
     helperText: "Infinite Creative Stream • Hover to pause • Click any reel to watch in HD modal",
-    ctaLabel: "Explore All Client Creative Productions"
+    ctaLabel: "Explore All Client Creative Productions",
+    ctaLink: "/reels"
   },
 
   studio: {
@@ -374,7 +375,8 @@ export function mapHomeFields(f) {
     reels: {
       heading: heading(f, 'reels'),
       helperText: text(f, 'reels_helper_text'),
-      ctaLabel: text(f, 'reels_cta_label')
+      ctaLabel: text(f, 'reels_cta_label'),
+      ctaLink: link(f, 'reels_cta')
     },
 
     studio: {

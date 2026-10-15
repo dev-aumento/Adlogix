@@ -628,6 +628,97 @@
                 "placeholder": ""
             },
             {
+                "key": "field_home_reels_cta_link_type",
+                "label": "Button link",
+                "name": "reels_cta_link_type",
+                "aria-label": "",
+                "type": "button_group",
+                "instructions": "Choose a page of this site, or enter a custom link.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "page": "Page",
+                    "custom": "Custom link"
+                },
+                "default_value": "page",
+                "return_format": "value",
+                "allow_null": 0,
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_home_reels_cta_page",
+                "label": "Page",
+                "name": "reels_cta_page",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "Opens without reloading the site.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_home_reels_cta_link_type",
+                            "operator": "==",
+                            "value": "page"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "/": "Home",
+                    "/about": "About",
+                    "/services": "Services",
+                    "/work": "Work",
+                    "/reels": "Reels",
+                    "/industries": "Industries",
+                    "/testimonials": "Testimonials",
+                    "/blog": "Blog",
+                    "/contact": "Contact",
+                    "/privacy-policy": "Privacy Policy",
+                    "/terms": "Terms"
+                },
+                "default_value": "/reels",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 1,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_home_reels_cta_url",
+                "label": "Custom link",
+                "name": "reels_cta_url",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_home_reels_cta_link_type",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "/contact or https://example.com"
+            },
+            {
                 "key": "field_home_tab_studio",
                 "label": "Studio Showcase",
                 "name": "",

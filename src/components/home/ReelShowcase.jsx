@@ -4,7 +4,7 @@ import { SectionHeading } from '../ui/SectionHeading';
 import { useCMS, useCollection } from '../../hooks/useCMS';
 import { reelCategories } from '../../data/reelsData';
 import { presentCategories } from '../../services/collections';
-import { Link } from 'react-router-dom';
+import { SmartLink } from '../ui/SmartLink';
 
 export const ReelShowcase = ({ content }) => {
   const { openVideoModal } = useCMS();
@@ -18,6 +18,8 @@ export const ReelShowcase = ({ content }) => {
     : reels.filter(r => r.category === activeCategory);
 
   if (reels.length === 0) return null;
+
+  const hasCta = Boolean(content.ctaLabel && content.ctaLink);
 
   // Duplicate reels for continuous infinite horizontal stream
   const loopReels = [...filteredReels, ...filteredReels, ...filteredReels, ...filteredReels];
@@ -146,7 +148,7 @@ export const ReelShowcase = ({ content }) => {
       </div>
 
       {/* Interactive Helper & Link to Reels Studio */}
-      {(content.helperText || content.ctaLabel) && (
+      {(content.helperText || hasCta) && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           {content.helperText && (
             <div className="flex items-center gap-2 text-xs font-semibold text-brand-muted">
@@ -155,14 +157,14 @@ export const ReelShowcase = ({ content }) => {
             </div>
           )}
 
-          {content.ctaLabel && (
-            <Link
-              to="/reels"
+          {hasCta && (
+            <SmartLink
+              href={content.ctaLink}
               className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-blue hover:text-brand-blue-hover transition-colors group sm:ml-auto"
             >
               <span>{content.ctaLabel}</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </Link>
+            </SmartLink>
           )}
         </div>
       )}

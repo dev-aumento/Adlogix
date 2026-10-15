@@ -1,4 +1,4 @@
-import { toPlainText } from '../services/normalizers';
+import { toPlainText, toSafeLink } from '../services/normalizers';
 
 const asObject = (value) =>
   value !== null && typeof value === 'object' && !Array.isArray(value) ? value : {};
@@ -12,6 +12,13 @@ export const heading = (fields, prefix) => ({
   highlight: text(fields, `${prefix}_highlight`),
   subtitle: text(fields, `${prefix}_subtitle`),
 });
+
+/**
+ * `{prefix}_link_type` ("page" | "custom") with `{prefix}_page` (site path from a select)
+ * or `{prefix}_url` (path or http(s) URL) → a safe href, '' when unset.
+ */
+export const link = (fields, prefix) =>
+  toSafeLink(fields[`${prefix}_link_type`] === 'custom' ? fields[`${prefix}_url`] : fields[`${prefix}_page`]);
 
 /**
  * Numbered ACF group fields (`{prefix}_1` … `{prefix}_{count}`) mapped into a list.

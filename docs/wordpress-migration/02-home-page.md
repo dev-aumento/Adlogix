@@ -45,7 +45,7 @@ All fields are optional. A blank field hides the text, button or item it feeds. 
 | Tab (section key) | Fields | Notes |
 |---|---|---|
 | Hero (`hero`) | `hero_badge_text`, `hero_badge_highlight`, `hero_headline_line_1/_highlight_1/_line_2/_highlight_2`, `hero_specializations_intro`, `hero_specializations` (lines), `hero_lead`, `hero_description`, `hero_partner_label/_name/_url`, `hero_primary_cta_label/_link`, `hero_secondary_cta_label`, `hero_metric_1..4` {value, label} | Field keys are unchanged from the old "Homepage Hero" group, so saved hero values carry over. A metric needs a value; its label is optional. The primary button needs both a label and a valid link. The partner name links out only when a URL is set. |
-| Client Reels (`reels`) | `reels_badge/_title/_highlight/_subtitle`, `reels_helper_text`, `reels_cta_label` | Reels are Client Reels entries ticked for this section (`04-collections.md`). |
+| Client Reels (`reels`) | `reels_badge/_title/_highlight/_subtitle`, `reels_helper_text`, `reels_cta_label`, `reels_cta_link_type` (Page / Custom link), `reels_cta_page`, `reels_cta_url` | Reels are Client Reels entries ticked for this section (`04-collections.md`). The button needs a label and a link (see "Button links" below). |
 | Studio Showcase (`studio`) | `studio_badge`, `studio_title`, `studio_subtitle`, `studio_shoot_1..8` {title, category, location, image}, `studio_ticker_label`, `studio_ticker` (lines), `studio_cta_label` | A shoot shows only when it has an uploaded image; title, category and location are optional. **The gallery is hidden until at least one shoot image is uploaded.** The lightbox button hides when `studio_cta_label` is blank. |
 | Brand Marquee (`brands`) | `brands_label`, `brands_list` (`Name \| Sector` lines) | |
 | Services Overview (`services`) | `services_badge/_title/_highlight/_subtitle`, `services_callout_title/_text/_button` | Service cards are Services entries ticked for this section. |
@@ -62,6 +62,26 @@ All fields are optional. A blank field hides the text, button or item it feeds. 
 "Highlighted words" fields must match part of the title exactly; that part gets the accent colour. If they don't match, the title shows without a highlight.
 
 Links (`*_link`, `*_url`) accept a site path (`/contact`) or an `http(s)://` URL; anything else is treated as blank, so the button or link that needs it is hidden.
+
+### Button links (Page / Custom link)
+
+Buttons with a **Button link** setting use three fields with a shared prefix (currently `reels_cta`):
+
+| Field | Type | Use |
+|---|---|---|
+| `{prefix}_link_type` | Button group: Page / Custom link | Which of the two fields below is used. Default: Page. |
+| `{prefix}_page` | Select of the site's pages (Home, About, Services, Work, Reels, Industries, Testimonials, Blog, Contact, Privacy Policy, Terms) | Shown when "Page" is chosen. Empty hides the button. |
+| `{prefix}_url` | Text | Shown when "Custom link" is chosen: a path such as `/services/seo-optimization` or `/contact?service=SEO`, or a full URL. |
+
+React maps them with `link(fields, prefix)` (`src/content/helpers.js`) and renders the button with `SmartLink` (`src/components/ui/SmartLink.jsx`):
+
+- Site paths, and full URLs on this site (`https://adlogix.in/work`), open through the router, without a page reload.
+- Other websites open in a new tab.
+- WordPress-served addresses (`/wp-content/uploads/…`, `/wp-admin/…`) load normally in a new tab, since the router can't render them.
+
+The page list is the set of routes React has. WordPress pages without a React route would show the 404 page, so they are not offered; use "Custom link" for detail pages (`/services/<slug>`, `/work/<slug>`, `/blog/<slug>`).
+
+To give another button the same setting, add the three fields with its prefix to `page-home.json` and use `link(f, '<prefix>')` with `SmartLink` in its component.
 
 Text that is part of the interface rather than the content stays in React: the "Save 10%" / "Save 20%" billing pills, filter labels, and similar UI labels.
 
