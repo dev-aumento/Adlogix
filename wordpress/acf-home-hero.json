@@ -1,0 +1,217 @@
+[
+  {
+    "key": "group_adlogix_home_hero",
+    "title": "Homepage Hero",
+    "fields": [
+      {
+        "key": "field_home_hero_tab_badge",
+        "label": "Badge & Headline",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_home_hero_badge_text",
+        "label": "Badge text",
+        "name": "hero_badge_text",
+        "type": "text",
+        "instructions": "Small pill above the headline.",
+        "default_value": "GUJARAT & INDIA'S PREMIER DIGITAL AGENCY"
+      },
+      {
+        "key": "field_home_hero_badge_highlight",
+        "label": "Badge highlight",
+        "name": "hero_badge_highlight",
+        "type": "text",
+        "instructions": "Blue text after the dot in the badge. Leave empty to hide it.",
+        "default_value": "POWERED BY AUMENTO"
+      },
+      {
+        "key": "field_home_hero_headline_line_1",
+        "label": "Headline line 1",
+        "name": "hero_headline_line_1",
+        "type": "text",
+        "default_value": "WE DON'T JUST GET"
+      },
+      {
+        "key": "field_home_hero_headline_highlight_1",
+        "label": "Headline highlight 1 (blue)",
+        "name": "hero_headline_highlight_1",
+        "type": "text",
+        "default_value": "ATTENTION."
+      },
+      {
+        "key": "field_home_hero_headline_line_2",
+        "label": "Headline line 2",
+        "name": "hero_headline_line_2",
+        "type": "text",
+        "default_value": "WE GROW YOUR"
+      },
+      {
+        "key": "field_home_hero_headline_highlight_2",
+        "label": "Headline highlight 2 (gradient)",
+        "name": "hero_headline_highlight_2",
+        "type": "text",
+        "default_value": "BUSINESS."
+      },
+      {
+        "key": "field_home_hero_tab_copy",
+        "label": "Copy",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_home_hero_specializations_intro",
+        "label": "Specializations intro",
+        "name": "hero_specializations_intro",
+        "type": "text",
+        "default_value": "We specialize in"
+      },
+      {
+        "key": "field_home_hero_specializations",
+        "label": "Rotating specializations",
+        "name": "hero_specializations",
+        "type": "textarea",
+        "instructions": "One per line. They rotate every 2.8 seconds. Keep each short so it fits on one line on mobile.",
+        "rows": 6,
+        "new_lines": "",
+        "default_value": "Performance Marketing\n9:16 Viral Reels & Shoots\nMeta & Google Ads Scale\nHeadless React & Next.js\nShopify D2C Growth\nSearch Engine Optimization (SEO)"
+      },
+      {
+        "key": "field_home_hero_lead",
+        "label": "Lead sentence (bold)",
+        "name": "hero_lead",
+        "type": "text",
+        "default_value": "We Scale Brands with Viral Content, Performance Marketing & Modern Web Solutions."
+      },
+      {
+        "key": "field_home_hero_description",
+        "label": "Supporting paragraph",
+        "name": "hero_description",
+        "type": "textarea",
+        "rows": 3,
+        "new_lines": "",
+        "default_value": "Most agencies only post content. Adlogix combines 9:16 Viral Reels, Meta Ads, Google Ads & Headless Web Engineering to help brands generate real leads, sales, and sustainable revenue."
+      },
+      {
+        "key": "field_home_hero_tab_links",
+        "label": "Partner & Buttons",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_home_hero_partner_label",
+        "label": "Partner line label",
+        "name": "hero_partner_label",
+        "type": "text",
+        "default_value": "Powered by Technology Partner"
+      },
+      {
+        "key": "field_home_hero_partner_name",
+        "label": "Partner name",
+        "name": "hero_partner_name",
+        "type": "text",
+        "default_value": "Aumento Infoway"
+      },
+      {
+        "key": "field_home_hero_partner_url",
+        "label": "Partner URL",
+        "name": "hero_partner_url",
+        "type": "url",
+        "default_value": "https://aumentoinfoway.com/"
+      },
+      {
+        "key": "field_home_hero_primary_cta_label",
+        "label": "Primary button label",
+        "name": "hero_primary_cta_label",
+        "type": "text",
+        "default_value": "Grow My Business"
+      },
+      {
+        "key": "field_home_hero_primary_cta_link",
+        "label": "Primary button link",
+        "name": "hero_primary_cta_link",
+        "type": "text",
+        "instructions": "A site path such as /contact, or a full https:// URL (opens in a new tab).",
+        "default_value": "/contact"
+      },
+      {
+        "key": "field_home_hero_secondary_cta_label",
+        "label": "Secondary button label",
+        "name": "hero_secondary_cta_label",
+        "type": "text",
+        "instructions": "This button always opens the discovery-call form.",
+        "default_value": "Book Strategy Call"
+      },
+      {
+        "key": "field_home_hero_tab_metrics",
+        "label": "Metrics",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_home_hero_metric_1",
+        "label": "Metric 1 (handshake icon)",
+        "name": "hero_metric_1",
+        "type": "group",
+        "layout": "row",
+        "sub_fields": [
+          { "key": "field_home_hero_metric_1_value", "label": "Value", "name": "value", "type": "text", "default_value": "500+" },
+          { "key": "field_home_hero_metric_1_label", "label": "Label", "name": "label", "type": "text", "default_value": "Clients Served" }
+        ]
+      },
+      {
+        "key": "field_home_hero_metric_2",
+        "label": "Metric 2 (sparkles icon)",
+        "name": "hero_metric_2",
+        "type": "group",
+        "layout": "row",
+        "sub_fields": [
+          { "key": "field_home_hero_metric_2_value", "label": "Value", "name": "value", "type": "text", "default_value": "200+" },
+          { "key": "field_home_hero_metric_2_label", "label": "Label", "name": "label", "type": "text", "default_value": "Verified Influencers" }
+        ]
+      },
+      {
+        "key": "field_home_hero_metric_3",
+        "label": "Metric 3 (trophy icon)",
+        "name": "hero_metric_3",
+        "type": "group",
+        "layout": "row",
+        "sub_fields": [
+          { "key": "field_home_hero_metric_3_value", "label": "Value", "name": "value", "type": "text", "default_value": "6+" },
+          { "key": "field_home_hero_metric_3_label", "label": "Label", "name": "label", "type": "text", "default_value": "Years Experience" }
+        ]
+      },
+      {
+        "key": "field_home_hero_metric_4",
+        "label": "Metric 4 (star icon)",
+        "name": "hero_metric_4",
+        "type": "group",
+        "layout": "row",
+        "sub_fields": [
+          { "key": "field_home_hero_metric_4_value", "label": "Value", "name": "value", "type": "text", "default_value": "99%" },
+          { "key": "field_home_hero_metric_4_label", "label": "Label", "name": "label", "type": "text", "default_value": "Satisfaction Rate" }
+        ]
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "page_type",
+          "operator": "==",
+          "value": "front_page"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "show_in_rest": 1
+  }
+]

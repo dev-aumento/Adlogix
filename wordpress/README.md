@@ -67,11 +67,15 @@ This guide explains how to install, configure, and maintain the Headless WordPre
 In your `.env` file on the React application:
 
 ```env
-# URL to your WordPress REST API root
-VITE_WP_API_URL=https://cms.adlogix.agency/wp-json
+# Public, read-only WordPress REST API root (never a /wp-admin URL)
+VITE_WORDPRESS_API_URL=https://adlogix.in/wp-json
 
-# Set to true to fetch live data from WordPress
-VITE_ENABLE_WP_SYNC=true
+# Legacy switch for the bulk collections loaded by CMSContext
+VITE_ENABLE_WP_SYNC=false
 ```
 
-When `VITE_ENABLE_WP_SYNC=false`, the React application operates in standalone mode using curated fallback content.
+`VITE_WP_API_URL` is still read as a fallback name for `VITE_WORDPRESS_API_URL`.
+
+Sections migrated individually (currently the homepage hero, see `docs/wordpress-migration/02-home-hero.md`) always read from WordPress and fall back to static content when it is empty or unreachable. `VITE_ENABLE_WP_SYNC` only controls the older bulk collections (services, projects, reels, testimonials, industries, blog, clients, team, settings), and should stay `false` until each one is migrated.
+
+The homepage hero field group is in `wordpress/acf-home-hero.json` (import it separately from `acf-export.json`).

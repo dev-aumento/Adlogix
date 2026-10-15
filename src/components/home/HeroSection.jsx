@@ -1,23 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Phone, Play, Sparkles, TrendingUp, ShieldCheck, Zap, Star, Trophy, Handshake } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { useCMS } from '../../hooks/useCMS';
+import { useWordPressData } from '../../hooks/useWordPressData';
+import { api } from '../../services/api';
+import { mergeHomeHero } from '../../services/normalizers';
+import { homeHeroFallback } from '../../data/homeHeroData';
+
+// Icons stay in React; WordPress only supplies the metric text, in this order.
+const metricIcons = [
+  { Icon: Handshake, className: '' },
+  { Icon: Sparkles, className: '' },
+  { Icon: Trophy, className: '' },
+  { Icon: Star, className: 'fill-brand-blue' }
+];
 
 export const HeroSection = () => {
   const { settings, openVideoModal, openDiscoveryModal, reels } = useCMS();
   const featuredReel = reels && reels.length > 0 ? reels[0] : null;
 
-  // Rotating Specialization words
-  const specializations = [
-    "Performance Marketing",
-    "9:16 Viral Reels & Shoots",
-    "Meta & Google Ads Scale",
-    "Headless React & Next.js",
-    "Shopify D2C Growth",
-    "Search Engine Optimization (SEO)"
-  ];
+  // While loading, on empty content, or on API failure the static fallback renders,
+  // so the hero never collapses or shifts layout.
+  const { data: wpHero, status: heroStatus } = useWordPressData('home-hero', api.getHomeHero);
+  const { content: hero, missing: missingHeroFields } = useMemo(
+    () => mergeHomeHero(wpHero, homeHeroFallback),
+    [wpHero]
+  );
 
+  useEffect(() => {
+    if (import.meta.env.DEV && heroStatus === 'success' && missingHeroFields.length > 0) {
+      console.warn(
+        `[WordPress] home-hero: empty fields fell back to static content: ${missingHeroFields.join(', ')}`
+      );
+    }
+  }, [heroStatus, missingHeroFields]);
+
+  const specializations = hero.specializations;
   const [currentSpecIndex, setCurrentSpecIndex] = useState(0);
 
   useEffect(() => {
@@ -27,8 +46,13 @@ export const HeroSection = () => {
     return () => clearInterval(interval);
   }, [specializations.length]);
 
+  const primaryCtaIsInternal = hero.primaryCta.href.startsWith('/');
+
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-white text-brand-navy pt-28 pb-20 lg:pt-32 lg:pb-28">
+    <section
+      aria-busy={heroStatus === 'loading'}
+      className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-white text-brand-navy pt-28 pb-20 lg:pt-32 lg:pb-28"
+    >
       {/* Glossy White Mesh & Ambient Blue Lighting */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Soft Radial Ambient Blue Glows */}
@@ -150,7 +174,12 @@ export const HeroSection = () => {
             <span className="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-brand-blue"></span>
           </span>
           <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-brand-navy text-center leading-tight">
-            GUJARAT & INDIA'S PREMIER DIGITAL AGENCY <span className="text-slate-300">•</span> <span className="text-brand-blue font-black">POWERED BY AUMENTO</span>
+            {hero.badge.text}
+            {hero.badge.highlight && (
+              <>
+                {' '}<span className="text-slate-300">•</span> <span className="text-brand-blue font-black">{hero.badge.highlight}</span>
+              </>
+            )}
           </span>
         </motion.div>
 
@@ -164,11 +193,11 @@ export const HeroSection = () => {
           {/* Part 1: Attention */}
           <div className="flex flex-col items-center w-full">
             <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[64px] font-extrabold uppercase tracking-tight text-brand-navy leading-tight sm:leading-[1.1] font-display">
-              WE DON'T JUST GET
+              {hero.headline.line1}
             </h1>
             <div className="mt-0.5 sm:mt-1.5">
               <span className="text-3xl sm:text-5xl md:text-6xl lg:text-[76px] font-black uppercase tracking-tight text-brand-blue leading-tight sm:leading-[1.05] font-display relative inline-block drop-shadow-[0_4px_24px_rgba(35,61,255,0.35)]">
-                ATTENTION.
+                {hero.headline.highlight1}
                 <span className="absolute -inset-x-3 -inset-y-1 bg-brand-blue/15 blur-xl -z-10 rounded-full pointer-events-none" />
               </span>
             </div>
@@ -177,11 +206,11 @@ export const HeroSection = () => {
           {/* Part 2: Business */}
           <div className="flex flex-col items-center w-full pt-1 sm:pt-2">
             <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-[64px] font-extrabold uppercase tracking-tight text-brand-navy leading-tight sm:leading-[1.1] font-display">
-              WE GROW YOUR
+              {hero.headline.line2}
             </h2>
             <div className="mt-0.5 sm:mt-1.5">
               <span className="text-3xl sm:text-5xl md:text-6xl lg:text-[76px] font-black uppercase tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-brand-blue via-indigo-600 to-cyan-500 leading-tight sm:leading-[1.05] font-display relative inline-block drop-shadow-[0_4px_24px_rgba(35,61,255,0.3)]">
-                BUSINESS.
+                {hero.headline.highlight2}
                 <span className="absolute -inset-x-3 -inset-y-1 bg-cyan-400/15 blur-xl -z-10 rounded-full pointer-events-none" />
               </span>
             </div>
@@ -195,7 +224,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-xs sm:text-base md:text-lg font-medium text-brand-navy mt-4 mb-6 sm:mb-8 text-center"
         >
-          <span className="text-brand-muted text-xs sm:text-sm font-medium">We specialize in</span>
+          <span className="text-brand-muted text-xs sm:text-sm font-medium">{hero.specializationsIntro}</span>
           <div className="h-7 sm:h-8 flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.span
@@ -206,7 +235,7 @@ export const HeroSection = () => {
                 transition={{ duration: 0.25 }}
                 className="font-extrabold text-brand-blue border-b-2 border-brand-blue pb-0.5 whitespace-nowrap text-xs sm:text-sm md:text-base"
               >
-                {specializations[currentSpecIndex]}
+                {specializations[currentSpecIndex % specializations.length]}
               </motion.span>
             </AnimatePresence>
           </div>
@@ -220,10 +249,10 @@ export const HeroSection = () => {
           className="max-w-2xl text-center space-y-2 mb-6 text-brand-muted text-xs sm:text-base font-normal leading-relaxed px-2"
         >
           <p className="font-semibold text-brand-navy text-xs sm:text-base">
-            We Scale Brands with Viral Content, Performance Marketing & Modern Web Solutions.
+            {hero.lead}
           </p>
           <p className="text-slate-600 text-[11px] sm:text-sm leading-relaxed">
-            Most agencies only post content. Adlogix combines 9:16 Viral Reels, Meta Ads, Google Ads & Headless Web Engineering to help brands generate real leads, sales, and sustainable revenue.
+            {hero.description}
           </p>
         </motion.div>
 
@@ -235,14 +264,14 @@ export const HeroSection = () => {
           className="mb-8 flex items-center justify-center select-none"
         >
           <a
-            href="https://aumentoinfoway.com/"
+            href={hero.partner.url}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-surface-soft/90 hover:bg-brand-blue-light/50 border border-brand-blue/20 hover:border-brand-blue/40 text-xs text-slate-600 hover:text-brand-blue transition-all shadow-xs backdrop-blur-sm group"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
             <span className="text-[11px] sm:text-xs font-semibold">
-              Powered by Technology Partner <strong className="text-brand-navy group-hover:text-brand-blue font-bold transition-colors">Aumento Infoway</strong>
+              {hero.partner.label} <strong className="text-brand-navy group-hover:text-brand-blue font-bold transition-colors">{hero.partner.name}</strong>
             </span>
             <ArrowRight className="w-3.5 h-3.5 text-brand-blue group-hover:translate-x-0.5 transition-transform shrink-0" />
           </a>
@@ -257,13 +286,14 @@ export const HeroSection = () => {
         >
           {/* Primary CTA in Solid Vibrant Electric Blue */}
           <Button
-            to="/contact"
+            to={primaryCtaIsInternal ? hero.primaryCta.href : undefined}
+            href={primaryCtaIsInternal ? undefined : hero.primaryCta.href}
             variant="primary"
             size="lg"
             icon={ArrowRight}
             className="w-full sm:w-auto px-7 sm:px-9 py-3.5 sm:py-4 text-sm sm:text-base font-extrabold rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white shadow-lg shadow-brand-blue/35 hover:shadow-brand-blue/50 hover:scale-105 transition-all duration-300 cursor-pointer justify-center"
           >
-            Grow My Business
+            {hero.primaryCta.label}
           </Button>
 
           {/* Secondary CTA in Glossy White Pill */}
@@ -272,7 +302,7 @@ export const HeroSection = () => {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-bold rounded-full bg-white hover:bg-brand-surface-soft text-brand-navy border border-brand-border hover:border-brand-blue/40 shadow-card-subtle transition-all duration-300 hover:scale-105 cursor-pointer group"
           >
             <span className="text-brand-blue group-hover:scale-110 transition-transform">📞</span>
-            <span>Book Strategy Call</span>
+            <span>{hero.secondaryCta.label}</span>
           </button>
         </motion.div>
 
@@ -286,61 +316,23 @@ export const HeroSection = () => {
           {/* Subtle glossy glass highlight reflection across top */}
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-blue/30 to-transparent pointer-events-none" />
 
-          {/* Metric 1: 500+ Clients Served */}
-          <div className="flex flex-col items-center justify-center p-2 sm:p-4 text-center group">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-brand-blue-light/70 text-brand-blue flex items-center justify-center mb-2 sm:mb-2.5 shadow-sm group-hover:scale-110 transition-transform">
-              <Handshake className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-blue drop-shadow-[0_0_8px_rgba(35,61,255,0.4)]" />
-            </div>
-            <div className="text-2xl sm:text-4xl font-black font-display text-brand-blue tracking-tight leading-none drop-shadow-[0_2px_10px_rgba(35,61,255,0.2)]">
-              500+
-            </div>
-            <div className="text-[9px] sm:text-[11px] font-extrabold uppercase tracking-widest text-slate-500 mt-1.5 sm:mt-2">
-              Clients Served
-            </div>
-            <div className="w-10 sm:w-16 h-0.5 bg-gradient-to-r from-brand-blue to-cyan-400 rounded-full mx-auto mt-2 sm:mt-2.5 shadow-[0_0_6px_rgba(35,61,255,0.3)]" />
-          </div>
-
-          {/* Metric 2: 200+ Verified Influencers */}
-          <div className="flex flex-col items-center justify-center p-2 sm:p-4 text-center group">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-brand-blue-light/70 text-brand-blue flex items-center justify-center mb-2 sm:mb-2.5 shadow-sm group-hover:scale-110 transition-transform">
-              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-blue drop-shadow-[0_0_8px_rgba(35,61,255,0.4)]" />
-            </div>
-            <div className="text-2xl sm:text-4xl font-black font-display text-brand-blue tracking-tight leading-none drop-shadow-[0_2px_10px_rgba(35,61,255,0.2)]">
-              200+
-            </div>
-            <div className="text-[9px] sm:text-[11px] font-extrabold uppercase tracking-widest text-slate-500 mt-1.5 sm:mt-2">
-              Verified Influencers
-            </div>
-            <div className="w-10 sm:w-16 h-0.5 bg-gradient-to-r from-brand-blue to-cyan-400 rounded-full mx-auto mt-2 sm:mt-2.5 shadow-[0_0_6px_rgba(35,61,255,0.3)]" />
-          </div>
-
-          {/* Metric 3: 6+ Years Work Experience */}
-          <div className="flex flex-col items-center justify-center p-2 sm:p-4 text-center group">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-brand-blue-light/70 text-brand-blue flex items-center justify-center mb-2 sm:mb-2.5 shadow-sm group-hover:scale-110 transition-transform">
-              <Trophy className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-blue drop-shadow-[0_0_8px_rgba(35,61,255,0.4)]" />
-            </div>
-            <div className="text-2xl sm:text-4xl font-black font-display text-brand-blue tracking-tight leading-none drop-shadow-[0_2px_10px_rgba(35,61,255,0.2)]">
-              6+
-            </div>
-            <div className="text-[9px] sm:text-[11px] font-extrabold uppercase tracking-widest text-slate-500 mt-1.5 sm:mt-2">
-              Years Experience
-            </div>
-            <div className="w-10 sm:w-16 h-0.5 bg-gradient-to-r from-brand-blue to-cyan-400 rounded-full mx-auto mt-2 sm:mt-2.5 shadow-[0_0_6px_rgba(35,61,255,0.3)]" />
-          </div>
-
-          {/* Metric 4: 99% Satisfaction Rate */}
-          <div className="flex flex-col items-center justify-center p-2 sm:p-4 text-center group">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-brand-blue-light/70 text-brand-blue flex items-center justify-center mb-2 sm:mb-2.5 shadow-sm group-hover:scale-110 transition-transform">
-              <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-blue fill-brand-blue drop-shadow-[0_0_8px_rgba(35,61,255,0.4)]" />
-            </div>
-            <div className="text-2xl sm:text-4xl font-black font-display text-brand-blue tracking-tight leading-none drop-shadow-[0_2px_10px_rgba(35,61,255,0.2)]">
-              99%
-            </div>
-            <div className="text-[9px] sm:text-[11px] font-extrabold uppercase tracking-widest text-slate-500 mt-1.5 sm:mt-2">
-              Satisfaction Rate
-            </div>
-            <div className="w-10 sm:w-16 h-0.5 bg-gradient-to-r from-brand-blue to-cyan-400 rounded-full mx-auto mt-2 sm:mt-2.5 shadow-[0_0_6px_rgba(35,61,255,0.3)]" />
-          </div>
+          {hero.metrics.map((metric, idx) => {
+            const { Icon, className: iconClassName } = metricIcons[idx % metricIcons.length];
+            return (
+              <div key={idx} className="flex flex-col items-center justify-center p-2 sm:p-4 text-center group">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-brand-blue-light/70 text-brand-blue flex items-center justify-center mb-2 sm:mb-2.5 shadow-sm group-hover:scale-110 transition-transform">
+                  <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-blue ${iconClassName} drop-shadow-[0_0_8px_rgba(35,61,255,0.4)]`} />
+                </div>
+                <div className="text-2xl sm:text-4xl font-black font-display text-brand-blue tracking-tight leading-none drop-shadow-[0_2px_10px_rgba(35,61,255,0.2)]">
+                  {metric.value}
+                </div>
+                <div className="text-[9px] sm:text-[11px] font-extrabold uppercase tracking-widest text-slate-500 mt-1.5 sm:mt-2">
+                  {metric.label}
+                </div>
+                <div className="w-10 sm:w-16 h-0.5 bg-gradient-to-r from-brand-blue to-cyan-400 rounded-full mx-auto mt-2 sm:mt-2.5 shadow-[0_0_6px_rgba(35,61,255,0.3)]" />
+              </div>
+            );
+          })}
         </motion.div>
 
       </div>

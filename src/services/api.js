@@ -7,8 +7,11 @@ import { industriesData } from '../data/industriesData';
 import { blogsData } from '../data/blogsData';
 import { clientsData } from '../data/clientsData';
 import { teamData } from '../data/teamData';
+import { wpGet, wpPost, WordPressApiError } from './client';
+import { normalizePage, normalizeHomeHero } from './normalizers';
 
-const WP_API_URL = import.meta.env.VITE_WP_API_URL || 'https://cms.adlogix.agency/wp-json';
+// Legacy switch for the bulk collections loaded by CMSContext. Sections migrated
+// individually (getHomeHero, ...) are not gated by it.
 const ENABLE_WP_SYNC = import.meta.env.VITE_ENABLE_WP_SYNC === 'true';
 
 // Helper to fetch from WP REST API with timeout & fallback
@@ -18,31 +21,29 @@ async function fetchWP(endpoint, fallbackData) {
   }
 
   try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 4000);
-
-    const response = await fetch(`${WP_API_URL}${endpoint}`, {
-      signal: controller.signal,
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
-    clearTimeout(timeoutId);
-
-    if (!response.ok) {
-      console.warn(`[WordPress CMS] Failed to fetch ${endpoint}. HTTP status: ${response.status}. Using fallback.`);
-      return fallbackData;
-    }
-
-    const data = await response.json();
+    const data = await wpGet(endpoint, { timeout: 4000 });
     return Array.isArray(data) && data.length > 0 ? data : fallbackData;
   } catch (error) {
-    console.warn(`[WordPress CMS] Network error or timeout for ${endpoint}:`, error.message);
+    console.warn(`[WordPress CMS] Failed to fetch ${endpoint}: ${error.message}. Using fallback.`);
     return fallbackData;
   }
 }
 
+async function getPageBySlug(slug, fields = 'id,slug,title,modified,acf') {
+  const pages = await wpGet('/wp/v2/pages', { params: { slug, _fields: fields } });
+  if (!Array.isArray(pages)) {
+    throw new WordPressApiError(`Unexpected response for page "${slug}"`, { code: 'invalid_response' });
+  }
+  return pages.length > 0 ? normalizePage(pages[0]) : null;
+}
+
 export const api = {
+  // Homepage hero: fields on the WordPress page with slug "home". Resolves to null when the page doesn't exist.
+  async getHomeHero() {
+    const page = await getPageBySlug('home');
+    return page ? normalizeHomeHero(page) : null;
+  },
+
   // Global Settings
   async getSettings() {
     return fetchWP('/adlogix/v1/settings', defaultSiteSettings);
@@ -196,18 +197,10 @@ export const api = {
   async submitEnquiry(formData) {
     if (ENABLE_WP_SYNC) {
       try {
-        const response = await fetch(`${WP_API_URL}/adlogix/v1/enquiry`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData)
-        });
-        if (response.ok) {
-          return { success: true, message: "Enquiry submitted successfully to WordPress backend." };
-        }
+        await wpPost('/adlogix/v1/enquiry', formData);
+        return { success: true, message: "Enquiry submitted successfully to WordPress backend." };
       } catch (err) {
-        console.warn("[Form Submission] WordPress endpoint unreachable. Fallback processing locally:", err);
+        console.warn("[Form Submission] WordPress endpoint unreachable. Fallback processing locally:", err.message);
       }
     }
 
