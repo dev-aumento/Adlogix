@@ -70,6 +70,27 @@ export function toSafeLink(value) {
 }
 
 /**
+ * Turn a WordPress menu URL into a same-site path for React Router when possible
+ * (`https://adlogix.in/contact` → `/contact`). External http(s) URLs are kept as-is.
+ */
+export function toAppPath(value) {
+  const link = toSafeLink(value);
+  if (!link) return '';
+  if (link.startsWith('/')) return link;
+  try {
+    const url = new URL(link);
+    const origin = typeof window !== 'undefined' ? window.location.origin : '';
+    if (origin && url.origin === origin) {
+      return `${url.pathname}${url.search}${url.hash}` || '/';
+    }
+    // During SSR / first paint without window, treat known relative site hosts as paths when path-only needed
+    return link;
+  } catch {
+    return '';
+  }
+}
+
+/**
  * Normalize an image from any WordPress shape into `{ url, alt, width, height }`:
  * a WP media object, an ACF image array, or a plain URL string.
  */

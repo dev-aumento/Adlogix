@@ -1,0 +1,448 @@
+[
+    {
+        "key": "group_adlogix_site_header",
+        "title": "Header Content",
+        "fields": [
+            {
+                "key": "field_header_brand_mark",
+                "label": "Brand mark",
+                "name": "brand_mark",
+                "type": "text",
+                "instructions": "Letter shown in the logo square.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "20",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "A",
+                "placeholder": ""
+            },
+            {
+                "key": "field_header_brand_name",
+                "label": "Brand name",
+                "name": "brand_name",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "40",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Adlogix",
+                "placeholder": ""
+            },
+            {
+                "key": "field_header_tagline",
+                "label": "Tagline under brand",
+                "name": "tagline",
+                "type": "text",
+                "instructions": "The word \"Aumento\" is highlighted in blue when present.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "40",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Powered by Aumento",
+                "placeholder": ""
+            },
+            {
+                "key": "field_header_book_call_label",
+                "label": "Book Call label",
+                "name": "book_call_label",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "40",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book Call",
+                "placeholder": ""
+            },
+            {
+                "key": "field_header_book_call_action",
+                "label": "Book Call action",
+                "name": "book_call_action",
+                "type": "button_group",
+                "instructions": "Modal opens the Book Strategy Call popup.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "60",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "modal",
+                "placeholder": "",
+                "choices": {
+                    "modal": "Open discovery modal",
+                    "link": "Go to a link"
+                },
+                "return_format": "value",
+                "allow_null": 0,
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_header_book_call_link_type",
+                "label": "Book Call link",
+                "name": "book_call_link_type",
+                "type": "button_group",
+                "instructions": "Choose a page of this site, or enter a custom link.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_header_book_call_action",
+                            "operator": "==",
+                            "value": "link"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "page": "Page",
+                    "custom": "Custom link"
+                },
+                "default_value": "page",
+                "return_format": "value",
+                "allow_null": 0,
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_header_book_call_page",
+                "label": "Page",
+                "name": "book_call_page",
+                "type": "select",
+                "instructions": "Opens without reloading the site.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_header_book_call_action",
+                            "operator": "==",
+                            "value": "link"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "/": "Home",
+                    "/about": "About",
+                    "/services": "Services",
+                    "/work": "Work",
+                    "/reels": "Reels",
+                    "/industries": "Industries",
+                    "/testimonials": "Testimonials",
+                    "/blog": "Blog",
+                    "/contact": "Contact",
+                    "/privacy-policy": "Privacy Policy",
+                    "/terms": "Terms"
+                },
+                "default_value": "/contact",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 1,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_header_book_call_url",
+                "label": "Custom link",
+                "name": "book_call_url",
+                "type": "text",
+                "instructions": "Site path or full https:// URL.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_header_book_call_action",
+                            "operator": "==",
+                            "value": "link"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "/contact or https://example.com"
+            },
+            {
+                "key": "field_header_primary_cta_label",
+                "label": "Primary button label",
+                "name": "primary_cta_label",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "40",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Let's Talk",
+                "placeholder": ""
+            },
+            {
+                "key": "field_header_primary_cta_link_type",
+                "label": "Primary button link",
+                "name": "primary_cta_link_type",
+                "type": "button_group",
+                "instructions": "Choose a page of this site, or enter a custom link.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "page": "Page",
+                    "custom": "Custom link"
+                },
+                "default_value": "page",
+                "return_format": "value",
+                "allow_null": 0,
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_header_primary_cta_page",
+                "label": "Page",
+                "name": "primary_cta_page",
+                "type": "select",
+                "instructions": "Opens without reloading the site.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_header_primary_cta_link_type",
+                            "operator": "==",
+                            "value": "page"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "/": "Home",
+                    "/about": "About",
+                    "/services": "Services",
+                    "/work": "Work",
+                    "/reels": "Reels",
+                    "/industries": "Industries",
+                    "/testimonials": "Testimonials",
+                    "/blog": "Blog",
+                    "/contact": "Contact",
+                    "/privacy-policy": "Privacy Policy",
+                    "/terms": "Terms"
+                },
+                "default_value": "/contact",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 1,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_header_primary_cta_url",
+                "label": "Custom link",
+                "name": "primary_cta_url",
+                "type": "text",
+                "instructions": "Site path or full https:// URL.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_header_primary_cta_link_type",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "/contact or https://example.com"
+            },
+            {
+                "key": "field_header_mega_footer_text",
+                "label": "Services mega menu footer text",
+                "name": "mega_footer_text",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "60",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Need a custom growth & technology solution?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_header_mega_footer_label",
+                "label": "Mega menu footer link label",
+                "name": "mega_footer_label",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "40",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "View All Capabilities",
+                "placeholder": ""
+            },
+            {
+                "key": "field_header_mega_footer_link_type",
+                "label": "Mega menu footer link",
+                "name": "mega_footer_link_type",
+                "type": "button_group",
+                "instructions": "Choose a page of this site, or enter a custom link.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "page": "Page",
+                    "custom": "Custom link"
+                },
+                "default_value": "page",
+                "return_format": "value",
+                "allow_null": 0,
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_header_mega_footer_page",
+                "label": "Page",
+                "name": "mega_footer_page",
+                "type": "select",
+                "instructions": "Opens without reloading the site.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_header_mega_footer_link_type",
+                            "operator": "==",
+                            "value": "page"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "/": "Home",
+                    "/about": "About",
+                    "/services": "Services",
+                    "/work": "Work",
+                    "/reels": "Reels",
+                    "/industries": "Industries",
+                    "/testimonials": "Testimonials",
+                    "/blog": "Blog",
+                    "/contact": "Contact",
+                    "/privacy-policy": "Privacy Policy",
+                    "/terms": "Terms"
+                },
+                "default_value": "/services",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 1,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_header_mega_footer_url",
+                "label": "Custom link",
+                "name": "mega_footer_url",
+                "type": "text",
+                "instructions": "Site path or full https:// URL.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_header_mega_footer_link_type",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "/contact or https://example.com"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "site_header"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": [
+            "the_content",
+            "excerpt",
+            "discussion",
+            "comments",
+            "revisions",
+            "slug",
+            "author",
+            "format",
+            "page_attributes",
+            "featured_image",
+            "categories",
+            "tags",
+            "send-trackbacks"
+        ],
+        "active": true,
+        "description": "Shared site header. Publish one entry.",
+        "show_in_rest": 1,
+        "display_title": ""
+    }
+]

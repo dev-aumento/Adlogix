@@ -3,7 +3,7 @@
  * Plugin Name: Adlogix Headless Core
  * Plugin URI: https://adlogix.in
  * Description: Core Headless CMS configuration, Custom Post Types, ACF bindings, CORS headers, and REST API endpoints for the Adlogix React Frontend (Powered by Aumento Infoway).
- * Version: 1.3.0
+ * Version: 1.4.0
  * Author: Adlogix & Aumento Infoway
  * License: GPL-2.0+
  */
@@ -17,6 +17,11 @@ class Adlogix_Headless_Core {
     public function __construct() {
         // Register Custom Post Types
         add_action('init', [$this, 'register_post_types']);
+
+        // Appearance → Menus (headless themes often hide this)
+        add_action('after_setup_theme', [$this, 'register_nav_menus'], 100);
+        add_action('admin_menu', [$this, 'ensure_appearance_menus'], 999);
+        add_action('admin_menu', [$this, 'limit_singleton_cpt_add_new'], 999);
 
         // Enable REST API CORS Headers
         add_action('rest_api_init', [$this, 'add_cors_support']);
@@ -497,6 +502,139 @@ class Adlogix_Headless_Core {
     }
 
     /**
+     * Theme menu support + locations used by the React header and footer.
+     * Without this, many headless / block themes hide Appearance → Menus.
+     */
+    public function register_nav_menus() {
+        add_theme_support('menus');
+        register_nav_menus([
+            'primary' => __('Primary Header', 'adlogix'),
+            'footer_marketing' => __('Footer – Marketing & Creative', 'adlogix'),
+            'footer_web' => __('Footer – Web & IT', 'adlogix'),
+            'footer_company' => __('Footer – Company', 'adlogix'),
+            'footer_legal' => __('Footer – Legal / Bottom bar', 'adlogix'),
+        ]);
+    }
+
+    /**
+     * Ensure Appearance → Menus is listed even when the active theme omitted it.
+     */
+    public function ensure_appearance_menus() {
+        if (!current_user_can('edit_theme_options')) {
+            return;
+        }
+
+        global $submenu;
+        $has_menus = false;
+        if (!empty($submenu['themes.php']) && is_array($submenu['themes.php'])) {
+            foreach ($submenu['themes.php'] as $item) {
+                if (isset($item[2]) && $item[2] === 'nav-menus.php') {
+                    $has_menus = true;
+                    break;
+                }
+            }
+        }
+
+        if (!$has_menus) {
+            add_submenu_page(
+                'themes.php',
+                __('Menus', 'adlogix'),
+                __('Menus', 'adlogix'),
+                'edit_theme_options',
+                'nav-menus.php'
+            );
+        }
+    }
+
+    /**
+     * Header / Footer are singletons: hide "Add New" once one entry exists.
+     */
+    public function limit_singleton_cpt_add_new() {
+        foreach (['site_header', 'site_footer'] as $post_type) {
+            $counts = wp_count_posts($post_type);
+            if (!$counts) {
+                continue;
+            }
+            $total = (int) ($counts->publish ?? 0) + (int) ($counts->draft ?? 0) + (int) ($counts->pending ?? 0) + (int) ($counts->private ?? 0);
+            if ($total >= 1) {
+                remove_submenu_page("edit.php?post_type={$post_type}", "post-new.php?post_type={$post_type}");
+            }
+        }
+    }
+
+    /**
+     * Nested menu tree for a location. Empty array when nothing is assigned.
+     * Badge: CSS class "badge-hot" → "HOT", or "badge-NEW" → "NEW".
+     */
+    private function get_menu_tree_for_location($location) {
+        $locations = get_nav_menu_locations();
+        if (empty($locations[$location])) {
+            return [];
+        }
+
+        $items = wp_get_nav_menu_items($locations[$location]);
+        if (!$items || is_wp_error($items)) {
+            return [];
+        }
+
+        $nodes = [];
+        $children_of = [];
+        foreach ($items as $item) {
+            $id = (int) $item->ID;
+            $parent = (int) $item->menu_item_parent;
+            $classes = array_values(array_filter((array) $item->classes));
+            $badge = '';
+            foreach ($classes as $class) {
+                if ($class === 'badge-hot') {
+                    $badge = 'HOT';
+                    break;
+                }
+                if (str_starts_with($class, 'badge-') && strlen($class) > 6) {
+                    $badge = strtoupper(substr($class, 6));
+                    break;
+                }
+            }
+
+            $nodes[$id] = [
+                'id' => $id,
+                'title' => html_entity_decode($item->title, ENT_QUOTES, 'UTF-8'),
+                'url' => $item->url,
+                'target' => $item->target ?: '',
+                'description' => html_entity_decode((string) $item->description, ENT_QUOTES, 'UTF-8'),
+                'badge' => $badge,
+                'classes' => $classes,
+                'children' => [],
+            ];
+            $children_of[$parent][] = $id;
+        }
+
+        $build = function ($id) use (&$build, $nodes, $children_of) {
+            $node = $nodes[$id];
+            $node['children'] = [];
+            foreach ($children_of[$id] ?? [] as $child_id) {
+                $node['children'][] = $build($child_id);
+            }
+            return $node;
+        };
+
+        $tree = [];
+        foreach ($children_of[0] ?? [] as $root_id) {
+            $tree[] = $build($root_id);
+        }
+
+        return $tree;
+    }
+
+    public function get_menus_response() {
+        $registered = get_registered_nav_menus();
+        $out = [];
+        foreach (array_keys($registered) as $location) {
+            $out[$location] = $this->get_menu_tree_for_location($location);
+        }
+        return $out;
+    }
+
+    /**
      * Register Custom Post Types with REST API support.
      * Content lives in the ACF groups from wordpress/acf/post-type-*.json; "page-attributes"
      * provides the Order box that sorts entries on the site.
@@ -581,6 +719,41 @@ class Adlogix_Headless_Core {
             'has_archive' => true,
             'rewrite' => ['slug' => 'industries'],
         ]);
+
+        // 6–7. Shared layout (one published entry each; not public on the WP front end)
+        register_post_type('site_header', [
+            'labels' => [
+                'name' => __('Site Header', 'adlogix'),
+                'singular_name' => __('Site Header', 'adlogix'),
+                'add_new_item' => __('Add Site Header', 'adlogix'),
+                'edit_item' => __('Edit Site Header', 'adlogix'),
+            ],
+            'public' => false,
+            'show_ui' => true,
+            'show_in_menu' => true,
+            'show_in_rest' => true,
+            'rest_base' => 'site-header',
+            'supports' => ['title'],
+            'menu_icon' => 'dashicons-heading',
+            'has_archive' => false,
+        ]);
+
+        register_post_type('site_footer', [
+            'labels' => [
+                'name' => __('Site Footer', 'adlogix'),
+                'singular_name' => __('Site Footer', 'adlogix'),
+                'add_new_item' => __('Add Site Footer', 'adlogix'),
+                'edit_item' => __('Edit Site Footer', 'adlogix'),
+            ],
+            'public' => false,
+            'show_ui' => true,
+            'show_in_menu' => true,
+            'show_in_rest' => true,
+            'rest_base' => 'site-footer',
+            'supports' => ['title'],
+            'menu_icon' => 'dashicons-table-row-after',
+            'has_archive' => false,
+        ]);
     }
 
     /**
@@ -617,6 +790,54 @@ class Adlogix_Headless_Core {
             'callback' => [$this, 'handle_enquiry_submission'],
             'permission_callback' => '__return_true',
         ]);
+
+        // Nav menus by location (Primary Header, Footer columns, …)
+        register_rest_route('adlogix/v1', '/menus', [
+            'methods' => 'GET',
+            'callback' => [$this, 'get_menus_response'],
+            'permission_callback' => '__return_true',
+        ]);
+
+        // Shared header + footer ACF + menus (public read; CPTs stay non-public)
+        register_rest_route('adlogix/v1', '/layout', [
+            'methods' => 'GET',
+            'callback' => [$this, 'get_layout_response'],
+            'permission_callback' => '__return_true',
+        ]);
+    }
+
+    /**
+     * Latest published Site Header / Site Footer ACF fields plus menu trees.
+     */
+    public function get_layout_response() {
+        return [
+            'header' => $this->get_singleton_acf('site_header'),
+            'footer' => $this->get_singleton_acf('site_footer'),
+            'menus' => $this->get_menus_response(),
+        ];
+    }
+
+    private function get_singleton_acf($post_type) {
+        $posts = get_posts([
+            'post_type' => $post_type,
+            'post_status' => 'publish',
+            'numberposts' => 1,
+            'orderby' => 'modified',
+            'order' => 'DESC',
+        ]);
+
+        if (!$posts) {
+            return null;
+        }
+
+        $post = $posts[0];
+        $acf = function_exists('get_fields') ? get_fields($post->ID) : [];
+
+        return [
+            'id' => (int) $post->ID,
+            'title' => get_the_title($post),
+            'acf' => is_array($acf) ? $acf : [],
+        ];
     }
 
     /**

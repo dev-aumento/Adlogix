@@ -15,6 +15,15 @@ import {
   normalizeTestimonial,
   normalizeIndustry
 } from './collections';
+import {
+  defaultHeader,
+  defaultFooter,
+  defaultFooterMenus,
+  normalizeHeader,
+  normalizeFooter,
+  mapPrimaryNavigation,
+  mapFooterLinks
+} from '../content/layout';
 
 // Legacy switch for blog posts, team, settings and the enquiry form. Pages and the
 // migrated collections (services, projects, reels, testimonials, industries) ignore it.
@@ -78,6 +87,44 @@ export const api = {
   // Global Settings
   async getSettings() {
     return fetchWP('/adlogix/v1/settings', defaultSiteSettings);
+  },
+
+  /**
+   * Shared header, footer and nav menus from `/adlogix/v1/layout`.
+   * Always tries WordPress (not gated by VITE_ENABLE_WP_SYNC).
+   */
+  async getLayout() {
+    try {
+      const data = await wpGet('/adlogix/v1/layout');
+      const menuMap = data?.menus && typeof data.menus === 'object' ? data.menus : {};
+
+      const footerMenus = {
+        marketing: mapFooterLinks(menuMap.footer_marketing),
+        web: mapFooterLinks(menuMap.footer_web),
+        company: mapFooterLinks(menuMap.footer_company),
+        legal: mapFooterLinks(menuMap.footer_legal),
+      };
+
+      return {
+        header: normalizeHeader(data?.header) || defaultHeader,
+        footer: normalizeFooter(data?.footer) || defaultFooter,
+        navigation: mapPrimaryNavigation(menuMap.primary, defaultSiteSettings.navigation),
+        footerMenus: {
+          marketing: footerMenus.marketing.length ? footerMenus.marketing : defaultFooterMenus.marketing,
+          web: footerMenus.web.length ? footerMenus.web : defaultFooterMenus.web,
+          company: footerMenus.company.length ? footerMenus.company : defaultFooterMenus.company,
+          legal: footerMenus.legal.length ? footerMenus.legal : defaultFooterMenus.legal,
+        },
+      };
+    } catch (error) {
+      reportWordPressIssue('Loading layout', error);
+      return {
+        header: defaultHeader,
+        footer: defaultFooter,
+        navigation: defaultSiteSettings.navigation,
+        footerMenus: defaultFooterMenus,
+      };
+    }
   },
 
   // Collections managed as WordPress custom post types

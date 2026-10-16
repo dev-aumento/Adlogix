@@ -1,0 +1,301 @@
+[
+    {
+        "key": "group_adlogix_site_footer",
+        "title": "Footer Content",
+        "fields": [
+            {
+                "key": "field_footer_brand_mark",
+                "label": "Brand mark",
+                "name": "brand_mark",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "20",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "A",
+                "placeholder": ""
+            },
+            {
+                "key": "field_footer_brand_name",
+                "label": "Brand name",
+                "name": "brand_name",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "40",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Adlogix",
+                "placeholder": ""
+            },
+            {
+                "key": "field_footer_description",
+                "label": "Brand description",
+                "name": "description",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Adlogix is a full-service creative digital marketing, performance advertising, and technology agency. We combine scroll-stopping creative with high-converting web engineering.",
+                "placeholder": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_footer_partner_label",
+                "label": "Partner box label",
+                "name": "partner_label",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "40",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Technology Partner",
+                "placeholder": ""
+            },
+            {
+                "key": "field_footer_partner_text",
+                "label": "Partner box text",
+                "name": "partner_text",
+                "type": "textarea",
+                "instructions": "Shown before the partner name link.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "60",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Digital execution & technology infrastructure powered by",
+                "placeholder": "",
+                "rows": 2,
+                "new_lines": ""
+            },
+            {
+                "key": "field_footer_partner_name",
+                "label": "Partner name",
+                "name": "partner_name",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "40",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Aumento Infoway",
+                "placeholder": ""
+            },
+            {
+                "key": "field_footer_partner_url",
+                "label": "Partner URL",
+                "name": "partner_url",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "60",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "https://aumentoinfoway.com/",
+                "placeholder": ""
+            },
+            {
+                "key": "field_footer_col_marketing_title",
+                "label": "Column 1 title",
+                "name": "col_marketing_title",
+                "type": "text",
+                "instructions": "Links come from Appearance - Menus - Footer Marketing menu.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Marketing & Creative",
+                "placeholder": ""
+            },
+            {
+                "key": "field_footer_col_web_title",
+                "label": "Column 2 title",
+                "name": "col_web_title",
+                "type": "text",
+                "instructions": "Links from Footer Web menu.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Web & IT Solutions",
+                "placeholder": ""
+            },
+            {
+                "key": "field_footer_col_company_title",
+                "label": "Column 3 title",
+                "name": "col_company_title",
+                "type": "text",
+                "instructions": "Links from Footer Company menu.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "34",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Company & Contact",
+                "placeholder": ""
+            },
+            {
+                "key": "field_footer_email",
+                "label": "Contact email",
+                "name": "email",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "hello@adlogix.agency",
+                "placeholder": ""
+            },
+            {
+                "key": "field_footer_phone",
+                "label": "Contact phone",
+                "name": "phone",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "+1 (800) 592-3564",
+                "placeholder": ""
+            },
+            {
+                "key": "field_footer_instagram",
+                "label": "Instagram URL",
+                "name": "instagram",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "https://instagram.com/adlogix.agency",
+                "placeholder": ""
+            },
+            {
+                "key": "field_footer_linkedin",
+                "label": "LinkedIn URL",
+                "name": "linkedin",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "https://linkedin.com/company/adlogix",
+                "placeholder": ""
+            },
+            {
+                "key": "field_footer_twitter",
+                "label": "Twitter / X URL",
+                "name": "twitter",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "34",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "https://twitter.com/adlogix_agency",
+                "placeholder": ""
+            },
+            {
+                "key": "field_footer_copyright",
+                "label": "Copyright line",
+                "name": "copyright",
+                "type": "text",
+                "instructions": "Year is added automatically. Partner name links after this text.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Adlogix Agency. All rights reserved. Technology partner",
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "site_footer"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": [
+            "the_content",
+            "excerpt",
+            "discussion",
+            "comments",
+            "revisions",
+            "slug",
+            "author",
+            "format",
+            "page_attributes",
+            "featured_image",
+            "categories",
+            "tags",
+            "send-trackbacks"
+        ],
+        "active": true,
+        "description": "Shared site footer. Publish one entry.",
+        "show_in_rest": 1,
+        "display_title": ""
+    }
+]

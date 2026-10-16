@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { api } from '../services/api';
 import { defaultSiteSettings } from '../data/siteSettings';
+import { defaultHeader, defaultFooter, defaultFooterMenus } from '../content/layout';
 import { servicesData } from '../data/servicesData';
 import { projectsData } from '../data/projectsData';
 import { clientReelsData } from '../data/reelsData';
@@ -19,6 +20,9 @@ const linkTestimonialsToProjects = (testimonials, projects) => {
 
 export const CMSProvider = ({ children }) => {
   const [settings, setSettings] = useState(defaultSiteSettings);
+  const [header, setHeader] = useState(defaultHeader);
+  const [footer, setFooter] = useState(defaultFooter);
+  const [footerMenus, setFooterMenus] = useState(defaultFooterMenus);
   const [services, setServices] = useState(servicesData);
   const [projects, setProjects] = useState(projectsData);
   const [reels, setReels] = useState(clientReelsData);
@@ -40,6 +44,7 @@ export const CMSProvider = ({ children }) => {
       try {
         const [
           fetchedSettings,
+          fetchedLayout,
           fetchedServices,
           fetchedProjects,
           fetchedReels,
@@ -49,6 +54,7 @@ export const CMSProvider = ({ children }) => {
           fetchedTeam
         ] = await Promise.all([
           api.getSettings(),
+          api.getLayout(),
           api.getServices(),
           api.getProjects(),
           api.getReels(),
@@ -59,7 +65,14 @@ export const CMSProvider = ({ children }) => {
         ]);
 
         if (isMounted) {
-          setSettings(fetchedSettings);
+          setSettings({
+            ...defaultSiteSettings,
+            ...fetchedSettings,
+            navigation: fetchedLayout.navigation,
+          });
+          setHeader(fetchedLayout.header);
+          setFooter(fetchedLayout.footer);
+          setFooterMenus(fetchedLayout.footerMenus);
           setServices(fetchedServices);
           setProjects(fetchedProjects);
           setReels(fetchedReels);
@@ -103,6 +116,9 @@ export const CMSProvider = ({ children }) => {
 
   const value = {
     settings,
+    header,
+    footer,
+    footerMenus,
     services,
     projects,
     reels,

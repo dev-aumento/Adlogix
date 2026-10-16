@@ -20,9 +20,8 @@ This guide explains how to install, configure, and maintain the Headless WordPre
 2. Go to **WordPress Admin > Plugins > Installed Plugins** and click **Activate** on **Adlogix Headless Core**.
 
 ### Step 2: Install Recommended Companion Plugins
-- **Advanced Custom Fields (ACF Pro)** (or ACF Free) - For structured metadata.
-- **WP REST API Menus** (Optional) - For dynamic multi-level navigation menus.
-- **Application Passwords / JWT Authentication** (Optional) - For authenticated editorial previews.
+- **Advanced Custom Fields (ACF Free or Pro)** – structured fields for pages and post types.
+- **Application Passwords / JWT Authentication** (Optional) – authenticated editorial previews.
 
 ### Step 3: Import ACF Field Groups
 Page content uses one field group per page (`wordpress/acf/page-<slug>.json`); each post type has its own file (`wordpress/acf/post-type-<type>.json`):
@@ -30,6 +29,8 @@ Page content uses one field group per page (`wordpress/acf/page-<slug>.json`); e
 | File | Used by | Docs |
 |---|---|---|
 | `acf/page-home.json` | Home (static front page, slug `home`) | `docs/wordpress-migration/02-home-page.md` |
+| `acf/post-type-header.json` | Site Header (shared) | `docs/wordpress-migration/07-header-footer.md` |
+| `acf/post-type-footer.json` | Site Footer (shared) | same |
 | `acf/post-type-reels.json` | Client Reels | `docs/wordpress-migration/04-collections.md` |
 | `acf/post-type-projects.json` | Projects | same |
 | `acf/post-type-services.json` | Services | same |
@@ -44,6 +45,9 @@ Plugin version 1.1.0 adds a **Page Sections** box to the page editor sidebar. Dr
 
 ### Step 5: Media uploads (SVG, JFIF, large videos)
 Plugin version 1.3.0 accepts SVG (sanitized; Editors and Administrators only) and JFIF (saved as `.jpg`). The upload size limit is a PHP setting of the WordPress container: apply `wordpress/php/uploads.ini` on the VPS as described in `docs/wordpress-migration/05-media-uploads.md`.
+
+### Step 6: Header, Footer & Menus
+Plugin **1.4.0** registers **Site Header** / **Site Footer** post types and restores **Appearance → Menus** with five locations (Primary Header + four footer menus). Navigation is managed in Menus; brand/CTAs/socials live in the Header/Footer entries. See `docs/wordpress-migration/07-header-footer.md`.
 
 ---
 
