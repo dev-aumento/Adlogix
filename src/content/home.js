@@ -110,7 +110,8 @@ export const homeDefaults = {
     callout: {
       title: "Looking for a combined Marketing + Web Infrastructure retainer?",
       text: "We design tailored monthly growth partnerships that align creative production with headless development.",
-      buttonLabel: "Custom Scope Proposal"
+      buttonLabel: "Custom Scope Proposal",
+      buttonLink: "/contact"
     }
   },
 
@@ -121,7 +122,8 @@ export const homeDefaults = {
       highlight: "Measurable Impact",
       subtitle: "Explore how we combine direct-response creative, performance media, and cutting-edge web development to unlock sustainable growth."
     },
-    ctaLabel: "View Complete Portfolio & Results →"
+    ctaLabel: "View Complete Portfolio & Results →",
+    ctaLink: "/work"
   },
 
   industries: {
@@ -131,7 +133,8 @@ export const homeDefaults = {
       highlight: "Industry's Nuances",
       subtitle: "We tailor our creative frameworks, acquisition funnels, and web architectures to match the distinct buyer journeys of specialized markets."
     },
-    ctaLabel: "Explore All Industry Landing Pages & Solutions →"
+    ctaLabel: "Explore All Industry Landing Pages & Solutions →",
+    ctaLink: "/industries"
   },
 
   why: {
@@ -289,7 +292,8 @@ export const homeDefaults = {
       highlight: "Move Businesses Forward",
       subtitle: "Deep-dive frameworks, technical SEO teardowns, short-form video strategies, and modern headless engineering guides."
     },
-    ctaLabel: "Explore All Insights"
+    ctaLabel: "Explore All Insights",
+    ctaLink: "/blog"
   },
 
   cta: {
@@ -410,13 +414,14 @@ export function mapHomeFields(f) {
       callout: {
         title: text(f, 'services_callout_title'),
         text: text(f, 'services_callout_text'),
-        buttonLabel: text(f, 'services_callout_button')
+        buttonLabel: text(f, 'services_callout_button'),
+        buttonLink: link(f, 'services_callout')
       }
     },
 
-    projects: { heading: heading(f, 'projects'), ctaLabel: text(f, 'projects_cta_label') },
+    projects: { heading: heading(f, 'projects'), ctaLabel: text(f, 'projects_cta_label'), ctaLink: link(f, 'projects_cta') },
 
-    industries: { heading: heading(f, 'industries'), ctaLabel: text(f, 'industries_cta_label') },
+    industries: { heading: heading(f, 'industries'), ctaLabel: text(f, 'industries_cta_label'), ctaLink: link(f, 'industries_cta') },
 
     why: { heading: heading(f, 'why'), items: groupList(f, 'why_item', 6, mapIconItem) },
 
@@ -446,7 +451,7 @@ export function mapHomeFields(f) {
       linkUrl: toSafeLink(f.aumento_link_url)
     },
 
-    insights: { heading: heading(f, 'insights'), ctaLabel: text(f, 'insights_cta_label') },
+    insights: { heading: heading(f, 'insights'), ctaLabel: text(f, 'insights_cta_label'), ctaLink: link(f, 'insights_cta') },
 
     cta: {
       badge: text(f, 'cta_badge'),

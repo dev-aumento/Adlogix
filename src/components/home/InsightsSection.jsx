@@ -3,11 +3,13 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Clock, Calendar, ArrowUpRight } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
+import { SmartLink } from '../ui/SmartLink';
 import { useCMS } from '../../hooks/useCMS';
 
 export const InsightsSection = ({ content }) => {
   const { blogs } = useCMS();
   const { heading } = content;
+  const hasCta = Boolean(content.ctaLabel && content.ctaLink);
   const hasHeading = Boolean(heading.badge || heading.title || heading.subtitle);
 
   return (
@@ -15,7 +17,7 @@ export const InsightsSection = ({ content }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading & View All Button */}
-        {(hasHeading || content.ctaLabel) && (
+        {(hasHeading || hasCta) && (
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
             <SectionHeading
               badge={heading.badge}
@@ -27,14 +29,14 @@ export const InsightsSection = ({ content }) => {
               className="max-w-2xl"
             />
 
-            {content.ctaLabel && (
-              <Link
-                to="/blog"
+            {hasCta && (
+              <SmartLink
+                href={content.ctaLink}
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-blue hover:text-brand-blue-hover transition-colors group"
               >
                 <span>{content.ctaLabel}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </SmartLink>
             )}
           </div>
         )}

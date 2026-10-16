@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { FolderKanban } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { ProjectCard } from '../ui/ProjectCard';
+import { SmartLink } from '../ui/SmartLink';
 import { useCollection } from '../../hooks/useCMS';
 import { projectCategories } from '../../data/projectsData';
 import { presentCategories } from '../../services/collections';
 
 export const FeaturedProjects = ({ content }) => {
   const projects = useCollection('projects', 'home');
+  const hasCta = Boolean(content.ctaLabel && content.ctaLink);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const categories = presentCategories(projects, projectCategories.slice(1));
@@ -87,14 +88,14 @@ export const FeaturedProjects = ({ content }) => {
         </AnimatePresence>
 
         {/* View All Projects CTA */}
-        {content.ctaLabel && (
+        {hasCta && (
           <div className="mt-12 text-center">
-            <Link
-              to="/work"
+            <SmartLink
+              href={content.ctaLink}
               className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-navy hover:bg-brand-navy-dark text-white font-bold text-sm transition-all shadow-lg shadow-brand-navy/20"
             >
               {content.ctaLabel}
-            </Link>
+            </SmartLink>
           </div>
         )}
 

@@ -48,15 +48,15 @@ All fields are optional. A blank field hides the text, button or item it feeds. 
 | Client Reels (`reels`) | `reels_badge/_title/_highlight/_subtitle`, `reels_helper_text`, `reels_cta_label`, `reels_cta_link_type` (Page / Custom link), `reels_cta_page`, `reels_cta_url` | Reels are Client Reels entries ticked for this section (`04-collections.md`). The button needs a label and a link (see "Button links" below). |
 | Studio Showcase (`studio`) | `studio_badge`, `studio_title`, `studio_subtitle`, `studio_shoot_1..8` {title, category, location, image}, `studio_ticker_label`, `studio_ticker` (lines), `studio_cta_label` | A shoot shows only when it has an uploaded image; title, category and location are optional. **The gallery is hidden until at least one shoot image is uploaded.** The lightbox button hides when `studio_cta_label` is blank. |
 | Brand Marquee (`brands`) | `brands_label`, `brands_list` (`Name \| Sector` lines) | |
-| Services Overview (`services`) | `services_badge/_title/_highlight/_subtitle`, `services_callout_title/_text/_button` | Service cards are Services entries ticked for this section. |
-| Featured Projects (`projects`) | `projects_badge/_title/_highlight/_subtitle`, `projects_cta_label` | |
-| Industries (`industries`) | `industries_badge/_title/_highlight/_subtitle`, `industries_cta_label` | |
+| Services Overview (`services`) | `services_badge/_title/_highlight/_subtitle`, `services_callout_title/_text/_button`, `services_callout_link_type` / `_page` / `_url` | Service cards are Services entries ticked for this section. Callout button needs label + link (see "Button links"). |
+| Featured Projects (`projects`) | `projects_badge/_title/_highlight/_subtitle`, `projects_cta_label`, `projects_cta_link_type` / `_page` / `_url` | Button needs label + link. |
+| Industries (`industries`) | `industries_badge/_title/_highlight/_subtitle`, `industries_cta_label`, `industries_cta_link_type` / `_page` / `_url` | Button needs label + link. |
 | Why Adlogix (`why`) | `why_badge/_title/_highlight/_subtitle`, `why_item_1..6` {icon, title, description} | Icon is a dropdown of the icons React knows. An item needs a title. |
 | Our Process (`process`) | `process_badge/_title/_highlight/_subtitle`, `process_step_1..5` {icon, title, description} | Step numbers (01, 02, …) are automatic. |
 | Growth Plans (`plans`) | `plans_badge/_title/_highlight/_subtitle`, `plans_plan_1..3` {name, tagline, is_popular, popular_badge, monthly/quarterly/annual _price/_period/_total, metrics (`Value \| Label` lines), features (lines), cta_label}, `plans_disclaimer`, `plans_help_text`, `plans_help_button` | A plan needs a name and a monthly price; clear either to hide that plan. The Quarterly/Annual toggle appears only when at least one plan has that price; a plan without it shows its monthly price. The plan button hides when `cta_label` is blank. |
 | Video Testimonials (`testimonials`) | `testimonials_badge/_title/_highlight/_subtitle` | Testimonials are entries ticked for this section. |
 | Technology Partner (`aumento`) | `aumento_badge/_title/_text/_card_label/_partner_name/_card_text/_link_label/_link_url` | |
-| Insights (`insights`) | `insights_badge/_title/_highlight/_subtitle`, `insights_cta_label` | Posts come from the blog collection. |
+| Insights (`insights`) | `insights_badge/_title/_highlight/_subtitle`, `insights_cta_label`, `insights_cta_link_type` / `_page` / `_url` | Posts come from the blog collection. Button needs label + link. |
 | Closing CTA (`cta`) | `cta_badge/_title/_highlight/_text`, `cta_options` (`Value \| Label` lines), `cta_button_label`, `cta_alt_text`, `cta_alt_link_label`, `cta_trust_badges` (lines) | The option value is sent to `/contact?service=`. |
 
 "Highlighted words" fields must match part of the title exactly; that part gets the accent colour. If they don't match, the title shows without a highlight.
@@ -65,7 +65,7 @@ Links (`*_link`, `*_url`) accept a site path (`/contact`) or an `http(s)://` URL
 
 ### Button links (Page / Custom link)
 
-Buttons with a **Button link** setting use three fields with a shared prefix (currently `reels_cta`):
+Buttons with a **Button link** setting use three fields with a shared prefix (`reels_cta`, `services_callout`, `projects_cta`, `industries_cta`, `insights_cta`):
 
 | Field | Type | Use |
 |---|---|---|

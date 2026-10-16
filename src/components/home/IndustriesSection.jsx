@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, Building, Sparkles } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { DynamicIcon } from '../ui/DynamicIcon';
+import { SmartLink } from '../ui/SmartLink';
 import { useCollection } from '../../hooks/useCMS';
 
 export const IndustriesSection = ({ content }) => {
   const industries = useCollection('industries', 'home');
+  const hasCta = Boolean(content.ctaLabel && content.ctaLink);
 
   if (industries.length === 0) return null;
 
@@ -84,14 +86,14 @@ export const IndustriesSection = ({ content }) => {
         </div>
 
         {/* View All Industries Link */}
-        {content.ctaLabel && (
+        {hasCta && (
           <div className="mt-10 text-center">
-            <Link
-              to="/industries"
+            <SmartLink
+              href={content.ctaLink}
               className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-navy hover:text-brand-blue transition-colors"
             >
               <span>{content.ctaLabel}</span>
-            </Link>
+            </SmartLink>
           </div>
         )}
 

@@ -6,10 +6,12 @@ import { DynamicIcon } from '../ui/DynamicIcon';
 import { useCollection } from '../../hooks/useCMS';
 import { servicesCategories } from '../../data/servicesData';
 import { Link } from 'react-router-dom';
+import { SmartLink } from '../ui/SmartLink';
 
 export const ServicesOverview = ({ content }) => {
   const services = useCollection('services', 'home');
   const { callout } = content;
+  const hasCalloutButton = Boolean(callout.buttonLabel && callout.buttonLink);
   const [selectedTab, setActiveTab] = useState('marketing-creative');
 
   const categories = servicesCategories.filter((c) => services.some((s) => s.category === c.id));
@@ -156,7 +158,7 @@ export const ServicesOverview = ({ content }) => {
         </AnimatePresence>
 
         {/* Bottom Callout Banner */}
-        {(callout.title || callout.text || callout.buttonLabel) && (
+        {(callout.title || callout.text || hasCalloutButton) && (
           <div className="mt-14 p-8 rounded-3xl bg-gradient-to-r from-brand-surface-soft via-white to-brand-blue-light/50 border border-brand-border flex flex-col md:flex-row items-center justify-between gap-6">
             {(callout.title || callout.text) && (
               <div className="flex items-center gap-4">
@@ -177,13 +179,13 @@ export const ServicesOverview = ({ content }) => {
                 </div>
               </div>
             )}
-            {callout.buttonLabel && (
-              <Link
-                to="/contact"
+            {hasCalloutButton && (
+              <SmartLink
+                href={callout.buttonLink}
                 className="shrink-0 px-6 py-3 rounded-full bg-brand-navy hover:bg-brand-navy-dark text-white text-xs font-bold transition-all shadow-md"
               >
                 {callout.buttonLabel}
-              </Link>
+              </SmartLink>
             )}
           </div>
         )}
