@@ -45,7 +45,7 @@ export const MegaMenu = ({
                     key={`${item.name}-${item.href}`}
                     href={item.href}
                     onClick={onClose}
-                    className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-brand-surface-soft transition-all duration-200"
+                    className="group flex items-center gap-3 p-2.5 rounded-xl hover:bg-brand-surface-soft transition-all duration-200"
                   >
                     <div className="mt-0.5 w-2 h-2 rounded-full bg-brand-blue/30 group-hover:bg-brand-blue group-hover:scale-125 transition-all" />
                     <div>
