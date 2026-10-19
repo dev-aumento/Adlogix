@@ -1,4 +1,5 @@
 import { text, link } from './helpers';
+import { plansDefaults, mapPlansFields } from './plans';
 
 /**
  * Services page content, plus the labels that frame every single service page
@@ -6,8 +7,8 @@ import { text, link } from './helpers';
  * the `services` page has no ACF fields; `mapServicesFields` maps the ACF fields of that page
  * (see wordpress/acf/page-services.json) into the same shape, keeping blank values blank.
  *
- * There is deliberately no `plans` key: the Growth Plans section is shared with the Home page,
- * so `GrowthPlansSection` reads the Home content when no `content` prop reaches it.
+ * The Growth Plans block is page-wise: the pricing shown on /services is edited on this page,
+ * and each Services entry may override it on its own /services/<slug> page.
  */
 export const servicesDefaults = {
   hero: {
@@ -31,6 +32,8 @@ export const servicesDefaults = {
     webTitle: 'Web, E-commerce & IT Solutions',
     learnMoreLabel: 'Learn More'
   },
+
+  plans: plansDefaults,
 
   cta: {
     title: 'Not Sure Which Growth Track Fits Your Stage?',
@@ -90,6 +93,8 @@ export function mapServicesFields(f) {
       webTitle: text(f, 'catalog_web_title'),
       learnMoreLabel: text(f, 'catalog_learn_more_label')
     },
+
+    plans: mapPlansFields(f),
 
     cta: {
       title: text(f, 'cta_title'),

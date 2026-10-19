@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Check, ArrowRight, Sparkles, Star } from 'lucide-react';
 import { HighlightedTitle } from '../ui/HighlightedTitle';
 import { useCMS } from '../../hooks/useCMS';
-import { usePageContent } from '../../hooks/usePageContent';
+import { plansDefaults } from '../../content/plans';
 import { useNavigate } from 'react-router-dom';
 
 const BILLING_CYCLES = [
@@ -12,10 +12,10 @@ const BILLING_CYCLES = [
   { id: 'annual', label: 'Annual', saving: 'Save 20%', savingClassName: 'bg-brand-blue-light text-brand-blue' }
 ];
 
-// Owned by the Home page in WordPress; other pages (Services, Reels, ...) render it without passing content.
-export const GrowthPlansSection = ({ content, className = "" }) => {
-  const { content: home } = usePageContent('home');
-  const growthPlansData = content || home.plans;
+// Pricing is page-wise: every caller passes the plans edited on its own page (or, on a single
+// service page, the plans of that Services entry). The defaults are only the offline fallback.
+export const GrowthPlansSection = ({ content = plansDefaults, className = "" }) => {
+  const growthPlansData = content;
   const { openDiscoveryModal } = useCMS();
   const navigate = useNavigate();
   const [selectedCycle, setSelectedCycle] = useState('monthly'); // 'monthly' | 'quarterly' | 'annual'

@@ -36,7 +36,9 @@ HomePage ── <PageSections sections={homeSections} order={order} content={con
 
 Adding a dynamic page follows the same pattern: create `src/content/<page>.js` with `<page>Defaults` and `map<Page>Fields`, register it in `src/content/index.js`, add `wordpress/acf/page-<slug>.json`, and pass `content[key]` into the section components.
 
-`GrowthPlansSection` and `StudioSection` are also used on Services and Reels. When no `content` prop is passed they read the homepage content themselves, so plans and studio shoots are edited in one place (the Home page).
+`StudioSection` is also used on the Reels page. When no `content` prop is passed it reads the homepage content itself, so studio shoots are edited in one place (the Home page).
+
+`GrowthPlansSection` used to work the same way, but pricing is now **page-wise**: the Home, Services and Reels pages each store their own `plans_*` fields, and a Services entry can override them on its own page. See `10-pricing-plans.md`. The Home page's Growth Plans tab is unchanged — it now feeds the homepage only.
 
 ## Fields by tab
 

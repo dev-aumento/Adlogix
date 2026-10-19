@@ -1,4 +1,5 @@
 import { toPlainText, toLines, toPipeRows, toSafeLink, normalizeMedia } from './normalizers';
+import { mapPlansFields, isPlansEmpty } from '../content/plans';
 
 /**
  * WordPress collection entries (custom post types with the ACF groups from
@@ -83,6 +84,25 @@ export function normalizeProject(raw) {
   };
 }
 
+/**
+ * Deliverables in either shape: the WordPress "Title | Note" textarea, or the plain strings
+ * the built-in list in `src/data/servicesData.js` uses. Always `[{ title, note }]`, and safe
+ * to call twice. A deliverable without a note falls back to the shared line from the
+ * Services page, so the built-in list looks exactly as it did.
+ */
+export function toDeliverables(value) {
+  if (typeof value === 'string') {
+    return toPipeRows(value, ['title', 'note']).filter((row) => row.title);
+  }
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) =>
+      typeof item === 'string'
+        ? { title: toPlainText(item), note: '' }
+        : { title: toPlainText(item?.title), note: toPlainText(item?.note) })
+    .filter((row) => row.title);
+}
+
 export function normalizeService(raw) {
   const acf = asObject(raw.acf);
   const entry = entryBase(raw);
@@ -91,16 +111,21 @@ export function normalizeService(raw) {
   const faqs = Array.from({ length: 6 }, (_, i) => asObject(acf[`faq_${i + 1}`]))
     .map((faq) => ({ q: toPlainText(faq.question), a: toPlainText(faq.answer) }))
     .filter((faq) => faq.q && faq.a);
+  // Own pricing for this service's page; null means "use the Services page pricing".
+  const plans = mapPlansFields(acf);
   return {
     ...entry,
+    plans: isPlansEmpty(plans) ? null : plans,
     category,
     categoryTitle: SERVICE_CATEGORY_TITLES[category],
     icon: toPlainText(acf.icon),
     shortDesc: toPlainText(acf.short_description),
     fullDesc: toPlainText(acf.full_description),
     highlights: toLines(acf.highlights),
-    deliverables: toLines(acf.deliverables),
+    deliverables: toDeliverables(acf.deliverables),
     technologies: toLines(acf.technologies),
+    seoTitle: toPlainText(acf.seo_title),
+    seoDescription: toPlainText(acf.seo_description),
     faqs,
   };
 }

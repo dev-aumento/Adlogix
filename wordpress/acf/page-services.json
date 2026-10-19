@@ -298,7 +298,7 @@
             },
             {
                 "key": "field_services_plans_message",
-                "label": "Where to edit this",
+                "label": "About this section",
                 "name": "",
                 "aria-label": "",
                 "type": "message",
@@ -310,9 +310,1025 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "The Growth Plans section is shared with the Home page, so it is edited in one place: <strong>Pages &rarr; Home &rarr; Growth Plans</strong>. Changes there apply to the Home, Services and Reels pages and to every single service page.<br><br>To hide it on this page only, untick <strong>Growth Plans</strong> in the <strong>Page Sections</strong> box.",
+                "message": "The pricing shown on <strong>/services</strong>. Each page has its own pricing, so changing it here does not affect the Home or Reels pages.<br><br>A single service can override this with its own pricing: open that <strong>Services</strong> entry and fill in its <strong>Pricing</strong> tab. Services that leave it empty show the pricing below.",
                 "new_lines": "wpautop",
                 "esc_html": 0
+            },
+            {
+                "key": "field_services_plans_badge",
+                "label": "Badge",
+                "name": "plans_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Regular Package Options",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_plans_title",
+                "label": "Title",
+                "name": "plans_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Choose Your Growth Plan",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_plans_highlight",
+                "label": "Highlighted words",
+                "name": "plans_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Part of the title above, shown in the blue gradient. Must match exactly.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Growth Plan",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_plans_subtitle",
+                "label": "Subtitle",
+                "name": "plans_subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "All packages include a minimum term of 3 months. Meta Ads budget (₹500/day) paid directly by client. 18% GST charged additionally on all packages.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_services_plans_plan_1",
+                "label": "Plan 1",
+                "name": "plans_plan_1",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "A plan needs a name and a monthly price. Clear either one to hide this plan.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_services_plans_plan_1_name",
+                        "label": "Plan name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "40",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Basic Boost",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_tagline",
+                        "label": "Tagline",
+                        "name": "tagline",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "60",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Ideal for emerging brands building consistent social reach & lead flow.",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_is_popular",
+                        "label": "Highlight as popular",
+                        "name": "is_popular",
+                        "aria-label": "",
+                        "type": "true_false",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": 0,
+                        "ui": 1,
+                        "message": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_popular_badge",
+                        "label": "Highlight badge",
+                        "name": "popular_badge",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_monthly_price",
+                        "label": "Monthly price",
+                        "name": "monthly_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹30,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_monthly_period",
+                        "label": "Monthly period",
+                        "name": "monthly_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_monthly_total",
+                        "label": "Monthly billed-as note",
+                        "name": "monthly_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "34",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_quarterly_price",
+                        "label": "Quarterly price",
+                        "name": "quarterly_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹27,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_quarterly_period",
+                        "label": "Quarterly period",
+                        "name": "quarterly_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_quarterly_total",
+                        "label": "Quarterly billed-as note",
+                        "name": "quarterly_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "34",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹81,000 billed quarterly (Save 10%)",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_annual_price",
+                        "label": "Annual price",
+                        "name": "annual_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹24,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_annual_period",
+                        "label": "Annual period",
+                        "name": "annual_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_annual_total",
+                        "label": "Annual billed-as note",
+                        "name": "annual_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "34",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹2,88,000 billed annually (Save 20%)",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_metrics",
+                        "label": "Metrics",
+                        "name": "metrics",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "One per line: Value | Label",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "10 | REELS/MO\n1 | SHOOT\n1 | MONTH",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 3,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_features",
+                        "label": "Features",
+                        "name": "features",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "One per line.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "10 Reels per Month\n1 Shoot Visit per Month\nMinimum Term: 3 Months\nMeta Ads Budget: ₹500/day by Client\nInstagram Page Management\nContent Planning & Strategy\nMonthly Performance Report",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 8,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_1_cta_label",
+                        "label": "Button label",
+                        "name": "cta_label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Get Started",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_services_plans_plan_2",
+                "label": "Plan 2",
+                "name": "plans_plan_2",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_services_plans_plan_2_name",
+                        "label": "Plan name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "40",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Advanced Growth",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_tagline",
+                        "label": "Tagline",
+                        "name": "tagline",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "60",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Engineered for scaling businesses needing multi-hook viral content & ads.",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_is_popular",
+                        "label": "Highlight as popular",
+                        "name": "is_popular",
+                        "aria-label": "",
+                        "type": "true_false",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": 1,
+                        "ui": 1,
+                        "message": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_popular_badge",
+                        "label": "Highlight badge",
+                        "name": "popular_badge",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "MOST POPULAR",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_monthly_price",
+                        "label": "Monthly price",
+                        "name": "monthly_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹40,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_monthly_period",
+                        "label": "Monthly period",
+                        "name": "monthly_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_monthly_total",
+                        "label": "Monthly billed-as note",
+                        "name": "monthly_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "34",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_quarterly_price",
+                        "label": "Quarterly price",
+                        "name": "quarterly_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹36,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_quarterly_period",
+                        "label": "Quarterly period",
+                        "name": "quarterly_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_quarterly_total",
+                        "label": "Quarterly billed-as note",
+                        "name": "quarterly_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "34",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹1,08,000 billed quarterly (Save 10%)",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_annual_price",
+                        "label": "Annual price",
+                        "name": "annual_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹32,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_annual_period",
+                        "label": "Annual period",
+                        "name": "annual_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_annual_total",
+                        "label": "Annual billed-as note",
+                        "name": "annual_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "34",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹3,84,000 billed annually (Save 20%)",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_metrics",
+                        "label": "Metrics",
+                        "name": "metrics",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "One per line: Value | Label",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "15 | REELS/MO\n2 | SHOOTS\n1 | MONTH",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 3,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_features",
+                        "label": "Features",
+                        "name": "features",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "One per line.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "15 Reels per Month\n2 Shoot Visits per Month\nMinimum Term: 3 Months\nMeta Ads Budget: ₹500/day by Client\nInstagram Page Management\nContent Planning & Strategy\nInfluencer Marketing\nMonthly Performance Report",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 8,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_2_cta_label",
+                        "label": "Button label",
+                        "name": "cta_label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Get Started",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_services_plans_plan_3",
+                "label": "Plan 3",
+                "name": "plans_plan_3",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_services_plans_plan_3_name",
+                        "label": "Plan name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "40",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Premium Impact",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_tagline",
+                        "label": "Tagline",
+                        "name": "tagline",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "60",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Complete multi-channel creative dominance, rapid content scaling & VIP support.",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_is_popular",
+                        "label": "Highlight as popular",
+                        "name": "is_popular",
+                        "aria-label": "",
+                        "type": "true_false",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": 0,
+                        "ui": 1,
+                        "message": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_popular_badge",
+                        "label": "Highlight badge",
+                        "name": "popular_badge",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_monthly_price",
+                        "label": "Monthly price",
+                        "name": "monthly_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹70,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_monthly_period",
+                        "label": "Monthly period",
+                        "name": "monthly_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_monthly_total",
+                        "label": "Monthly billed-as note",
+                        "name": "monthly_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "34",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_quarterly_price",
+                        "label": "Quarterly price",
+                        "name": "quarterly_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹63,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_quarterly_period",
+                        "label": "Quarterly period",
+                        "name": "quarterly_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_quarterly_total",
+                        "label": "Quarterly billed-as note",
+                        "name": "quarterly_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "34",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹1,89,000 billed quarterly (Save 10%)",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_annual_price",
+                        "label": "Annual price",
+                        "name": "annual_price",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹56,000",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_annual_period",
+                        "label": "Annual period",
+                        "name": "annual_period",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "33",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "/month",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_annual_total",
+                        "label": "Annual billed-as note",
+                        "name": "annual_total",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "34",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "₹6,72,000 billed annually (Save 20%)",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_metrics",
+                        "label": "Metrics",
+                        "name": "metrics",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "One per line: Value | Label",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "25 | REELS/MO\n3 | SHOOTS\n1 | MONTH",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 3,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_features",
+                        "label": "Features",
+                        "name": "features",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "One per line.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "25 Reels per Month\n3 Shoot Visits per Month\nMinimum Term: 3 Months\nMeta Ads Budget: ₹500/day by Client\nInstagram Page Management\nContent Planning & Strategy\nInfluencer Marketing\nPriority Support & Performance Report",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 8,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_services_plans_plan_3_cta_label",
+                        "label": "Button label",
+                        "name": "cta_label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Get Started",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_services_plans_disclaimer",
+                "label": "Disclaimer",
+                "name": "plans_disclaimer",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "* 18% GST charged additionally on all packages. Ad budgets paid directly by the client to Meta platforms. Pricing applies within Gujarat / Ahmedabad; travel costs extra for outside shoots.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_services_plans_help_text",
+                "label": "Help line",
+                "name": "plans_help_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Need a custom enterprise scope, web application, or nationwide video crew?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_plans_help_button",
+                "label": "Help button label",
+                "name": "plans_help_button",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the Book a Discovery Call form. Blank hides the button.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book a Strategy Call →",
+                "placeholder": ""
             },
             {
                 "key": "field_services_tab_cta",

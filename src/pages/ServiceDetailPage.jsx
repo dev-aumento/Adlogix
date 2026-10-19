@@ -12,6 +12,7 @@ import { GrowthPlansSection } from '../components/home/GrowthPlansSection';
 import { useCMS } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
 import { servicesDefaults, fillService } from '../content/services';
+import { toDeliverables } from '../services/collections';
 
 /** Button props for a CTA link: router for site paths, new tab for other websites. */
 const linkProps = (href) => {
@@ -39,12 +40,14 @@ export const ServiceDetailPage = () => {
 
   const hasClosingPrimary = Boolean(t.ctaPrimaryLabel && t.ctaPrimaryLink);
   const hasClosingSecondary = Boolean(t.ctaSecondaryLabel && t.ctaSecondaryLink);
+  // Accepts the WordPress "Title | Note" rows and the built-in list's plain strings.
+  const deliverables = toDeliverables(service.deliverables);
 
   return (
     <>
       <SEOHead
-        title={`${service.title} | Adlogix Agency`}
-        description={service.shortDesc}
+        title={service.seoTitle || `${service.title} | Adlogix Agency`}
+        description={service.seoDescription || service.shortDesc}
         canonical={`https://adlogix.in/services/${service.slug}`}
         schema={{
           "@context": "https://schema.org",
@@ -55,7 +58,7 @@ export const ServiceDetailPage = () => {
             "name": "Adlogix",
             "url": "https://adlogix.in"
           },
-          "description": service.shortDesc
+          "description": service.seoDescription || service.shortDesc
         }}
       />
 
@@ -112,7 +115,7 @@ export const ServiceDetailPage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               
               {/* Left Column: Key Deliverables */}
-              {service.deliverables?.length > 0 && (
+              {deliverables.length > 0 && (
                 <div className="lg:col-span-7 space-y-8">
                   {(t.deliverablesEyebrow || t.deliverablesTitle) && (
                     <div>
@@ -130,7 +133,7 @@ export const ServiceDetailPage = () => {
                   )}
 
                   <div className="space-y-4">
-                    {service.deliverables?.map((del, idx) => (
+                    {deliverables.map((del, idx) => (
                       <div
                         key={idx}
                         className="p-5 rounded-2xl bg-brand-surface-soft/60 border border-brand-border flex items-start gap-4 hover:bg-white hover:shadow-card-subtle transition-all"
@@ -140,11 +143,11 @@ export const ServiceDetailPage = () => {
                         </div>
                         <div>
                           <h4 className="text-base font-bold text-brand-navy font-display">
-                            {del}
+                            {del.title}
                           </h4>
-                          {t.deliverableNote && (
+                          {(del.note || t.deliverableNote) && (
                             <p className="text-xs text-brand-muted mt-1 leading-relaxed">
-                              {t.deliverableNote}
+                              {del.note || t.deliverableNote}
                             </p>
                           )}
                         </div>
@@ -271,8 +274,8 @@ export const ServiceDetailPage = () => {
           </section>
         )}
 
-        {/* Growth Plans & Package Options */}
-        <GrowthPlansSection />
+        {/* Growth Plans: this service's own pricing, else the Services page pricing */}
+        <GrowthPlansSection content={service.plans ?? content.plans} />
 
         {/* Bottom Related CTA */}
         {(t.ctaTitle || hasClosingPrimary || hasClosingSecondary) && (

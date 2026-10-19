@@ -1,6 +1,7 @@
 import { homeDefaults, mapHomeFields } from './home';
 import { aboutDefaults, mapAboutFields } from './about';
 import { servicesDefaults, mapServicesFields } from './services';
+import { reelsDefaults, mapReelsFields } from './reels';
 
 /**
  * Content models per WordPress page slug. Pages without a model still get their
@@ -10,4 +11,5 @@ export const pageModels = {
   home: { defaults: homeDefaults, mapFields: mapHomeFields },
   about: { defaults: aboutDefaults, mapFields: mapAboutFields },
   services: { defaults: servicesDefaults, mapFields: mapServicesFields },
+  reels: { defaults: reelsDefaults, mapFields: mapReelsFields },
 };

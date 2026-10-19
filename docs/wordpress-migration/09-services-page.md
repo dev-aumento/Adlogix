@@ -29,7 +29,8 @@ The Services area has three sources, and it helps to keep them apart:
 |---|---|
 | Hero, filter labels, card badges, closing CTA, single-service labels | **Pages → Services** (this field group) |
 | Each service: name, icon, description, highlights, deliverables, tools, FAQs | **Services** entries (`post-type-services.json`) |
-| The Growth Plans pricing block | **Pages → Home → Growth Plans** — shared, see below |
+| The Growth Plans pricing block on `/services` | **Pages → Services → Growth Plans** |
+| The pricing on one `/services/<slug>` page | That **Services** entry → **Pricing** tab, else the Services page |
 
 ## Fields by tab
 
@@ -39,7 +40,7 @@ All fields are optional. A blank field hides the text or button it feeds. When a
 |---|---|---|
 | Hero (`hero`) | `hero_badge_text`, `hero_headline_line_1`, `hero_headline_highlight_1`, `hero_description` | `hero_headline_highlight_1` is the second line, shown in the blue gradient. Either line may stand alone. |
 | Services Catalog (`catalog`) | `catalog_all_label`, `catalog_cta_label`, `catalog_marketing_label`, `catalog_web_label`, `catalog_marketing_badge`, `catalog_web_badge`, `catalog_marketing_title`, `catalog_web_title`, `catalog_learn_more_label` | Labels only — the cards are Services entries. See the table below. |
-| Growth Plans (`plans`) | *(none — a note only)* | Shared with the Home page; edited at **Pages → Home → Growth Plans**. Untick it in Page Sections to hide it here only. |
+| Growth Plans (`plans`) | `plans_badge/_title/_highlight/_subtitle`, `plans_plan_1..3`, `plans_disclaimer`, `plans_help_text`, `plans_help_button` | **This page's own pricing**, not shared. A Services entry can override it on its own page. See `10-pricing-plans.md`. |
 | Closing CTA (`cta`) | `cta_title`, `cta_text`, `cta_button_label` | The button opens the "Book a Discovery Call" form, so it has a label only — blank hides it. |
 | Single Service Pages (`detail`) | 20 label fields, see below | Not a section of this page: these frame `/services/<slug>`. |
 
@@ -71,6 +72,29 @@ These frame every `/services/<slug>` page. The content inside — description, d
 | `detail_faq_eyebrow`, `detail_faq_title` | The heading above the FAQs |
 | `detail_cta_title`, `detail_cta_primary_label` + link, `detail_cta_secondary_label` + link | The closing band |
 
+**Each service's own content.** The frame above is written once; everything inside a single service page comes from that **Services** entry:
+
+| Part of the page | Field on the entry |
+|---|---|
+| Category pill icon | `icon` (and the pill's wording from `catalog_*_title`) |
+| Title | The entry's title |
+| Description paragraph | `full_description`, or `short_description` when blank |
+| Deliverables list | `deliverables` — **one per line, `Title | Note`** |
+| Tool chips | `technologies` |
+| FAQs | `faq_1..6` |
+| Pricing | The **Pricing** tab (`10-pricing-plans.md`) |
+| Browser title / meta description | The **SEO** tab, falling back to the title and short description |
+
+**Deliverable notes.** `deliverables` takes an optional note after a `|`:
+
+```
+Custom Full-Funnel Growth Strategy | Built around your CAC target and funnel stage
+Audience Persona & Competitor Research
+A/B & Multivariate Testing Architecture | Two structured experiments per month
+```
+
+A deliverable without its own note falls back to `detail_deliverable_note` from the Services page, which is why the built-in list still shows the same shared line under every item. Give the notes individually and each deliverable reads as its own point instead of the line repeating down the page.
+
 **The `{service}` placeholder.** Three of these labels are written once and used on every service, so they take the service name as `{service}`:
 
 - `detail_hero_cta_label` — `Request {service} Scope`
@@ -85,6 +109,12 @@ The two closing buttons on a single service page use the shared Page/Custom link
 
 The hero and consultation buttons always point at `/contact?service=<service name>`, so the form arrives pre-filled. That is behaviour, not copy, and stays in React.
 
+## Adding a service later
+
+Nothing in the code names a service. `/services/<slug>` matches the slug of whatever entries exist, so **publishing a new Services entry is all it takes** — it gets its listing card, its detail page in the same layout, its own pricing and its own SEO, with no code change and no new WordPress Page.
+
+Child Pages under **Pages → Services** are *not* used for this. React routes `/services/<slug>` to its own template and reads the Services entries; a WordPress Page at that path is never fetched, and Caddy sends the address to the React app rather than WordPress. If such pages exist they can be moved to Trash without affecting the site.
+
 ## What the services post type was missing
 
 The user asked for the post type to be checked as well. Findings:
@@ -96,8 +126,10 @@ The user asked for the post type to be checked as well. Findings:
 | Category values | `marketing-creative` / `web-it`, matching `normalizeService`. |
 | **Category display name** | **Was hardcoded** in `SERVICE_CATEGORY_TITLES` (`src/services/collections.js`) and not editable anywhere. Now editable as `catalog_marketing_title` / `catalog_web_title`; the constant remains as the fallback. |
 | **Published entries** | **Zero.** The 14 cards on the live site are still `src/data/servicesData.js`. |
+| **Per-deliverable note** | **Was missing.** One shared line repeated under every deliverable. `deliverables` now takes `Title | Note`. |
+| **Per-service SEO** | **Was missing.** New **SEO** tab: `seo_title`, `seo_description`. |
 
-**`post-type-services.json` was not changed, so it does not need re-importing.** Only the new `page-services.json` has to be imported.
+**`post-type-services.json` has since gained a Pricing tab, so it does need re-importing** — see `10-pricing-plans.md`. Existing field keys are untouched, so saved content is preserved.
 
 ## Behavior when content is missing
 
@@ -114,7 +146,7 @@ The user asked for the post type to be checked as well. Findings:
 
 ## WordPress admin setup
 
-1. **Custom Fields → Tools → Import Field Groups**: upload `wordpress/acf/page-services.json`. Check that "Show in REST API" is on for **Services Page Content**. No other field group changed.
+1. **Custom Fields → Tools → Import Field Groups**: upload `wordpress/acf/page-services.json`. Check that "Show in REST API" is on for **Services Page Content**. Also re-import `post-type-services.json` for the per-service **Pricing** tab (`10-pricing-plans.md`).
 2. Open **Pages → Services**. The five tabs are pre-filled with the current site text.
 3. **Publish the service entries.** There are none yet, so the catalog is still the built-in list. Prepare all of them as drafts and publish together: the first published entry replaces the built-in list for the whole site (`04-collections.md`).
 4. Verify `https://adlogix.in/wp-json/wp/v2/pages?slug=services&_fields=id,acf,adlogix_sections` and `https://adlogix.in/wp-json/wp/v2/services?_fields=id,slug,acf`.
