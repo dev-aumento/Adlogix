@@ -6,13 +6,26 @@ import { SEOHead } from '../components/ui/SEOHead';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { Button } from '../components/ui/Button';
 import { DynamicIcon } from '../components/ui/DynamicIcon';
+import { BoldWords } from '../components/ui/BoldWords';
+import { toRouterPath } from '../components/ui/SmartLink';
 import { GrowthPlansSection } from '../components/home/GrowthPlansSection';
 import { useCMS } from '../hooks/useCMS';
+import { usePageContent } from '../hooks/usePageContent';
+import { servicesDefaults, fillService } from '../content/services';
+
+/** Button props for a CTA link: router for site paths, new tab for other websites. */
+const linkProps = (href) => {
+  const path = toRouterPath(href);
+  return path ? { to: path } : { href };
+};
 
 export const ServiceDetailPage = () => {
   const { slug } = useParams();
-  const { services, projects, openDiscoveryModal } = useCMS();
+  const { services, openDiscoveryModal } = useCMS();
   const [openFaq, setOpenFaq] = useState(null);
+  // The single-service labels are edited on the Services page; the request is cached and shared.
+  const { content } = usePageContent('services');
+  const t = content.detail ?? servicesDefaults.detail;
 
   const service = services.find((s) => s.slug === slug);
 
@@ -20,14 +33,12 @@ export const ServiceDetailPage = () => {
     return <Navigate to="/services" replace />;
   }
 
-  // Related projects that delivered this service
-  const relatedProjects = projects.filter((p) =>
-    p.servicesDelivered?.some(
-      (sd) =>
-        sd.toLowerCase().includes(service.title.toLowerCase()) ||
-        service.title.toLowerCase().includes(sd.toLowerCase())
-    )
-  );
+  const categoryTitle =
+    (service.category === 'web-it' ? content.catalog?.webTitle : content.catalog?.marketingTitle)
+    ?? service.categoryTitle;
+
+  const hasClosingPrimary = Boolean(t.ctaPrimaryLabel && t.ctaPrimaryLink);
+  const hasClosingSecondary = Boolean(t.ctaSecondaryLabel && t.ctaSecondaryLink);
 
   return (
     <>
@@ -54,16 +65,18 @@ export const ServiceDetailPage = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumb
               items={[
-                { label: "Services", href: "/services" },
+                ...(t.breadcrumbLabel ? [{ label: t.breadcrumbLabel, href: "/services" }] : []),
                 { label: service.title }
               ]}
             />
 
             <div className="mt-6 max-w-4xl space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20">
-                <DynamicIcon name={service.icon} className="w-4 h-4" />
-                <span>{service.categoryTitle}</span>
-              </div>
+              {categoryTitle && (
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20">
+                  <DynamicIcon name={service.icon} className="w-4 h-4" />
+                  <span>{categoryTitle}</span>
+                </div>
+              )}
 
               <h1 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl font-black text-brand-navy leading-tight">
                 {service.title}
@@ -75,14 +88,20 @@ export const ServiceDetailPage = () => {
                 </p>
               )}
 
-              <div className="pt-4 flex flex-wrap items-center gap-4">
-                <Button to={`/contact?service=${encodeURIComponent(service.title)}`} variant="primary" size="lg" icon={ArrowRight}>
-                  Request {service.title} Scope
-                </Button>
-                <Button onClick={openDiscoveryModal} variant="secondary" size="lg">
-                  Book Strategy Call
-                </Button>
-              </div>
+              {(t.heroCtaLabel || t.heroSecondaryLabel) && (
+                <div className="pt-4 flex flex-wrap items-center gap-4">
+                  {t.heroCtaLabel && (
+                    <Button to={`/contact?service=${encodeURIComponent(service.title)}`} variant="primary" size="lg" icon={ArrowRight}>
+                      {fillService(t.heroCtaLabel, service.title)}
+                    </Button>
+                  )}
+                  {t.heroSecondaryLabel && (
+                    <Button onClick={openDiscoveryModal} variant="secondary" size="lg">
+                      {t.heroSecondaryLabel}
+                    </Button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -95,14 +114,20 @@ export const ServiceDetailPage = () => {
               {/* Left Column: Key Deliverables */}
               {service.deliverables?.length > 0 && (
                 <div className="lg:col-span-7 space-y-8">
-                  <div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">
-                      What We Deliver
-                    </span>
-                    <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-brand-navy mt-1">
-                      Structured Execution & Outcomes
-                    </h2>
-                  </div>
+                  {(t.deliverablesEyebrow || t.deliverablesTitle) && (
+                    <div>
+                      {t.deliverablesEyebrow && (
+                        <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">
+                          {t.deliverablesEyebrow}
+                        </span>
+                      )}
+                      {t.deliverablesTitle && (
+                        <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-brand-navy mt-1">
+                          {t.deliverablesTitle}
+                        </h2>
+                      )}
+                    </div>
+                  )}
 
                   <div className="space-y-4">
                     {service.deliverables?.map((del, idx) => (
@@ -117,9 +142,11 @@ export const ServiceDetailPage = () => {
                           <h4 className="text-base font-bold text-brand-navy font-display">
                             {del}
                           </h4>
-                          <p className="text-xs text-brand-muted mt-1 leading-relaxed">
-                            Executed with rigorous QA testing, real-time reporting metrics, and alignment with your target customer acquisition cost.
-                          </p>
+                          {t.deliverableNote && (
+                            <p className="text-xs text-brand-muted mt-1 leading-relaxed">
+                              {t.deliverableNote}
+                            </p>
+                          )}
                         </div>
                       </div>
                     ))}
@@ -132,10 +159,12 @@ export const ServiceDetailPage = () => {
                 {/* Tech Stack Card */}
                 {service.technologies?.length > 0 && (
                   <div className="p-8 rounded-3xl bg-brand-surface-soft border border-brand-border shadow-sm">
-                    <h3 className="text-lg font-bold font-display text-brand-navy mb-4 flex items-center gap-2">
-                      <Zap className="w-5 h-5 text-brand-blue" />
-                      <span>Tech Stack & Platforms</span>
-                    </h3>
+                    {t.techTitle && (
+                      <h3 className="text-lg font-bold font-display text-brand-navy mb-4 flex items-center gap-2">
+                        <Zap className="w-5 h-5 text-brand-blue" />
+                        <span>{t.techTitle}</span>
+                      </h3>
+                    )}
                     <div className="flex flex-wrap gap-2">
                       {service.technologies?.map((tech, idx) => (
                         <span
@@ -147,37 +176,47 @@ export const ServiceDetailPage = () => {
                       ))}
                     </div>
 
-                    <div className="mt-6 pt-6 border-t border-brand-border/60">
-                      <div className="text-xs text-brand-muted leading-relaxed">
-                        Powered by modern architectures, first-party data security, and enterprise infrastructure support through <strong className="text-brand-navy">Aumento Infoway</strong>.
+                    {t.techNote && (
+                      <div className="mt-6 pt-6 border-t border-brand-border/60">
+                        <div className="text-xs text-brand-muted leading-relaxed">
+                          <BoldWords text={t.techNote} highlight={t.techNoteHighlight} />
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 )}
 
                 {/* Direct Scope Consultation Box */}
-                <div className="p-8 rounded-3xl bg-brand-navy text-white shadow-xl relative overflow-hidden">
-                  <div className="relative z-10 space-y-4">
-                    <div className="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center font-bold">
-                      <Sparkles className="w-5 h-5 text-white" />
+                {(t.consultTitle || t.consultText || t.consultButtonLabel) && (
+                  <div className="p-8 rounded-3xl bg-brand-navy text-white shadow-xl relative overflow-hidden">
+                    <div className="relative z-10 space-y-4">
+                      <div className="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center font-bold">
+                        <Sparkles className="w-5 h-5 text-white" />
+                      </div>
+                      {t.consultTitle && (
+                        <h3 className="text-xl font-bold font-display">
+                          {fillService(t.consultTitle, service.title)}
+                        </h3>
+                      )}
+                      {t.consultText && (
+                        <p className="text-xs text-slate-300 leading-relaxed">
+                          {t.consultText}
+                        </p>
+                      )}
+                      {t.consultButtonLabel && (
+                        <Button
+                          to={`/contact?service=${encodeURIComponent(service.title)}`}
+                          variant="primary"
+                          size="md"
+                          className="w-full justify-center"
+                          icon={ArrowRight}
+                        >
+                          {t.consultButtonLabel}
+                        </Button>
+                      )}
                     </div>
-                    <h3 className="text-xl font-bold font-display">
-                      Need a Custom Strategy for {service.title}?
-                    </h3>
-                    <p className="text-xs text-slate-300 leading-relaxed">
-                      Speak directly with our senior creative and growth team to structure a high-performance rollout plan.
-                    </p>
-                    <Button
-                      to={`/contact?service=${encodeURIComponent(service.title)}`}
-                      variant="primary"
-                      size="md"
-                      className="w-full justify-center"
-                      icon={ArrowRight}
-                    >
-                      Request Proposal
-                    </Button>
                   </div>
-                </div>
+                )}
               </div>
 
             </div>
@@ -188,14 +227,20 @@ export const ServiceDetailPage = () => {
         {service.faqs && service.faqs.length > 0 && (
           <section className="py-16 bg-brand-surface-soft/60 border-t border-brand-border">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-12">
-                <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">
-                  Clear Answers
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-brand-navy mt-1">
-                  Frequently Asked Questions
-                </h2>
-              </div>
+              {(t.faqEyebrow || t.faqTitle) && (
+                <div className="text-center mb-12">
+                  {t.faqEyebrow && (
+                    <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">
+                      {t.faqEyebrow}
+                    </span>
+                  )}
+                  {t.faqTitle && (
+                    <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-brand-navy mt-1">
+                      {t.faqTitle}
+                    </h2>
+                  )}
+                </div>
+              )}
 
               <div className="space-y-3">
                 {service.faqs.map((faq, idx) => (
@@ -230,21 +275,31 @@ export const ServiceDetailPage = () => {
         <GrowthPlansSection />
 
         {/* Bottom Related CTA */}
-        <section className="py-16 bg-white border-t border-brand-border text-center">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
-            <h2 className="text-2xl sm:text-3xl font-bold font-display text-brand-navy">
-              Ready to Accelerate with {service.title}?
-            </h2>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-              <Button to="/contact" variant="primary" size="lg" icon={ArrowRight}>
-                Get Started
-              </Button>
-              <Button to="/services" variant="secondary" size="lg">
-                View All Services
-              </Button>
+        {(t.ctaTitle || hasClosingPrimary || hasClosingSecondary) && (
+          <section className="py-16 bg-white border-t border-brand-border text-center">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+              {t.ctaTitle && (
+                <h2 className="text-2xl sm:text-3xl font-bold font-display text-brand-navy">
+                  {fillService(t.ctaTitle, service.title)}
+                </h2>
+              )}
+              {(hasClosingPrimary || hasClosingSecondary) && (
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+                  {hasClosingPrimary && (
+                    <Button {...linkProps(t.ctaPrimaryLink)} variant="primary" size="lg" icon={ArrowRight}>
+                      {t.ctaPrimaryLabel}
+                    </Button>
+                  )}
+                  {hasClosingSecondary && (
+                    <Button {...linkProps(t.ctaSecondaryLink)} variant="secondary" size="lg">
+                      {t.ctaSecondaryLabel}
+                    </Button>
+                  )}
+                </div>
+              )}
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </div>
     </>
   );

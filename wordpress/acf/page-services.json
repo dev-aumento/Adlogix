@@ -1,0 +1,923 @@
+[
+    {
+        "key": "group_adlogix_page_services",
+        "title": "Services Page Content",
+        "fields": [
+            {
+                "key": "field_services_tab_hero",
+                "label": "Hero",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_services_hero_badge_text",
+                "label": "Badge text",
+                "name": "hero_badge_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The pill above the headline. Blank hides the pill.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Full-Stack Capabilities",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_hero_headline_line_1",
+                "label": "Headline line 1",
+                "name": "hero_headline_line_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Creative Meets Performance.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_hero_headline_highlight_1",
+                "label": "Headline line 2 (highlighted)",
+                "name": "hero_headline_highlight_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Shown in the blue gradient, on its own line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Engineered for Scale.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_hero_description",
+                "label": "Intro paragraph",
+                "name": "hero_description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Whether you need high-converting 9:16 vertical reels, multi-channel paid acquisition, bespoke Shopify storefronts, or enterprise headless React applications, we build solutions that deliver measurable ROI.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 4,
+                "new_lines": ""
+            },
+            {
+                "key": "field_services_tab_catalog",
+                "label": "Services Catalog",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_services_catalog_message",
+                "label": "About this tab",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "The service cards themselves are the <strong>Services</strong> entries, each with its own fields and \"Show on\" box. This tab only holds the labels around them.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_services_catalog_all_label",
+                "label": "Filter: all services",
+                "name": "catalog_all_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The number of services is added automatically, e.g. \"All Capabilities (14)\".",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "All Capabilities",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_catalog_cta_label",
+                "label": "Custom scope button",
+                "name": "catalog_cta_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the Book a Discovery Call form. Blank hides the button.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Request Custom Scope",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_catalog_marketing_label",
+                "label": "Filter: marketing category",
+                "name": "catalog_marketing_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Filter buttons only appear when both categories have services.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Marketing & Creative",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_catalog_web_label",
+                "label": "Filter: technology category",
+                "name": "catalog_web_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Web, E-commerce & IT",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_catalog_marketing_badge",
+                "label": "Card badge: marketing",
+                "name": "catalog_marketing_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The small label in the top-right corner of each card.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Marketing",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_catalog_web_badge",
+                "label": "Card badge: technology",
+                "name": "catalog_web_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Technology",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_catalog_marketing_title",
+                "label": "Category name: marketing",
+                "name": "catalog_marketing_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The full category name shown on a single service page.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Digital Marketing & Creative",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_catalog_web_title",
+                "label": "Category name: technology",
+                "name": "catalog_web_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Web, E-commerce & IT Solutions",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_catalog_learn_more_label",
+                "label": "Card link label",
+                "name": "catalog_learn_more_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Blank hides the link; the card title still opens the service.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Learn More",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_tab_plans",
+                "label": "Growth Plans",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_services_plans_message",
+                "label": "Where to edit this",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "The Growth Plans section is shared with the Home page, so it is edited in one place: <strong>Pages &rarr; Home &rarr; Growth Plans</strong>. Changes there apply to the Home, Services and Reels pages and to every single service page.<br><br>To hide it on this page only, untick <strong>Growth Plans</strong> in the <strong>Page Sections</strong> box.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_services_tab_cta",
+                "label": "Closing CTA",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_services_cta_title",
+                "label": "Title",
+                "name": "cta_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Not Sure Which Growth Track Fits Your Stage?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_cta_text",
+                "label": "Text",
+                "name": "cta_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Schedule a 30-minute discovery session with our senior growth architects to assess your acquisition channels and tech stack.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_services_cta_button_label",
+                "label": "Button label",
+                "name": "cta_button_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the Book a Discovery Call form. Blank hides the button.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book a Free Strategy Session",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_tab_detail",
+                "label": "Single Service Pages",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_services_detail_message",
+                "label": "About this tab",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "These labels are the frame around every single service page (<code>/services/&lt;service&gt;</code>). The content inside &mdash; description, deliverables, tools and FAQs &mdash; is edited on each <strong>Services</strong> entry.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_services_detail_breadcrumb_label",
+                "label": "Breadcrumb label",
+                "name": "detail_breadcrumb_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Services",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_hero_cta_label",
+                "label": "Hero button",
+                "name": "detail_hero_cta_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Write {service} where the service name should appear.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Request {service} Scope",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_hero_secondary_label",
+                "label": "Hero second button",
+                "name": "detail_hero_secondary_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the Book a Discovery Call form. Blank hides the button.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book Strategy Call",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_deliverables_eyebrow",
+                "label": "Deliverables eyebrow",
+                "name": "detail_deliverables_eyebrow",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "What We Deliver",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_deliverables_title",
+                "label": "Deliverables title",
+                "name": "detail_deliverables_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Structured Execution & Outcomes",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_deliverable_note",
+                "label": "Note under each deliverable",
+                "name": "detail_deliverable_note",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "The same line is shown under every deliverable. Blank hides it.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Executed with rigorous QA testing, real-time reporting metrics, and alignment with your target customer acquisition cost.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_services_detail_tech_title",
+                "label": "Tools box title",
+                "name": "detail_tech_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Tech Stack & Platforms",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_tech_note",
+                "label": "Tools box note",
+                "name": "detail_tech_note",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Powered by modern architectures, first-party data security, and enterprise infrastructure support through Aumento Infoway.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_services_detail_tech_note_highlight",
+                "label": "Bold words in the note",
+                "name": "detail_tech_note_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Words inside the note above to show in bold. Must match exactly.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Aumento Infoway",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_consult_title",
+                "label": "Consultation box title",
+                "name": "detail_consult_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Write {service} where the service name should appear.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Need a Custom Strategy for {service}?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_consult_text",
+                "label": "Consultation box text",
+                "name": "detail_consult_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Speak directly with our senior creative and growth team to structure a high-performance rollout plan.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_services_detail_consult_button_label",
+                "label": "Consultation button",
+                "name": "detail_consult_button_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Request Proposal",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_faq_eyebrow",
+                "label": "FAQ eyebrow",
+                "name": "detail_faq_eyebrow",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Clear Answers",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_faq_title",
+                "label": "FAQ title",
+                "name": "detail_faq_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Frequently Asked Questions",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_cta_title",
+                "label": "Closing title",
+                "name": "detail_cta_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Write {service} where the service name should appear.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Ready to Accelerate with {service}?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_cta_primary_label",
+                "label": "Closing button",
+                "name": "detail_cta_primary_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Get Started",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_cta_primary_link_type",
+                "label": "Closing button link",
+                "name": "detail_cta_primary_link_type",
+                "aria-label": "",
+                "type": "button_group",
+                "instructions": "Choose a page of this site, or enter a custom link.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "page": "Page",
+                    "custom": "Custom link"
+                },
+                "default_value": "page",
+                "return_format": "value",
+                "allow_null": 0,
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_services_detail_cta_primary_page",
+                "label": "Page",
+                "name": "detail_cta_primary_page",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "Opens without reloading the site.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_services_detail_cta_primary_link_type",
+                            "operator": "==",
+                            "value": "page"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "/": "Home",
+                    "/about": "About",
+                    "/services": "Services",
+                    "/work": "Work",
+                    "/reels": "Reels",
+                    "/industries": "Industries",
+                    "/testimonials": "Testimonials",
+                    "/blog": "Blog",
+                    "/contact": "Contact",
+                    "/privacy-policy": "Privacy Policy",
+                    "/terms": "Terms"
+                },
+                "default_value": "/contact",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 1,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_cta_primary_url",
+                "label": "Custom link",
+                "name": "detail_cta_primary_url",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_services_detail_cta_primary_link_type",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "/contact or https://example.com"
+            },
+            {
+                "key": "field_services_detail_cta_secondary_label",
+                "label": "Closing second button",
+                "name": "detail_cta_secondary_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "View All Services",
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_cta_secondary_link_type",
+                "label": "Closing second button link",
+                "name": "detail_cta_secondary_link_type",
+                "aria-label": "",
+                "type": "button_group",
+                "instructions": "Choose a page of this site, or enter a custom link.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "page": "Page",
+                    "custom": "Custom link"
+                },
+                "default_value": "page",
+                "return_format": "value",
+                "allow_null": 0,
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_services_detail_cta_secondary_page",
+                "label": "Page",
+                "name": "detail_cta_secondary_page",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "Opens without reloading the site.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_services_detail_cta_secondary_link_type",
+                            "operator": "==",
+                            "value": "page"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "/": "Home",
+                    "/about": "About",
+                    "/services": "Services",
+                    "/work": "Work",
+                    "/reels": "Reels",
+                    "/industries": "Industries",
+                    "/testimonials": "Testimonials",
+                    "/blog": "Blog",
+                    "/contact": "Contact",
+                    "/privacy-policy": "Privacy Policy",
+                    "/terms": "Terms"
+                },
+                "default_value": "/services",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 1,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_services_detail_cta_secondary_url",
+                "label": "Custom link",
+                "name": "detail_cta_secondary_url",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_services_detail_cta_secondary_link_type",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "/contact or https://example.com"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page",
+                    "operator": "==",
+                    "value": "493"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "All Services page content for the React frontend, plus the labels used on every single service page. Section order and visibility live in the \"Page Sections\" box.",
+        "show_in_rest": 1
+    }
+]

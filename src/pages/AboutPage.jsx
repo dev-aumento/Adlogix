@@ -5,23 +5,11 @@ import { SEOHead } from '../components/ui/SEOHead';
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { Button } from '../components/ui/Button';
 import { SmartLink, toRouterPath } from '../components/ui/SmartLink';
+import { BoldWords } from '../components/ui/BoldWords';
 import { PageSections } from '../components/sections/PageSections';
 import { useCMS } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
 import { aboutDefaults } from '../content/about';
-
-/** Bold the words WordPress marked inside a paragraph. Without a match the text is unchanged. */
-const withBold = (copy, highlight) => {
-  if (!highlight || !copy.includes(highlight)) return copy;
-  const [before, ...rest] = copy.split(highlight);
-  return (
-    <>
-      {before}
-      <strong className="text-brand-navy">{highlight}</strong>
-      {rest.join(highlight)}
-    </>
-  );
-};
 
 const AboutHero = ({ content = aboutDefaults.hero }) => {
   const { badge, headline, description } = content;
@@ -164,7 +152,7 @@ const AboutPartner = ({ content = aboutDefaults.partner }) => {
             )}
             {text && (
               <p className="text-sm text-brand-muted leading-relaxed">
-                {withBold(text, highlight)}
+                <BoldWords text={text} highlight={highlight} />
               </p>
             )}
           </div>

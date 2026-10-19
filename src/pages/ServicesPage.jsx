@@ -9,53 +9,73 @@ import { PageSections } from '../components/sections/PageSections';
 import { GrowthPlansSection } from '../components/home/GrowthPlansSection';
 import { useCMS, useCollection } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
+import { servicesDefaults } from '../content/services';
 
-const ServicesHero = () => (
-  <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="max-w-3xl">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
-        >
-          <Layers className="w-3.5 h-3.5" />
-          <span>Full-Stack Capabilities</span>
-        </motion.div>
+const ServicesHero = ({ content = servicesDefaults.hero }) => {
+  const { badge, headline, description } = content;
+  const hasHeadline = Boolean(headline?.line1 || headline?.highlight1);
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
-        >
-          Creative Meets Performance.{' '}
-          <span className="gradient-text-blue block mt-1">
-            Engineered for Scale.
-          </span>
-        </motion.h1>
+  if (!badge && !hasHeadline && !description) return null;
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
-        >
-          Whether you need high-converting 9:16 vertical reels, multi-channel paid acquisition, bespoke Shopify storefronts, or enterprise headless React applications, we build solutions that deliver measurable ROI.
-        </motion.p>
+  return (
+    <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl">
+          {badge && (
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span>{badge}</span>
+            </motion.div>
+          )}
+
+          {hasHeadline && (
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
+            >
+              {headline.line1}
+              {headline.line1 && headline.highlight1 ? ' ' : ''}
+              {headline.highlight1 && (
+                <span className="gradient-text-blue block mt-1">
+                  {headline.highlight1}
+                </span>
+              )}
+            </motion.h1>
+          )}
+
+          {description && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
+            >
+              {description}
+            </motion.p>
+          )}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 // Filter bar and grid share the selected category, so they move as one section.
-const ServicesCatalog = () => {
+const ServicesCatalog = ({ content = servicesDefaults.catalog }) => {
   const { openDiscoveryModal } = useCMS();
   const services = useCollection('services', 'services');
   const [chosenCategory, setSelectedCategory] = useState("all");
 
   const hasCategory = (id) => services.some((s) => s.category === id);
-  const showCategoryFilters = hasCategory('marketing-creative') && hasCategory('web-it');
+  // A category filter needs both a label and services in that category.
+  const showCategoryFilters =
+    hasCategory('marketing-creative') && hasCategory('web-it')
+    && Boolean(content.marketingLabel && content.webLabel);
   const selectedCategory = showCategoryFilters ? chosenCategory : "all";
   const filteredServices = selectedCategory === "all"
     ? services
@@ -63,20 +83,25 @@ const ServicesCatalog = () => {
 
   if (services.length === 0) return null;
 
+  const showFilterBar = Boolean(content.allLabel || showCategoryFilters || content.ctaLabel);
+
   return (
     <>
       {/* Filter Navigation */}
+      {showFilterBar && (
       <section className="py-8 border-b border-brand-border bg-white sticky top-20 z-30 shadow-xs backdrop-blur-md bg-white/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
           <div className="inline-flex items-center gap-1.5 p-1.5 bg-brand-surface-soft rounded-full border border-brand-border flex-nowrap overflow-x-auto no-scrollbar max-w-full">
-            <button
-              onClick={() => setSelectedCategory("all")}
-              className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all select-none ${
-                selectedCategory === "all" ? "bg-brand-navy text-white shadow-sm" : "text-brand-muted hover:text-brand-navy"
-              }`}
-            >
-              All Capabilities ({services.length})
-            </button>
+            {content.allLabel && (
+              <button
+                onClick={() => setSelectedCategory("all")}
+                className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all select-none ${
+                  selectedCategory === "all" ? "bg-brand-navy text-white shadow-sm" : "text-brand-muted hover:text-brand-navy"
+                }`}
+              >
+                {content.allLabel} ({services.length})
+              </button>
+            )}
             {showCategoryFilters && (
               <>
                 <button
@@ -86,7 +111,7 @@ const ServicesCatalog = () => {
                   }`}
                 >
                   <TrendingUp className="w-3.5 h-3.5" />
-                  <span>Marketing & Creative</span>
+                  <span>{content.marketingLabel}</span>
                 </button>
                 <button
                   onClick={() => setSelectedCategory("web-it")}
@@ -95,17 +120,20 @@ const ServicesCatalog = () => {
                   }`}
                 >
                   <Code2 className="w-3.5 h-3.5" />
-                  <span>Web, E-commerce & IT</span>
+                  <span>{content.webLabel}</span>
                 </button>
               </>
             )}
           </div>
 
-          <Button onClick={openDiscoveryModal} variant="outline" size="sm" className="whitespace-nowrap shrink-0">
-            Request Custom Scope
-          </Button>
+          {content.ctaLabel && (
+            <Button onClick={openDiscoveryModal} variant="outline" size="sm" className="whitespace-nowrap shrink-0">
+              {content.ctaLabel}
+            </Button>
+          )}
         </div>
       </section>
+      )}
 
       {/* Services List / Grid */}
       <section className="py-20 lg:py-24">
@@ -126,9 +154,11 @@ const ServicesCatalog = () => {
                     <div className="w-14 h-14 rounded-2xl bg-brand-surface-soft group-hover:bg-brand-blue text-brand-blue group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm">
                       <DynamicIcon name={service.icon} className="w-7 h-7" />
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-brand-surface-soft text-slate-500">
-                      {service.category === 'web-it' ? 'Technology' : 'Marketing'}
-                    </span>
+                    {(service.category === 'web-it' ? content.webBadge : content.marketingBadge) && (
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-brand-surface-soft text-slate-500">
+                        {service.category === 'web-it' ? content.webBadge : content.marketingBadge}
+                      </span>
+                    )}
                   </div>
 
                   <Link to={`/services/${service.slug}`}>
@@ -166,13 +196,15 @@ const ServicesCatalog = () => {
                     ))}
                   </div>
 
-                  <Link
-                    to={`/services/${service.slug}`}
-                    className="text-xs font-bold text-brand-blue group-hover:text-brand-blue-hover flex items-center gap-1 group-hover:translate-x-1 transition-all whitespace-nowrap shrink-0 ml-auto"
-                  >
-                    <span>Learn More</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                  {content.learnMoreLabel && (
+                    <Link
+                      to={`/services/${service.slug}`}
+                      className="text-xs font-bold text-brand-blue group-hover:text-brand-blue-hover flex items-center gap-1 group-hover:translate-x-1 transition-all whitespace-nowrap shrink-0 ml-auto"
+                    >
+                      <span>{content.learnMoreLabel}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -183,23 +215,32 @@ const ServicesCatalog = () => {
   );
 };
 
-const ServicesCta = () => {
+const ServicesCta = ({ content = servicesDefaults.cta }) => {
   const { openDiscoveryModal } = useCMS();
+  const { title, text, buttonLabel } = content;
+
+  if (!title && !text && !buttonLabel) return null;
 
   return (
     <section className="py-16 bg-brand-surface-soft/60 border-t border-brand-border text-center">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-brand-navy">
-          Not Sure Which Growth Track Fits Your Stage?
-        </h2>
-        <p className="text-sm sm:text-base text-brand-muted">
-          Schedule a 30-minute discovery session with our senior growth architects to assess your acquisition channels and tech stack.
-        </p>
-        <div className="pt-2">
-          <Button onClick={openDiscoveryModal} variant="primary" size="lg" icon={ArrowRight}>
-            Book a Free Strategy Session
-          </Button>
-        </div>
+        {title && (
+          <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-brand-navy">
+            {title}
+          </h2>
+        )}
+        {text && (
+          <p className="text-sm sm:text-base text-brand-muted">
+            {text}
+          </p>
+        )}
+        {buttonLabel && (
+          <div className="pt-2">
+            <Button onClick={openDiscoveryModal} variant="primary" size="lg" icon={ArrowRight}>
+              {buttonLabel}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
