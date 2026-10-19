@@ -855,16 +855,16 @@ class Adlogix_Headless_Core {
                 'showBadge' => true
             ],
             'contact' => [
-                'email' => get_option('admin_email', 'hello@adlogix.agency'),
+                'email' => get_option('admin_email', 'support@adlogix.in'),
                 'phone' => get_option('adlogix_phone', '+1 (800) 592-3564'),
                 'address' => get_option('adlogix_address', '742 Innovation Blvd, Suite 400'),
                 'city' => get_option('adlogix_city', 'San Francisco, CA 94107'),
                 'workingHours' => 'Mon – Fri: 9:00 AM – 6:30 PM (PST)'
             ],
             'socials' => [
-                'instagram' => get_option('adlogix_instagram', 'https://instagram.com/adlogix.agency'),
+                'instagram' => get_option('adlogix_instagram', 'https://instagram.com/adlogix.in'),
                 'linkedin' => get_option('adlogix_linkedin', 'https://linkedin.com/company/adlogix'),
-                'twitter' => get_option('adlogix_twitter', 'https://twitter.com/adlogix_agency'),
+                'twitter' => get_option('adlogix_twitter', 'https://twitter.com/adlogix_in'),
             ]
         ];
     }

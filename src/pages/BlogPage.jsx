@@ -245,7 +245,7 @@ export const BlogPage = () => {
       <SEOHead
         title="Insights & Guides | Digital Growth, SEO & Tech | Adlogix"
         description="Actionable digital marketing strategies, 9:16 creative video frameworks, headless React guides, and technical SEO tactics from the Adlogix team."
-        canonical="https://adlogix.agency/blog"
+        canonical="https://adlogix.in/blog"
       />
 
       <div className="bg-white">

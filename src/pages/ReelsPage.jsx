@@ -249,7 +249,7 @@ export const ReelsPage = () => {
       <SEOHead
         title="Creative Studio & Reels Showcase | 9:16 Video Production | Adlogix"
         description="Explore our in-house 9:16 vertical video reels, macro product shoots, cinematic brand films, and direct-response paid ad creatives engineered to stop the scroll."
-        canonical="https://adlogix.agency/reels"
+        canonical="https://adlogix.in/reels"
       />
 
       <div className="bg-white">

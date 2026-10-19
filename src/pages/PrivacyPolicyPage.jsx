@@ -8,7 +8,7 @@ export const PrivacyPolicyPage = () => {
       <SEOHead
         title="Privacy Policy | Adlogix Agency"
         description="Our privacy policy outlines how Adlogix collects, protects, and handles personal data and client communications."
-        canonical="https://adlogix.agency/privacy-policy"
+        canonical="https://adlogix.in/privacy-policy"
       />
 
       <div className="bg-white py-14 sm:py-20">
@@ -50,7 +50,7 @@ export const PrivacyPolicyPage = () => {
 
             <h2>5. Contact Us</h2>
             <p>
-              If you have any questions regarding this Privacy Policy, please contact us at <a href="mailto:privacy@adlogix.agency" className="text-brand-blue underline">privacy@adlogix.agency</a>.
+              If you have any questions regarding this Privacy Policy, please contact us at <a href="mailto:privacy@adlogix.in" className="text-brand-blue underline">privacy@adlogix.in</a>.
             </p>
           </div>
         </div>

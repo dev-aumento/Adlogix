@@ -1,0 +1,1709 @@
+[
+    {
+        "key": "group_adlogix_page_about",
+        "title": "About Page Content",
+        "fields": [
+            {
+                "key": "field_about_tab_hero",
+                "label": "Hero",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_about_hero_badge_text",
+                "label": "Badge text",
+                "name": "hero_badge_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The pill above the headline. Blank hides the pill.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "About Adlogix",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_hero_headline_line_1",
+                "label": "Headline line 1",
+                "name": "hero_headline_line_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Built Around Ideas.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_hero_headline_highlight_1",
+                "label": "Headline line 2 (highlighted)",
+                "name": "hero_headline_highlight_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Shown in the blue gradient, on its own line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Driven by Measurable Growth.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_hero_description",
+                "label": "Intro paragraph",
+                "name": "hero_description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Adlogix was founded on a simple realization: traditional advertising agencies lack technological depth, while traditional IT firms lack creative commercial storytelling. We bring both together under one roof.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 4,
+                "new_lines": ""
+            },
+            {
+                "key": "field_about_tab_story",
+                "label": "Mission & Story",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_about_story_eyebrow",
+                "label": "Eyebrow",
+                "name": "story_eyebrow",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Our Mission & Philosophy",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_story_title",
+                "label": "Title",
+                "name": "story_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Your Creative Growth Partner From Inception to Scale",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_story_paragraph_1",
+                "label": "Paragraph 1",
+                "name": "story_paragraph_1",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "We position Adlogix as an agile extension of your executive leadership team. Rather than treating marketing and software engineering as isolated silos, we orchestrate them into a unified growth engine.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 4,
+                "new_lines": ""
+            },
+            {
+                "key": "field_about_story_paragraph_2",
+                "label": "Paragraph 2",
+                "name": "story_paragraph_2",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "From testing high-velocity 9:16 vertical video reels to deploying headless React platforms and server-side first-party attribution tracking, we ensure every marketing rupee yields verifiable commercial ROI.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 4,
+                "new_lines": ""
+            },
+            {
+                "key": "field_about_story_metric_1",
+                "label": "Metric 1",
+                "name": "story_metric_1",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "A metric needs a value. Clear the value to hide the tile.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_about_story_metric_1_value",
+                        "label": "Value",
+                        "name": "value",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "100%",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_story_metric_1_label",
+                        "label": "Label",
+                        "name": "label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "In-House Creative & Tech Execution",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_about_story_metric_2",
+                "label": "Metric 2",
+                "name": "story_metric_2",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_about_story_metric_2_value",
+                        "label": "Value",
+                        "name": "value",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "3.9x",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_story_metric_2_label",
+                        "label": "Label",
+                        "name": "label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Average Blended Client ROAS",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_about_story_image",
+                "label": "Story image",
+                "name": "story_image",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "The photo beside the text. Without it the text spans the full width.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": "",
+                "preview_size": "medium"
+            },
+            {
+                "key": "field_about_tab_partner",
+                "label": "Technology Partner",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_about_partner_badge",
+                "label": "Badge",
+                "name": "partner_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Technology Partnership",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_partner_title",
+                "label": "Title",
+                "name": "partner_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Powered by Aumento Infoway",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_partner_text",
+                "label": "Text",
+                "name": "partner_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Adlogix leverages the technology capabilities and engineering infrastructure of Aumento Infoway. This partnership enables us to deliver enterprise-grade headless architectures, complex API middleware, high-concurrency cloud setups, and bulletproof web applications.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 4,
+                "new_lines": ""
+            },
+            {
+                "key": "field_about_partner_highlight",
+                "label": "Bold words",
+                "name": "partner_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Words inside the text above to show in bold. Must match exactly, otherwise nothing is bolded.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Aumento Infoway",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_partner_cta_label",
+                "label": "Button label",
+                "name": "partner_cta_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Explore Aumento Infoway",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_partner_cta_link_type",
+                "label": "Button link",
+                "name": "partner_cta_link_type",
+                "aria-label": "",
+                "type": "button_group",
+                "instructions": "Choose a page of this site, or enter a custom link.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "page": "Page",
+                    "custom": "Custom link"
+                },
+                "default_value": "custom",
+                "return_format": "value",
+                "allow_null": 0,
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_about_partner_cta_page",
+                "label": "Page",
+                "name": "partner_cta_page",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "Opens without reloading the site.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_about_partner_cta_link_type",
+                            "operator": "==",
+                            "value": "page"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "/": "Home",
+                    "/about": "About",
+                    "/services": "Services",
+                    "/work": "Work",
+                    "/reels": "Reels",
+                    "/industries": "Industries",
+                    "/testimonials": "Testimonials",
+                    "/blog": "Blog",
+                    "/contact": "Contact",
+                    "/privacy-policy": "Privacy Policy",
+                    "/terms": "Terms"
+                },
+                "default_value": "",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 1,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_partner_cta_url",
+                "label": "Custom link",
+                "name": "partner_cta_url",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_about_partner_cta_link_type",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "https://aumentoinfoway.com/",
+                "placeholder": "/contact or https://example.com"
+            },
+            {
+                "key": "field_about_tab_team",
+                "label": "Leadership Team",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_about_team_badge",
+                "label": "Badge",
+                "name": "team_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Leadership",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_team_title",
+                "label": "Title",
+                "name": "team_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Creative Minds. Growth Strategists. Engineers.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_team_highlight",
+                "label": "Highlighted words",
+                "name": "team_highlight",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Part of the title above, shown in the blue gradient. Must match exactly.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Growth Strategists",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_team_subtitle",
+                "label": "Subtitle",
+                "name": "team_subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Meet the core leaders driving campaign strategy, creative production, and engineering excellence at Adlogix.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_about_team_member_1",
+                "label": "Member 1",
+                "name": "team_member_1",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "A member needs a name and a photo. Clear either one to hide the card.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_about_team_member_1_name",
+                        "label": "Name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Aarav Sharma",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_1_role",
+                        "label": "Role",
+                        "name": "role",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Co-Founder & Managing Director",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_1_photo",
+                        "label": "Photo",
+                        "name": "photo",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": "",
+                        "preview_size": "medium"
+                    },
+                    {
+                        "key": "field_about_team_member_1_bio",
+                        "label": "Bio",
+                        "name": "bio",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "12+ years steering high-growth digital marketing strategies and full-funnel brand scaling.",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 3,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_about_team_member_1_linkedin",
+                        "label": "LinkedIn URL",
+                        "name": "linkedin",
+                        "aria-label": "",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "https://linkedin.com",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_about_team_member_2",
+                "label": "Member 2",
+                "name": "team_member_2",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_about_team_member_2_name",
+                        "label": "Name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Jessica Ray",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_2_role",
+                        "label": "Role",
+                        "name": "role",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Executive Creative Director",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_2_photo",
+                        "label": "Photo",
+                        "name": "photo",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": "",
+                        "preview_size": "medium"
+                    },
+                    {
+                        "key": "field_about_team_member_2_bio",
+                        "label": "Bio",
+                        "name": "bio",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Award-winning commercial filmmaker and viral short-form director specializing in D2C hooks.",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 3,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_about_team_member_2_linkedin",
+                        "label": "LinkedIn URL",
+                        "name": "linkedin",
+                        "aria-label": "",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "https://linkedin.com",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_about_team_member_3",
+                "label": "Member 3",
+                "name": "team_member_3",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_about_team_member_3_name",
+                        "label": "Name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Vikram Mehta",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_3_role",
+                        "label": "Role",
+                        "name": "role",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "VP of Technology (Aumento Infoway Partner Lead)",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_3_photo",
+                        "label": "Photo",
+                        "name": "photo",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": "",
+                        "preview_size": "medium"
+                    },
+                    {
+                        "key": "field_about_team_member_3_bio",
+                        "label": "Bio",
+                        "name": "bio",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Architecting enterprise headless web applications, high-concurrency systems, and API pipelines.",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 3,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_about_team_member_3_linkedin",
+                        "label": "LinkedIn URL",
+                        "name": "linkedin",
+                        "aria-label": "",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "https://aumentoinfoway.com",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_about_team_member_4",
+                "label": "Member 4",
+                "name": "team_member_4",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_about_team_member_4_name",
+                        "label": "Name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Elena Ramos",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_4_role",
+                        "label": "Role",
+                        "name": "role",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Head of Performance Marketing",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_4_photo",
+                        "label": "Photo",
+                        "name": "photo",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": "",
+                        "preview_size": "medium"
+                    },
+                    {
+                        "key": "field_about_team_member_4_bio",
+                        "label": "Bio",
+                        "name": "bio",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Managed ₹300 Cr+ in paid social & search spend across Meta, Google, TikTok, and programmatic networks.",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 3,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_about_team_member_4_linkedin",
+                        "label": "LinkedIn URL",
+                        "name": "linkedin",
+                        "aria-label": "",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "https://linkedin.com",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_about_team_member_5",
+                "label": "Member 5",
+                "name": "team_member_5",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_about_team_member_5_name",
+                        "label": "Name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_5_role",
+                        "label": "Role",
+                        "name": "role",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_5_photo",
+                        "label": "Photo",
+                        "name": "photo",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": "",
+                        "preview_size": "medium"
+                    },
+                    {
+                        "key": "field_about_team_member_5_bio",
+                        "label": "Bio",
+                        "name": "bio",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 3,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_about_team_member_5_linkedin",
+                        "label": "LinkedIn URL",
+                        "name": "linkedin",
+                        "aria-label": "",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_about_team_member_6",
+                "label": "Member 6",
+                "name": "team_member_6",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_about_team_member_6_name",
+                        "label": "Name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_6_role",
+                        "label": "Role",
+                        "name": "role",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_6_photo",
+                        "label": "Photo",
+                        "name": "photo",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": "",
+                        "preview_size": "medium"
+                    },
+                    {
+                        "key": "field_about_team_member_6_bio",
+                        "label": "Bio",
+                        "name": "bio",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 3,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_about_team_member_6_linkedin",
+                        "label": "LinkedIn URL",
+                        "name": "linkedin",
+                        "aria-label": "",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_about_team_member_7",
+                "label": "Member 7",
+                "name": "team_member_7",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_about_team_member_7_name",
+                        "label": "Name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_7_role",
+                        "label": "Role",
+                        "name": "role",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_7_photo",
+                        "label": "Photo",
+                        "name": "photo",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": "",
+                        "preview_size": "medium"
+                    },
+                    {
+                        "key": "field_about_team_member_7_bio",
+                        "label": "Bio",
+                        "name": "bio",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 3,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_about_team_member_7_linkedin",
+                        "label": "LinkedIn URL",
+                        "name": "linkedin",
+                        "aria-label": "",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_about_team_member_8",
+                "label": "Member 8",
+                "name": "team_member_8",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_about_team_member_8_name",
+                        "label": "Name",
+                        "name": "name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_8_role",
+                        "label": "Role",
+                        "name": "role",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_about_team_member_8_photo",
+                        "label": "Photo",
+                        "name": "photo",
+                        "aria-label": "",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": "",
+                        "preview_size": "medium"
+                    },
+                    {
+                        "key": "field_about_team_member_8_bio",
+                        "label": "Bio",
+                        "name": "bio",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 3,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_about_team_member_8_linkedin",
+                        "label": "LinkedIn URL",
+                        "name": "linkedin",
+                        "aria-label": "",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_about_tab_cta",
+                "label": "Closing CTA",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_about_cta_title",
+                "label": "Title",
+                "name": "cta_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Ready to Partner with Adlogix?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_cta_text",
+                "label": "Text",
+                "name": "cta_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Let's discuss how our integrated creative and technology team can help you dominate your category.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_about_cta_primary_label",
+                "label": "Primary button label",
+                "name": "cta_primary_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Start Your Project",
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_cta_primary_link_type",
+                "label": "Primary button link",
+                "name": "cta_primary_link_type",
+                "aria-label": "",
+                "type": "button_group",
+                "instructions": "Choose a page of this site, or enter a custom link.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "page": "Page",
+                    "custom": "Custom link"
+                },
+                "default_value": "page",
+                "return_format": "value",
+                "allow_null": 0,
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_about_cta_primary_page",
+                "label": "Page",
+                "name": "cta_primary_page",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "Opens without reloading the site.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_about_cta_primary_link_type",
+                            "operator": "==",
+                            "value": "page"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "/": "Home",
+                    "/about": "About",
+                    "/services": "Services",
+                    "/work": "Work",
+                    "/reels": "Reels",
+                    "/industries": "Industries",
+                    "/testimonials": "Testimonials",
+                    "/blog": "Blog",
+                    "/contact": "Contact",
+                    "/privacy-policy": "Privacy Policy",
+                    "/terms": "Terms"
+                },
+                "default_value": "/contact",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 1,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_about_cta_primary_url",
+                "label": "Custom link",
+                "name": "cta_primary_url",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_about_cta_primary_link_type",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "/contact or https://example.com"
+            },
+            {
+                "key": "field_about_cta_secondary_label",
+                "label": "Secondary button label",
+                "name": "cta_secondary_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the Book a Discovery Call form. Blank hides the button.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book a Discovery Call",
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page",
+                    "operator": "==",
+                    "value": "310"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "All About page section content for the React frontend. Section order and visibility live in the \"Page Sections\" box.",
+        "show_in_rest": 1
+    }
+]

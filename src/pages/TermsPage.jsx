@@ -8,7 +8,7 @@ export const TermsPage = () => {
       <SEOHead
         title="Terms & Conditions | Adlogix Agency"
         description="Review the terms and conditions governing professional digital marketing, web engineering, and media services with Adlogix."
-        canonical="https://adlogix.agency/terms"
+        canonical="https://adlogix.in/terms"
       />
 
       <div className="bg-white py-14 sm:py-20">

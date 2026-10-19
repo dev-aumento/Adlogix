@@ -221,7 +221,7 @@ export const ServicesPage = () => {
       <SEOHead
         title="Services & Capabilities | Digital Marketing & IT Solutions | Adlogix"
         description="Explore our full spectrum of digital marketing, creative advertising, performance marketing, Shopify e-commerce, and headless React web development services."
-        canonical="https://adlogix.agency/services"
+        canonical="https://adlogix.in/services"
       />
 
       <div className="bg-white">

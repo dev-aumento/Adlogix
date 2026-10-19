@@ -182,7 +182,7 @@ export const IndustriesPage = () => {
       <SEOHead
         title="Industries We Serve | Specialized Digital Solutions | Adlogix"
         description="Discover how Adlogix builds tailored digital marketing, creative video, and technology architectures for Beauty, Real Estate, E-commerce, Healthcare, Tech Startups, and more."
-        canonical="https://adlogix.agency/industries"
+        canonical="https://adlogix.in/industries"
       />
 
       <div className="bg-white">

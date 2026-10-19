@@ -34,7 +34,7 @@ export const ServiceDetailPage = () => {
       <SEOHead
         title={`${service.title} | Adlogix Agency`}
         description={service.shortDesc}
-        canonical={`https://adlogix.agency/services/${service.slug}`}
+        canonical={`https://adlogix.in/services/${service.slug}`}
         schema={{
           "@context": "https://schema.org",
           "@type": "Service",
@@ -42,7 +42,7 @@ export const ServiceDetailPage = () => {
           "provider": {
             "@type": "MarketingAgency",
             "name": "Adlogix",
-            "url": "https://adlogix.agency"
+            "url": "https://adlogix.in"
           },
           "description": service.shortDesc
         }}

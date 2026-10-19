@@ -43,7 +43,7 @@ export const HomePage = () => {
       <SEOHead
         title="Adlogix | Creative Digital Marketing & Technology Agency"
         description="Adlogix combines bold creative, performance marketing, and smart technology to help ambitious brands grow, connect, and convert. Powered by Aumento Infoway."
-        canonical="https://adlogix.agency/"
+        canonical="https://adlogix.in/"
       />
 
       <div className="flex flex-col">

@@ -502,7 +502,7 @@ export const ContactPage = () => {
       <SEOHead
         title="Contact Us | Start a Project or Book a Discovery Call | Adlogix"
         description="Ready to scale your marketing or build high-performance web software? Contact Adlogix today for proposals, consultations, and creative reviews."
-        canonical="https://adlogix.agency/contact"
+        canonical="https://adlogix.in/contact"
       />
 
       <div className="bg-white">

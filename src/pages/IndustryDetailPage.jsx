@@ -29,7 +29,7 @@ export const IndustryDetailPage = () => {
       <SEOHead
         title={`${industry.name} Marketing & Web Solutions | Adlogix`}
         description={industry.shortDesc}
-        canonical={`https://adlogix.agency/industries/${industry.slug}`}
+        canonical={`https://adlogix.in/industries/${industry.slug}`}
         ogImage={industry.heroImage}
       />
 

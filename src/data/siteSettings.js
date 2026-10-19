@@ -10,8 +10,8 @@ export const defaultSiteSettings = {
     showBadge: true
   },
   contact: {
-    email: "hello@adlogix.agency",
-    supportEmail: "growth@adlogix.agency",
+    email: "support@adlogix.in",
+    supportEmail: "growth@adlogix.in",
     phone: "+1 (800) 592-3564",
     intlPhone: "+91 98765 43210",
     address: "742 Innovation Blvd, Suite 400",
@@ -20,10 +20,10 @@ export const defaultSiteSettings = {
     calendlyUrl: "https://calendly.com"
   },
   socials: {
-    instagram: "https://instagram.com/adlogix.agency",
+    instagram: "https://instagram.com/adlogix.in",
     linkedin: "https://linkedin.com/company/adlogix",
-    twitter: "https://twitter.com/adlogix_agency",
-    facebook: "https://facebook.com/adlogixagency",
+    twitter: "https://twitter.com/adlogix_in",
+    facebook: "https://facebook.com/adlogixin",
     youtube: "https://youtube.com/@adlogix"
   },
   navigation: [

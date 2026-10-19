@@ -31,7 +31,7 @@ export const BlogPostPage = () => {
       <SEOHead
         title={`${post.title} | Adlogix Insights`}
         description={post.excerpt}
-        canonical={`https://adlogix.agency/blog/${post.slug}`}
+        canonical={`https://adlogix.in/blog/${post.slug}`}
         ogImage={post.featuredImage}
         type="article"
         schema={{
@@ -47,7 +47,7 @@ export const BlogPostPage = () => {
           "publisher": {
             "@type": "Organization",
             "name": "Adlogix",
-            "logo": "https://adlogix.agency/favicon.svg"
+            "logo": "https://adlogix.in/favicon.svg"
           },
           "datePublished": post.publishedDate
         }}

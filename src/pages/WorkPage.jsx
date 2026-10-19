@@ -189,7 +189,7 @@ export const WorkPage = () => {
       <SEOHead
         title="Our Work & Case Studies | Measurable Impact | Adlogix"
         description="Explore our portfolio of creative advertising, viral short-form reels, performance marketing funnels, Shopify stores, and modern React web applications."
-        canonical="https://adlogix.agency/work"
+        canonical="https://adlogix.in/work"
       />
 
       <div className="bg-white">

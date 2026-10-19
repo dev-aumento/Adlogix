@@ -171,7 +171,7 @@ export const TestimonialsPage = () => {
       <SEOHead
         title="Client Video Testimonials & Success Stories | Adlogix"
         description="Watch authentic video reviews and read verified feedback from founders and marketing executives who scaled with Adlogix."
-        canonical="https://adlogix.agency/testimonials"
+        canonical="https://adlogix.in/testimonials"
       />
 
       <div className="bg-white">

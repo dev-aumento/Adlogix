@@ -22,7 +22,7 @@ export const ProjectDetailPage = () => {
       <SEOHead
         title={`${project.title} | Case Study | Adlogix`}
         description={project.overview}
-        canonical={`https://adlogix.agency/work/${project.slug}`}
+        canonical={`https://adlogix.in/work/${project.slug}`}
         ogImage={project.heroImage}
         schema={{
           "@context": "https://schema.org",
@@ -33,7 +33,7 @@ export const ProjectDetailPage = () => {
           "publisher": {
             "@type": "Organization",
             "name": "Adlogix",
-            "logo": "https://adlogix.agency/favicon.svg"
+            "logo": "https://adlogix.in/favicon.svg"
           }
         }}
       />

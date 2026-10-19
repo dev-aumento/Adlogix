@@ -60,11 +60,11 @@ export const defaultFooter = {
   colMarketingTitle: 'Marketing & Creative',
   colWebTitle: 'Web & IT Solutions',
   colCompanyTitle: 'Company & Contact',
-  email: 'hello@adlogix.agency',
+  email: 'support@adlogix.in',
   phone: '+1 (800) 592-3564',
-  instagram: 'https://instagram.com/adlogix.agency',
+  instagram: 'https://instagram.com/adlogix.in',
   linkedin: 'https://linkedin.com/company/adlogix',
-  twitter: 'https://twitter.com/adlogix_agency',
+  twitter: 'https://twitter.com/adlogix_in',
   copyright: 'Adlogix Agency. All rights reserved. Technology partner',
 };
 

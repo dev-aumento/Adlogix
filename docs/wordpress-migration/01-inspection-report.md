@@ -279,7 +279,7 @@ CORS: Access-Control-Allow-Origin reflects request Origin; Allow-Credentials: tr
 ## 9. SEO and rendering
 
 - Pure client-side SPA (`createRoot`, no SSR/prerender). Crawlers that don't execute JS see only `index.html` metadata.
-- `SEOHead` updates title/description/OG/canonical/JSON-LD at runtime. Canonicals and JSON-LD hardcode `https://adlogix.agency` while the live domain is `https://adlogix.in` — a pre-existing mismatch; not changed in this migration unless requested.
+- `SEOHead` updates title/description/OG/canonical/JSON-LD at runtime. Canonicals and JSON-LD used to hardcode `https://adlogix.agency` while the live domain is `https://adlogix.in`. **Resolved:** every canonical, JSON-LD URL, `index.html` meta, `robots.txt`, `sitemap.xml` and contact/social default now uses `adlogix.in`. The canonicals are still written out per page rather than derived from `VITE_SITE_URL`.
 - Combined with the deep-link 404 issue, inner pages currently have effectively no crawlable presence. WordPress-driven metadata would also be client-side only; it does **not** provide server-side SEO. Proper SEO would require prerendering/SSR (separate project).
 
 ---
