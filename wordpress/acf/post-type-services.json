@@ -1610,7 +1610,7 @@
                 "name": "seo_title",
                 "aria-label": "",
                 "type": "text",
-                "instructions": "The <title> for this service page. Blank uses \"<service name> | Adlogix Agency\".",
+                "instructions": "The browser tab title for this service page. Blank uses the service name followed by \" | Adlogix Agency\".",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
