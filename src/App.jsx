@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { CMSProvider } from './context/CMSContext';
 import { Layout } from './components/layout/Layout';
 import { ErrorBoundary } from './components/ui/ErrorBoundary';
@@ -22,6 +22,12 @@ import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
+/** Old `/category/blog/<slug>` links keep working by redirecting to the new `/blog/<slug>`. */
+const BlogCategoryRedirect = () => {
+  const { slug } = useParams();
+  return <Navigate to={`/blog/${slug}`} replace />;
+};
+
 export const App = () => {
   return (
     <CMSProvider>
@@ -39,8 +45,11 @@ export const App = () => {
               <Route path="/industries" element={<IndustriesPage />} />
               <Route path="/industries/:slug" element={<IndustryDetailPage />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
-              <Route path="/category/blog" element={<BlogPage />} />
-              <Route path="/category/blog/:slug" element={<BlogPostPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
+              {/* The old WordPress category archive path, kept so existing links still land. */}
+              <Route path="/category/blog" element={<Navigate to="/blog" replace />} />
+              <Route path="/category/blog/:slug" element={<BlogCategoryRedirect />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/terms" element={<TermsPage />} />

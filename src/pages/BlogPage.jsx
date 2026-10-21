@@ -108,11 +108,13 @@ const BlogArticles = () => {
               className="group grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 sm:p-8 rounded-3xl bg-brand-surface-soft border border-brand-border shadow-card-subtle hover:shadow-glossy transition-all"
             >
               <div className="lg:col-span-7 rounded-2xl overflow-hidden aspect-[16/10] bg-slate-900">
-                <img
-                  src={featuredPost.featuredImage}
-                  alt={featuredPost.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                {featuredPost.featuredImage && (
+                  <img
+                    src={featuredPost.featuredImage}
+                    alt={featuredPost.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                )}
               </div>
 
               <div className="lg:col-span-5 flex flex-col justify-between py-2 space-y-4">
@@ -132,11 +134,13 @@ const BlogArticles = () => {
 
                 <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <img
-                      src={featuredPost.author?.avatar}
-                      alt={featuredPost.author?.name}
-                      className="w-8 h-8 rounded-full object-cover border"
-                    />
+                    {featuredPost.author?.avatar && (
+                      <img
+                        src={featuredPost.author.avatar}
+                        alt={featuredPost.author?.name}
+                        className="w-8 h-8 rounded-full object-cover border"
+                      />
+                    )}
                     <div className="text-xs font-semibold text-brand-navy">
                       {featuredPost.author?.name}
                     </div>
@@ -166,12 +170,14 @@ const BlogArticles = () => {
                 className="group flex flex-col rounded-3xl bg-white border border-brand-border shadow-card-subtle hover:shadow-glossy overflow-hidden transition-all duration-300"
               >
                 <Link to={`/blog/${post.slug}`} className="relative aspect-[16/10] overflow-hidden bg-slate-900 block">
-                  <img
-                    src={post.featuredImage}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
+                  {post.featuredImage && (
+                    <img
+                      src={post.featuredImage}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  )}
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/95 text-brand-navy backdrop-blur-md shadow-sm">
                       {post.category}
@@ -203,11 +209,13 @@ const BlogArticles = () => {
 
                   <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <img
-                        src={post.author?.avatar}
-                        alt={post.author?.name}
-                        className="w-6 h-6 rounded-full object-cover"
-                      />
+                      {post.author?.avatar && (
+                        <img
+                          src={post.author.avatar}
+                          alt={post.author?.name}
+                          className="w-6 h-6 rounded-full object-cover"
+                        />
+                      )}
                       <span className="text-xs font-semibold text-slate-700">
                         {post.author?.name}
                       </span>

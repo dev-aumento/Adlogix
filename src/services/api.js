@@ -8,6 +8,7 @@ import { blogsData } from '../data/blogsData';
 import { teamData } from '../data/teamData';
 import { wpGet, wpPost, WordPressApiError, reportWordPressIssue } from './client';
 import { normalizePage } from './normalizers';
+import { normalizeBlogPost } from './blog';
 import {
   normalizeReel,
   normalizeProject,
@@ -134,28 +135,25 @@ export const api = {
   getTestimonials: () => getCollection('testimonials', normalizeTestimonial, testimonialsData),
   getIndustries: () => getCollection('industries', normalizeIndustry, industriesData),
 
-  // Blogs / Insights
+  /**
+   * Blog posts from WordPress. Like the collections, WordPress is the only source once a post
+   * is published; the built-in list is the fallback while loading, on error, or when the site
+   * has no posts yet. Not gated by VITE_ENABLE_WP_SYNC.
+   */
   async getBlogs() {
-    const raw = await fetchWP('/wp/v2/posts?_embed&per_page=50', null);
-    if (!raw) return blogsData;
-
-    return raw.map(item => ({
-      id: item.slug || item.id?.toString(),
-      slug: item.slug,
-      title: item.title?.rendered,
-      excerpt: item.excerpt?.rendered?.replace(/<[^>]*>?/gm, ''),
-      category: item._embedded?.['wp:term']?.[0]?.[0]?.name || 'Insights',
-      readTime: item.acf?.read_time || '5 min read',
-      publishedDate: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-      author: {
-        name: item._embedded?.['author']?.[0]?.name || 'Adlogix Team',
-        role: item.acf?.author_role || 'Growth Strategist',
-        avatar: item._embedded?.['author']?.[0]?.avatar_urls?.['96'] || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200'
-      },
-      featuredImage: item._embedded?.['wp:featuredmedia']?.[0]?.source_url || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200',
-      tags: item.acf?.tags || [],
-      content: item.content?.rendered
-    }));
+    try {
+      const raw = await wpGet('/wp/v2/posts', {
+        params: { per_page: 50, _embed: 'wp:term,wp:featuredmedia,author' }
+      });
+      if (!Array.isArray(raw) || raw.length === 0) return blogsData;
+      const posts = raw.map(normalizeBlogPost).filter(Boolean);
+      return posts.length > 0 ? posts : blogsData;
+    } catch (error) {
+      const message = `[WordPress CMS] Failed to fetch posts: ${error.message}. Using built-in list.`;
+      if (import.meta.env.PROD) console.error(message);
+      else console.warn(message);
+      return blogsData;
+    }
   },
 
   // Team

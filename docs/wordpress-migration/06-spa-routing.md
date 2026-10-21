@@ -97,3 +97,24 @@ Neither can appear while nginx returns its own 404; fix Option A/B first.
 ## Detail-page slugs with non-ASCII characters
 
 WordPress returns a slug containing ₹, é or – percent-encoded (`…-to-%e2%82%b930-cr-arr`), while React Router's `useParams()` decodes it. A strict comparison therefore failed and the detail page redirected to its listing. `findBySlug()` in `src/services/normalizers.js` compares both forms and is used by the project, service, industry and blog detail pages. See `11-work-page.md`.
+
+## Blog URL structure
+
+The blog listing and posts live at **`/blog`** and **`/blog/<slug>`**.
+
+The React routes used to be `/category/blog` and `/category/blog/:slug`, copied from WordPress's category archive, while every link in the app already pointed at `/blog/<slug>`. So the listing opened only from the header menu and **every post card led to the 404 page**. The routes now match the links, and the old paths redirect:
+
+| URL | Result |
+|---|---|
+| `/blog` | Listing |
+| `/blog/<slug>` | Post |
+| `/category/blog` | Redirects to `/blog` |
+| `/category/blog/<slug>` | Redirects to `/blog/<slug>` |
+
+The redirects exist because the WordPress **Primary** menu pointed its Insights item at `https://adlogix.in/category/blog/`, and that link may also be shared or indexed elsewhere.
+
+Two WordPress settings should match this structure. Neither changes what the site serves — Caddy sends every non-`/wp-*` path to the React app — but they keep the admin's "View Post" link and any copied permalink pointing at a page that exists:
+
+1. **Settings → Permalinks → Custom Structure**: `/blog/%postname%/`. Posts currently resolve to `https://adlogix.in/<slug>/`, which React does not route.
+2. **Appearance → Menus → Primary**: change the Insights item's URL from `/category/blog/` to `/blog/`.
+
