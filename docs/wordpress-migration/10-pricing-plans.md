@@ -50,7 +50,7 @@ On the Services and Reels pages you can also untick **Growth Plans** in the **Pa
 | `src/content/plans.js` | **New.** `plansDefaults`, `mapPlansFields`, `isPlansEmpty` — one copy of the pricing shape, used by all four sources. |
 | `src/content/home.js` | Its inline plans defaults and `mapPlan` moved into `plans.js`; behaviour identical. |
 | `src/content/services.js` | Gained a `plans` key. |
-| `src/content/reels.js` | **New.** Only `plans` so far — the rest of the Reels page is still static in React. |
+| `src/content/reels.js` | **New.** Now holds the whole Reels page; see `12-reels-page.md`. |
 | `src/services/collections.js` | `normalizeService` now returns `plans`, or `null` when that entry's Pricing tab is empty. |
 | `src/components/home/GrowthPlansSection.jsx` | No longer reads the Home page itself. Every caller passes the pricing it should show, which also removes a Home page request from `/services`, `/reels` and every single service page. |
 | `src/pages/ServiceDetailPage.jsx` | Renders `service.plans ?? content.plans`. |

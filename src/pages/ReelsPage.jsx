@@ -10,70 +10,90 @@ import { useCMS, useCollection } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
 import { reelCategories } from '../data/reelsData';
 import { presentCategories } from '../services/collections';
+import { toRouterPath } from '../components/ui/SmartLink';
+import { reelsDefaults } from '../content/reels';
 
-const ReelsHero = () => (
-  <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="max-w-3xl">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
-        >
-          <Flame className="w-3.5 h-3.5" />
-          <span>Adlogix Creative Studio</span>
-        </motion.div>
+const ReelsHero = ({ content = reelsDefaults.hero }) => {
+  const { badge, headline, description } = content;
+  const hasHeadline = Boolean(headline?.line1 || headline?.highlight1);
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
-        >
-          Made to Stop the Scroll.{' '}
-          <span className="gradient-text-blue block mt-1">
-            Engineered to Convert.
-          </span>
-        </motion.h1>
+  if (!badge && !hasHeadline && !description) return null;
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
-        >
-          In a feed-driven economy, 9:16 video is the single highest-leverage conversion asset. We script, direct, shoot, and edit commercial-grade vertical videos that hook attention within the first 3 seconds.
-        </motion.p>
-      </div>
-    </div>
-  </section>
-);
+  return (
+    <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl">
+          {badge && (
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
+            >
+              <Flame className="w-3.5 h-3.5" />
+              <span>{badge}</span>
+            </motion.div>
+          )}
 
-const ReelsProductionBar = () => (
-  <section className="py-8 bg-brand-navy text-white border-b border-slate-800">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div>
-        <div className="text-xl sm:text-2xl font-black font-display text-white">4K Cinema</div>
-        <div className="text-xs text-slate-300 mt-0.5">Sony FX6 & Cinema Prime Lenses</div>
+          {hasHeadline && (
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
+            >
+              {headline.line1}
+              {headline.line1 && headline.highlight1 ? ' ' : ''}
+              {headline.highlight1 && (
+                <span className="gradient-text-blue block mt-1">
+                  {headline.highlight1}
+                </span>
+              )}
+            </motion.h1>
+          )}
+
+          {description && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
+            >
+              {description}
+            </motion.p>
+          )}
+        </div>
       </div>
-      <div>
-        <div className="text-xl sm:text-2xl font-black font-display text-cyan-300">Macro Studio</div>
-        <div className="text-xs text-slate-300 mt-0.5">Texture, Liquid & Product Rigs</div>
+    </section>
+  );
+};
+
+// Colour per column is design, not content; the values and labels come from WordPress.
+const PRODUCTION_VALUE_CLASS = ['text-white', 'text-cyan-300', 'text-white', 'text-emerald-400'];
+
+const ReelsProductionBar = ({ content = reelsDefaults.production }) => {
+  const items = content.items ?? [];
+  if (items.length === 0) return null;
+
+  return (
+    <section className="py-8 bg-brand-navy text-white border-b border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {items.map((item, idx) => (
+          <div key={idx}>
+            <div
+              className={`text-xl sm:text-2xl font-black font-display ${PRODUCTION_VALUE_CLASS[idx % PRODUCTION_VALUE_CLASS.length]}`}
+            >
+              {item.value}
+            </div>
+            {item.label && <div className="text-xs text-slate-300 mt-0.5">{item.label}</div>}
+          </div>
+        ))}
       </div>
-      <div>
-        <div className="text-xl sm:text-2xl font-black font-display text-white">3-Sec Hooks</div>
-        <div className="text-xs text-slate-300 mt-0.5">Psychology-Backed Angle Testing</div>
-      </div>
-      <div>
-        <div className="text-xl sm:text-2xl font-black font-display text-emerald-400">12M+ Views</div>
-        <div className="text-xs text-slate-300 mt-0.5">Delivered for Client Brands</div>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 // Filter bar and grid share the active category, so they move as one section.
-const ReelsGallery = () => {
+const ReelsGallery = ({ content = reelsDefaults.gallery }) => {
   const { openVideoModal, openDiscoveryModal } = useCMS();
   const reels = useCollection('reels', 'reels');
   const [selectedCategory, setActiveCategory] = useState("All");
@@ -91,14 +111,14 @@ const ReelsGallery = () => {
       {/* Filter Navigation */}
       <section className="py-8 border-b border-brand-border bg-white sticky top-20 z-30 shadow-xs backdrop-blur-md bg-white/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
-          {categories.length > 1 && (
+          {categories.length > 1 && content.allLabel && (
             <div className="inline-flex items-center gap-1.5 p-1.5 bg-brand-surface-soft rounded-full border border-brand-border flex-nowrap overflow-x-auto no-scrollbar max-w-full">
-              {["All", ...categories].map((cat) => (
+              {[content.allLabel, ...categories].map((cat) => (
                 <button
                   key={cat}
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => setActiveCategory(cat === content.allLabel ? "All" : cat)}
                   className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all select-none ${
-                    activeCategory === cat
+                    (cat === content.allLabel ? "All" : cat) === activeCategory
                       ? "bg-brand-blue text-white shadow-md shadow-brand-blue/30"
                       : "text-brand-muted hover:text-brand-navy"
                   }`}
@@ -109,9 +129,11 @@ const ReelsGallery = () => {
             </div>
           )}
 
-          <Button onClick={openDiscoveryModal} variant="outline" size="sm" className="whitespace-nowrap shrink-0 ml-auto">
-            Book a Video Shoot
-          </Button>
+          {content.ctaLabel && (
+            <Button onClick={openDiscoveryModal} variant="outline" size="sm" className="whitespace-nowrap shrink-0 ml-auto">
+              {content.ctaLabel}
+            </Button>
+          )}
         </div>
       </section>
 
@@ -193,12 +215,12 @@ const ReelsGallery = () => {
                           {reel.views && (
                             <span className="flex items-center gap-1 font-semibold text-white">
                               <Eye className="w-3.5 h-3.5 text-brand-blue" />
-                              {reel.views} Views
+                              {[reel.views, content.viewsSuffix].filter(Boolean).join(' ')}
                             </span>
                           )}
                           {reel.ctr && (
                             <span className="text-emerald-400 font-bold ml-auto">
-                              {reel.ctr} CTR
+                              {[reel.ctr, content.ctrSuffix].filter(Boolean).join(' ')}
                             </span>
                           )}
                         </div>
@@ -215,21 +237,37 @@ const ReelsGallery = () => {
   );
 };
 
-const ReelsCta = () => (
-  <section className="py-16 bg-brand-surface-soft/60 border-t border-brand-border text-center">
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-      <h2 className="text-3xl font-black font-display text-brand-navy">
-        Have Products That Need Studio Shoots?
-      </h2>
-      <p className="text-sm text-brand-muted">
-        Ship your physical products directly to our specialized studio in Ahmedabad for lighting, macro pours, and full 9:16 social reel batching.
-      </p>
-      <Button to="/contact?service=Video%20Reels%20Production" variant="primary" size="lg" icon={ArrowRight}>
-        Request a Production Quote
-      </Button>
-    </div>
-  </section>
-);
+const ReelsCta = ({ content = reelsDefaults.cta }) => {
+  const { title, text, buttonLabel, buttonLink } = content;
+  const hasButton = Boolean(buttonLabel && buttonLink);
+  // Site paths go through the router; another website opens in a new tab.
+  const buttonPath = toRouterPath(buttonLink);
+
+  if (!title && !text && !hasButton) return null;
+
+  return (
+    <section className="py-16 bg-brand-surface-soft/60 border-t border-brand-border text-center">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        {title && (
+          <h2 className="text-3xl font-black font-display text-brand-navy">
+            {title}
+          </h2>
+        )}
+        {text && <p className="text-sm text-brand-muted">{text}</p>}
+        {hasButton && (
+          <Button
+            {...(buttonPath ? { to: buttonPath } : { href: buttonLink })}
+            variant="primary"
+            size="lg"
+            icon={ArrowRight}
+          >
+            {buttonLabel}
+          </Button>
+        )}
+      </div>
+    </section>
+  );
+};
 
 // Keys must match the "reels" entry in the plugin's section registry.
 const reelsSections = {

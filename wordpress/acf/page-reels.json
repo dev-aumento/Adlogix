@@ -4,6 +4,475 @@
         "title": "Reels Page Content",
         "fields": [
             {
+                "key": "field_reels_tab_hero",
+                "label": "Hero",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_reels_hero_badge_text",
+                "label": "Badge text",
+                "name": "hero_badge_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The pill above the headline. Blank hides the pill.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Adlogix Creative Studio",
+                "placeholder": ""
+            },
+            {
+                "key": "field_reels_hero_headline_line_1",
+                "label": "Headline line 1",
+                "name": "hero_headline_line_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Made to Stop the Scroll.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_reels_hero_headline_highlight_1",
+                "label": "Headline line 2 (highlighted)",
+                "name": "hero_headline_highlight_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Shown in the blue gradient, on its own line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Engineered to Convert.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_reels_hero_description",
+                "label": "Intro paragraph",
+                "name": "hero_description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "In a feed-driven economy, 9:16 video is the single highest-leverage conversion asset. We script, direct, shoot, and edit commercial-grade vertical videos that hook attention within the first 3 seconds.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 4,
+                "new_lines": ""
+            },
+            {
+                "key": "field_reels_tab_production",
+                "label": "Production Highlights",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_reels_production_message",
+                "label": "About this section",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "The dark band under the hero. Each item needs a <strong>value</strong>; clear it to drop that column. With all four cleared the whole band is hidden.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_reels_production_item_1",
+                "label": "Item 1",
+                "name": "production_item_1",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_reels_production_item_1_value",
+                        "label": "Value",
+                        "name": "value",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "40",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "4K Cinema",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_reels_production_item_1_label",
+                        "label": "Label",
+                        "name": "label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "60",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Sony FX6 & Cinema Prime Lenses",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_reels_production_item_2",
+                "label": "Item 2",
+                "name": "production_item_2",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_reels_production_item_2_value",
+                        "label": "Value",
+                        "name": "value",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "40",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Macro Studio",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_reels_production_item_2_label",
+                        "label": "Label",
+                        "name": "label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "60",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Texture, Liquid & Product Rigs",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_reels_production_item_3",
+                "label": "Item 3",
+                "name": "production_item_3",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_reels_production_item_3_value",
+                        "label": "Value",
+                        "name": "value",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "40",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "3-Sec Hooks",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_reels_production_item_3_label",
+                        "label": "Label",
+                        "name": "label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "60",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Psychology-Backed Angle Testing",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_reels_production_item_4",
+                "label": "Item 4",
+                "name": "production_item_4",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_reels_production_item_4_value",
+                        "label": "Value",
+                        "name": "value",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "40",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "12M+ Views",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_reels_production_item_4_label",
+                        "label": "Label",
+                        "name": "label",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "60",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "Delivered for Client Brands",
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_reels_tab_gallery",
+                "label": "Reels Gallery",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_reels_gallery_message",
+                "label": "About this tab",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "The reels themselves are the <strong>Client Reels</strong> entries, each with its own fields and \"Show on\" box. This tab only holds the labels around them.<br><br>The category pills come from each reel's <strong>Category</strong>, and only categories that have reels are shown.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_reels_gallery_all_label",
+                "label": "Filter: all reels",
+                "name": "gallery_all_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The first filter pill. Blank hides the pill row.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "All",
+                "placeholder": ""
+            },
+            {
+                "key": "field_reels_gallery_cta_label",
+                "label": "Book a shoot button",
+                "name": "gallery_cta_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the Book a Discovery Call form. Blank hides the button.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book a Video Shoot",
+                "placeholder": ""
+            },
+            {
+                "key": "field_reels_gallery_views_suffix",
+                "label": "Views suffix",
+                "name": "gallery_views_suffix",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Follows the view count on a reel, e.g. \"2.4M Views\".",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Views",
+                "placeholder": ""
+            },
+            {
+                "key": "field_reels_gallery_ctr_suffix",
+                "label": "CTR suffix",
+                "name": "gallery_ctr_suffix",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Follows the click-through rate, e.g. \"4.1% CTR\".",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "CTR",
+                "placeholder": ""
+            },
+            {
+                "key": "field_reels_tab_studio",
+                "label": "Studio Showcase",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_reels_studio_message",
+                "label": "Where to edit this",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "The Studio Showcase gallery is shared with the Home page, so the shoots are edited in one place: <strong>Pages &rarr; Home &rarr; Studio Showcase</strong>.<br><br>To hide the section on this page only, untick <strong>Studio Showcase</strong> in the <strong>Page Sections</strong> box.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
                 "key": "field_reels_tab_plans",
                 "label": "Growth Plans",
                 "name": "",
@@ -1053,6 +1522,168 @@
                 },
                 "default_value": "Book a Strategy Call →",
                 "placeholder": ""
+            },
+            {
+                "key": "field_reels_tab_cta",
+                "label": "Closing CTA",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_reels_cta_title",
+                "label": "Title",
+                "name": "cta_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Have Products That Need Studio Shoots?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_reels_cta_text",
+                "label": "Text",
+                "name": "cta_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Ship your physical products directly to our specialized studio in Ahmedabad for lighting, macro pours, and full 9:16 social reel batching.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_reels_cta_button_label",
+                "label": "Button label",
+                "name": "cta_button_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Request a Production Quote",
+                "placeholder": ""
+            },
+            {
+                "key": "field_reels_cta_button_link_type",
+                "label": "Button link",
+                "name": "cta_button_link_type",
+                "aria-label": "",
+                "type": "button_group",
+                "instructions": "Choose a page of this site, or enter a custom link.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "page": "Page",
+                    "custom": "Custom link"
+                },
+                "default_value": "custom",
+                "return_format": "value",
+                "allow_null": 0,
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_reels_cta_button_page",
+                "label": "Page",
+                "name": "cta_button_page",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "Opens without reloading the site.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_reels_cta_button_link_type",
+                            "operator": "==",
+                            "value": "page"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "/": "Home",
+                    "/about": "About",
+                    "/services": "Services",
+                    "/work": "Work",
+                    "/reels": "Reels",
+                    "/industries": "Industries",
+                    "/testimonials": "Testimonials",
+                    "/blog": "Blog",
+                    "/contact": "Contact",
+                    "/privacy-policy": "Privacy Policy",
+                    "/terms": "Terms"
+                },
+                "default_value": "",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 1,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_reels_cta_button_url",
+                "label": "Custom link",
+                "name": "cta_button_url",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_reels_cta_button_link_type",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "/contact?service=Video Reels Production",
+                "placeholder": "/contact or https://example.com"
             }
         ],
         "location": [
@@ -1071,7 +1702,7 @@
         "instruction_placement": "label",
         "hide_on_screen": "",
         "active": true,
-        "description": "Reels page content for the React frontend. Only the Growth Plans section is editable so far. Section order and visibility live in the \"Page Sections\" box.",
+        "description": "All Reels page content for the React frontend. Section order and visibility live in the \"Page Sections\" box.",
         "show_in_rest": 1
     }
 ]
