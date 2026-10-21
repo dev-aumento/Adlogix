@@ -7,11 +7,17 @@ import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { Button } from '../components/ui/Button';
 import { useCMS } from '../hooks/useCMS';
 import { findBySlug } from '../services/normalizers';
+import { usePageContent } from '../hooks/usePageContent';
+import { blogDefaults } from '../content/blog';
 
 export const BlogPostPage = () => {
   const { slug } = useParams();
   const { blogs, openDiscoveryModal } = useCMS();
   const [copied, setCopied] = useState(false);
+
+  // The article labels are edited on the Insights page; the request is cached and shared.
+  const { content } = usePageContent('blog');
+  const t = content.detail ?? blogDefaults.detail;
 
   const post = findBySlug(blogs, slug);
 
@@ -60,7 +66,7 @@ export const BlogPostPage = () => {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumb
               items={[
-                { label: "Insights", href: "/blog" },
+                ...(t.breadcrumbLabel ? [{ label: t.breadcrumbLabel, href: "/blog" }] : []),
                 { label: post.category }
               ]}
             />
@@ -180,9 +186,11 @@ export const BlogPostPage = () => {
               {/* Article Tags */}
               {post.tags && post.tags.length > 0 && (
                 <div className="pt-8 mt-8 border-t border-slate-200 flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mr-2">
-                    Topics:
-                  </span>
+                  {t.topicsLabel && (
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mr-2">
+                      {t.topicsLabel}
+                    </span>
+                  )}
                   {post.tags.map((tag, idx) => (
                     <span
                       key={idx}
@@ -202,12 +210,16 @@ export const BlogPostPage = () => {
         <section className="py-16 bg-brand-surface-soft/60 border-t border-brand-border">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-bold font-display text-brand-navy">
-                Related Reading
-              </h3>
-              <Link to="/blog" className="text-xs font-bold text-brand-blue hover:underline">
-                View All Insights →
-              </Link>
+              {t.relatedTitle && (
+                <h3 className="text-2xl font-bold font-display text-brand-navy">
+                  {t.relatedTitle}
+                </h3>
+              )}
+              {t.relatedLinkLabel && (
+                <Link to="/blog" className="text-xs font-bold text-brand-blue hover:underline ml-auto">
+                  {t.relatedLinkLabel}
+                </Link>
+              )}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -231,7 +243,7 @@ export const BlogPostPage = () => {
                   <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
                     <span>{relPost.readTime}</span>
                     <span className="font-bold text-brand-blue flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                      Read Article <ArrowRight className="w-3.5 h-3.5" />
+                      {t.relatedReadLabel} <ArrowRight className="w-3.5 h-3.5" />
                     </span>
                   </div>
                 </Link>
@@ -241,19 +253,23 @@ export const BlogPostPage = () => {
         </section>
 
         {/* Bottom CTA */}
-        <section className="py-16 bg-white border-t border-brand-border text-center">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
-            <h2 className="text-2xl sm:text-3xl font-bold font-display text-brand-navy">
-              Want Us to Implement These Strategies for Your Brand?
-            </h2>
-            <p className="text-sm text-brand-muted">
-              Book a free discovery session with our performance and tech strategists.
-            </p>
-            <Button onClick={openDiscoveryModal} variant="primary" size="lg" icon={ArrowRight}>
-              Schedule a Consultation
-            </Button>
-          </div>
-        </section>
+        {(t.ctaTitle || t.ctaText || t.ctaButtonLabel) && (
+          <section className="py-16 bg-white border-t border-brand-border text-center">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+              {t.ctaTitle && (
+                <h2 className="text-2xl sm:text-3xl font-bold font-display text-brand-navy">
+                  {t.ctaTitle}
+                </h2>
+              )}
+              {t.ctaText && <p className="text-sm text-brand-muted">{t.ctaText}</p>}
+              {t.ctaButtonLabel && (
+                <Button onClick={openDiscoveryModal} variant="primary" size="lg" icon={ArrowRight}>
+                  {t.ctaButtonLabel}
+                </Button>
+              )}
+            </div>
+          </section>
+        )}
       </div>
     </>
   );

@@ -6,52 +6,73 @@ import { SEOHead } from '../components/ui/SEOHead';
 import { PageSections } from '../components/sections/PageSections';
 import { useCMS } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
+import { presentCategories } from '../services/collections';
 import { blogCategories } from '../data/blogsData';
+import { blogDefaults } from '../content/blog';
 
-const BlogHero = () => (
-  <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="max-w-3xl">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
-        >
-          <BookOpen className="w-3.5 h-3.5" />
-          <span>Adlogix Insights</span>
-        </motion.div>
+const BlogHero = ({ content = blogDefaults.hero }) => {
+  const { badge, headline, description } = content;
+  const hasHeadline = Boolean(headline?.line1 || headline?.highlight1);
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
-        >
-          Ideas That Move{' '}
-          <span className="gradient-text-blue block mt-1">
-            Businesses Forward.
-          </span>
-        </motion.h1>
+  if (!badge && !hasHeadline && !description) return null;
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
-        >
-          Practical frameworks, direct-response ad psychology, headless web engineering tutorials, and search dominance blueprints.
-        </motion.p>
+  return (
+    <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl">
+          {badge && (
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>{badge}</span>
+            </motion.div>
+          )}
+
+          {hasHeadline && (
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
+            >
+              {headline.line1}
+              {headline.line1 && headline.highlight1 ? ' ' : ''}
+              {headline.highlight1 && (
+                <span className="gradient-text-blue block mt-1">
+                  {headline.highlight1}
+                </span>
+              )}
+            </motion.h1>
+          )}
+
+          {description && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
+            >
+              {description}
+            </motion.p>
+          )}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 // Filter bar, featured post and grid share the active filters, so they move as one section.
-const BlogArticles = () => {
+const BlogArticles = ({ content = blogDefaults.articles }) => {
   const { blogs } = useCMS();
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [chosenCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Pills follow the categories the published posts actually use, newly created ones included.
+  const categories = presentCategories(blogs, blogCategories.slice(1));
+  const activeCategory = categories.includes(chosenCategory) ? chosenCategory : "All";
   const filteredBlogs = blogs.filter((b) => {
     const matchesCategory = activeCategory === "All" || b.category === activeCategory;
     const matchesSearch =
@@ -70,32 +91,36 @@ const BlogArticles = () => {
       <section className="py-8 border-b border-brand-border bg-white sticky top-20 z-30 shadow-xs backdrop-blur-md bg-white/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
 
-          <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-brand-surface-soft rounded-full border border-brand-border overflow-x-auto">
-            {blogCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap ${
-                  activeCategory === cat
-                    ? "bg-brand-navy text-white shadow-sm"
-                    : "text-brand-muted hover:text-brand-navy"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          {content.allLabel && (
+            <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-brand-surface-soft rounded-full border border-brand-border overflow-x-auto">
+              {[content.allLabel, ...categories].map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat === content.allLabel ? "All" : cat)}
+                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap ${
+                    (cat === content.allLabel ? "All" : cat) === activeCategory
+                      ? "bg-brand-navy text-white shadow-sm"
+                      : "text-brand-muted hover:text-brand-navy"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          )}
 
-          <div className="relative max-w-xs w-full">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search articles & topics..."
-              className="w-full pl-9 pr-4 py-2 rounded-full border border-brand-border bg-brand-surface-soft/60 text-xs font-medium text-brand-navy outline-none focus:border-brand-blue focus:bg-white transition-all"
-            />
-          </div>
+          {content.searchPlaceholder && (
+            <div className="relative max-w-xs w-full">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={content.searchPlaceholder}
+                className="w-full pl-9 pr-4 py-2 rounded-full border border-brand-border bg-brand-surface-soft/60 text-xs font-medium text-brand-navy outline-none focus:border-brand-blue focus:bg-white transition-all"
+              />
+            </div>
+          )}
         </div>
       </section>
 
@@ -119,9 +144,11 @@ const BlogArticles = () => {
 
               <div className="lg:col-span-5 flex flex-col justify-between py-2 space-y-4">
                 <div>
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-brand-blue text-white shadow-xs">
-                    Featured Guide
-                  </span>
+                  {content.featuredBadge && (
+                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-brand-blue text-white shadow-xs">
+                      {content.featuredBadge}
+                    </span>
+                  )}
 
                   <h2 className="text-2xl sm:text-3xl font-bold font-display text-brand-navy group-hover:text-brand-blue transition-colors mt-4 leading-tight">
                     {featuredPost.title}
@@ -145,10 +172,12 @@ const BlogArticles = () => {
                       {featuredPost.author?.name}
                     </div>
                   </div>
-                  <span className="text-xs font-bold text-brand-blue flex items-center gap-1">
-                    <span>Read Article</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </span>
+                  {content.readLabel && (
+                    <span className="text-xs font-bold text-brand-blue flex items-center gap-1">
+                      <span>{content.readLabel}</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </span>
+                  )}
                 </div>
               </div>
             </Link>
@@ -225,7 +254,7 @@ const BlogArticles = () => {
                       to={`/blog/${post.slug}`}
                       className="text-xs font-bold text-brand-blue flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform"
                     >
-                      <span>Read</span>
+                      <span>{content.cardReadLabel}</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
@@ -233,6 +262,12 @@ const BlogArticles = () => {
               </motion.article>
             ))}
           </div>
+
+          {filteredBlogs.length === 0 && content.emptyTitle && (
+            <div className="py-20 text-center">
+              <p className="text-lg font-bold text-brand-navy">{content.emptyTitle}</p>
+            </div>
+          )}
         </div>
       </section>
     </>

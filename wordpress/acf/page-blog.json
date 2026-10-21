@@ -1,0 +1,425 @@
+[
+    {
+        "key": "group_adlogix_page_blog",
+        "title": "Blog Page Content",
+        "fields": [
+            {
+                "key": "field_blog_tab_hero",
+                "label": "Hero",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_blog_hero_badge_text",
+                "label": "Badge text",
+                "name": "hero_badge_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The pill above the headline. Blank hides the pill.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Adlogix Insights",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_hero_headline_line_1",
+                "label": "Headline line 1",
+                "name": "hero_headline_line_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Ideas That Move",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_hero_headline_highlight_1",
+                "label": "Headline line 2 (highlighted)",
+                "name": "hero_headline_highlight_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Shown in the blue gradient, on its own line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Businesses Forward.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_hero_description",
+                "label": "Intro paragraph",
+                "name": "hero_description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Practical frameworks, direct-response ad psychology, headless web engineering tutorials, and search dominance blueprints.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 4,
+                "new_lines": ""
+            },
+            {
+                "key": "field_blog_tab_articles",
+                "label": "Articles",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_blog_articles_message",
+                "label": "About this tab",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "The articles are ordinary WordPress <strong>Posts</strong>. Each post's title, excerpt, body, featured image, category and tags are edited on the post itself.<br><br>The category filter pills are built from the categories your published posts actually use, so a new category appears on its own and an unused one is not shown.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_blog_articles_all_label",
+                "label": "Filter: all articles",
+                "name": "articles_all_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The first filter pill. Blank hides the pill row.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "All",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_articles_search_placeholder",
+                "label": "Search box placeholder",
+                "name": "articles_search_placeholder",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Blank hides the search box.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Search articles & topics...",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_articles_featured_badge",
+                "label": "Featured post badge",
+                "name": "articles_featured_badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "On the large card at the top, which always shows the newest post.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Featured Guide",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_articles_read_label",
+                "label": "Featured card link",
+                "name": "articles_read_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Read Article",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_articles_card_read_label",
+                "label": "Small card link",
+                "name": "articles_card_read_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Read",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_articles_empty_title",
+                "label": "No results message",
+                "name": "articles_empty_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Shown when a search or filter matches nothing.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "No articles found matching your search.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_tab_detail",
+                "label": "Single Post Pages",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_blog_detail_message",
+                "label": "About this tab",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "These labels are the frame around every article (<code>/blog/&lt;post&gt;</code>). The article itself &mdash; title, body, featured image, category, tags, author and date &mdash; is edited on the <strong>Post</strong>.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_blog_detail_breadcrumb_label",
+                "label": "Breadcrumb label",
+                "name": "detail_breadcrumb_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Insights",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_detail_topics_label",
+                "label": "Tags heading",
+                "name": "detail_topics_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Above the tag list at the end of an article. The whole row is hidden when the post has no tags.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Topics:",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_detail_related_title",
+                "label": "Related section heading",
+                "name": "detail_related_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Related Reading",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_detail_related_link_label",
+                "label": "Related section link",
+                "name": "detail_related_link_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "View All Insights →",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_detail_related_read_label",
+                "label": "Related card link",
+                "name": "detail_related_read_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Read Article",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_detail_cta_title",
+                "label": "Closing title",
+                "name": "detail_cta_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Want Us to Implement These Strategies for Your Brand?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_blog_detail_cta_text",
+                "label": "Closing text",
+                "name": "detail_cta_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book a free discovery session with our performance and tech strategists.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_blog_detail_cta_button_label",
+                "label": "Closing button",
+                "name": "detail_cta_button_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the Book a Discovery Call form. Blank hides the button.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Schedule a Consultation",
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page",
+                    "operator": "==",
+                    "value": "501"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "All Insights page content for the React frontend, plus the labels used on every article. Section order and visibility live in the \"Page Sections\" box.",
+        "show_in_rest": 1
+    }
+]
