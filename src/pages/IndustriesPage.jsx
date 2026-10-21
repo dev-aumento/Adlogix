@@ -8,46 +8,63 @@ import { DynamicIcon } from '../components/ui/DynamicIcon';
 import { PageSections } from '../components/sections/PageSections';
 import { useCMS, useCollection } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
+import { industriesDefaults } from '../content/industries';
 
-const IndustriesHero = () => (
-  <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="max-w-3xl">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
-        >
-          <Building className="w-3.5 h-3.5" />
-          <span>Specialized Domain Expertise</span>
-        </motion.div>
+const IndustriesHero = ({ content = industriesDefaults.hero }) => {
+  const { badge, headline, description } = content;
+  const hasHeadline = Boolean(headline?.line1 || headline?.highlight1);
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
-        >
-          Tailored Strategies for{' '}
-          <span className="gradient-text-blue block mt-1">
-            High-Growth Industries.
-          </span>
-        </motion.h1>
+  if (!badge && !hasHeadline && !description) return null;
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
-        >
-          No two industries share the same customer psychology or compliance requirements. We build bespoke acquisition funnels and custom digital architectures tailored to your sector.
-        </motion.p>
+  return (
+    <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl">
+          {badge && (
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
+            >
+              <Building className="w-3.5 h-3.5" />
+              <span>{badge}</span>
+            </motion.div>
+          )}
+
+          {hasHeadline && (
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
+            >
+              {headline.line1}
+              {headline.line1 && headline.highlight1 ? ' ' : ''}
+              {headline.highlight1 && (
+                <span className="gradient-text-blue block mt-1">
+                  {headline.highlight1}
+                </span>
+              )}
+            </motion.h1>
+          )}
+
+          {description && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
+            >
+              {description}
+            </motion.p>
+          )}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
-const IndustriesGrid = () => {
+const IndustriesGrid = ({ content = industriesDefaults.grid }) => {
   const industries = useCollection('industries', 'industries');
 
   if (industries.length === 0) return null;
@@ -106,9 +123,11 @@ const IndustriesGrid = () => {
                     {/* Solutions Snapshot */}
                     {ind.solutions?.length > 0 && (
                       <div className="space-y-2">
-                        <div className="text-xs font-bold text-brand-navy uppercase tracking-wider">
-                          Key Solutions Provided:
-                        </div>
+                        {content.solutionsLabel && (
+                          <div className="text-xs font-bold text-brand-navy uppercase tracking-wider">
+                            {content.solutionsLabel}
+                          </div>
+                        )}
                         {ind.solutions.map((sol, sIdx) => (
                           <div key={sIdx} className="text-xs text-slate-600 flex items-start gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-brand-blue mt-1.5 shrink-0" />
@@ -126,18 +145,20 @@ const IndustriesGrid = () => {
                 <div className="flex flex-wrap gap-1">
                   {ind.relevantServices?.slice(0, 2).map((srv, rIdx) => (
                     <span key={rIdx} className="px-2.5 py-1 rounded text-[10px] font-semibold bg-brand-surface-soft text-slate-600">
-                      {srv}
+                      {srv.title}
                     </span>
                   ))}
                 </div>
 
-                <Link
-                  to={`/industries/${ind.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-bold text-brand-blue hover:text-brand-blue-hover"
-                >
-                  <span>Explore Sector</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
+                {content.linkLabel && (
+                  <Link
+                    to={`/industries/${ind.slug}`}
+                    className="inline-flex items-center gap-1 text-xs font-bold text-brand-blue hover:text-brand-blue-hover"
+                  >
+                    <span>{content.linkLabel}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                )}
               </div>
             </motion.div>
           ))}
@@ -147,21 +168,26 @@ const IndustriesGrid = () => {
   );
 };
 
-const IndustriesCta = () => {
+const IndustriesCta = ({ content = industriesDefaults.cta }) => {
   const { openDiscoveryModal } = useCMS();
+  const { title, text, buttonLabel } = content;
+
+  if (!title && !text && !buttonLabel) return null;
 
   return (
     <section className="py-16 bg-brand-surface-soft/60 border-t border-brand-border text-center">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <h2 className="text-3xl font-black font-display text-brand-navy">
-          Don't See Your Specific Industry Listed?
-        </h2>
-        <p className="text-sm text-brand-muted">
-          We work with emerging categories, D2C challengers, and enterprise B2B brands across all digital verticals.
-        </p>
-        <Button onClick={openDiscoveryModal} variant="primary" size="lg" icon={ArrowRight}>
-          Schedule an Industry Consultation
-        </Button>
+        {title && (
+          <h2 className="text-3xl font-black font-display text-brand-navy">
+            {title}
+          </h2>
+        )}
+        {text && <p className="text-sm text-brand-muted">{text}</p>}
+        {buttonLabel && (
+          <Button onClick={openDiscoveryModal} variant="primary" size="lg" icon={ArrowRight}>
+            {buttonLabel}
+          </Button>
+        )}
       </div>
     </section>
   );

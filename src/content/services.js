@@ -1,4 +1,4 @@
-import { text, link } from './helpers';
+import { text, link, fillToken } from './helpers';
 import { plansDefaults, mapPlansFields } from './plans';
 
 /**
@@ -66,8 +66,7 @@ export const servicesDefaults = {
 };
 
 /** Put the service name into a label that uses the `{service}` placeholder. */
-export const fillService = (template, name) =>
-  template ? template.replace(/\{service\}/g, name ?? '') : '';
+export const fillService = (template, name) => fillToken(template, 'service', name);
 
 export function mapServicesFields(f) {
   return {

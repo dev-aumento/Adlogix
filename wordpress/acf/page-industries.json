@@ -1,0 +1,530 @@
+[
+    {
+        "key": "group_adlogix_page_industries",
+        "title": "Industries Page Content",
+        "fields": [
+            {
+                "key": "field_industries_tab_hero",
+                "label": "Hero",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_industries_hero_badge_text",
+                "label": "Badge text",
+                "name": "hero_badge_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The pill above the headline. Blank hides the pill.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Specialized Domain Expertise",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_hero_headline_line_1",
+                "label": "Headline line 1",
+                "name": "hero_headline_line_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Tailored Strategies for",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_hero_headline_highlight_1",
+                "label": "Headline line 2 (highlighted)",
+                "name": "hero_headline_highlight_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Shown in the blue gradient, on its own line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "High-Growth Industries.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_hero_description",
+                "label": "Intro paragraph",
+                "name": "hero_description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "No two industries share the same customer psychology or compliance requirements. We build bespoke acquisition funnels and custom digital architectures tailored to your sector.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 4,
+                "new_lines": ""
+            },
+            {
+                "key": "field_industries_tab_grid",
+                "label": "Industries Grid",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_industries_grid_message",
+                "label": "About this tab",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "The cards are the <strong>Industries</strong> entries, each with its own fields and \"Show on\" box. This tab only holds the labels around them.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_industries_grid_solutions_label",
+                "label": "Solutions list heading",
+                "name": "grid_solutions_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Above the bullet list on each card. Blank hides the heading.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Key Solutions Provided:",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_grid_link_label",
+                "label": "Card link label",
+                "name": "grid_link_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Blank hides the link; the card still opens from its title.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Explore Sector",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_tab_cta",
+                "label": "Closing CTA",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_industries_cta_title",
+                "label": "Title",
+                "name": "cta_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Don't See Your Specific Industry Listed?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_cta_text",
+                "label": "Text",
+                "name": "cta_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "We work with emerging categories, D2C challengers, and enterprise B2B brands across all digital verticals.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_industries_cta_button_label",
+                "label": "Button label",
+                "name": "cta_button_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the Book a Discovery Call form. Blank hides the button.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Schedule an Industry Consultation",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_tab_detail",
+                "label": "Single Industry Pages",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_industries_detail_message",
+                "label": "About this tab",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "These labels are the frame around every single industry page (<code>/industries/&lt;industry&gt;</code>). The content inside &mdash; description, challenges, solutions and the recommended services &mdash; is edited on each <strong>Industries</strong> entry.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_industries_detail_breadcrumb_label",
+                "label": "Breadcrumb label",
+                "name": "detail_breadcrumb_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Industries",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_detail_badge_label",
+                "label": "Hero badge",
+                "name": "detail_badge_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Sector Focus",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_detail_headline_suffix",
+                "label": "Headline second line",
+                "name": "detail_headline_suffix",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Follows the industry name, shown in the blue gradient on its own line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Growth & Technology Solutions",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_detail_hero_cta_label",
+                "label": "Hero button",
+                "name": "detail_hero_cta_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Write {industry} where the industry name should appear.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Request {industry} Growth Plan",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_detail_hero_secondary_label",
+                "label": "Hero second button",
+                "name": "detail_hero_secondary_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the Book a Discovery Call form. Blank hides the button.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book Industry Discovery Call",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_detail_benchmark_label",
+                "label": "Banner label",
+                "name": "detail_benchmark_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Above the key metric on the wide banner image.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Sector Benchmark",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_detail_challenges_title",
+                "label": "Challenges heading",
+                "name": "detail_challenges_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Write {industry} where the industry name should appear.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Common {industry} Challenges",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_detail_solutions_title",
+                "label": "Solutions heading",
+                "name": "detail_solutions_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "How Adlogix Solves This",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_detail_services_eyebrow",
+                "label": "Services eyebrow",
+                "name": "detail_services_eyebrow",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Specialized Stack",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_detail_services_title",
+                "label": "Services heading",
+                "name": "detail_services_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Write {industry} where the industry name should appear.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Recommended Services for {industry}",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_detail_services_link_label",
+                "label": "Services card link",
+                "name": "detail_services_link_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The link on each recommended service card. Blank hides it, and so does an entry with no link of its own.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Explore Capability",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_detail_cta_title",
+                "label": "Closing title",
+                "name": "detail_cta_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Write {industry} where the industry name should appear.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Scale Your {industry} Brand",
+                "placeholder": ""
+            },
+            {
+                "key": "field_industries_detail_cta_text",
+                "label": "Closing text",
+                "name": "detail_cta_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Get an actionable growth audit and custom proposal tailored to your sector's economics.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_industries_detail_cta_button_label",
+                "label": "Closing button",
+                "name": "detail_cta_button_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the contact form with this industry pre-filled. Blank hides the button.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Get Started",
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page",
+                    "operator": "==",
+                    "value": "499"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "All Industries page content for the React frontend, plus the labels used on every single industry page. Section order and visibility live in the \"Page Sections\" box.",
+        "show_in_rest": 1
+    }
+]

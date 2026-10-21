@@ -163,6 +163,26 @@ export function normalizeTestimonial(raw) {
   };
 }
 
+/**
+ * Recommended services on an Industry entry, in either shape: the `service_1..6` groups, or
+ * the plain strings the built-in list in `src/data/industriesData.js` uses. Always
+ * `[{ title, description, link }]`. A service needs a title; the rest is optional.
+ */
+export function toRecommendedServices(value) {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) => {
+      if (typeof item === 'string') return { title: toPlainText(item), description: '', link: '' };
+      const group = asObject(item);
+      return {
+        title: toPlainText(group.title),
+        description: toPlainText(group.description),
+        link: toSafeLink(group.link_type === 'custom' ? group.url : group.page),
+      };
+    })
+    .filter((row) => row.title);
+}
+
 export function normalizeIndustry(raw) {
   const acf = asObject(raw.acf);
   const entry = entryBase(raw);
@@ -177,7 +197,9 @@ export function normalizeIndustry(raw) {
     keyMetrics: toPlainText(acf.key_metric),
     challenges: toLines(acf.challenges),
     solutions: toLines(acf.solutions),
-    relevantServices: toLines(acf.relevant_services),
+    relevantServices: toRecommendedServices(
+      Array.from({ length: 6 }, (_, i) => asObject(acf[`service_${i + 1}`]))
+    ),
   };
 }
 

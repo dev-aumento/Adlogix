@@ -26,3 +26,10 @@ export const link = (fields, prefix) =>
  */
 export const groupList = (fields, prefix, count, mapGroup) =>
   Array.from({ length: count }, (_, i) => mapGroup(asObject(fields[`${prefix}_${i + 1}`]))).filter(Boolean);
+
+/**
+ * Put a value into a label written once and reused, e.g. `Request {service} Scope` or
+ * `Recommended Services for {industry}`. A blank template stays blank.
+ */
+export const fillToken = (template, token, value) =>
+  template ? template.split(`{${token}}`).join(value ?? '') : '';

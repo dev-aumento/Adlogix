@@ -151,12 +151,12 @@
                 "placeholder": ""
             },
             {
-                "key": "field_industry_relevant_services",
-                "label": "Recommended services",
-                "name": "relevant_services",
+                "key": "field_industry_service_1",
+                "label": "Service 1",
+                "name": "service_1",
                 "aria-label": "",
-                "type": "textarea",
-                "instructions": "One per line.",
+                "type": "group",
+                "instructions": "A service needs a title. Its description and link are optional, so each card on this industry page can read and point somewhere differently.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -164,10 +164,867 @@
                     "class": "",
                     "id": ""
                 },
-                "default_value": "",
-                "rows": 4,
-                "new_lines": "",
-                "placeholder": ""
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_industry_service_1_title",
+                        "label": "Service name",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_industry_service_1_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_industry_service_1_link_type",
+                        "label": "Link",
+                        "name": "link_type",
+                        "aria-label": "",
+                        "type": "button_group",
+                        "instructions": "Choose a page of this site, or enter a custom link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "custom",
+                        "choices": {
+                            "page": "Page",
+                            "custom": "Custom link"
+                        },
+                        "return_format": "value",
+                        "allow_null": 0,
+                        "layout": "horizontal"
+                    },
+                    {
+                        "key": "field_industry_service_1_page",
+                        "label": "Page",
+                        "name": "page",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "Opens without reloading the site.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_industry_service_1_link_type",
+                                    "operator": "==",
+                                    "value": "page"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "choices": {
+                            "/": "Home",
+                            "/about": "About",
+                            "/services": "Services",
+                            "/work": "Work",
+                            "/reels": "Reels",
+                            "/industries": "Industries",
+                            "/testimonials": "Testimonials",
+                            "/blog": "Blog",
+                            "/contact": "Contact",
+                            "/privacy-policy": "Privacy Policy",
+                            "/terms": "Terms"
+                        },
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 1,
+                        "ui": 0,
+                        "ajax": 0,
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_industry_service_1_url",
+                        "label": "Custom link",
+                        "name": "url",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_industry_service_1_link_type",
+                                    "operator": "==",
+                                    "value": "custom"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "/services/performance-marketing"
+                    }
+                ]
+            },
+            {
+                "key": "field_industry_service_2",
+                "label": "Service 2",
+                "name": "service_2",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_industry_service_2_title",
+                        "label": "Service name",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_industry_service_2_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_industry_service_2_link_type",
+                        "label": "Link",
+                        "name": "link_type",
+                        "aria-label": "",
+                        "type": "button_group",
+                        "instructions": "Choose a page of this site, or enter a custom link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "custom",
+                        "choices": {
+                            "page": "Page",
+                            "custom": "Custom link"
+                        },
+                        "return_format": "value",
+                        "allow_null": 0,
+                        "layout": "horizontal"
+                    },
+                    {
+                        "key": "field_industry_service_2_page",
+                        "label": "Page",
+                        "name": "page",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "Opens without reloading the site.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_industry_service_2_link_type",
+                                    "operator": "==",
+                                    "value": "page"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "choices": {
+                            "/": "Home",
+                            "/about": "About",
+                            "/services": "Services",
+                            "/work": "Work",
+                            "/reels": "Reels",
+                            "/industries": "Industries",
+                            "/testimonials": "Testimonials",
+                            "/blog": "Blog",
+                            "/contact": "Contact",
+                            "/privacy-policy": "Privacy Policy",
+                            "/terms": "Terms"
+                        },
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 1,
+                        "ui": 0,
+                        "ajax": 0,
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_industry_service_2_url",
+                        "label": "Custom link",
+                        "name": "url",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_industry_service_2_link_type",
+                                    "operator": "==",
+                                    "value": "custom"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "/services/performance-marketing"
+                    }
+                ]
+            },
+            {
+                "key": "field_industry_service_3",
+                "label": "Service 3",
+                "name": "service_3",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_industry_service_3_title",
+                        "label": "Service name",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_industry_service_3_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_industry_service_3_link_type",
+                        "label": "Link",
+                        "name": "link_type",
+                        "aria-label": "",
+                        "type": "button_group",
+                        "instructions": "Choose a page of this site, or enter a custom link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "custom",
+                        "choices": {
+                            "page": "Page",
+                            "custom": "Custom link"
+                        },
+                        "return_format": "value",
+                        "allow_null": 0,
+                        "layout": "horizontal"
+                    },
+                    {
+                        "key": "field_industry_service_3_page",
+                        "label": "Page",
+                        "name": "page",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "Opens without reloading the site.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_industry_service_3_link_type",
+                                    "operator": "==",
+                                    "value": "page"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "choices": {
+                            "/": "Home",
+                            "/about": "About",
+                            "/services": "Services",
+                            "/work": "Work",
+                            "/reels": "Reels",
+                            "/industries": "Industries",
+                            "/testimonials": "Testimonials",
+                            "/blog": "Blog",
+                            "/contact": "Contact",
+                            "/privacy-policy": "Privacy Policy",
+                            "/terms": "Terms"
+                        },
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 1,
+                        "ui": 0,
+                        "ajax": 0,
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_industry_service_3_url",
+                        "label": "Custom link",
+                        "name": "url",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_industry_service_3_link_type",
+                                    "operator": "==",
+                                    "value": "custom"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "/services/performance-marketing"
+                    }
+                ]
+            },
+            {
+                "key": "field_industry_service_4",
+                "label": "Service 4",
+                "name": "service_4",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_industry_service_4_title",
+                        "label": "Service name",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_industry_service_4_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_industry_service_4_link_type",
+                        "label": "Link",
+                        "name": "link_type",
+                        "aria-label": "",
+                        "type": "button_group",
+                        "instructions": "Choose a page of this site, or enter a custom link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "custom",
+                        "choices": {
+                            "page": "Page",
+                            "custom": "Custom link"
+                        },
+                        "return_format": "value",
+                        "allow_null": 0,
+                        "layout": "horizontal"
+                    },
+                    {
+                        "key": "field_industry_service_4_page",
+                        "label": "Page",
+                        "name": "page",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "Opens without reloading the site.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_industry_service_4_link_type",
+                                    "operator": "==",
+                                    "value": "page"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "choices": {
+                            "/": "Home",
+                            "/about": "About",
+                            "/services": "Services",
+                            "/work": "Work",
+                            "/reels": "Reels",
+                            "/industries": "Industries",
+                            "/testimonials": "Testimonials",
+                            "/blog": "Blog",
+                            "/contact": "Contact",
+                            "/privacy-policy": "Privacy Policy",
+                            "/terms": "Terms"
+                        },
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 1,
+                        "ui": 0,
+                        "ajax": 0,
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_industry_service_4_url",
+                        "label": "Custom link",
+                        "name": "url",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_industry_service_4_link_type",
+                                    "operator": "==",
+                                    "value": "custom"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "/services/performance-marketing"
+                    }
+                ]
+            },
+            {
+                "key": "field_industry_service_5",
+                "label": "Service 5",
+                "name": "service_5",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_industry_service_5_title",
+                        "label": "Service name",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_industry_service_5_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_industry_service_5_link_type",
+                        "label": "Link",
+                        "name": "link_type",
+                        "aria-label": "",
+                        "type": "button_group",
+                        "instructions": "Choose a page of this site, or enter a custom link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "custom",
+                        "choices": {
+                            "page": "Page",
+                            "custom": "Custom link"
+                        },
+                        "return_format": "value",
+                        "allow_null": 0,
+                        "layout": "horizontal"
+                    },
+                    {
+                        "key": "field_industry_service_5_page",
+                        "label": "Page",
+                        "name": "page",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "Opens without reloading the site.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_industry_service_5_link_type",
+                                    "operator": "==",
+                                    "value": "page"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "choices": {
+                            "/": "Home",
+                            "/about": "About",
+                            "/services": "Services",
+                            "/work": "Work",
+                            "/reels": "Reels",
+                            "/industries": "Industries",
+                            "/testimonials": "Testimonials",
+                            "/blog": "Blog",
+                            "/contact": "Contact",
+                            "/privacy-policy": "Privacy Policy",
+                            "/terms": "Terms"
+                        },
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 1,
+                        "ui": 0,
+                        "ajax": 0,
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_industry_service_5_url",
+                        "label": "Custom link",
+                        "name": "url",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_industry_service_5_link_type",
+                                    "operator": "==",
+                                    "value": "custom"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "/services/performance-marketing"
+                    }
+                ]
+            },
+            {
+                "key": "field_industry_service_6",
+                "label": "Service 6",
+                "name": "service_6",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_industry_service_6_title",
+                        "label": "Service name",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_industry_service_6_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_industry_service_6_link_type",
+                        "label": "Link",
+                        "name": "link_type",
+                        "aria-label": "",
+                        "type": "button_group",
+                        "instructions": "Choose a page of this site, or enter a custom link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "custom",
+                        "choices": {
+                            "page": "Page",
+                            "custom": "Custom link"
+                        },
+                        "return_format": "value",
+                        "allow_null": 0,
+                        "layout": "horizontal"
+                    },
+                    {
+                        "key": "field_industry_service_6_page",
+                        "label": "Page",
+                        "name": "page",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "Opens without reloading the site.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_industry_service_6_link_type",
+                                    "operator": "==",
+                                    "value": "page"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "choices": {
+                            "/": "Home",
+                            "/about": "About",
+                            "/services": "Services",
+                            "/work": "Work",
+                            "/reels": "Reels",
+                            "/industries": "Industries",
+                            "/testimonials": "Testimonials",
+                            "/blog": "Blog",
+                            "/contact": "Contact",
+                            "/privacy-policy": "Privacy Policy",
+                            "/terms": "Terms"
+                        },
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 1,
+                        "ui": 0,
+                        "ajax": 0,
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_industry_service_6_url",
+                        "label": "Custom link",
+                        "name": "url",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_industry_service_6_link_type",
+                                    "operator": "==",
+                                    "value": "custom"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "/services/performance-marketing"
+                    }
+                ]
             }
         ],
         "location": [
