@@ -132,8 +132,8 @@ const TestimonialsGrid = ({ content = testimonialsDefaults.grid }) => {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <div>
+                <div className="pt-4 border-t border-slate-100 flex flex-wrap gap-2 items-center justify-between">
+                  <div className="w-full">
                     <h4 className="text-base font-bold font-display text-brand-navy">
                       {test.clientName}
                     </h4>

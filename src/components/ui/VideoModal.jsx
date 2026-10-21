@@ -211,11 +211,11 @@ export const VideoModal = () => {
             </div>
 
             {/* Modal CTA */}
-            <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center gap-3">
+            <div className="mt-8 pt-6 border-t border-white/10 flex flex-col items-center gap-3">
               <Link
                 to="/contact"
                 onClick={closeVideoModal}
-                className="w-full sm:w-auto flex-1 text-center py-3 px-5 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white font-semibold text-sm transition-all shadow-lg shadow-brand-blue/30"
+                className="w-full flex-1 text-center py-3 px-5 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white font-semibold text-sm transition-all shadow-lg shadow-brand-blue/30"
               >
                 Create Similar Campaign
               </Link>
@@ -223,7 +223,7 @@ export const VideoModal = () => {
                 <Link
                   to={`/work/${activeVideo.projectSlug}`}
                   onClick={closeVideoModal}
-                  className="w-full sm:w-auto text-center py-3 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-all flex items-center justify-center gap-1.5"
+                  className="w-full text-center py-3 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-all flex items-center justify-center gap-1.5"
                 >
                   <span>View Case Study</span>
                   <ExternalLink className="w-3.5 h-3.5" />

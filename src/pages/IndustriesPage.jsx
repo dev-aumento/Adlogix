@@ -141,7 +141,7 @@ const IndustriesGrid = ({ content = industriesDefaults.grid }) => {
               </div>
 
               {/* Card Footer Link */}
-              <div className="p-6 sm:px-8 sm:pb-8 pt-0 flex items-center justify-between border-t border-slate-100 mt-4">
+              <div className="p-6 sm:px-8 sm:pb-8 flex items-center justify-between border-t border-slate-100 mt-4">
                 <div className="flex flex-wrap gap-1">
                   {ind.relevantServices?.slice(0, 2).map((srv, rIdx) => (
                     <span key={rIdx} className="px-2.5 py-1 rounded text-[10px] font-semibold bg-brand-surface-soft text-slate-600">
