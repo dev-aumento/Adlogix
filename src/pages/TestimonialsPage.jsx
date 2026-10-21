@@ -7,46 +7,63 @@ import { PageSections } from '../components/sections/PageSections';
 import { TestimonialRole, testimonialVideo } from '../components/ui/TestimonialRole';
 import { useCMS, useCollection } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
+import { testimonialsDefaults } from '../content/testimonials';
 
-const TestimonialsHero = () => (
-  <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="max-w-3xl">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
-        >
-          <MessageSquare className="w-3.5 h-3.5" />
-          <span>Verified Client Stories</span>
-        </motion.div>
+const TestimonialsHero = ({ content = testimonialsDefaults.hero }) => {
+  const { badge, headline, description } = content;
+  const hasHeadline = Boolean(headline?.line1 || headline?.highlight1);
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
-        >
-          Don't Just Take Our Word.{' '}
-          <span className="gradient-text-blue block mt-1">
-            Hear It From Our Partners.
-          </span>
-        </motion.h1>
+  if (!badge && !hasHeadline && !description) return null;
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
-        >
-          Authentic, transparent reviews from growth leaders who rely on Adlogix for high-converting creatives, multi-channel performance advertising, and modern web applications.
-        </motion.p>
+  return (
+    <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl">
+          {badge && (
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
+            >
+              <MessageSquare className="w-3.5 h-3.5" />
+              <span>{badge}</span>
+            </motion.div>
+          )}
+
+          {hasHeadline && (
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
+            >
+              {headline.line1}
+              {headline.line1 && headline.highlight1 ? ' ' : ''}
+              {headline.highlight1 && (
+                <span className="gradient-text-blue block mt-1">
+                  {headline.highlight1}
+                </span>
+              )}
+            </motion.h1>
+          )}
+
+          {description && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
+            >
+              {description}
+            </motion.p>
+          )}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
-const TestimonialsGrid = () => {
+const TestimonialsGrid = ({ content = testimonialsDefaults.grid }) => {
   const { openVideoModal } = useCMS();
   const testimonials = useCollection('testimonials', 'testimonials');
 
@@ -89,9 +106,11 @@ const TestimonialsGrid = () => {
                         </div>
                       </div>
 
-                      <div className="absolute bottom-2 left-2 right-2 text-center text-[10px] font-bold text-white bg-black/60 backdrop-blur-md py-1 px-2 rounded-lg">
-                        Watch Video
-                      </div>
+                      {content.videoLabel && (
+                        <div className="absolute bottom-2 left-2 right-2 text-center text-[10px] font-bold text-white bg-black/60 backdrop-blur-md py-1 px-2 rounded-lg">
+                          {content.videoLabel}
+                        </div>
+                      )}
                     </>
                   )}
                 </div>
@@ -136,21 +155,26 @@ const TestimonialsGrid = () => {
   );
 };
 
-const TestimonialsCta = () => {
+const TestimonialsCta = ({ content = testimonialsDefaults.cta }) => {
   const { openDiscoveryModal } = useCMS();
+  const { title, text, buttonLabel } = content;
+
+  if (!title && !text && !buttonLabel) return null;
 
   return (
     <section className="py-16 bg-brand-surface-soft/60 border-t border-brand-border text-center">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <h2 className="text-3xl font-black font-display text-brand-navy">
-          Become Our Next Success Story
-        </h2>
-        <p className="text-sm text-brand-muted">
-          Book a strategy consultation to explore how Adlogix can scale your revenue.
-        </p>
-        <Button onClick={openDiscoveryModal} variant="primary" size="lg" icon={ArrowRight}>
-          Schedule a Discovery Call
-        </Button>
+        {title && (
+          <h2 className="text-3xl font-black font-display text-brand-navy">
+            {title}
+          </h2>
+        )}
+        {text && <p className="text-sm text-brand-muted">{text}</p>}
+        {buttonLabel && (
+          <Button onClick={openDiscoveryModal} variant="primary" size="lg" icon={ArrowRight}>
+            {buttonLabel}
+          </Button>
+        )}
       </div>
     </section>
   );
