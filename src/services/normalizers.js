@@ -135,3 +135,27 @@ export function normalizePage(raw) {
     sections: normalizeSectionOrder(raw.adlogix_sections),
   };
 }
+/**
+ * Compare a slug from the URL with a slug from WordPress.
+ *
+ * WordPress stores a non-ASCII slug percent-encoded in `post_name` and returns it that way
+ * ("...-to-%e2%82%b930-cr-arr"), while React Router hands the route param back decoded
+ * ("...-to-₹30-cr-arr"). Comparing the two directly never matches, so a case study whose
+ * title contains ₹, é, – and the like would bounce to its listing page.
+ */
+const decodeSlug = (value) => {
+  if (typeof value !== 'string') return '';
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    // A stray "%" that isn't a valid escape: compare it as typed.
+    return value;
+  }
+};
+
+/** The entry whose slug matches `slug`, in either the encoded or the decoded form. */
+export function findBySlug(items, slug) {
+  if (!Array.isArray(items) || !slug) return undefined;
+  const wanted = decodeSlug(slug);
+  return items.find((item) => item?.slug === slug || decodeSlug(item?.slug) === wanted);
+}

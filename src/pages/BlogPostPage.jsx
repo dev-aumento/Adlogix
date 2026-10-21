@@ -6,13 +6,14 @@ import { SEOHead } from '../components/ui/SEOHead';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { Button } from '../components/ui/Button';
 import { useCMS } from '../hooks/useCMS';
+import { findBySlug } from '../services/normalizers';
 
 export const BlogPostPage = () => {
   const { slug } = useParams();
   const { blogs, openDiscoveryModal } = useCMS();
   const [copied, setCopied] = useState(false);
 
-  const post = blogs.find((b) => b.slug === slug);
+  const post = findBySlug(blogs, slug);
 
   if (!post) {
     return <Navigate to="/blog" replace />;

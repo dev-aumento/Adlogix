@@ -9,6 +9,7 @@ import { toRouterPath } from '../components/ui/SmartLink';
 import { useCMS } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
 import { workDefaults } from '../content/work';
+import { findBySlug } from '../services/normalizers';
 
 /** Button props for a CTA link: router for site paths, new tab for other websites. */
 const linkProps = (href) => {
@@ -23,7 +24,7 @@ export const ProjectDetailPage = () => {
   const { content } = usePageContent('work');
   const t = content.detail ?? workDefaults.detail;
 
-  const project = projects.find((p) => p.slug === slug);
+  const project = findBySlug(projects, slug);
 
   if (!project) {
     return <Navigate to="/work" replace />;

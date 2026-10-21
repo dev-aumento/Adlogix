@@ -102,6 +102,19 @@ Those three headings used to be hardcoded in React and identical on every case s
 
 The group is bound to the Work page by ID (**495**). If the page is ever recreated with a different ID, open **Custom Fields → Work Page Content → Location Rules** and re-pick *Page is equal to Work*.
 
+## Slugs with non-ASCII characters
+
+WordPress stores a slug containing ₹, é, – and the like **percent-encoded** in `post_name`, and the REST API returns it that way:
+
+```
+title: Lumina Luxe: Scaling a Premium Skincare Brand to ₹30 Cr ARR
+slug : lumina-luxe-scaling-a-premium-skincare-brand-to-%e2%82%b930-cr-arr
+```
+
+React Router hands the route parameter back **decoded** (`…-₹30-cr-arr`), so comparing it with `entry.slug === slug` never matched and the page redirected to its listing. All four detail pages now use `findBySlug(items, slug)` from `src/services/normalizers.js`, which compares the decoded form of both and falls back to a literal comparison when a slug contains a stray `%`.
+
+This affects `/work/<slug>`, `/services/<slug>`, `/industries/<slug>` and `/blog/<slug>` equally, so the helper is shared. Editors do not need to avoid these characters in titles.
+
 ## How to test
 
 1. `npm run dev`, change one field per tab, reload `http://localhost:3000/work`.

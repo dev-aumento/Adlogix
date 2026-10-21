@@ -93,3 +93,7 @@ Do **not** change the Caddyfile for this. WordPress paths (`/wp-admin*`, `/wp-js
 | `ErrorPage` (ErrorBoundary) | A React component threw while rendering. |
 
 Neither can appear while nginx returns its own 404; fix Option A/B first.
+
+## Detail-page slugs with non-ASCII characters
+
+WordPress returns a slug containing ₹, é or – percent-encoded (`…-to-%e2%82%b930-cr-arr`), while React Router's `useParams()` decodes it. A strict comparison therefore failed and the detail page redirected to its listing. `findBySlug()` in `src/services/normalizers.js` compares both forms and is used by the project, service, industry and blog detail pages. See `11-work-page.md`.

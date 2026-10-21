@@ -13,6 +13,7 @@ import { useCMS } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
 import { servicesDefaults, fillService } from '../content/services';
 import { toDeliverables } from '../services/collections';
+import { findBySlug } from '../services/normalizers';
 
 /** Button props for a CTA link: router for site paths, new tab for other websites. */
 const linkProps = (href) => {
@@ -28,7 +29,7 @@ export const ServiceDetailPage = () => {
   const { content } = usePageContent('services');
   const t = content.detail ?? servicesDefaults.detail;
 
-  const service = services.find((s) => s.slug === slug);
+  const service = findBySlug(services, slug);
 
   if (!service) {
     return <Navigate to="/services" replace />;

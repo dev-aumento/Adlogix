@@ -7,12 +7,13 @@ import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { Button } from '../components/ui/Button';
 import { DynamicIcon } from '../components/ui/DynamicIcon';
 import { useCMS } from '../hooks/useCMS';
+import { findBySlug } from '../services/normalizers';
 
 export const IndustryDetailPage = () => {
   const { slug } = useParams();
   const { industries, projects, openDiscoveryModal } = useCMS();
 
-  const industry = industries.find((i) => i.slug === slug);
+  const industry = findBySlug(industries, slug);
 
   if (!industry) {
     return <Navigate to="/industries" replace />;
