@@ -14,7 +14,7 @@ Status: the blog reads entirely from WordPress — the articles are ordinary **P
 
 | Item | Value |
 |---|---|
-| WordPress page | The Insights page, **slug `blog`**, ID **501** |
+| WordPress page | The Insights page, **slug `blog`**, ID **1143** |
 | Field groups | `Blog Page Content` (`group_adlogix_page_blog`), `Article Details` (`group_adlogix_post`) |
 | Articles | `GET /wp/v2/posts?per_page=50&_embed=wp:term,wp:featuredmedia,author` |
 | Normalizer | `normalizeBlogPost` in `src/services/blog.js` |
@@ -22,7 +22,9 @@ Status: the blog reads entirely from WordPress — the articles are ordinary **P
 | Page components | `src/pages/BlogPage.jsx`, `src/pages/BlogPostPage.jsx` |
 | Gated by `VITE_ENABLE_WP_SYNC`? | **No** (changed — posts used to be gated) |
 
-**The page slug must be `blog`.** The page was created as "Insights" with slug `insights`; change its permalink to `blog` so the field group and `usePageContent('blog')` find it. The title can stay "Insights", and nothing on the frontend depends on the slug.
+**The page slug must be `blog`**, because `usePageContent('blog')` looks the page up by slug. The title can stay "Insights"; nothing on the frontend depends on it.
+
+**The field group is bound to the page by ID (1143).** ACF Free has no "page slug" location rule, so if this page is ever deleted and recreated it gets a new ID and the fields stop appearing on it — the symptom is an edit screen with the Page Sections box but no **Blog Page Content** box. The fix is one click: **Custom Fields → Blog Page Content → Location Rules**, re-pick *Page is equal to Insights*, and update. The same applies to every `page-*.json` group.
 
 ## What comes from the Post itself
 
@@ -78,7 +80,7 @@ They are now built with `presentCategories()` — the same helper the Work and R
 
 1. **Pages → Insights → permalink → Edit**: change the slug to `blog`.
 2. **Custom Fields → Tools → Import Field Groups**:
-   - `wordpress/acf/page-blog.json` — bound to page ID 501.
+   - `wordpress/acf/page-blog.json` — bound to page ID 1143.
    - `wordpress/acf/post-type-posts.json` — adds **Article Details** to Posts.
 3. **Settings → Permalinks → Custom Structure**: `/blog/%postname%/`, so an admin "View Post" link matches the React URL (`06-spa-routing.md`).
 4. **Appearance → Menus → Primary**: point the Insights item at `/blog/`.
