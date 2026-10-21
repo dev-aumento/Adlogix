@@ -145,9 +145,9 @@ export const ServiceDetailPage = () => {
                           <h4 className="text-base font-bold text-brand-navy font-display">
                             {del.title}
                           </h4>
-                          {(del.note || t.deliverableNote) && (
+                          {del.description && (
                             <p className="text-xs text-brand-muted mt-1 leading-relaxed">
-                              {del.note || t.deliverableNote}
+                              {del.description}
                             </p>
                           )}
                         </div>

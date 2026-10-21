@@ -158,12 +158,12 @@
                 "placeholder": ""
             },
             {
-                "key": "field_service_deliverables",
-                "label": "Deliverables",
-                "name": "deliverables",
+                "key": "field_service_deliverable_1",
+                "label": "Deliverable 1",
+                "name": "deliverable_1",
                 "aria-label": "",
-                "type": "textarea",
-                "instructions": "One per line: Title | Note. The note is optional — without one, the deliverable shows the shared line from Pages → Services → Single Service Pages.",
+                "type": "group",
+                "instructions": "A deliverable needs a title. Its description is optional and shows underneath, so each deliverable can read differently.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -171,10 +171,431 @@
                     "class": "",
                     "id": ""
                 },
-                "default_value": "",
-                "rows": 6,
-                "new_lines": "",
-                "placeholder": ""
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_service_deliverable_1_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_service_deliverable_1_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_service_deliverable_2",
+                "label": "Deliverable 2",
+                "name": "deliverable_2",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_service_deliverable_2_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_service_deliverable_2_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_service_deliverable_3",
+                "label": "Deliverable 3",
+                "name": "deliverable_3",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_service_deliverable_3_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_service_deliverable_3_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_service_deliverable_4",
+                "label": "Deliverable 4",
+                "name": "deliverable_4",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_service_deliverable_4_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_service_deliverable_4_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_service_deliverable_5",
+                "label": "Deliverable 5",
+                "name": "deliverable_5",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_service_deliverable_5_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_service_deliverable_5_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_service_deliverable_6",
+                "label": "Deliverable 6",
+                "name": "deliverable_6",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_service_deliverable_6_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_service_deliverable_6_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_service_deliverable_7",
+                "label": "Deliverable 7",
+                "name": "deliverable_7",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_service_deliverable_7_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_service_deliverable_7_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_service_deliverable_8",
+                "label": "Deliverable 8",
+                "name": "deliverable_8",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_service_deliverable_8_title",
+                        "label": "Title",
+                        "name": "title",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_service_deliverable_8_description",
+                        "label": "Description",
+                        "name": "description",
+                        "aria-label": "",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 2,
+                        "new_lines": ""
+                    }
+                ]
             },
             {
                 "key": "field_service_technologies",

@@ -1522,26 +1522,6 @@
                 "placeholder": ""
             },
             {
-                "key": "field_services_detail_deliverable_note",
-                "label": "Note under each deliverable",
-                "name": "detail_deliverable_note",
-                "aria-label": "",
-                "type": "textarea",
-                "instructions": "The same line is shown under every deliverable. Blank hides it.",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "Executed with rigorous QA testing, real-time reporting metrics, and alignment with your target customer acquisition cost.",
-                "placeholder": "",
-                "maxlength": "",
-                "rows": 3,
-                "new_lines": ""
-            },
-            {
                 "key": "field_services_detail_tech_title",
                 "label": "Tools box title",
                 "name": "detail_tech_title",

@@ -47,8 +47,6 @@ export const servicesDefaults = {
     heroSecondaryLabel: 'Book Strategy Call',
     deliverablesEyebrow: 'What We Deliver',
     deliverablesTitle: 'Structured Execution & Outcomes',
-    deliverableNote:
-      'Executed with rigorous QA testing, real-time reporting metrics, and alignment with your target customer acquisition cost.',
     techTitle: 'Tech Stack & Platforms',
     techNote:
       'Powered by modern architectures, first-party data security, and enterprise infrastructure support through Aumento Infoway.',
@@ -108,7 +106,6 @@ export function mapServicesFields(f) {
       heroSecondaryLabel: text(f, 'detail_hero_secondary_label'),
       deliverablesEyebrow: text(f, 'detail_deliverables_eyebrow'),
       deliverablesTitle: text(f, 'detail_deliverables_title'),
-      deliverableNote: text(f, 'detail_deliverable_note'),
       techTitle: text(f, 'detail_tech_title'),
       techNote: text(f, 'detail_tech_note'),
       techNoteHighlight: text(f, 'detail_tech_note_highlight'),

@@ -66,7 +66,6 @@ These frame every `/services/<slug>` page. The content inside — description, d
 | `detail_breadcrumb_label` | The "Services" step in the breadcrumb |
 | `detail_hero_cta_label`, `detail_hero_secondary_label` | The two buttons under the service name |
 | `detail_deliverables_eyebrow`, `detail_deliverables_title` | The heading above the deliverables list |
-| `detail_deliverable_note` | The same supporting line under **every** deliverable |
 | `detail_tech_title`, `detail_tech_note`, `detail_tech_note_highlight` | The tools box; the highlight is the words inside the note to show in bold |
 | `detail_consult_title`, `detail_consult_text`, `detail_consult_button_label` | The dark consultation box in the sidebar |
 | `detail_faq_eyebrow`, `detail_faq_title` | The heading above the FAQs |
@@ -79,21 +78,22 @@ These frame every `/services/<slug>` page. The content inside — description, d
 | Category pill icon | `icon` (and the pill's wording from `catalog_*_title`) |
 | Title | The entry's title |
 | Description paragraph | `full_description`, or `short_description` when blank |
-| Deliverables list | `deliverables` — **one per line, `Title | Note`** |
+| Deliverables list | `deliverable_1..8` — each with its **own title and description** |
 | Tool chips | `technologies` |
 | FAQs | `faq_1..6` |
 | Pricing | The **Pricing** tab (`10-pricing-plans.md`) |
 | Browser title / meta description | The **SEO** tab, falling back to the title and short description |
 
-**Deliverable notes.** `deliverables` takes an optional note after a `|`:
+**Deliverable descriptions.** Each deliverable is its own pair of fields on the Services entry, **Deliverable 1** to **Deliverable 8**:
 
-```
-Custom Full-Funnel Growth Strategy | Built around your CAC target and funnel stage
-Audience Persona & Competitor Research
-A/B & Multivariate Testing Architecture | Two structured experiments per month
-```
+| Field | Shows as |
+|---|---|
+| Title | The bold heading of the row |
+| Description | The small line under that heading |
 
-A deliverable without its own note falls back to `detail_deliverable_note` from the Services page, which is why the built-in list still shows the same shared line under every item. Give the notes individually and each deliverable reads as its own point instead of the line repeating down the page.
+A deliverable needs a title; empty slots are skipped, so a service with four deliverables simply leaves the rest blank. A title with no description renders the heading alone, with no empty line under it.
+
+There is **no shared description**: every deliverable on every service reads whatever that one says. The old single `detail_deliverable_note` on the Services page, which repeated the same sentence under every deliverable, has been removed.
 
 **The `{service}` placeholder.** Three of these labels are written once and used on every service, so they take the service name as `{service}`:
 
@@ -121,12 +121,12 @@ The user asked for the post type to be checked as well. Findings:
 
 | Checked | Result |
 |---|---|
-| Fields vs. what React renders | Complete. `category`, `icon`, `short_description`, `full_description`, `highlights`, `deliverables`, `technologies`, `faq_1..6` and `display_on` are all consumed. |
+| Fields vs. what React renders | Complete. `category`, `icon`, `short_description`, `full_description`, `highlights`, `deliverable_1..8`, `technologies`, `faq_1..6` and `display_on` are all consumed. |
 | Icon dropdown vs. `DynamicIcon` | Matches exactly — the same 30 icons. An editor cannot pick an icon React can't draw. |
 | Category values | `marketing-creative` / `web-it`, matching `normalizeService`. |
 | **Category display name** | **Was hardcoded** in `SERVICE_CATEGORY_TITLES` (`src/services/collections.js`) and not editable anywhere. Now editable as `catalog_marketing_title` / `catalog_web_title`; the constant remains as the fallback. |
 | **Published entries** | **Zero.** The 14 cards on the live site are still `src/data/servicesData.js`. |
-| **Per-deliverable note** | **Was missing.** One shared line repeated under every deliverable. `deliverables` now takes `Title | Note`. |
+| **Per-deliverable description** | **Was missing.** One shared line repeated under every deliverable. Each deliverable now has its own title and description (`deliverable_1..8`). |
 | **Per-service SEO** | **Was missing.** New **SEO** tab: `seo_title`, `seo_description`. |
 
 **`post-type-services.json` has since gained a Pricing tab, so it does need re-importing** — see `10-pricing-plans.md`. Existing field keys are untouched, so saved content is preserved.

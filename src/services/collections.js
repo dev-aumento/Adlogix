@@ -85,22 +85,26 @@ export function normalizeProject(raw) {
 }
 
 /**
- * Deliverables in either shape: the WordPress "Title | Note" textarea, or the plain strings
- * the built-in list in `src/data/servicesData.js` uses. Always `[{ title, note }]`, and safe
- * to call twice. A deliverable without a note falls back to the shared line from the
- * Services page, so the built-in list looks exactly as it did.
+ * Deliverables in either shape: the `deliverable_1..8` groups of a Services entry, or the
+ * plain strings the built-in list in `src/data/servicesData.js` uses. Always
+ * `[{ title, description }]`, and safe to call twice. A deliverable needs a title; its
+ * description is optional and simply isn't rendered when empty.
  */
 export function toDeliverables(value) {
-  if (typeof value === 'string') {
-    return toPipeRows(value, ['title', 'note']).filter((row) => row.title);
-  }
   if (!Array.isArray(value)) return [];
   return value
     .map((item) =>
       typeof item === 'string'
-        ? { title: toPlainText(item), note: '' }
-        : { title: toPlainText(item?.title), note: toPlainText(item?.note) })
+        ? { title: toPlainText(item), description: '' }
+        : { title: toPlainText(item?.title), description: toPlainText(item?.description) })
     .filter((row) => row.title);
+}
+
+/** The `deliverable_1..8` groups of a Services entry, each with its own description. */
+function deliverablesFromFields(acf) {
+  return toDeliverables(
+    Array.from({ length: 8 }, (_, i) => asObject(acf[`deliverable_${i + 1}`]))
+  );
 }
 
 export function normalizeService(raw) {
@@ -122,7 +126,7 @@ export function normalizeService(raw) {
     shortDesc: toPlainText(acf.short_description),
     fullDesc: toPlainText(acf.full_description),
     highlights: toLines(acf.highlights),
-    deliverables: toDeliverables(acf.deliverables),
+    deliverables: deliverablesFromFields(acf),
     technologies: toLines(acf.technologies),
     seoTitle: toPlainText(acf.seo_title),
     seoDescription: toPlainText(acf.seo_description),
