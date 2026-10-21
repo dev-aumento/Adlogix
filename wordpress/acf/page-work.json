@@ -1,0 +1,834 @@
+[
+    {
+        "key": "group_adlogix_page_work",
+        "title": "Work Page Content",
+        "fields": [
+            {
+                "key": "field_work_tab_hero",
+                "label": "Hero",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_work_hero_badge_text",
+                "label": "Badge text",
+                "name": "hero_badge_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The pill above the headline. Blank hides the pill.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Featured Portfolio",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_hero_headline_line_1",
+                "label": "Headline line 1",
+                "name": "hero_headline_line_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Big Ideas. Bold Execution.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_hero_headline_highlight_1",
+                "label": "Headline line 2 (highlighted)",
+                "name": "hero_headline_highlight_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Shown in the blue gradient, on its own line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Meaningful Results.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_hero_description",
+                "label": "Intro paragraph",
+                "name": "hero_description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "We partner with ambitious brands to create digital campaigns, high-converting storefronts, and viral short-form assets that move real business metrics.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 4,
+                "new_lines": ""
+            },
+            {
+                "key": "field_work_tab_portfolio",
+                "label": "Portfolio",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_work_portfolio_message",
+                "label": "About this tab",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "The project cards are the <strong>Projects</strong> entries, each with its own fields and \"Show on\" box. This tab only holds the labels around them.<br><br>The category pills come from each project's <strong>Category</strong>, and only categories that have projects are shown.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_work_portfolio_all_label",
+                "label": "Filter: all projects",
+                "name": "portfolio_all_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The first filter pill. Blank hides it.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "All",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_portfolio_search_placeholder",
+                "label": "Search box placeholder",
+                "name": "portfolio_search_placeholder",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Blank hides the search box.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Search clients, industries...",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_portfolio_video_label",
+                "label": "Card video button",
+                "name": "portfolio_video_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Shown on cards that have a video.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Watch Reel",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_portfolio_link_label",
+                "label": "Card link label",
+                "name": "portfolio_link_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Blank hides the link; the card title still opens the project.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Case Study",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_portfolio_empty_title",
+                "label": "No results message",
+                "name": "portfolio_empty_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "No projects found matching your search.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_portfolio_empty_button",
+                "label": "No results button",
+                "name": "portfolio_empty_button",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Clears the search and filters. Blank hides the button.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Reset Filters",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_tab_cta",
+                "label": "Closing CTA",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_work_cta_title",
+                "label": "Title",
+                "name": "cta_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Want Similar Impact for Your Brand?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_cta_text",
+                "label": "Text",
+                "name": "cta_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "We engineer custom campaigns and web experiences aligned with your specific commercial objectives.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_work_cta_button_label",
+                "label": "Button label",
+                "name": "cta_button_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Start Your Project Discussion",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_cta_button_link_type",
+                "label": "Button link",
+                "name": "cta_button_link_type",
+                "aria-label": "",
+                "type": "button_group",
+                "instructions": "Choose a page of this site, or enter a custom link.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "page": "Page",
+                    "custom": "Custom link"
+                },
+                "default_value": "page",
+                "return_format": "value",
+                "allow_null": 0,
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_work_cta_button_page",
+                "label": "Page",
+                "name": "cta_button_page",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "Opens without reloading the site.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_work_cta_button_link_type",
+                            "operator": "==",
+                            "value": "page"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "/": "Home",
+                    "/about": "About",
+                    "/services": "Services",
+                    "/work": "Work",
+                    "/reels": "Reels",
+                    "/industries": "Industries",
+                    "/testimonials": "Testimonials",
+                    "/blog": "Blog",
+                    "/contact": "Contact",
+                    "/privacy-policy": "Privacy Policy",
+                    "/terms": "Terms"
+                },
+                "default_value": "/contact",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 1,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_cta_button_url",
+                "label": "Custom link",
+                "name": "cta_button_url",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_work_cta_button_link_type",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "/contact or https://example.com"
+            },
+            {
+                "key": "field_work_tab_detail",
+                "label": "Single Project Pages",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_work_detail_message",
+                "label": "About this tab",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "These labels are the frame around every single case study (<code>/work/&lt;project&gt;</code>). The content inside &mdash; overview, results, challenge, strategy, execution and the client quote &mdash; is edited on each <strong>Projects</strong> entry, including the heading above each of those three sections.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_work_detail_breadcrumb_label",
+                "label": "Breadcrumb label",
+                "name": "detail_breadcrumb_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Our Work",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_video_button_label",
+                "label": "Video button",
+                "name": "detail_video_button_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Shown over the hero image when the project has a video.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Play Creative Reel & Commercial",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_results_label",
+                "label": "Results box label",
+                "name": "detail_results_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Verified Performance Impact",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_challenge_eyebrow",
+                "label": "Challenge eyebrow",
+                "name": "detail_challenge_eyebrow",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "The Challenge",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_strategy_eyebrow",
+                "label": "Strategy eyebrow",
+                "name": "detail_strategy_eyebrow",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Our Strategy",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_execution_eyebrow",
+                "label": "Execution eyebrow",
+                "name": "detail_execution_eyebrow",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Execution & Rollout",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_services_label",
+                "label": "Sidebar: services heading",
+                "name": "detail_services_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Services Delivered",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_client_label",
+                "label": "Sidebar: client heading",
+                "name": "detail_client_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Client",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_sidebar_cta_label",
+                "label": "Sidebar button",
+                "name": "detail_sidebar_cta_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Discuss Similar Project",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_cta_title",
+                "label": "Closing title",
+                "name": "detail_cta_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Ready to Craft Your Next Growth Chapter?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_cta_primary_label",
+                "label": "Closing button",
+                "name": "detail_cta_primary_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Start Your Project",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_cta_primary_link_type",
+                "label": "Closing button link",
+                "name": "detail_cta_primary_link_type",
+                "aria-label": "",
+                "type": "button_group",
+                "instructions": "Choose a page of this site, or enter a custom link.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "page": "Page",
+                    "custom": "Custom link"
+                },
+                "default_value": "page",
+                "return_format": "value",
+                "allow_null": 0,
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_work_detail_cta_primary_page",
+                "label": "Page",
+                "name": "detail_cta_primary_page",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "Opens without reloading the site.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_work_detail_cta_primary_link_type",
+                            "operator": "==",
+                            "value": "page"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "/": "Home",
+                    "/about": "About",
+                    "/services": "Services",
+                    "/work": "Work",
+                    "/reels": "Reels",
+                    "/industries": "Industries",
+                    "/testimonials": "Testimonials",
+                    "/blog": "Blog",
+                    "/contact": "Contact",
+                    "/privacy-policy": "Privacy Policy",
+                    "/terms": "Terms"
+                },
+                "default_value": "/contact",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 1,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_cta_primary_url",
+                "label": "Custom link",
+                "name": "detail_cta_primary_url",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_work_detail_cta_primary_link_type",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "/contact or https://example.com"
+            },
+            {
+                "key": "field_work_detail_cta_secondary_label",
+                "label": "Closing second button",
+                "name": "detail_cta_secondary_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "View All Case Studies",
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_cta_secondary_link_type",
+                "label": "Closing second button link",
+                "name": "detail_cta_secondary_link_type",
+                "aria-label": "",
+                "type": "button_group",
+                "instructions": "Choose a page of this site, or enter a custom link.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "page": "Page",
+                    "custom": "Custom link"
+                },
+                "default_value": "page",
+                "return_format": "value",
+                "allow_null": 0,
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_work_detail_cta_secondary_page",
+                "label": "Page",
+                "name": "detail_cta_secondary_page",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "Opens without reloading the site.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_work_detail_cta_secondary_link_type",
+                            "operator": "==",
+                            "value": "page"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "/": "Home",
+                    "/about": "About",
+                    "/services": "Services",
+                    "/work": "Work",
+                    "/reels": "Reels",
+                    "/industries": "Industries",
+                    "/testimonials": "Testimonials",
+                    "/blog": "Blog",
+                    "/contact": "Contact",
+                    "/privacy-policy": "Privacy Policy",
+                    "/terms": "Terms"
+                },
+                "default_value": "/work",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 1,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_work_detail_cta_secondary_url",
+                "label": "Custom link",
+                "name": "detail_cta_secondary_url",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "A site path such as /services/seo-optimization, or a full https:// URL. Links to this site open without reloading; other websites open in a new tab.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_work_detail_cta_secondary_link_type",
+                            "operator": "==",
+                            "value": "custom"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "/contact or https://example.com"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page",
+                    "operator": "==",
+                    "value": "495"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "All Work page content for the React frontend, plus the labels used on every single case study. Section order and visibility live in the \"Page Sections\" box.",
+        "show_in_rest": 1
+    }
+]

@@ -5,11 +5,23 @@ import { ArrowRight, Play, CheckCircle2, TrendingUp, Sparkles, Building, Layers,
 import { SEOHead } from '../components/ui/SEOHead';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { Button } from '../components/ui/Button';
+import { toRouterPath } from '../components/ui/SmartLink';
 import { useCMS } from '../hooks/useCMS';
+import { usePageContent } from '../hooks/usePageContent';
+import { workDefaults } from '../content/work';
+
+/** Button props for a CTA link: router for site paths, new tab for other websites. */
+const linkProps = (href) => {
+  const path = toRouterPath(href);
+  return path ? { to: path } : { href };
+};
 
 export const ProjectDetailPage = () => {
   const { slug } = useParams();
   const { projects, openVideoModal, openDiscoveryModal } = useCMS();
+  // The case-study labels are edited on the Work page; the request is cached and shared.
+  const { content } = usePageContent('work');
+  const t = content.detail ?? workDefaults.detail;
 
   const project = projects.find((p) => p.slug === slug);
 
@@ -17,18 +29,21 @@ export const ProjectDetailPage = () => {
     return <Navigate to="/work" replace />;
   }
 
+  const hasClosingPrimary = Boolean(t.ctaPrimaryLabel && t.ctaPrimaryLink);
+  const hasClosingSecondary = Boolean(t.ctaSecondaryLabel && t.ctaSecondaryLink);
+
   return (
     <>
       <SEOHead
-        title={`${project.title} | Case Study | Adlogix`}
-        description={project.overview}
+        title={project.seoTitle || `${project.title} | Case Study | Adlogix`}
+        description={project.seoDescription || project.overview}
         canonical={`https://adlogix.in/work/${project.slug}`}
         ogImage={project.heroImage}
         schema={{
           "@context": "https://schema.org",
           "@type": "Article",
           "headline": project.title,
-          "description": project.overview,
+          "description": project.seoDescription || project.overview,
           "image": project.heroImage,
           "publisher": {
             "@type": "Organization",
@@ -44,7 +59,7 @@ export const ProjectDetailPage = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumb
               items={[
-                { label: "Our Work", href: "/work" },
+                ...(t.breadcrumbLabel ? [{ label: t.breadcrumbLabel, href: "/work" }] : []),
                 { label: project.client || project.title }
               ]}
             />
@@ -113,7 +128,7 @@ export const ProjectDetailPage = () => {
                     className="px-6 py-3.5 rounded-full bg-brand-blue hover:bg-brand-blue-hover text-white font-bold text-sm shadow-2xl flex items-center gap-2 border border-white/30 transition-transform hover:scale-105"
                   >
                     <Play className="w-5 h-5 fill-current" />
-                    <span>Play Creative Reel & Commercial</span>
+                    <span>{t.videoButtonLabel}</span>
                   </button>
                 </div>
               )}
@@ -126,9 +141,11 @@ export const ProjectDetailPage = () => {
           <section className="py-16 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="p-8 sm:p-10 rounded-3xl bg-brand-surface-soft border border-brand-border shadow-card-subtle">
-                <div className="text-xs font-bold uppercase tracking-wider text-brand-blue mb-6">
-                  Verified Performance Impact
-                </div>
+                {t.resultsLabel && (
+                  <div className="text-xs font-bold uppercase tracking-wider text-brand-blue mb-6">
+                    {t.resultsLabel}
+                  </div>
+                )}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
                   {project.results.map((res, idx) => (
                     <div key={idx} className={idx > 0 ? "pt-4 sm:pt-0 sm:pl-6" : ""}>
@@ -166,12 +183,16 @@ export const ProjectDetailPage = () => {
                 {/* Challenge */}
                 {project.challenge && (
                   <div className="space-y-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-rose-600">
-                      The Challenge
-                    </span>
-                    <h2 className="text-2xl sm:text-3xl font-bold font-display text-brand-navy">
-                      Breaking Through the Acquisition Ceiling
-                    </h2>
+                    {t.challengeEyebrow && (
+                      <span className="text-xs font-bold uppercase tracking-wider text-rose-600">
+                        {t.challengeEyebrow}
+                      </span>
+                    )}
+                    {project.challengeTitle && (
+                      <h2 className="text-2xl sm:text-3xl font-bold font-display text-brand-navy">
+                        {project.challengeTitle}
+                      </h2>
+                    )}
                     <p className="text-base text-brand-muted leading-relaxed">
                       {project.challenge}
                     </p>
@@ -181,12 +202,16 @@ export const ProjectDetailPage = () => {
                 {/* Strategy */}
                 {project.strategy && (
                   <div className="space-y-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">
-                      Our Strategy
-                    </span>
-                    <h2 className="text-2xl sm:text-3xl font-bold font-display text-brand-navy">
-                      Data-Informed Creative & Architecture
-                    </h2>
+                    {t.strategyEyebrow && (
+                      <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">
+                        {t.strategyEyebrow}
+                      </span>
+                    )}
+                    {project.strategyTitle && (
+                      <h2 className="text-2xl sm:text-3xl font-bold font-display text-brand-navy">
+                        {project.strategyTitle}
+                      </h2>
+                    )}
                     <p className="text-base text-brand-muted leading-relaxed">
                       {project.strategy}
                     </p>
@@ -196,12 +221,16 @@ export const ProjectDetailPage = () => {
                 {/* Execution */}
                 {project.execution && (
                   <div className="space-y-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">
-                      Execution & Rollout
-                    </span>
-                    <h2 className="text-2xl sm:text-3xl font-bold font-display text-brand-navy">
-                      Rapid Creative Testing & Engineering Sprints
-                    </h2>
+                    {t.executionEyebrow && (
+                      <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">
+                        {t.executionEyebrow}
+                      </span>
+                    )}
+                    {project.executionTitle && (
+                      <h2 className="text-2xl sm:text-3xl font-bold font-display text-brand-navy">
+                        {project.executionTitle}
+                      </h2>
+                    )}
                     <p className="text-base text-brand-muted leading-relaxed">
                       {project.execution}
                     </p>
@@ -238,9 +267,11 @@ export const ProjectDetailPage = () => {
                 <div className="p-6 rounded-3xl bg-white border border-brand-border shadow-card-subtle space-y-6">
                   {project.servicesDelivered?.length > 0 && (
                     <div>
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted mb-3">
-                        Services Delivered
-                      </h3>
+                      {t.servicesLabel && (
+                        <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted mb-3">
+                          {t.servicesLabel}
+                        </h3>
+                      )}
                       <div className="space-y-2">
                         {project.servicesDelivered.map((srv, idx) => (
                           <div key={idx} className="flex items-center gap-2 text-xs font-bold text-brand-navy">
@@ -254,25 +285,29 @@ export const ProjectDetailPage = () => {
 
                   {(project.client || project.industry) && (
                     <div className={project.servicesDelivered?.length > 0 ? "pt-6 border-t border-slate-100" : ""}>
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted mb-2">
-                        Client
-                      </h3>
+                      {t.clientLabel && (
+                        <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted mb-2">
+                          {t.clientLabel}
+                        </h3>
+                      )}
                       {project.client && <div className="text-base font-bold text-brand-navy">{project.client}</div>}
                       {project.industry && <div className="text-xs text-brand-muted">{project.industry}</div>}
                     </div>
                   )}
 
-                  <div className="pt-4">
-                    <Button
-                      to={`/contact?project=${encodeURIComponent(project.title)}`}
-                      variant="primary"
-                      size="md"
-                      className="w-full justify-center"
-                      icon={ArrowRight}
-                    >
-                      Discuss Similar Project
-                    </Button>
-                  </div>
+                  {t.sidebarCtaLabel && (
+                    <div className="pt-4">
+                      <Button
+                        to={`/contact?project=${encodeURIComponent(project.title)}`}
+                        variant="primary"
+                        size="md"
+                        className="w-full justify-center"
+                        icon={ArrowRight}
+                      >
+                        {t.sidebarCtaLabel}
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -281,21 +316,31 @@ export const ProjectDetailPage = () => {
         </section>
 
         {/* Next Project / Work Navigation */}
-        <section className="py-16 bg-brand-surface-soft/60 border-t border-brand-border text-center">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-            <h2 className="text-2xl sm:text-3xl font-bold font-display text-brand-navy">
-              Ready to Craft Your Next Growth Chapter?
-            </h2>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button to="/contact" variant="primary" size="lg" icon={ArrowRight}>
-                Start Your Project
-              </Button>
-              <Button to="/work" variant="secondary" size="lg">
-                View All Case Studies
-              </Button>
+        {(t.ctaTitle || hasClosingPrimary || hasClosingSecondary) && (
+          <section className="py-16 bg-brand-surface-soft/60 border-t border-brand-border text-center">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+              {t.ctaTitle && (
+                <h2 className="text-2xl sm:text-3xl font-bold font-display text-brand-navy">
+                  {t.ctaTitle}
+                </h2>
+              )}
+              {(hasClosingPrimary || hasClosingSecondary) && (
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  {hasClosingPrimary && (
+                    <Button {...linkProps(t.ctaPrimaryLink)} variant="primary" size="lg" icon={ArrowRight}>
+                      {t.ctaPrimaryLabel}
+                    </Button>
+                  )}
+                  {hasClosingSecondary && (
+                    <Button {...linkProps(t.ctaSecondaryLink)} variant="secondary" size="lg">
+                      {t.ctaSecondaryLabel}
+                    </Button>
+                  )}
+                </div>
+              )}
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </div>
     </>
   );

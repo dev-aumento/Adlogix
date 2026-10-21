@@ -246,6 +246,23 @@
                 "endpoint": 0
             },
             {
+                "key": "field_project_challenge_title",
+                "label": "Challenge heading",
+                "name": "challenge_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The heading above this section. Each project can word it differently.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Breaking Through the Acquisition Ceiling",
+                "placeholder": ""
+            },
+            {
                 "key": "field_project_challenge",
                 "label": "The challenge",
                 "name": "challenge",
@@ -265,6 +282,23 @@
                 "placeholder": ""
             },
             {
+                "key": "field_project_strategy_title",
+                "label": "Strategy heading",
+                "name": "strategy_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The heading above this section. Each project can word it differently.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Data-Informed Creative & Architecture",
+                "placeholder": ""
+            },
+            {
                 "key": "field_project_strategy",
                 "label": "Our strategy",
                 "name": "strategy",
@@ -281,6 +315,23 @@
                 "default_value": "",
                 "rows": 4,
                 "new_lines": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_project_execution_title",
+                "label": "Execution heading",
+                "name": "execution_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The heading above this section. Each project can word it differently.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Rapid Creative Testing & Engineering Sprints",
                 "placeholder": ""
             },
             {
@@ -371,6 +422,60 @@
                 },
                 "default_value": "",
                 "placeholder": ""
+            },
+            {
+                "key": "field_project_tab_seo",
+                "label": "SEO",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_project_seo_title",
+                "label": "Browser title",
+                "name": "seo_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The browser tab title for this case study. Blank uses the project title followed by \" | Case Study | Adlogix\".",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_project_seo_description",
+                "label": "Meta description",
+                "name": "seo_description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "Blank uses the overview.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
             }
         ],
         "location": [

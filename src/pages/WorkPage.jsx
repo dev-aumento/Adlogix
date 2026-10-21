@@ -4,53 +4,71 @@ import { Link } from 'react-router-dom';
 import { FolderKanban, Search } from 'lucide-react';
 import { SEOHead } from '../components/ui/SEOHead';
 import { Button } from '../components/ui/Button';
+import { toRouterPath } from '../components/ui/SmartLink';
 import { ProjectCard } from '../components/ui/ProjectCard';
 import { PageSections } from '../components/sections/PageSections';
 import { useCollection } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
 import { projectCategories } from '../data/projectsData';
 import { presentCategories } from '../services/collections';
+import { workDefaults } from '../content/work';
 
-const WorkHero = () => (
-  <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="max-w-3xl">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
-        >
-          <FolderKanban className="w-3.5 h-3.5" />
-          <span>Featured Portfolio</span>
-        </motion.div>
+const WorkHero = ({ content = workDefaults.hero }) => {
+  const { badge, headline, description } = content;
+  const hasHeadline = Boolean(headline?.line1 || headline?.highlight1);
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
-        >
-          Big Ideas. Bold Execution.{' '}
-          <span className="gradient-text-blue block mt-1">
-            Meaningful Results.
-          </span>
-        </motion.h1>
+  if (!badge && !hasHeadline && !description) return null;
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
-        >
-          We partner with ambitious brands to create digital campaigns, high-converting storefronts, and viral short-form assets that move real business metrics.
-        </motion.p>
+  return (
+    <section className="py-20 lg:py-28 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl">
+          {badge && (
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
+            >
+              <FolderKanban className="w-3.5 h-3.5" />
+              <span>{badge}</span>
+            </motion.div>
+          )}
+
+          {hasHeadline && (
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
+            >
+              {headline.line1}
+              {headline.line1 && headline.highlight1 ? ' ' : ''}
+              {headline.highlight1 && (
+                <span className="gradient-text-blue block mt-1">
+                  {headline.highlight1}
+                </span>
+              )}
+            </motion.h1>
+          )}
+
+          {description && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
+            >
+              {description}
+            </motion.p>
+          )}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 // Filter bar and grid share the active filters, so they move as one section.
-const WorkPortfolio = () => {
+const WorkPortfolio = ({ content = workDefaults.portfolio }) => {
   const projects = useCollection('projects', 'work');
   const [selectedCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -79,14 +97,14 @@ const WorkPortfolio = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
 
           {/* Category Pills */}
-          {categories.length > 1 && (
+          {categories.length > 1 && content.allLabel && (
             <div className="inline-flex items-center gap-1.5 p-1.5 bg-brand-surface-soft rounded-full border border-brand-border flex-nowrap overflow-x-auto no-scrollbar max-w-full">
-              {["All", ...categories].map((cat) => (
+              {[content.allLabel, ...categories].map((cat) => (
                 <button
                   key={cat}
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => setActiveCategory(cat === content.allLabel ? "All" : cat)}
                   className={`px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap shrink-0 select-none ${
-                    activeCategory === cat
+                    (cat === content.allLabel ? "All" : cat) === activeCategory
                       ? "bg-brand-navy text-white shadow-sm"
                       : "text-brand-muted hover:text-brand-navy"
                   }`}
@@ -98,16 +116,18 @@ const WorkPortfolio = () => {
           )}
 
           {/* Search Input */}
-          <div className="relative max-w-xs w-full md:ml-auto">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search clients, industries..."
-              className="w-full pl-9 pr-4 py-2 rounded-full border border-brand-border bg-brand-surface-soft/60 text-xs font-medium text-brand-navy outline-none focus:border-brand-blue focus:bg-white transition-all"
-            />
-          </div>
+          {content.searchPlaceholder && (
+            <div className="relative max-w-xs w-full md:ml-auto">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={content.searchPlaceholder}
+                className="w-full pl-9 pr-4 py-2 rounded-full border border-brand-border bg-brand-surface-soft/60 text-xs font-medium text-brand-navy outline-none focus:border-brand-blue focus:bg-white transition-all"
+              />
+            </div>
+          )}
         </div>
       </section>
 
@@ -132,24 +152,33 @@ const WorkPortfolio = () => {
                   transition={{ duration: 0.4, delay: idx * 0.05 }}
                   className="flex flex-col rounded-3xl bg-white border border-brand-border shadow-card-subtle hover:shadow-glossy-hover overflow-hidden transition-all duration-300 group"
                 >
-                  <ProjectCard project={project} videoLabel="Watch Reel" linkLabel="Case Study" metricValueClassName="text-lg" />
+                  <ProjectCard
+                    project={project}
+                    videoLabel={content.videoLabel}
+                    linkLabel={content.linkLabel}
+                    metricValueClassName="text-lg"
+                  />
                 </motion.div>
               ))}
             </motion.div>
           </AnimatePresence>
 
-          {filteredProjects.length === 0 && (
+          {filteredProjects.length === 0 && (content.emptyTitle || content.emptyButton) && (
             <div className="py-20 text-center space-y-3">
-              <p className="text-lg font-bold text-brand-navy">No projects found matching your search.</p>
-              <button
-                onClick={() => {
-                  setActiveCategory("All");
-                  setSearchQuery("");
-                }}
-                className="px-4 py-2 rounded-full bg-brand-blue text-white text-xs font-bold"
-              >
-                Reset Filters
-              </button>
+              {content.emptyTitle && (
+                <p className="text-lg font-bold text-brand-navy">{content.emptyTitle}</p>
+              )}
+              {content.emptyButton && (
+                <button
+                  onClick={() => {
+                    setActiveCategory("All");
+                    setSearchQuery("");
+                  }}
+                  className="px-4 py-2 rounded-full bg-brand-blue text-white text-xs font-bold"
+                >
+                  {content.emptyButton}
+                </button>
+              )}
             </div>
           )}
         </div>
@@ -158,21 +187,36 @@ const WorkPortfolio = () => {
   );
 };
 
-const WorkCta = () => (
-  <section className="py-16 bg-brand-surface-soft/60 border-t border-brand-border text-center">
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-      <h2 className="text-3xl font-black font-display text-brand-navy">
-        Want Similar Impact for Your Brand?
-      </h2>
-      <p className="text-sm text-brand-muted">
-        We engineer custom campaigns and web experiences aligned with your specific commercial objectives.
-      </p>
-      <Button to="/contact" variant="primary" size="lg">
-        Start Your Project Discussion
-      </Button>
-    </div>
-  </section>
-);
+const WorkCta = ({ content = workDefaults.cta }) => {
+  const { title, text, buttonLabel, buttonLink } = content;
+  const hasButton = Boolean(buttonLabel && buttonLink);
+  // Site paths go through the router; another website opens in a new tab.
+  const buttonPath = toRouterPath(buttonLink);
+
+  if (!title && !text && !hasButton) return null;
+
+  return (
+    <section className="py-16 bg-brand-surface-soft/60 border-t border-brand-border text-center">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        {title && (
+          <h2 className="text-3xl font-black font-display text-brand-navy">
+            {title}
+          </h2>
+        )}
+        {text && <p className="text-sm text-brand-muted">{text}</p>}
+        {hasButton && (
+          <Button
+            {...(buttonPath ? { to: buttonPath } : { href: buttonLink })}
+            variant="primary"
+            size="lg"
+          >
+            {buttonLabel}
+          </Button>
+        )}
+      </div>
+    </section>
+  );
+};
 
 // Keys must match the "work" entry in the plugin's section registry.
 const workSections = {

@@ -73,11 +73,17 @@ export function normalizeProject(raw) {
     thumbnail: image?.url || '',
     videoReelUrl: videoUrl(acf),
     overview: toPlainText(acf.overview),
+    // Each case study words its own section headings; the eyebrows above them are page labels.
     challenge: toPlainText(acf.challenge),
+    challengeTitle: toPlainText(acf.challenge_title),
     strategy: toPlainText(acf.strategy),
+    strategyTitle: toPlainText(acf.strategy_title),
     execution: toPlainText(acf.execution),
+    executionTitle: toPlainText(acf.execution_title),
     results: toPipeRows(acf.results, ['value', 'label', 'sub']).filter((row) => row.value || row.label),
     servicesDelivered: toLines(acf.services_delivered),
+    seoTitle: toPlainText(acf.seo_title),
+    seoDescription: toPlainText(acf.seo_description),
     testimonial: quote
       ? { quote, author: toPlainText(acf.testimonial_author), role: toPlainText(acf.testimonial_role) }
       : null,
