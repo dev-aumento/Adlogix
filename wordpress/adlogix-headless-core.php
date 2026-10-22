@@ -3,7 +3,7 @@
  * Plugin Name: Adlogix Headless Core
  * Plugin URI: https://adlogix.in
  * Description: Core Headless CMS configuration, Custom Post Types, ACF bindings, CORS headers, and REST API endpoints for the Adlogix React Frontend (Powered by Aumento Infoway).
- * Version: 1.6.0
+ * Version: 1.7.0
  * Author: Adlogix & Aumento Infoway
  * License: GPL-2.0+
  */
@@ -889,6 +889,8 @@ class Adlogix_Headless_Core {
      */
     public function get_layout_response() {
         return [
+            // Settings - General - Site Title, used when no logo image is uploaded.
+            'site_name' => get_bloginfo('name'),
             'header' => $this->get_singleton_acf('site_header'),
             'footer' => $this->get_singleton_acf('site_footer'),
             'popup' => $this->get_singleton_acf('site_popup'),

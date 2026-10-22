@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, ArrowRight, Phone } from 'lucide-react';
 import { useCMS } from '../../hooks/useCMS';
+import { siteInitial } from '../../content/layout';
 import { MegaMenu } from './MegaMenu';
 import { MobileNav } from './MobileNav';
 import { SmartLink } from '../ui/SmartLink';
@@ -26,7 +27,7 @@ const Tagline = ({ text }) => {
 const pathOf = (href) => toAppPath(href) || href || '';
 
 export const Header = () => {
-  const { settings, header, openDiscoveryModal } = useCMS();
+  const { settings, header, siteName, openDiscoveryModal } = useCMS();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -44,8 +45,8 @@ export const Header = () => {
     setIsMobileNavOpen(false);
   }, [location.pathname]);
 
-  const brandMark = header.brandMark || 'A';
-  const brandName = header.brandName || 'Adlogix';
+  // A logo image when one is uploaded, otherwise the WordPress Site Title as text.
+  const logo = header.logo;
   const hasPrimaryCta = Boolean(header.primaryCtaLabel && header.primaryCtaLink);
   const hasBookCall = Boolean(header.bookCallLabel);
 
@@ -62,17 +63,25 @@ export const Header = () => {
           <div className="flex items-center justify-between h-14 sm:h-16">
             <div className="flex items-center gap-3 shrink-0">
               <Link to="/" className="flex items-center gap-2 sm:gap-2.5 group select-none">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 aspect-square rounded-xl bg-gradient-to-tr from-brand-blue to-indigo-600 flex items-center justify-center text-white font-black text-base sm:text-lg shadow-sm shadow-brand-blue/20 group-hover:scale-105 transition-transform shrink-0">
-                  {brandMark}
-                </div>
-                <div className="flex flex-col justify-center text-left">
-                  {brandName && (
-                    <span className="text-lg sm:text-xl font-black font-display text-brand-navy tracking-tight leading-none group-hover:text-brand-blue transition-colors">
-                      {brandName}
-                    </span>
-                  )}
-                  <Tagline text={header.tagline} />
-                </div>
+                {logo ? (
+                  <img
+                    src={logo.url}
+                    alt={logo.alt || siteName}
+                    className="h-9 sm:h-10 w-auto object-contain group-hover:scale-105 transition-transform shrink-0"
+                  />
+                ) : (
+                  <>
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 aspect-square rounded-xl bg-gradient-to-tr from-brand-blue to-indigo-600 flex items-center justify-center text-white font-black text-base sm:text-lg shadow-sm shadow-brand-blue/20 group-hover:scale-105 transition-transform shrink-0">
+                      {siteInitial(siteName)}
+                    </div>
+                    <div className="flex flex-col justify-center text-left">
+                      <span className="text-lg sm:text-xl font-black font-display text-brand-navy tracking-tight leading-none group-hover:text-brand-blue transition-colors">
+                        {siteName}
+                      </span>
+                      <Tagline text={header.tagline} />
+                    </div>
+                  </>
+                )}
               </Link>
             </div>
 

@@ -1,10 +1,19 @@
-import { toPlainText, toSafeLink, toAppPath, toLines } from '../services/normalizers';
+import { toPlainText, toSafeLink, toAppPath, toLines, normalizeMedia } from '../services/normalizers';
 import { text, link } from './helpers';
 
 /** Static fallbacks used until WordPress Header / Footer / Menus are published. */
+/** Shown when WordPress has no Site Title yet; the real value comes from Settings - General. */
+export const defaultSiteName = 'Adlogix';
+
+/**
+ * The letter in the square logo mark, taken from the site title so there is nothing extra to
+ * keep in sync. Only used when no logo image is uploaded.
+ */
+export const siteInitial = (name) =>
+  (name || '').trim().charAt(0).toUpperCase() || defaultSiteName.charAt(0);
+
 export const defaultHeader = {
-  brandMark: 'A',
-  brandName: 'Adlogix',
+  logo: null,
   tagline: 'Powered by Aumento',
   bookCallLabel: 'Book Call',
   bookCallAction: 'modal',
@@ -49,8 +58,7 @@ export const defaultFooterMenus = {
 };
 
 export const defaultFooter = {
-  brandMark: 'A',
-  brandName: 'Adlogix',
+  logo: null,
   description:
     'Adlogix is a full-service creative digital marketing, performance advertising, and technology agency. We combine scroll-stopping creative with high-converting web engineering.',
   partnerLabel: 'Technology Partner',
@@ -138,8 +146,7 @@ export function normalizeHeader(raw) {
 
   const bookCallAction = text(f, 'book_call_action') === 'link' ? 'link' : 'modal';
   return {
-    brandMark: text(f, 'brand_mark') || defaultHeader.brandMark,
-    brandName: text(f, 'brand_name'),
+    logo: normalizeMedia(f.logo),
     tagline: text(f, 'tagline'),
     bookCallLabel: text(f, 'book_call_label'),
     bookCallAction,
@@ -157,8 +164,7 @@ export function normalizeFooter(raw) {
   if (!raw || Object.keys(f).length === 0) return null;
 
   return {
-    brandMark: text(f, 'brand_mark') || defaultFooter.brandMark,
-    brandName: text(f, 'brand_name'),
+    logo: normalizeMedia(f.logo),
     description: text(f, 'description'),
     partnerLabel: text(f, 'partner_label'),
     partnerText: text(f, 'partner_text'),

@@ -4,36 +4,29 @@
         "title": "Footer Content",
         "fields": [
             {
-                "key": "field_footer_brand_mark",
-                "label": "Brand mark",
-                "name": "brand_mark",
-                "type": "text",
-                "instructions": "",
+                "key": "field_footer_logo",
+                "label": "Logo",
+                "name": "logo",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "The logo shown in the footer, on the dark background. Without one the site title from Settings &rarr; General is shown as text. A light or white SVG/PNG works best; it is displayed about 44px tall.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
-                    "width": "20",
+                    "width": "",
                     "class": "",
                     "id": ""
                 },
-                "default_value": "A",
-                "placeholder": ""
-            },
-            {
-                "key": "field_footer_brand_name",
-                "label": "Brand name",
-                "name": "brand_name",
-                "type": "text",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "40",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "Adlogix",
-                "placeholder": ""
+                "return_format": "array",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": "",
+                "preview_size": "medium"
             },
             {
                 "key": "field_footer_description",

@@ -67,3 +67,28 @@ You should see `header.acf`, `footer.acf`, and menu trees. Deploy the React buil
 - `api.getLayout()` — always calls WordPress (ignores `VITE_ENABLE_WP_SYNC`).
 - Blank CTA label/link hides that button (same blank-field rule as the homepage).
 - Site paths open without a full reload (`SmartLink`).
+
+## Logo
+
+The header and footer each take **one logo image**. The letter mark and typed brand name they used to have are gone — a brand should be set in one place, not typed twice.
+
+| Situation | What renders |
+|---|---|
+| A logo is uploaded | The image, linked to the homepage |
+| No logo | The square mark plus the **Site Title** from **Settings → General** |
+
+The letter in the square is the first character of the Site Title, uppercased, so there is no
+separate field to keep in sync — rename the site to "Beacon" and the square shows **B**.
+
+The fallback comes from WordPress itself (`site_name` on `/adlogix/v1/layout`, plugin 1.7.0), so there is no third place to keep the brand name in sync. The header keeps its tagline field, shown under the site title when no logo is set.
+
+Sizing: the header logo renders about 40px tall, the footer about 44px, width automatic. An SVG or a transparent PNG works best, and the footer sits on a dark background so a light version belongs there. SVG uploads are already allowed (`05-media-uploads.md`).
+
+Fields changed in `post-type-header.json` and `post-type-footer.json`: `brand_mark` and `brand_name` replaced by `logo`. **Both files need re-importing.**
+
+## Homepage preloader
+
+The full-screen intro loader runs **only when the homepage is the page being entered**. Deep links to any other page, and every route change, go straight to the content — the thin progress bar at the top of the screen remains the cue for navigation.
+
+Before, the loader ran on first load of *any* page and again on *every* route change, which added about 850ms to each click.
+

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, Instagram, Linkedin, Twitter, ExternalLink } from 'lucide-react';
 import { useCMS } from '../../hooks/useCMS';
+import { siteInitial } from '../../content/layout';
 import { SmartLink } from '../ui/SmartLink';
 
 const FooterColumn = ({ title, links, titleClassName }) => {
@@ -29,7 +30,7 @@ const FooterColumn = ({ title, links, titleClassName }) => {
 };
 
 export const Footer = () => {
-  const { footer, footerMenus } = useCMS();
+  const { footer, footerMenus, siteName } = useCMS();
   const year = new Date().getFullYear();
 
   return (
@@ -41,13 +42,21 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-14 border-b border-white/10">
           <div className="lg:col-span-2 space-y-5">
             <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white font-black text-2xl shadow-lg shadow-brand-blue/40">
-                {footer.brandMark || 'A'}
-              </div>
-              {footer.brandName && (
-                <span className="text-2xl font-black font-display tracking-tight text-white">
-                  {footer.brandName}
-                </span>
+              {footer.logo ? (
+                <img
+                  src={footer.logo.url}
+                  alt={footer.logo.alt || siteName}
+                  className="h-11 w-auto object-contain"
+                />
+              ) : (
+                <>
+                  <div className="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white font-black text-2xl shadow-lg shadow-brand-blue/40">
+                    {siteInitial(siteName)}
+                  </div>
+                  <span className="text-2xl font-black font-display tracking-tight text-white">
+                    {siteName}
+                  </span>
+                </>
               )}
             </Link>
 

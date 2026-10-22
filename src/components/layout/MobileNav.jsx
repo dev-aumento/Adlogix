@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronDown, ArrowRight, Phone } from 'lucide-react';
 import { useCMS } from '../../hooks/useCMS';
+import { siteInitial } from '../../content/layout';
 import { Button } from '../ui/Button';
 import { SmartLink } from '../ui/SmartLink';
 import { toAppPath } from '../../services/normalizers';
@@ -10,15 +11,14 @@ import { toAppPath } from '../../services/normalizers';
 const pathOf = (href) => toAppPath(href) || href || '';
 
 export const MobileNav = ({ isOpen, onClose }) => {
-  const { settings, header, footer, openDiscoveryModal } = useCMS();
+  const { settings, header, footer, siteName, openDiscoveryModal } = useCMS();
   const [expanded, setExpanded] = useState(null);
   const location = useLocation();
   const navigation = settings.navigation || [];
 
   if (!isOpen) return null;
 
-  const brandMark = header.brandMark || 'A';
-  const brandName = header.brandName || 'Adlogix';
+  const logo = header.logo;
   const hasPrimaryCta = Boolean(header.primaryCtaLabel && header.primaryCtaLink);
   const hasBookCall = Boolean(header.bookCallLabel);
 
@@ -41,27 +41,35 @@ export const MobileNav = ({ isOpen, onClose }) => {
         >
           <div className="p-5 border-b border-brand-border flex items-center justify-between">
             <Link to="/" onClick={onClose} className="flex items-center gap-2.5">
-              <div className="w-8 h-8 aspect-square rounded-xl bg-gradient-to-tr from-brand-blue to-indigo-600 flex items-center justify-center text-white font-black text-base shadow-sm shrink-0">
-                {brandMark}
-              </div>
-              <div className="flex flex-col text-left">
-                {brandName && (
-                  <span className="text-xl font-black font-display text-brand-navy tracking-tight leading-none">
-                    {brandName}
-                  </span>
-                )}
-                {header.tagline && (
-                  <span className="text-[9px] font-semibold text-slate-500 tracking-wider uppercase mt-1 leading-none">
-                    {header.tagline.split(/(Aumento)/i).map((part, i) =>
-                      /^aumento$/i.test(part) ? (
-                        <span key={i} className="text-brand-blue font-bold">{part}</span>
-                      ) : (
-                        <span key={i}>{part}</span>
-                      )
+              {logo ? (
+                <img
+                  src={logo.url}
+                  alt={logo.alt || siteName}
+                  className="h-9 w-auto object-contain"
+                />
+              ) : (
+                <>
+                  <div className="w-8 h-8 aspect-square rounded-xl bg-gradient-to-tr from-brand-blue to-indigo-600 flex items-center justify-center text-white font-black text-base shadow-sm shrink-0">
+                    {siteInitial(siteName)}
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="text-xl font-black font-display text-brand-navy tracking-tight leading-none">
+                      {siteName}
+                    </span>
+                    {header.tagline && (
+                      <span className="text-[9px] font-semibold text-slate-500 tracking-wider uppercase mt-1 leading-none">
+                        {header.tagline.split(/(Aumento)/i).map((part, i) =>
+                          /^aumento$/i.test(part) ? (
+                            <span key={i} className="text-brand-blue font-bold">{part}</span>
+                          ) : (
+                            <span key={i}>{part}</span>
+                          )
+                        )}
+                      </span>
                     )}
-                  </span>
-                )}
-              </div>
+                  </div>
+                </>
+              )}
             </Link>
             <button
               onClick={onClose}

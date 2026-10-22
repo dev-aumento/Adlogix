@@ -9,7 +9,9 @@ import { PageLoader } from '../ui/PageLoader';
 
 export const Layout = ({ children }) => {
   const { pathname } = useLocation();
-  const [isInitialLoading, setIsInitialLoading] = useState(true);
+  // The full-screen loader is the homepage's intro, so it runs only when the homepage is the
+  // page being entered. Deep links to any other page, and every route change, go straight in.
+  const [isInitialLoading, setIsInitialLoading] = useState(() => pathname === '/');
   const [isPageNavigating, setIsPageNavigating] = useState(false);
   const prevPathRef = useRef(pathname);
   const isFirstMount = useRef(true);
@@ -51,7 +53,7 @@ export const Layout = ({ children }) => {
         )}
       </AnimatePresence>
 
-      {/* Cinematic Fullscreen Page Loader on Initial Entry & Route Transitions */}
+      {/* Cinematic fullscreen loader: the homepage intro only */}
       <AnimatePresence mode="wait">
         {isInitialLoading && (
           <PageLoader
@@ -60,13 +62,7 @@ export const Layout = ({ children }) => {
             onComplete={() => setIsInitialLoading(false)}
           />
         )}
-        {!isInitialLoading && isPageNavigating && (
-          <PageLoader
-            key={`route-loader-${pathname}`}
-            isTransition={true}
-            onComplete={() => setIsPageNavigating(false)}
-          />
-        )}
+        {/* No full-screen loader between pages: the progress bar above is the navigation cue. */}
       </AnimatePresence>
 
       <Header />

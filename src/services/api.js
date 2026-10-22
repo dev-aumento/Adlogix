@@ -21,6 +21,7 @@ import {
   defaultFooter,
   defaultFooterMenus,
   defaultPopup,
+  defaultSiteName,
   normalizeHeader,
   normalizeFooter,
   normalizePopup,
@@ -123,6 +124,9 @@ export const api = {
       };
 
       return {
+        siteName: typeof data?.site_name === 'string' && data.site_name.trim()
+          ? data.site_name.trim()
+          : defaultSiteName,
         header: normalizeHeader(data?.header) || defaultHeader,
         footer: normalizeFooter(data?.footer) || defaultFooter,
         popup: normalizePopup(data?.popup) || defaultPopup,
@@ -137,6 +141,7 @@ export const api = {
     } catch (error) {
       reportWordPressIssue('Loading layout', error);
       return {
+        siteName: defaultSiteName,
         header: defaultHeader,
         footer: defaultFooter,
         popup: defaultPopup,
