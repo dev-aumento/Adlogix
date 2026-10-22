@@ -13,10 +13,12 @@ export const DiscoveryModal = () => {
     company: '',
     goal: 'Scale Paid Ads & Creative',
     date: 'Tomorrow, 2:00 PM PST',
-    notes: ''
+    notes: '',
+    _honeypot: '' // Anti-spam trap, same as the contact form
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -30,12 +32,17 @@ export const DiscoveryModal = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (formData._honeypot) return;
+
     setIsSubmitting(true);
+    setSubmitError('');
     try {
-      await api.submitEnquiry({ ...formData, type: 'Discovery Call Booking' });
+      // Its own endpoint, so bookings are stored apart from contact enquiries.
+      await api.submitBooking(formData);
       setIsSuccess(true);
     } catch (err) {
       console.error(err);
+      setSubmitError("We couldn't send that just now. Please try again, or email us directly.");
     } finally {
       setIsSubmitting(false);
     }
@@ -97,6 +104,22 @@ export const DiscoveryModal = () => {
               </div>
 
               <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                {/* Anti-spam trap: hidden from people, tempting to bots */}
+                <input
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  name="_honeypot"
+                  value={formData._honeypot}
+                  onChange={(e) => setFormData({ ...formData, _honeypot: e.target.value })}
+                  className="absolute left-[-9999px] w-px h-px opacity-0"
+                />
+                {submitError && (
+                  <p className="text-xs font-semibold text-rose-600 bg-rose-50 border border-rose-200 rounded-xl px-3 py-2">
+                    {submitError}
+                  </p>
+                )}
                 <div>
                   <label className="block text-xs font-semibold text-brand-navy mb-1">
                     Your Full Name *
@@ -198,7 +221,7 @@ export const DiscoveryModal = () => {
                 Discovery Session Confirmed!
               </h3>
               <p className="text-sm text-brand-muted max-w-sm mx-auto leading-relaxed">
-                We've reserved your slot and sent a calendar invite with Google Meet coordinates to <span className="font-semibold text-brand-navy">{formData.email}</span>.
+                We have your request and will confirm your slot by email at <span className="font-semibold text-brand-navy">{formData.email}</span>.
               </p>
               <button
                 onClick={resetAndClose}

@@ -3,7 +3,7 @@
  * Plugin Name: Adlogix Headless Core
  * Plugin URI: https://adlogix.in
  * Description: Core Headless CMS configuration, Custom Post Types, ACF bindings, CORS headers, and REST API endpoints for the Adlogix React Frontend (Powered by Aumento Infoway).
- * Version: 1.4.0
+ * Version: 1.5.0
  * Author: Adlogix & Aumento Infoway
  * License: GPL-2.0+
  */
@@ -17,6 +17,16 @@ class Adlogix_Headless_Core {
     public function __construct() {
         // Register Custom Post Types
         add_action('init', [$this, 'register_post_types']);
+
+        // Leads: admin list columns, read-only detail, CSV export
+        add_filter('manage_adlogix_enquiry_posts_columns', [$this, 'lead_columns']);
+        add_filter('manage_adlogix_booking_posts_columns', [$this, 'lead_columns']);
+        add_action('manage_adlogix_enquiry_posts_custom_column', [$this, 'lead_column'], 10, 2);
+        add_action('manage_adlogix_booking_posts_custom_column', [$this, 'lead_column'], 10, 2);
+        add_action('add_meta_boxes_adlogix_enquiry', [$this, 'add_lead_meta_box']);
+        add_action('add_meta_boxes_adlogix_booking', [$this, 'add_lead_meta_box']);
+        add_action('admin_post_adlogix_export_leads', [$this, 'export_leads_csv']);
+        add_action('restrict_manage_posts', [$this, 'lead_export_button']);
 
         // Appearance → Menus (headless themes often hide this)
         add_action('after_setup_theme', [$this, 'register_nav_menus'], 100);
@@ -754,6 +764,48 @@ class Adlogix_Headless_Core {
             'menu_icon' => 'dashicons-table-row-after',
             'has_archive' => false,
         ]);
+
+        // 8-9. Leads. Private on purpose: never public, never in REST, so a submission
+        // can be written by the public endpoint but only read inside wp-admin.
+        $lead_args = [
+            'public' => false,
+            'publicly_queryable' => false,
+            'exclude_from_search' => true,
+            'show_ui' => true,
+            'show_in_menu' => true,
+            'show_in_rest' => false,
+            'has_archive' => false,
+            'rewrite' => false,
+            'supports' => ['title'],
+            'capabilities' => ['create_posts' => 'do_not_allow'],
+            'map_meta_cap' => true,
+        ];
+
+        register_post_type('adlogix_enquiry', array_merge($lead_args, [
+            'labels' => [
+                'name' => __('Enquiries', 'adlogix'),
+                'singular_name' => __('Enquiry', 'adlogix'),
+                'menu_name' => __('Enquiries', 'adlogix'),
+                'edit_item' => __('Enquiry', 'adlogix'),
+                'search_items' => __('Search enquiries', 'adlogix'),
+                'not_found' => __('No enquiries yet.', 'adlogix'),
+            ],
+            'menu_icon' => 'dashicons-email-alt',
+            'menu_position' => 26,
+        ]));
+
+        register_post_type('adlogix_booking', array_merge($lead_args, [
+            'labels' => [
+                'name' => __('Call Bookings', 'adlogix'),
+                'singular_name' => __('Call Booking', 'adlogix'),
+                'menu_name' => __('Call Bookings', 'adlogix'),
+                'edit_item' => __('Call Booking', 'adlogix'),
+                'search_items' => __('Search bookings', 'adlogix'),
+                'not_found' => __('No call bookings yet.', 'adlogix'),
+            ],
+            'menu_icon' => 'dashicons-phone',
+            'menu_position' => 27,
+        ]));
     }
 
     /**
@@ -788,6 +840,13 @@ class Adlogix_Headless_Core {
         register_rest_route('adlogix/v1', '/enquiry', [
             'methods' => 'POST',
             'callback' => [$this, 'handle_enquiry_submission'],
+            'permission_callback' => '__return_true',
+        ]);
+
+        // Book a Call popup. A separate route so the two lead types never mix.
+        register_rest_route('adlogix/v1', '/booking', [
+            'methods' => 'POST',
+            'callback' => [$this, 'handle_booking_submission'],
             'permission_callback' => '__return_true',
         ]);
 
@@ -872,44 +931,267 @@ class Adlogix_Headless_Core {
     /**
      * Securely handle and validate contact form enquiries
      */
+    /** Fields shown, in order, on a lead's admin screen and in the CSV export. */
+    private function lead_fields($post_type) {
+        if ($post_type === 'adlogix_booking') {
+            return [
+                'name' => __('Name', 'adlogix'),
+                'email' => __('Email', 'adlogix'),
+                'company' => __('Company', 'adlogix'),
+                'goal' => __('Primary goal', 'adlogix'),
+                'budget' => __('Budget', 'adlogix'),
+            ];
+        }
+
+        return [
+            'name' => __('Name', 'adlogix'),
+            'email' => __('Email', 'adlogix'),
+            'phone' => __('Phone', 'adlogix'),
+            'company' => __('Company', 'adlogix'),
+            'service' => __('Service', 'adlogix'),
+            'budget' => __('Budget', 'adlogix'),
+            'details' => __('Project details', 'adlogix'),
+        ];
+    }
+
+    /**
+     * Store one submission and notify the admin. Returns the REST response for either form.
+     *
+     * The record is written first: if wp_mail() fails (no SMTP on the server, for example)
+     * the lead is still saved rather than lost.
+     */
+    private function store_lead($post_type, $values, $subject_prefix) {
+        $name = $values['name'];
+        $company = $values['company'] !== '' ? $values['company'] : $name;
+
+        $post_id = wp_insert_post([
+            'post_type' => $post_type,
+            'post_status' => 'publish',
+            'post_title' => sprintf('%s - %s', $name, $company),
+        ], true);
+
+        if (is_wp_error($post_id)) {
+            return new WP_Error(
+                'adlogix_lead_not_saved',
+                __('We could not record your message. Please try again or email us directly.', 'adlogix'),
+                ['status' => 500]
+            );
+        }
+
+        foreach ($values as $key => $value) {
+            update_post_meta($post_id, '_adlogix_' . $key, $value);
+        }
+        update_post_meta($post_id, '_adlogix_submitted_at', current_time('mysql'));
+
+        $lines = [];
+        foreach ($this->lead_fields($post_type) as $key => $label) {
+            if (isset($values[$key]) && $values[$key] !== '') {
+                $lines[] = $label . ': ' . $values[$key];
+            }
+        }
+
+        wp_mail(
+            get_option('admin_email'),
+            sprintf('%s: %s', $subject_prefix, $company),
+            implode("\n", $lines) . "\n\n" . __('View it in WordPress:', 'adlogix') . ' '
+                . admin_url('post.php?post=' . $post_id . '&action=edit')
+        );
+
+        return $post_id;
+    }
+
+    /** Contact page form. */
     public function handle_enquiry_submission($request) {
         $params = $request->get_json_params();
 
-        // Spam honeypot check
         if (!empty($params['_honeypot'])) {
             return new WP_REST_Response(['success' => true, 'message' => 'Received.'], 200);
         }
 
-        $full_name = sanitize_text_field($params['fullName'] ?? '');
+        $name = sanitize_text_field($params['fullName'] ?? '');
         $email = sanitize_email($params['businessEmail'] ?? '');
-        $phone = sanitize_text_field($params['phone'] ?? '');
-        $company = sanitize_text_field($params['company'] ?? '');
-        $service = sanitize_text_field($params['serviceRequired'] ?? 'General');
-        $budget = sanitize_text_field($params['budgetRange'] ?? 'Unspecified');
-        $details = sanitize_textarea_field($params['projectDetails'] ?? '');
 
-        if (empty($full_name) || empty($email) || !is_email($email)) {
+        if (empty($name) || empty($email) || !is_email($email)) {
             return new WP_Error('invalid_data', __('Please provide a valid name and business email.', 'adlogix'), ['status' => 400]);
         }
 
-        // Email notification to Admin
-        $to = get_option('admin_email');
-        $subject = "New Adlogix Lead: {$company} ({$service})";
-        $message = "You received a new growth enquiry from Adlogix website:\n\n"
-                 . "Name: {$full_name}\n"
-                 . "Email: {$email}\n"
-                 . "Phone: {$phone}\n"
-                 . "Company: {$company}\n"
-                 . "Service: {$service}\n"
-                 . "Budget: {$budget}\n\n"
-                 . "Project Details:\n{$details}\n";
+        $result = $this->store_lead('adlogix_enquiry', [
+            'name' => $name,
+            'email' => $email,
+            'phone' => sanitize_text_field($params['phone'] ?? ''),
+            'company' => sanitize_text_field($params['company'] ?? ''),
+            'service' => sanitize_text_field($params['serviceRequired'] ?? ''),
+            'budget' => sanitize_text_field($params['budgetRange'] ?? ''),
+            'details' => sanitize_textarea_field($params['projectDetails'] ?? ''),
+        ], __('New Adlogix Enquiry', 'adlogix'));
 
-        wp_mail($to, $subject, $message);
+        if (is_wp_error($result)) {
+            return $result;
+        }
 
         return new WP_REST_Response([
             'success' => true,
-            'message' => 'Thank you for your enquiry. Our senior strategy team will be in touch within 24 hours.'
+            'message' => __('Thank you for your enquiry. Our senior strategy team will be in touch within 24 hours.', 'adlogix'),
         ], 200);
+    }
+
+    /** Book a Call popup. */
+    public function handle_booking_submission($request) {
+        $params = $request->get_json_params();
+
+        if (!empty($params['_honeypot'])) {
+            return new WP_REST_Response(['success' => true, 'message' => 'Received.'], 200);
+        }
+
+        $name = sanitize_text_field($params['name'] ?? '');
+        $email = sanitize_email($params['email'] ?? '');
+
+        if (empty($name) || empty($email) || !is_email($email)) {
+            return new WP_Error('invalid_data', __('Please provide a valid name and email.', 'adlogix'), ['status' => 400]);
+        }
+
+        $result = $this->store_lead('adlogix_booking', [
+            'name' => $name,
+            'email' => $email,
+            'company' => sanitize_text_field($params['company'] ?? ''),
+            'goal' => sanitize_text_field($params['goal'] ?? ''),
+            'budget' => sanitize_text_field($params['budget'] ?? ''),
+        ], __('New Adlogix Call Booking', 'adlogix'));
+
+        if (is_wp_error($result)) {
+            return $result;
+        }
+
+        return new WP_REST_Response([
+            'success' => true,
+            'message' => __('Thank you. We will confirm your call slot by email shortly.', 'adlogix'),
+        ], 200);
+    }
+
+    /** Admin list columns for both lead types. */
+    public function lead_columns($columns) {
+        $screen = get_current_screen();
+        $post_type = $screen ? $screen->post_type : 'adlogix_enquiry';
+
+        $new = ['cb' => $columns['cb'] ?? ''];
+        foreach ($this->lead_fields($post_type) as $key => $label) {
+            if ($key === 'details') {
+                continue;
+            }
+            $new['adlogix_' . $key] = $label;
+        }
+        $new['date'] = __('Received', 'adlogix');
+
+        return $new;
+    }
+
+    public function lead_column($column, $post_id) {
+        if (strpos($column, 'adlogix_') !== 0) {
+            return;
+        }
+
+        $value = get_post_meta($post_id, '_' . $column, true);
+        if ($value === '') {
+            echo '&mdash;';
+            return;
+        }
+
+        if ($column === 'adlogix_email') {
+            printf('<a href="mailto:%1$s">%1$s</a>', esc_attr($value));
+            return;
+        }
+
+        echo esc_html($value);
+    }
+
+    /** A lead is a record of what someone sent, so the edit screen shows it read-only. */
+    public function add_lead_meta_box($post) {
+        add_meta_box(
+            'adlogix_lead',
+            __('Submission', 'adlogix'),
+            [$this, 'render_lead_meta_box'],
+            $post->post_type,
+            'normal',
+            'high'
+        );
+    }
+
+    public function render_lead_meta_box($post) {
+        $submitted = get_post_meta($post->ID, '_adlogix_submitted_at', true);
+        echo '<table class="widefat striped"><tbody>';
+
+        foreach ($this->lead_fields($post->post_type) as $key => $label) {
+            $value = get_post_meta($post->ID, '_adlogix_' . $key, true);
+            printf(
+                '<tr><th scope="row" style="width:180px">%s</th><td>%s</td></tr>',
+                esc_html($label),
+                $value === '' ? '&mdash;' : nl2br(esc_html($value))
+            );
+        }
+
+        if ($submitted) {
+            printf(
+                '<tr><th scope="row">%s</th><td>%s</td></tr>',
+                esc_html__('Received', 'adlogix'),
+                esc_html(mysql2date(get_option('date_format') . ' ' . get_option('time_format'), $submitted))
+            );
+        }
+
+        echo '</tbody></table>';
+    }
+
+    public function lead_export_button($post_type) {
+        if (!in_array($post_type, ['adlogix_enquiry', 'adlogix_booking'], true)) {
+            return;
+        }
+
+        printf(
+            '<a href="%s" class="button">%s</a>',
+            esc_url(wp_nonce_url(
+                admin_url('admin-post.php?action=adlogix_export_leads&post_type=' . $post_type),
+                'adlogix_export_leads'
+            )),
+            esc_html__('Export CSV', 'adlogix')
+        );
+    }
+
+    public function export_leads_csv() {
+        $post_type = isset($_GET['post_type']) ? sanitize_key($_GET['post_type']) : '';
+
+        if (!in_array($post_type, ['adlogix_enquiry', 'adlogix_booking'], true)
+            || !current_user_can('edit_posts')
+            || !isset($_GET['_wpnonce'])
+            || !wp_verify_nonce(sanitize_key(wp_unslash($_GET['_wpnonce'])), 'adlogix_export_leads')) {
+            wp_die(esc_html__('You are not allowed to export leads.', 'adlogix'), '', ['response' => 403]);
+        }
+
+        $fields = $this->lead_fields($post_type);
+        $leads = get_posts([
+            'post_type' => $post_type,
+            'post_status' => 'publish',
+            'numberposts' => -1,
+            'orderby' => 'date',
+            'order' => 'DESC',
+        ]);
+
+        nocache_headers();
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename=' . $post_type . '-' . gmdate('Y-m-d') . '.csv');
+
+        $out = fopen('php://output', 'w');
+        fputcsv($out, array_merge(array_values($fields), [__('Received', 'adlogix')]));
+
+        foreach ($leads as $lead) {
+            $row = [];
+            foreach (array_keys($fields) as $key) {
+                $row[] = get_post_meta($lead->ID, '_adlogix_' . $key, true);
+            }
+            $row[] = get_post_meta($lead->ID, '_adlogix_submitted_at', true) ?: $lead->post_date;
+            fputcsv($out, $row);
+        }
+
+        fclose($out);
+        exit;
     }
 
     /**

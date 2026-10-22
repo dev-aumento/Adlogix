@@ -69,6 +69,19 @@ async function fetchWP(endpoint, fallbackData) {
   }
 }
 
+/**
+ * Send one lead to WordPress. Returns `{ success, message }` on success; throws on failure so
+ * the form can tell the visitor to try again rather than losing what they typed.
+ */
+async function postLead(endpoint, formData) {
+  const response = await wpPost(endpoint, formData);
+  return {
+    success: true,
+    message: response?.message
+      || 'Thank you for reaching out. Our team will be in touch within 24 hours.'
+  };
+}
+
 export const api = {
   // A WordPress page with its ACF fields and section order. Resolves to null when the page doesn't exist.
   async getPage(slug) {
@@ -162,21 +175,17 @@ export const api = {
   },
 
   // Submit Enquiry Form to Headless WP Endpoint or Mock Handling
+  /**
+   * Contact page enquiry. Stored by the plugin as an **Enquiries** record and emailed to the
+   * admin. Not gated by VITE_ENABLE_WP_SYNC: a lead must never be silently dropped, so a
+   * failure here surfaces to the form instead of pretending to succeed.
+   */
   async submitEnquiry(formData) {
-    if (ENABLE_WP_SYNC) {
-      try {
-        await wpPost('/adlogix/v1/enquiry', formData);
-        return { success: true, message: "Enquiry submitted successfully to WordPress backend." };
-      } catch (err) {
-        console.warn("[Form Submission] WordPress endpoint unreachable. Fallback processing locally:", err.message);
-      }
-    }
+    return postLead('/adlogix/v1/enquiry', formData);
+  },
 
-    // Local simulation with safe delay
-    await new Promise(resolve => setTimeout(resolve, 800));
-    return {
-      success: true,
-      message: "Thank you for contacting Adlogix! Our strategy team will reach out within 24 hours."
-    };
+  /** Book a Call popup. Stored separately as a **Call Bookings** record. */
+  async submitBooking(formData) {
+    return postLead('/adlogix/v1/booking', formData);
   }
 };

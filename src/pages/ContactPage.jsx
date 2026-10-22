@@ -7,52 +7,70 @@ import { Button } from '../components/ui/Button';
 import { PageSections } from '../components/sections/PageSections';
 import { useCMS } from '../hooks/useCMS';
 import { usePageContent } from '../hooks/usePageContent';
+import { contactDefaults, fillName } from '../content/contact';
 import { api } from '../services/api';
 
-const ContactHero = () => (
-  <section className="py-16 sm:py-24 bg-brand-surface-soft/60 relative overflow-hidden border-b border-brand-border">
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
-      >
-        <Sparkles className="w-3.5 h-3.5" />
-        <span>Let's Build Something Great</span>
-      </motion.div>
+const ContactHero = ({ content = contactDefaults.hero }) => {
+  const { badge, headline, description } = content;
+  const hasHeadline = Boolean(headline?.line1 || headline?.highlight1);
 
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
-      >
-        Start Your Next{' '}
-        <span className="gradient-text-blue block mt-1">
-          Growth Chapter.
-        </span>
-      </motion.h1>
+  if (!badge && !hasHeadline && !description) return null;
 
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
-      >
-        Whether you have a specific campaign to execute or want a holistic review of your growth architecture, our team responds within 24 hours.
-      </motion.p>
-    </div>
-  </section>
-);
+  return (
+    <section className="py-20 lg:py-28 bg-brand-surface-soft/60 border-b border-brand-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+        {badge && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold border border-brand-blue/20 mb-6"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>{badge}</span>
+          </motion.div>
+        )}
 
-// Form and sidebar share one grid, so they move as one section.
-const ContactEnquiry = () => {
+        {hasHeadline && (
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-brand-navy font-black leading-[1.1]"
+          >
+            {headline.line1}
+            {headline.line1 && headline.highlight1 ? ' ' : ''}
+            {headline.highlight1 && (
+              <span className="gradient-text-blue block mt-1">
+                {headline.highlight1}
+              </span>
+            )}
+          </motion.h1>
+        )}
+
+        {description && (
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-6 text-base sm:text-lg text-brand-muted leading-relaxed"
+          >
+            {description}
+          </motion.p>
+        )}
+      </div>
+    </section>
+  );
+};
+
+const ContactEnquiry = ({ content = contactDefaults }) => {
+  const t = content.form ?? contactDefaults.form;
+  const side = content.sidebar ?? contactDefaults.sidebar;
   const [searchParams] = useSearchParams();
   const preselectedService = searchParams.get('service') || '';
   const preselectedProject = searchParams.get('project') || '';
   const preselectedIndustry = searchParams.get('industry') || '';
 
-  const { settings, openDiscoveryModal } = useCMS();
+  const { openDiscoveryModal } = useCMS();
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -157,12 +175,14 @@ const ContactEnquiry = () => {
                   />
 
                   <div className="space-y-1 mb-4">
-                    <h2 className="text-2xl font-bold font-display text-brand-navy">
-                      Project Enquiry Form
-                    </h2>
-                    <p className="text-xs text-brand-muted">
-                      Fill out the details below and an executive strategist will get back to you.
-                    </p>
+                    {t.title && (
+                      <h2 className="text-2xl font-bold font-display text-brand-navy">
+                        {t.title}
+                      </h2>
+                    )}
+                    {t.subtitle && (
+                      <p className="text-xs text-brand-muted">{t.subtitle}</p>
+                    )}
                   </div>
 
                   {/* Error Alert */}
@@ -177,13 +197,13 @@ const ContactEnquiry = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold text-brand-navy mb-1.5">
-                        Full Name *
+                        {t.nameLabel}
                       </label>
                       <input
                         type="text"
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        placeholder="e.g. Marcus Vance"
+                        placeholder={t.namePlaceholder}
                         className={`w-full px-4 py-3 text-sm rounded-xl border ${
                           errors.fullName ? 'border-rose-500 bg-rose-50/20' : 'border-brand-border'
                         } focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 outline-none transition-all`}
@@ -195,13 +215,13 @@ const ContactEnquiry = () => {
 
                     <div>
                       <label className="block text-xs font-bold text-brand-navy mb-1.5">
-                        Business Email *
+                        {t.emailLabel}
                       </label>
                       <input
                         type="email"
                         value={formData.businessEmail}
                         onChange={(e) => setFormData({ ...formData, businessEmail: e.target.value })}
-                        placeholder="marcus@company.com"
+                        placeholder={t.emailPlaceholder}
                         className={`w-full px-4 py-3 text-sm rounded-xl border ${
                           errors.businessEmail ? 'border-rose-500 bg-rose-50/20' : 'border-brand-border'
                         } focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 outline-none transition-all`}
@@ -216,13 +236,13 @@ const ContactEnquiry = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold text-brand-navy mb-1.5">
-                        Phone Number *
+                        {t.phoneLabel}
                       </label>
                       <input
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+1 (555) 019-2834"
+                        placeholder={t.phonePlaceholder}
                         className={`w-full px-4 py-3 text-sm rounded-xl border ${
                           errors.phone ? 'border-rose-500 bg-rose-50/20' : 'border-brand-border'
                         } focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 outline-none transition-all`}
@@ -234,13 +254,13 @@ const ContactEnquiry = () => {
 
                     <div>
                       <label className="block text-xs font-bold text-brand-navy mb-1.5">
-                        Company or Brand Name *
+                        {t.companyLabel}
                       </label>
                       <input
                         type="text"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        placeholder="e.g. Apex Realty"
+                        placeholder={t.companyPlaceholder}
                         className={`w-full px-4 py-3 text-sm rounded-xl border ${
                           errors.company ? 'border-rose-500 bg-rose-50/20' : 'border-brand-border'
                         } focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 outline-none transition-all`}
@@ -254,7 +274,7 @@ const ContactEnquiry = () => {
                   {/* Service Required Selector */}
                   <div>
                     <label className="block text-xs font-bold text-brand-navy mb-2">
-                      Service Required
+                      {t.serviceLabel}
                     </label>
                     <div className="flex flex-wrap gap-2">
                       {servicesList.map((srv) => (
@@ -277,7 +297,7 @@ const ContactEnquiry = () => {
                   {/* Budget Range */}
                   <div>
                     <label className="block text-xs font-bold text-brand-navy mb-2">
-                      Approximate Budget Range
+                      {t.budgetLabel}
                     </label>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                       {budgetRanges.map((b) => (
@@ -300,13 +320,13 @@ const ContactEnquiry = () => {
                   {/* Project Details */}
                   <div>
                     <label className="block text-xs font-bold text-brand-navy mb-1.5">
-                      Project Overview & Target Goals *
+                      {t.detailsLabel}
                     </label>
                     <textarea
                       rows={4}
                       value={formData.projectDetails}
                       onChange={(e) => setFormData({ ...formData, projectDetails: e.target.value })}
-                      placeholder="Tell us about your brand, current challenges, timeline, and what success looks like..."
+                      placeholder={t.detailsPlaceholder}
                       className={`w-full px-4 py-3 text-sm rounded-xl border ${
                         errors.projectDetails ? 'border-rose-500 bg-rose-50/20' : 'border-brand-border'
                       } focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 outline-none transition-all`}
@@ -326,10 +346,13 @@ const ContactEnquiry = () => {
                         className="mt-0.5 w-4 h-4 rounded text-brand-blue focus:ring-brand-blue border-brand-border"
                       />
                       <span className="text-xs text-brand-muted leading-relaxed select-none">
-                        I agree to the processing of my contact information in accordance with the{' '}
-                        <Link to="/privacy-policy" className="text-brand-blue underline font-semibold">
-                          Privacy Policy
-                        </Link>. Your information is kept strictly confidential.
+                        {t.consentText}{' '}
+                        {t.consentLinkLabel && (
+                          <Link to="/privacy-policy" className="text-brand-blue underline font-semibold">
+                            {t.consentLinkLabel}
+                          </Link>
+                        )}
+                        {t.consentSuffix}
                       </span>
                     </label>
                     {errors.privacyConsent && (
@@ -347,7 +370,7 @@ const ContactEnquiry = () => {
                       <span className="inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                     ) : (
                       <>
-                        <span>Send Project Enquiry</span>
+                        <span>{t.submitLabel}</span>
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </>
                     )}
@@ -359,12 +382,16 @@ const ContactEnquiry = () => {
                   <div className="w-20 h-20 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto shadow-inner">
                     <CheckCircle2 className="w-12 h-12" />
                   </div>
-                  <h3 className="text-3xl font-black font-display text-brand-navy">
-                    Enquiry Received!
-                  </h3>
-                  <p className="text-sm text-brand-muted max-w-md mx-auto leading-relaxed">
-                    Thank you, <strong className="text-brand-navy">{formData.fullName}</strong>. Our senior growth strategist will review your information and reply within 24 hours.
-                  </p>
+                  {t.successTitle && (
+                    <h3 className="text-3xl font-black font-display text-brand-navy">
+                      {t.successTitle}
+                    </h3>
+                  )}
+                  {t.successText && (
+                    <p className="text-sm text-brand-muted max-w-md mx-auto leading-relaxed">
+                      {fillName(t.successText, formData.fullName)}
+                    </p>
+                  )}
                   <button
                     onClick={() => {
                       setSubmitSuccess(false);
@@ -382,7 +409,7 @@ const ContactEnquiry = () => {
                     }}
                     className="mt-4 px-6 py-2.5 rounded-full bg-brand-surface-soft border border-brand-border text-xs font-bold text-brand-navy hover:bg-slate-100 transition-colors"
                   >
-                    Submit Another Inquiry
+                    {t.resetLabel}
                   </button>
                 </div>
               )}
@@ -400,82 +427,96 @@ const ContactEnquiry = () => {
                   <Video className="w-5 h-5 text-white" />
                 </div>
 
-                <h3 className="text-xl font-bold font-display">
-                  Need Immediate Strategic Clarity?
-                </h3>
+                {side.callTitle && (
+                  <h3 className="text-xl font-bold font-display">{side.callTitle}</h3>
+                )}
 
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  Skip the form and jump straight onto a live 30-minute Google Meet discovery session with our managing directors.
-                </p>
+                {side.callText && (
+                  <p className="text-xs text-slate-300 leading-relaxed">{side.callText}</p>
+                )}
 
-                <Button
-                  onClick={openDiscoveryModal}
-                  variant="primary"
-                  size="md"
-                  className="w-full justify-center"
-                  icon={Calendar}
-                >
-                  Book 30-Min Discovery Call
-                </Button>
+                {side.callButton && (
+                  <Button
+                    onClick={openDiscoveryModal}
+                    variant="primary"
+                    size="md"
+                    className="w-full justify-center"
+                    icon={Calendar}
+                  >
+                    {side.callButton}
+                  </Button>
+                )}
               </div>
             </div>
 
             {/* Office & Coordinates Info */}
             <div className="p-8 rounded-3xl bg-brand-surface-soft border border-brand-border shadow-card-subtle space-y-6">
-              <h3 className="text-base font-bold font-display text-brand-navy">
-                Agency Coordinates
-              </h3>
+              {side.coordinatesTitle && (
+                <h3 className="text-base font-bold font-display text-brand-navy">
+                  {side.coordinatesTitle}
+                </h3>
+              )}
 
               <div className="space-y-4 text-xs text-brand-muted">
-                <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <div>
-                    <div className="font-bold text-brand-navy">Email Us</div>
-                    <a href={`mailto:${settings.contact?.email}`} className="hover:text-brand-blue transition-colors">
-                      {settings.contact?.email}
-                    </a>
+                {side.email && (
+                  <div className="flex items-start gap-3">
+                    <Mail className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-bold text-brand-navy">{side.emailLabel}</div>
+                      <a href={`mailto:${side.email}`} className="hover:text-brand-blue transition-colors">
+                        {side.email}
+                      </a>
+                    </div>
                   </div>
-                </div>
+                )}
 
-                <div className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <div>
-                    <div className="font-bold text-brand-navy">Direct Line</div>
-                    <a href={`tel:${settings.contact?.phone}`} className="hover:text-brand-blue transition-colors">
-                      {settings.contact?.phone}
-                    </a>
+                {side.phone && (
+                  <div className="flex items-start gap-3">
+                    <Phone className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-bold text-brand-navy">{side.phoneLabel}</div>
+                      <a href={`tel:${side.phone}`} className="hover:text-brand-blue transition-colors">
+                        {side.phone}
+                      </a>
+                    </div>
                   </div>
-                </div>
+                )}
 
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <div>
-                    <div className="font-bold text-brand-navy">Studio Location</div>
-                    <div>{settings.contact?.address}, {settings.contact?.city}</div>
+                {side.address && (
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-bold text-brand-navy">{side.addressLabel}</div>
+                      <div>{side.address}</div>
+                    </div>
                   </div>
-                </div>
+                )}
 
-                <div className="flex items-start gap-3">
-                  <Clock className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <div>
-                    <div className="font-bold text-brand-navy">Working Hours</div>
-                    <div>{settings.contact?.workingHours}</div>
+                {side.hours && (
+                  <div className="flex items-start gap-3">
+                    <Clock className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-bold text-brand-navy">{side.hoursLabel}</div>
+                      <div>{side.hours}</div>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
               {/* Partner Attribution Box */}
               <div className="pt-4 border-t border-brand-border/60">
                 <div className="text-[11px] text-slate-500">
-                  Technology Partner:{' '}
-                  <a
-                    href={settings.poweredBy?.url || 'https://aumentoinfoway.com/'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold text-brand-navy hover:text-brand-blue underline"
-                  >
-                    Aumento Infoway
-                  </a>
+                  {side.partnerLabel}{' '}
+                  {side.partnerName && side.partnerUrl && (
+                    <a
+                      href={side.partnerUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-bold text-brand-navy hover:text-brand-blue underline"
+                    >
+                      {side.partnerName}
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

@@ -1,0 +1,793 @@
+[
+    {
+        "key": "group_adlogix_page_contact",
+        "title": "Contact Page Content",
+        "fields": [
+            {
+                "key": "field_contact_tab_hero",
+                "label": "Hero",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_contact_hero_badge_text",
+                "label": "Badge text",
+                "name": "hero_badge_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The pill above the headline. Blank hides the pill.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Let's Build Something Great",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_hero_headline_line_1",
+                "label": "Headline line 1",
+                "name": "hero_headline_line_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Start Your Next",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_hero_headline_highlight_1",
+                "label": "Headline line 2 (highlighted)",
+                "name": "hero_headline_highlight_1",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Shown in the blue gradient, on its own line.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Growth Chapter.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_hero_description",
+                "label": "Intro paragraph",
+                "name": "hero_description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Whether you have a specific campaign to execute or want a holistic review of your growth architecture, our team responds within 24 hours.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 4,
+                "new_lines": ""
+            },
+            {
+                "key": "field_contact_tab_form",
+                "label": "Enquiry Form",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_contact_form_message",
+                "label": "Where submissions go",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Everything sent through this form is saved under <strong>Enquiries</strong> in the sidebar, and emailed to the site admin. The <strong>Book a Call</strong> popup is stored separately under <strong>Call Bookings</strong>.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_contact_form_title",
+                "label": "Form heading",
+                "name": "form_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Project Enquiry Form",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_subtitle",
+                "label": "Form subheading",
+                "name": "form_subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Fill out the details below and an executive strategist will get back to you.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 2,
+                "new_lines": ""
+            },
+            {
+                "key": "field_contact_form_name_label",
+                "label": "Name label",
+                "name": "form_name_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Full Name *",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_name_placeholder",
+                "label": "Name placeholder",
+                "name": "form_name_placeholder",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "e.g. Marcus Vance",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_email_label",
+                "label": "Email label",
+                "name": "form_email_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Business Email *",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_email_placeholder",
+                "label": "Email placeholder",
+                "name": "form_email_placeholder",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "marcus@company.com",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_phone_label",
+                "label": "Phone label",
+                "name": "form_phone_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Phone Number *",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_phone_placeholder",
+                "label": "Phone placeholder",
+                "name": "form_phone_placeholder",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "+1 (555) 019-2834",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_company_label",
+                "label": "Company label",
+                "name": "form_company_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Company or Brand Name *",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_company_placeholder",
+                "label": "Company placeholder",
+                "name": "form_company_placeholder",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "e.g. Apex Realty",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_service_label",
+                "label": "Service picker label",
+                "name": "form_service_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Service Required",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_budget_label",
+                "label": "Budget picker label",
+                "name": "form_budget_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Approximate Budget Range",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_details_label",
+                "label": "Project details label",
+                "name": "form_details_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Project Overview & Target Goals *",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_details_placeholder",
+                "label": "Project details placeholder",
+                "name": "form_details_placeholder",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Tell us about your brand, current challenges, timeline, and what success looks like...",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 2,
+                "new_lines": ""
+            },
+            {
+                "key": "field_contact_form_consent_text",
+                "label": "Consent text",
+                "name": "form_consent_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "The words before the Privacy Policy link.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "I agree to the processing of my contact information in accordance with the",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 2,
+                "new_lines": ""
+            },
+            {
+                "key": "field_contact_form_consent_link_label",
+                "label": "Consent link label",
+                "name": "form_consent_link_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Privacy Policy",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_consent_suffix",
+                "label": "Consent text after the link",
+                "name": "form_consent_suffix",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": ". Your information is kept strictly confidential.",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_submit_label",
+                "label": "Submit button",
+                "name": "form_submit_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Send Project Enquiry",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_success_title",
+                "label": "Success heading",
+                "name": "form_success_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Enquiry Received!",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_form_success_text",
+                "label": "Success message",
+                "name": "form_success_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "Write {name} where the sender’s name should appear.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Thank you, {name}. Our senior growth strategist will review your information and reply within 24 hours.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_contact_form_reset_label",
+                "label": "Send another button",
+                "name": "form_reset_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Blank hides the button after a successful send.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Submit Another Inquiry",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_tab_sidebar",
+                "label": "Sidebar",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_contact_sidebar_call_title",
+                "label": "Call card heading",
+                "name": "sidebar_call_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Need Immediate Strategic Clarity?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_sidebar_call_text",
+                "label": "Call card text",
+                "name": "sidebar_call_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Skip the form and jump straight onto a live 30-minute Google Meet discovery session with our managing directors.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_contact_sidebar_call_button",
+                "label": "Call card button",
+                "name": "sidebar_call_button",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Opens the Book a Call popup. Blank hides the button.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book 30-Min Discovery Call",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_sidebar_coordinates_title",
+                "label": "Details card heading",
+                "name": "sidebar_coordinates_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Agency Coordinates",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_sidebar_email_label",
+                "label": "Email heading",
+                "name": "sidebar_email_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Email Us",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_sidebar_email",
+                "label": "Email address",
+                "name": "sidebar_email",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Blank hides this row.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "support@adlogix.in",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_sidebar_phone_label",
+                "label": "Phone heading",
+                "name": "sidebar_phone_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Direct Line",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_sidebar_phone",
+                "label": "Phone number",
+                "name": "sidebar_phone",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Blank hides this row.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "+1 (800) 592-3564",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_sidebar_address_label",
+                "label": "Address heading",
+                "name": "sidebar_address_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Studio Location",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_sidebar_address",
+                "label": "Address",
+                "name": "sidebar_address",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Blank hides this row.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "742 Innovation Blvd, Suite 400, San Francisco, CA 94107",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_sidebar_hours_label",
+                "label": "Hours heading",
+                "name": "sidebar_hours_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Working Hours",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_sidebar_hours",
+                "label": "Working hours",
+                "name": "sidebar_hours",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Blank hides this row.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Mon – Fri: 9:00 AM – 6:30 PM (PST)",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_sidebar_partner_label",
+                "label": "Partner label",
+                "name": "sidebar_partner_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Technology Partner:",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_sidebar_partner_name",
+                "label": "Partner name",
+                "name": "sidebar_partner_name",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Aumento Infoway",
+                "placeholder": ""
+            },
+            {
+                "key": "field_contact_sidebar_partner_url",
+                "label": "Partner URL",
+                "name": "sidebar_partner_url",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "34",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "https://aumentoinfoway.com/",
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page",
+                    "operator": "==",
+                    "value": "503"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "All Contact page content for the React frontend. Submissions are stored under Enquiries. Section order and visibility live in the \"Page Sections\" box.",
+        "show_in_rest": 1
+    }
+]

@@ -6,6 +6,7 @@ import { workDefaults, mapWorkFields } from './work';
 import { industriesDefaults, mapIndustriesFields } from './industries';
 import { blogDefaults, mapBlogFields } from './blog';
 import { testimonialsDefaults, mapTestimonialsFields } from './testimonials';
+import { contactDefaults, mapContactFields } from './contact';
 
 /**
  * Content models per WordPress page slug. Pages without a model still get their
@@ -20,4 +21,5 @@ export const pageModels = {
   industries: { defaults: industriesDefaults, mapFields: mapIndustriesFields },
   blog: { defaults: blogDefaults, mapFields: mapBlogFields },
   testimonials: { defaults: testimonialsDefaults, mapFields: mapTestimonialsFields },
+  contact: { defaults: contactDefaults, mapFields: mapContactFields },
 };
