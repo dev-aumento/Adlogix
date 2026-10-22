@@ -1,25 +1,22 @@
 import React from 'react';
-import { SEOHead } from '../components/ui/SEOHead';
-import { Breadcrumb } from '../components/ui/Breadcrumb';
+import { DocumentPage } from './DocumentPage';
 
-export const PrivacyPolicyPage = () => {
-  return (
-    <>
-      <SEOHead
-        title="Privacy Policy | Adlogix Agency"
-        description="Our privacy policy outlines how Adlogix collects, protects, and handles personal data and client communications."
-        canonical="https://adlogix.in/privacy-policy"
-      />
-
-      <div className="bg-white py-14 sm:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumb items={[{ label: "Privacy Policy" }]} />
-
-          <h1 className="editorial-heading text-3xl sm:text-4xl font-black text-brand-navy mt-6 mb-8">
-            Privacy Policy
-          </h1>
-
-          <div className="prose prose-slate max-w-none text-sm leading-relaxed space-y-6 text-slate-700">
+/**
+ * The body is the Privacy Policy page's content in WordPress. The markup below is the
+ * built-in copy, shown only while loading, if WordPress is unreachable, or if the editor
+ * body is empty - a legal page must never render blank.
+ */
+export const PrivacyPolicyPage = () => (
+  <DocumentPage
+    slug="privacy-policy"
+    seo={{
+      heading: 'Privacy Policy',
+      title: 'Privacy Policy | Adlogix Agency',
+      description:
+        'Our privacy policy outlines how Adlogix collects, protects, and handles personal data and client communications.',
+      canonical: 'https://adlogix.in/privacy-policy'
+    }}
+  >
             <p><strong>Last Updated: October 1, 2026</strong></p>
 
             <h2>1. Information We Collect</h2>
@@ -52,9 +49,5 @@ export const PrivacyPolicyPage = () => {
             <p>
               If you have any questions regarding this Privacy Policy, please contact us at <a href="mailto:privacy@adlogix.in" className="text-brand-blue underline">privacy@adlogix.in</a>.
             </p>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+  </DocumentPage>
+);

@@ -1,25 +1,21 @@
 import React from 'react';
-import { SEOHead } from '../components/ui/SEOHead';
-import { Breadcrumb } from '../components/ui/Breadcrumb';
+import { DocumentPage } from './DocumentPage';
 
-export const TermsPage = () => {
-  return (
-    <>
-      <SEOHead
-        title="Terms & Conditions | Adlogix Agency"
-        description="Review the terms and conditions governing professional digital marketing, web engineering, and media services with Adlogix."
-        canonical="https://adlogix.in/terms"
-      />
-
-      <div className="bg-white py-14 sm:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumb items={[{ label: "Terms & Conditions" }]} />
-
-          <h1 className="editorial-heading text-3xl sm:text-4xl font-black text-brand-navy mt-6 mb-8">
-            Terms of Service
-          </h1>
-
-          <div className="prose prose-slate max-w-none text-sm leading-relaxed space-y-6 text-slate-700">
+/**
+ * The body is the Terms page's content in WordPress; the markup below is the built-in copy,
+ * shown only while loading, on failure, or when the editor body is empty.
+ */
+export const TermsPage = () => (
+  <DocumentPage
+    slug="terms"
+    seo={{
+      heading: 'Terms of Service',
+      title: 'Terms & Conditions | Adlogix Agency',
+      description:
+        'Review the terms and conditions governing professional digital marketing, web engineering, and media services with Adlogix.',
+      canonical: 'https://adlogix.in/terms'
+    }}
+  >
             <p><strong>Last Updated: October 1, 2026</strong></p>
 
             <h2>1. Agreement to Terms</h2>
@@ -46,9 +42,5 @@ export const TermsPage = () => {
             <p>
               While Adlogix employs rigorous conversion rate optimization and performance testing methodologies, digital advertising auctions and organic search rankings are subject to third-party algorithm updates (e.g. Meta, Google).
             </p>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+  </DocumentPage>
+);

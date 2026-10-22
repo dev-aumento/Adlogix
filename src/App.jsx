@@ -21,6 +21,7 @@ import { ContactPage } from './pages/ContactPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { DocumentPage } from './pages/DocumentPage';
 
 /** Old `/category/blog/<slug>` links keep working by redirecting to the new `/blog/<slug>`. */
 const BlogCategoryRedirect = () => {
@@ -53,6 +54,9 @@ export const App = () => {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/terms" element={<TermsPage />} />
+              {/* Any other published WordPress page renders its editor content. React Router
+                  matches the fixed routes above first, so this never shadows them. */}
+              <Route path=":slug" element={<DocumentPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </ErrorBoundary>

@@ -90,7 +90,8 @@ export const api = {
     const pages = await wpGet('/wp/v2/pages', {
       params: {
         slug,
-        _fields: 'id,slug,title,modified,acf,adlogix_sections',
+        // `content` and `excerpt` feed the plain document pages (legal pages, new pages).
+        _fields: 'id,slug,title,excerpt,content,modified,acf,adlogix_sections',
         acf_format: 'standard'
       }
     });
