@@ -58,15 +58,13 @@ export const DocumentPage = ({ slug: fixedSlug, seo, children }) => {
             </h1>
           )}
 
-          <div className="prose prose-slate max-w-none text-sm leading-relaxed space-y-6 text-slate-700">
-            {body ? (
-              // WordPress page bodies are written by signed-in editors and sanitized by
-              // WordPress on save, the same trust boundary as the rest of the CMS content.
-              <div dangerouslySetInnerHTML={{ __html: body }} />
-            ) : (
-              children
-            )}
-          </div>
+          {body ? (
+            // WordPress page bodies are written by signed-in editors and sanitized by
+            // WordPress on save, the same trust boundary as the rest of the CMS content.
+            <div dangerouslySetInnerHTML={{ __html: body }} className="prose prose-slate max-w-none text-sm leading-relaxed space-y-6 text-slate-700" />
+          ) : (
+            children
+          )}
         </div>
       </div>
     </>
