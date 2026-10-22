@@ -62,12 +62,12 @@ export const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 sm:h-16">
             <div className="flex items-center gap-3 shrink-0">
-              <Link to="/" className="flex items-center gap-2 sm:gap-2.5 group select-none">
+              <Link to="/" className="flex items-center gap-2 sm:gap-2.5 select-none">
                 {logo ? (
                   <img
                     src={logo.url}
                     alt={logo.alt || siteName}
-                    className="h-9 sm:h-10 w-auto object-contain group-hover:scale-105 transition-transform shrink-0"
+                    className="h-9 sm:h-10 w-auto object-contain shrink-0"
                   />
                 ) : (
                   <>
