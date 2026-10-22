@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { api } from '../services/api';
 import { defaultSiteSettings } from '../data/siteSettings';
-import { defaultHeader, defaultFooter, defaultFooterMenus } from '../content/layout';
+import { defaultHeader, defaultFooter, defaultFooterMenus, defaultPopup } from '../content/layout';
 import { servicesData } from '../data/servicesData';
 import { projectsData } from '../data/projectsData';
 import { clientReelsData } from '../data/reelsData';
@@ -23,6 +23,7 @@ export const CMSProvider = ({ children }) => {
   const [header, setHeader] = useState(defaultHeader);
   const [footer, setFooter] = useState(defaultFooter);
   const [footerMenus, setFooterMenus] = useState(defaultFooterMenus);
+  const [popup, setPopup] = useState(defaultPopup);
   const [services, setServices] = useState(servicesData);
   const [projects, setProjects] = useState(projectsData);
   const [reels, setReels] = useState(clientReelsData);
@@ -73,6 +74,7 @@ export const CMSProvider = ({ children }) => {
           setHeader(fetchedLayout.header);
           setFooter(fetchedLayout.footer);
           setFooterMenus(fetchedLayout.footerMenus);
+          if (fetchedLayout.popup) setPopup(fetchedLayout.popup);
           setServices(fetchedServices);
           setProjects(fetchedProjects);
           setReels(fetchedReels);
@@ -119,6 +121,7 @@ export const CMSProvider = ({ children }) => {
     header,
     footer,
     footerMenus,
+    popup,
     services,
     projects,
     reels,

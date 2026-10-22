@@ -1,0 +1,447 @@
+[
+    {
+        "key": "group_adlogix_popup",
+        "title": "Call Popup Content",
+        "fields": [
+            {
+                "key": "field_popup_tab_header",
+                "label": "Header",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_popup_header_message",
+                "label": "About this screen",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "This is the <strong>Book a Call</strong> popup, which opens from the header button and from most pages. There is one of it for the whole site.<br><br>Submissions are stored under <strong>Call Bookings</strong>, separately from the Contact page's <strong>Enquiries</strong>.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_popup_badge",
+                "label": "Badge",
+                "name": "badge",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The small line above the title. Blank hides it.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "30-Min Strategy Session",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_title",
+                "label": "Title",
+                "name": "title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Book a Growth Discovery Call",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_subtitle",
+                "label": "Subtitle",
+                "name": "subtitle",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Connect with an Adlogix creative & performance strategist to uncover your biggest revenue growth opportunities.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_popup_meta_duration",
+                "label": "Strip: duration",
+                "name": "meta_duration",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "The grey strip under the subtitle. Blank hides that item.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "30 mins",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_meta_platform",
+                "label": "Strip: platform",
+                "name": "meta_platform",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Google Meet / Zoom",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_meta_price",
+                "label": "Strip: price",
+                "name": "meta_price",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "34",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "100% Free",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_tab_form",
+                "label": "Form",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_popup_name_label",
+                "label": "Name label",
+                "name": "name_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Your Full Name *",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_name_placeholder",
+                "label": "Name placeholder",
+                "name": "name_placeholder",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "e.g. Sarah Jenkins",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_email_label",
+                "label": "Email label",
+                "name": "email_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Business Email *",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_email_placeholder",
+                "label": "Email placeholder",
+                "name": "email_placeholder",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "sarah@company.com",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_company_label",
+                "label": "Company label",
+                "name": "company_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Company / Brand Name *",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_company_placeholder",
+                "label": "Company placeholder",
+                "name": "company_placeholder",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "e.g. Lumina Luxe",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_goal_label",
+                "label": "Objective label",
+                "name": "goal_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Primary Objective",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_goal_options",
+                "label": "Objective options",
+                "name": "goal_options",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "One per line. The first line is selected by default.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Scale Paid Ads & Creative (Meta/Google)\nHigh-Impact Video Reels & Shoots\nNew React or Shopify Website\nHeadless WordPress Development\nFull Digital Growth Overhaul",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 6,
+                "new_lines": ""
+            },
+            {
+                "key": "field_popup_budget_label",
+                "label": "Budget label",
+                "name": "budget_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "What's your current monthly ad spend or project budget?",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_budget_options",
+                "label": "Budget options",
+                "name": "budget_options",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "One per line. The first line is selected by default.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "₹30,000 – ₹1,00,000 / month\n₹1,00,000 – ₹3,00,000 / month\n₹3,00,000 – ₹10,00,000+ / month\nOne-time project (₹50,000 – ₹5,00,000)",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 5,
+                "new_lines": ""
+            },
+            {
+                "key": "field_popup_submit_label",
+                "label": "Submit button",
+                "name": "submit_label",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Confirm Discovery Call",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_tab_success",
+                "label": "Success",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_popup_success_title",
+                "label": "Success heading",
+                "name": "success_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Discovery Session Confirmed!",
+                "placeholder": ""
+            },
+            {
+                "key": "field_popup_success_text",
+                "label": "Success message",
+                "name": "success_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "Write {email} where the address they typed should appear.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "We have your request and will confirm your slot by email at {email}.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_popup_success_button",
+                "label": "Close button",
+                "name": "success_button",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Blank hides the button; the popup can still be closed with the X.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Close Window",
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "site_popup"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "Content of the site-wide Book a Call popup. Served to the React frontend through /adlogix/v1/layout, alongside the header and footer.",
+        "show_in_rest": 1
+    }
+]

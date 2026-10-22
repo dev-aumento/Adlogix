@@ -1,4 +1,4 @@
-import { toPlainText, toSafeLink, toAppPath } from '../services/normalizers';
+import { toPlainText, toSafeLink, toAppPath, toLines } from '../services/normalizers';
 import { text, link } from './helpers';
 
 /** Static fallbacks used until WordPress Header / Footer / Menus are published. */
@@ -173,5 +173,77 @@ export function normalizeFooter(raw) {
     linkedin: toSafeLink(f.linkedin),
     twitter: toSafeLink(f.twitter),
     copyright: text(f, 'copyright'),
+  };
+}
+
+/**
+ * The site-wide Book a Call popup. Like the header and footer it is one published entry,
+ * delivered through `/adlogix/v1/layout`, because the popup opens from the header and from
+ * most pages rather than belonging to any one of them.
+ */
+export const defaultPopup = {
+  badge: '30-Min Strategy Session',
+  title: 'Book a Growth Discovery Call',
+  subtitle:
+    'Connect with an Adlogix creative & performance strategist to uncover your biggest revenue growth opportunities.',
+  metaDuration: '30 mins',
+  metaPlatform: 'Google Meet / Zoom',
+  metaPrice: '100% Free',
+  nameLabel: 'Your Full Name *',
+  namePlaceholder: 'e.g. Sarah Jenkins',
+  emailLabel: 'Business Email *',
+  emailPlaceholder: 'sarah@company.com',
+  companyLabel: 'Company / Brand Name *',
+  companyPlaceholder: 'e.g. Lumina Luxe',
+  goalLabel: 'Primary Objective',
+  goalOptions: [
+    'Scale Paid Ads & Creative (Meta/Google)',
+    'High-Impact Video Reels & Shoots',
+    'New React or Shopify Website',
+    'Headless WordPress Development',
+    'Full Digital Growth Overhaul',
+  ],
+  budgetLabel: "What's your current monthly ad spend or project budget?",
+  budgetOptions: [
+    '₹30,000 – ₹1,00,000 / month',
+    '₹1,00,000 – ₹3,00,000 / month',
+    '₹3,00,000 – ₹10,00,000+ / month',
+    'One-time project (₹50,000 – ₹5,00,000)',
+  ],
+  submitLabel: 'Confirm Discovery Call',
+  successTitle: 'Discovery Session Confirmed!',
+  successText: 'We have your request and will confirm your slot by email at {email}.',
+  successButton: 'Close Window',
+};
+
+export function normalizePopup(raw) {
+  const f = asObject(raw?.acf);
+  if (!raw || Object.keys(f).length === 0) return null;
+
+  const goalOptions = toLines(f.goal_options);
+  const budgetOptions = toLines(f.budget_options);
+
+  return {
+    badge: text(f, 'badge'),
+    title: text(f, 'title'),
+    subtitle: text(f, 'subtitle'),
+    metaDuration: text(f, 'meta_duration'),
+    metaPlatform: text(f, 'meta_platform'),
+    metaPrice: text(f, 'meta_price'),
+    nameLabel: text(f, 'name_label'),
+    namePlaceholder: text(f, 'name_placeholder'),
+    emailLabel: text(f, 'email_label'),
+    emailPlaceholder: text(f, 'email_placeholder'),
+    companyLabel: text(f, 'company_label'),
+    companyPlaceholder: text(f, 'company_placeholder'),
+    goalLabel: text(f, 'goal_label'),
+    // A picker with no options could not be answered, so the built-in list stands in.
+    goalOptions: goalOptions.length ? goalOptions : defaultPopup.goalOptions,
+    budgetLabel: text(f, 'budget_label'),
+    budgetOptions: budgetOptions.length ? budgetOptions : defaultPopup.budgetOptions,
+    submitLabel: text(f, 'submit_label'),
+    successTitle: text(f, 'success_title'),
+    successText: text(f, 'success_text'),
+    successButton: text(f, 'success_button'),
   };
 }

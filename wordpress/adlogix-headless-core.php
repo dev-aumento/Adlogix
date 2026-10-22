@@ -3,7 +3,7 @@
  * Plugin Name: Adlogix Headless Core
  * Plugin URI: https://adlogix.in
  * Description: Core Headless CMS configuration, Custom Post Types, ACF bindings, CORS headers, and REST API endpoints for the Adlogix React Frontend (Powered by Aumento Infoway).
- * Version: 1.5.0
+ * Version: 1.6.0
  * Author: Adlogix & Aumento Infoway
  * License: GPL-2.0+
  */
@@ -560,7 +560,7 @@ class Adlogix_Headless_Core {
      * Header / Footer are singletons: hide "Add New" once one entry exists.
      */
     public function limit_singleton_cpt_add_new() {
-        foreach (['site_header', 'site_footer'] as $post_type) {
+        foreach (['site_header', 'site_footer', 'site_popup'] as $post_type) {
             $counts = wp_count_posts($post_type);
             if (!$counts) {
                 continue;
@@ -765,6 +765,25 @@ class Adlogix_Headless_Core {
             'has_archive' => false,
         ]);
 
+        // The Book a Call popup. It opens from the header and most pages, so like the header
+        // and footer it is global chrome with one published entry, not page content.
+        register_post_type('site_popup', [
+            'labels' => [
+                'name' => __('Call Popup', 'adlogix'),
+                'singular_name' => __('Call Popup', 'adlogix'),
+                'add_new_item' => __('Add Call Popup', 'adlogix'),
+                'edit_item' => __('Edit Call Popup', 'adlogix'),
+            ],
+            'public' => false,
+            'show_ui' => true,
+            'show_in_menu' => true,
+            'show_in_rest' => true,
+            'rest_base' => 'site-popup',
+            'supports' => ['title'],
+            'menu_icon' => 'dashicons-format-chat',
+            'has_archive' => false,
+        ]);
+
         // 8-9. Leads. Private on purpose: never public, never in REST, so a submission
         // can be written by the public endpoint but only read inside wp-admin.
         $lead_args = [
@@ -872,6 +891,7 @@ class Adlogix_Headless_Core {
         return [
             'header' => $this->get_singleton_acf('site_header'),
             'footer' => $this->get_singleton_acf('site_footer'),
+            'popup' => $this->get_singleton_acf('site_popup'),
             'menus' => $this->get_menus_response(),
         ];
     }

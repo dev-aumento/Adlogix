@@ -62,9 +62,9 @@ const ContactHero = ({ content = contactDefaults.hero }) => {
   );
 };
 
-const ContactEnquiry = ({ content = contactDefaults }) => {
-  const t = content.form ?? contactDefaults.form;
-  const side = content.sidebar ?? contactDefaults.sidebar;
+const ContactEnquiry = ({ content = contactDefaults.enquiry }) => {
+  const t = content.form ?? contactDefaults.enquiry.form;
+  const side = content.sidebar ?? contactDefaults.enquiry.sidebar;
   const [searchParams] = useSearchParams();
   const preselectedService = searchParams.get('service') || '';
   const preselectedProject = searchParams.get('project') || '';

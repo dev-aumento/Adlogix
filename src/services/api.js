@@ -20,8 +20,10 @@ import {
   defaultHeader,
   defaultFooter,
   defaultFooterMenus,
+  defaultPopup,
   normalizeHeader,
   normalizeFooter,
+  normalizePopup,
   mapPrimaryNavigation,
   mapFooterLinks
 } from '../content/layout';
@@ -122,6 +124,7 @@ export const api = {
       return {
         header: normalizeHeader(data?.header) || defaultHeader,
         footer: normalizeFooter(data?.footer) || defaultFooter,
+        popup: normalizePopup(data?.popup) || defaultPopup,
         navigation: mapPrimaryNavigation(menuMap.primary, defaultSiteSettings.navigation),
         footerMenus: {
           marketing: footerMenus.marketing.length ? footerMenus.marketing : defaultFooterMenus.marketing,
@@ -135,6 +138,7 @@ export const api = {
       return {
         header: defaultHeader,
         footer: defaultFooter,
+        popup: defaultPopup,
         navigation: defaultSiteSettings.navigation,
         footerMenus: defaultFooterMenus,
       };

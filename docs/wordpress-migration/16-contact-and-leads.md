@@ -70,6 +70,14 @@ The CSV export is nonce-checked and requires `edit_posts`.
 | Content model | `contactDefaults` + `mapContactFields` in `src/content/contact.js` |
 | Page component | `src/pages/ContactPage.jsx` → `<PageSections>` |
 
+## The model keys must match the section keys
+
+`PageSections` hands each section component `content[<section key>]`. The Contact page's sections are **`hero`** and **`enquiry`**, so the content model's top level must use those exact names.
+
+This bit once: the model returned `hero`, `form` and `sidebar`, so `content['enquiry']` was `undefined` and the form and sidebar silently showed their built-in defaults no matter what was saved in WordPress — while the hero updated normally. The form and sidebar fields now live **nested under `enquiry`**.
+
+It fails quietly rather than loudly, so it is worth checking whenever a page model is added: every section key in `get_section_registry()` needs a matching top-level key in that page's defaults, apart from sections rendered by a shared component that reads another page (Reels' Studio Showcase) and model-only keys for detail templates (`detail`).
+
 ## Fields by tab
 
 | Tab (section key) | Covers |
@@ -109,3 +117,44 @@ Note the overlap: the **Site Footer** entry has its own email and phone. They ar
 5. Confirm `https://adlogix.in/wp-json/wp/v2/adlogix_enquiry` returns **404** — leads must not be public.
 6. Clear the sidebar phone number and confirm only that row disappears.
 7. `npm run build` must succeed.
+
+---
+
+# Part 3 — The Book a Call popup
+
+The popup opens from the header button, the mobile menu, the hero, the Growth Plans section, the closing CTA and ten pages — **fifteen places in all**. It belongs to no single page, so like the header and footer it is global chrome with one published entry.
+
+| Item | Value |
+|---|---|
+| Admin screen | **Call Popup** (post type `site_popup`), beside Site Header and Site Footer |
+| Field group | `Call Popup Content` (`group_adlogix_popup`), file `wordpress/acf/post-type-popup.json` |
+| Delivered by | `GET /adlogix/v1/layout`, alongside `header` and `footer` — the same request the site already makes |
+| React | `defaultPopup` + `normalizePopup` in `src/content/layout.js`; exposed as `popup` on `CMSContext`; rendered by `src/components/ui/DiscoveryModal.jsx` |
+| Plugin | **1.6.0** |
+
+Only one entry is kept: once a Call Popup is published, **Add New** disappears, exactly as for Site Header and Site Footer.
+
+## Fields by tab
+
+| Tab | Fields |
+|---|---|
+| Header | `badge`, `title`, `subtitle`, and the grey strip: `meta_duration`, `meta_platform`, `meta_price` |
+| Form | Label and placeholder for name, email and company; `goal_label` + `goal_options`; `budget_label` + `budget_options`; `submit_label` |
+| Success | `success_title`, `success_text`, `success_button` |
+
+`success_text` takes an **`{email}`** placeholder, replaced with the address the visitor typed.
+
+Blank behaviour: the badge pill, each item of the grey strip, and the close button all disappear when cleared. **The two dropdowns are the exception** — clearing their options falls back to the built-in list, because a picker with no options could not be answered.
+
+Nothing here changes where submissions go: they are still stored as **Call Bookings**, separate from Enquiries.
+
+## Admin setup
+
+1. Deploy plugin **1.6.0** (`git pull` + `docker compose restart wordpress`).
+2. **Custom Fields → Tools → Import Field Groups**: `wordpress/acf/post-type-popup.json`.
+3. **Call Popup → Add Call Popup**, title it anything (e.g. "Book a Call"), fill the three tabs, **Publish**.
+4. Deploy the React build.
+5. Open the popup from the header and confirm your wording appears.
+
+Until an entry is published the popup shows its built-in wording, so the site is never blank mid-setup.
+

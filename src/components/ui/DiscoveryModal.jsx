@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { fillToken } from '../../content/helpers';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calendar, Clock, Video, CheckCircle2, ArrowRight } from 'lucide-react';
 import { useCMS } from '../../hooks/useCMS';
 import { api } from '../../services/api';
 
 export const DiscoveryModal = () => {
-  const { isDiscoveryModalOpen, closeDiscoveryModal } = useCMS();
+  const { isDiscoveryModalOpen, closeDiscoveryModal, popup: c } = useCMS();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
-    goal: 'Scale Paid Ads & Creative',
+    goal: '',
     date: 'Tomorrow, 2:00 PM PST',
     notes: '',
     _honeypot: '' // Anti-spam trap, same as the contact form
@@ -38,7 +39,11 @@ export const DiscoveryModal = () => {
     setSubmitError('');
     try {
       // Its own endpoint, so bookings are stored apart from contact enquiries.
-      await api.submitBooking(formData);
+      await api.submitBooking({
+        ...formData,
+        goal: formData.goal || c.goalOptions[0],
+        budget: formData.budget || c.budgetOptions[0],
+      });
       setIsSuccess(true);
     } catch (err) {
       console.error(err);
@@ -82,26 +87,34 @@ export const DiscoveryModal = () => {
             <div>
               <div className="flex items-center gap-2 text-xs font-bold text-brand-blue uppercase tracking-wider mb-2">
                 <Video className="w-4 h-4" />
-                <span>30-Min Strategy Session</span>
+                <span>{c.badge}</span>
               </div>
-              <h3 className="text-2xl font-bold font-display text-brand-navy">
-                Book a Growth Discovery Call
-              </h3>
-              <p className="text-sm text-brand-muted mt-1.5 leading-relaxed">
-                Connect with an Adlogix creative & performance strategist to uncover your biggest revenue growth opportunities.
-              </p>
+              {c.title && (
+                <h3 className="text-2xl font-bold font-display text-brand-navy">{c.title}</h3>
+              )}
+              {c.subtitle && (
+                <p className="text-sm text-brand-muted mt-1.5 leading-relaxed">{c.subtitle}</p>
+              )}
 
-              <div className="mt-4 flex items-center gap-4 py-2 px-3.5 bg-brand-surface-soft rounded-xl text-xs text-brand-navy font-medium">
-                <span className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-brand-blue" />
-                  30 mins
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Video className="w-3.5 h-3.5 text-brand-blue" />
-                  Google Meet / Zoom
-                </span>
-                <span className="text-emerald-600 font-semibold ml-auto">100% Free</span>
-              </div>
+              {(c.metaDuration || c.metaPlatform || c.metaPrice) && (
+                <div className="mt-4 flex items-center gap-4 py-2 px-3.5 bg-brand-surface-soft rounded-xl text-xs text-brand-navy font-medium">
+                  {c.metaDuration && (
+                    <span className="flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-brand-blue" />
+                      {c.metaDuration}
+                    </span>
+                  )}
+                  {c.metaPlatform && (
+                    <span className="flex items-center gap-1.5">
+                      <Video className="w-3.5 h-3.5 text-brand-blue" />
+                      {c.metaPlatform}
+                    </span>
+                  )}
+                  {c.metaPrice && (
+                    <span className="text-emerald-600 font-semibold ml-auto">{c.metaPrice}</span>
+                  )}
+                </div>
+              )}
 
               <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                 {/* Anti-spam trap: hidden from people, tempting to bots */}
@@ -122,14 +135,14 @@ export const DiscoveryModal = () => {
                 )}
                 <div>
                   <label className="block text-xs font-semibold text-brand-navy mb-1">
-                    Your Full Name *
+                    {c.nameLabel}
                   </label>
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. Sarah Jenkins"
+                    placeholder={c.namePlaceholder}
                     className="w-full px-4 py-2.5 text-sm rounded-xl border border-brand-border focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 outline-none transition-all"
                   />
                 </div>
@@ -137,27 +150,27 @@ export const DiscoveryModal = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-xs font-semibold text-brand-navy mb-1">
-                      Business Email *
+                      {c.emailLabel}
                     </label>
                     <input
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="sarah@company.com"
+                      placeholder={c.emailPlaceholder}
                       className="w-full px-4 py-2.5 text-sm rounded-xl border border-brand-border focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 outline-none transition-all"
                     />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-brand-navy mb-1">
-                      Company / Brand Name *
+                      {c.companyLabel}
                     </label>
                     <input
                       type="text"
                       required
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      placeholder="e.g. Lumina Luxe"
+                      placeholder={c.companyPlaceholder}
                       className="w-full px-4 py-2.5 text-sm rounded-xl border border-brand-border focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 outline-none transition-all"
                     />
                   </div>
@@ -165,34 +178,31 @@ export const DiscoveryModal = () => {
 
                 <div>
                   <label className="block text-xs font-semibold text-brand-navy mb-1">
-                    Primary Objective
+                    {c.goalLabel}
                   </label>
                   <select
-                    value={formData.goal}
+                    value={formData.goal || c.goalOptions[0]}
                     onChange={(e) => setFormData({ ...formData, goal: e.target.value })}
                     className="w-full px-4 py-2.5 text-sm rounded-xl border border-brand-border focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 outline-none bg-white transition-all"
                   >
-                    <option value="Scale Paid Ads & Creative">Scale Paid Ads & Creative (Meta/Google)</option>
-                    <option value="High-Impact Video Reels & Shoots">High-Impact Video Reels & Shoots</option>
-                    <option value="New React or Shopify Website">New React or Shopify Website</option>
-                    <option value="Headless WordPress Development">Headless WordPress Development</option>
-                    <option value="Full Digital Growth Overhaul">Full Digital Growth Overhaul</option>
+                    {c.goalOptions.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-xs font-semibold text-brand-navy mb-1">
-                    What's your current monthly ad spend or project budget?
+                    {c.budgetLabel}
                   </label>
                   <select
-                    value={formData.budget || '₹30,000 – ₹1,00,000 / month'}
+                    value={formData.budget || c.budgetOptions[0]}
                     onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                     className="w-full px-4 py-2.5 text-sm rounded-xl border border-brand-border focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 outline-none bg-white transition-all"
                   >
-                    <option value="₹30,000 – ₹1,00,000 / mo">₹30,000 – ₹1,00,000 / month</option>
-                    <option value="₹1,00,000 – ₹3,00,000 / mo">₹1,00,000 – ₹3,00,000 / month</option>
-                    <option value="₹3,00,000 – ₹10,00,000+ / mo">₹3,00,000 – ₹10,00,000+ / month</option>
-                    <option value="One-time project (₹50,000 – ₹5,00,000)">One-time project (₹50,000 – ₹5,00,000)</option>
+                    {c.budgetOptions.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
                   </select>
                 </div>
 
@@ -205,7 +215,7 @@ export const DiscoveryModal = () => {
                     <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   ) : (
                     <>
-                      <span>Confirm Discovery Call</span>
+                      <span>{c.submitLabel}</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </>
                   )}
@@ -217,17 +227,19 @@ export const DiscoveryModal = () => {
               <div className="w-16 h-16 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto shadow-inner">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
-              <h3 className="text-2xl font-bold font-display text-brand-navy">
-                Discovery Session Confirmed!
-              </h3>
-              <p className="text-sm text-brand-muted max-w-sm mx-auto leading-relaxed">
-                We have your request and will confirm your slot by email at <span className="font-semibold text-brand-navy">{formData.email}</span>.
-              </p>
+              {c.successTitle && (
+                <h3 className="text-2xl font-bold font-display text-brand-navy">{c.successTitle}</h3>
+              )}
+              {c.successText && (
+                <p className="text-sm text-brand-muted max-w-sm mx-auto leading-relaxed">
+                  {fillToken(c.successText, 'email', formData.email)}
+                </p>
+              )}
               <button
                 onClick={resetAndClose}
                 className="mt-4 px-6 py-2.5 rounded-full bg-brand-navy text-white text-xs font-semibold hover:bg-brand-navy-dark transition-all"
               >
-                Close Window
+                {c.successButton}
               </button>
             </div>
           )}
